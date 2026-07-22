@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso legal y privacidad · Oskolkov Web Local</title>
+    <meta name="description" content="Aviso legal, política de privacidad y política de cookies de Oskolkov Web Local.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Cabecera simple de la página legal */
+        .legal-header{
+            position:sticky; top:0; z-index:1000;
+            display:flex; align-items:center; justify-content:space-between;
+            gap:16px;
+            padding:14px 32px;
+            background:rgba(15,23,42,.72);
+            backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+            border-bottom:1px solid var(--border);
+        }
+        .legal-wrap{ max-width:780px; margin:0 auto; padding:60px 24px 90px; }
+        .legal-wrap .back{
+            display:inline-flex; align-items:center; gap:7px;
+            color:var(--muted); font-family:var(--font-head); font-size:14px; margin-bottom:30px;
+            transition:color .2s;
+        }
+        .legal-wrap .back:hover{ color:var(--accent-2); }
+        .legal-wrap h1{ font-size:clamp(30px,5vw,44px); margin-bottom:10px; }
+        .legal-wrap .updated{ color:var(--muted-2); font-size:14px; margin-bottom:40px; }
+        .legal-wrap h2{ font-size:21px; margin:38px 0 14px; color:var(--text); }
+        .legal-wrap p, .legal-wrap li{ color:var(--muted); font-size:15.5px; margin-bottom:12px; line-height:1.7; }
+        .legal-wrap ul{ padding-left:20px; }
+        .legal-wrap a{ color:var(--accent-2); text-decoration:underline; }
+        .legal-wrap strong{ color:var(--text); }
+        @media (max-width:768px){
+            .legal-header{ padding:12px 18px; }
+            .legal-header .logo-text{ font-size:17px; }
+            .legal-wrap{ padding:44px 20px 70px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Arte animado de fondo (constelación) -->
+<canvas id="bg-art" aria-hidden="true"></canvas>
+
+<header class="legal-header">
+    <a href="index.html" class="logo" aria-label="Oskolkov Web Local">
+        <img src="images/logo.svg" alt="" width="36" height="36">
+        <span class="logo-text">Oskolkov Web <b>Local</b></span>
+    </a>
+
+    <div class="language-dropdown" id="lang-dropdown">
+        <button class="language-btn" id="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Idioma / Language">
+            <img id="current-flag" class="flag-ico" src="images/es.png" alt="">
+            <span id="current-lang">ESP</span>
+            <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="language-menu" id="lang-menu" role="menu">
+            <button type="button" class="lang-opt" data-lang="es" role="menuitem">
+                <img class="flag-ico" src="images/es.png" alt=""> <span>Español</span>
+                <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button type="button" class="lang-opt" data-lang="ca" role="menuitem">
+                <img class="flag-ico" src="images/cat.png" alt=""> <span>Català</span>
+                <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button type="button" class="lang-opt" data-lang="en" role="menuitem">
+                <img class="flag-ico" src="images/en.png" alt=""> <span>English</span>
+                <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="legal-wrap">
+    <a href="index.html" class="back">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span data-i18n="lg_back">Volver al inicio</span>
+    </a>
+
+    <h1 data-i18n="lg_title">Aviso legal y privacidad</h1>
+    <p class="updated" data-i18n="lg_updated">Última actualización: julio de 2026</p>
+
+    <h2 data-i18n="lg_h1">1. Titular del sitio web</h2>
+    <p data-i18n="lg_p1">En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa de que este sitio web pertenece a:</p>
+    <ul>
+        <li data-i18n="lg_owner"><strong>Titular:</strong> Ilia Oskolkov (Oskolkov Web Local)</li>
+        <li data-i18n="lg_activity"><strong>Actividad:</strong> Diseño y desarrollo de páginas web</li>
+        <li data-i18n="lg_email"><strong>Correo electrónico:</strong> <a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a></li>
+        <li data-i18n="lg_phone"><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/34628806573" target="_blank" rel="noopener">+34 628 806 573</a></li>
+    </ul>
+
+    <h2 data-i18n="lg_h2">2. Objeto</h2>
+    <p data-i18n="lg_p2">Este sitio web tiene carácter informativo y presenta los servicios de diseño y desarrollo web ofrecidos por el titular. El acceso y uso del sitio atribuye la condición de usuario e implica la aceptación de las condiciones recogidas en este aviso legal.</p>
+
+    <h2 data-i18n="lg_h3">3. Política de privacidad</h2>
+    <p data-i18n="lg_p3">Respetamos tu privacidad. Los datos que nos facilites a través del formulario de contacto o de WhatsApp (nombre, negocio y mensaje) se utilizan <strong>únicamente</strong> para responder a tu solicitud y elaborar un presupuesto.</p>
+    <ul>
+        <li data-i18n="lg_resp"><strong>Responsable:</strong> Ilia Oskolkov.</li>
+        <li data-i18n="lg_purpose"><strong>Finalidad:</strong> atender consultas y solicitudes de presupuesto.</li>
+        <li data-i18n="lg_legit"><strong>Legitimación:</strong> tu consentimiento al enviar el formulario.</li>
+        <li data-i18n="lg_keep"><strong>Conservación:</strong> los datos se conservan el tiempo necesario para gestionar tu solicitud.</li>
+        <li data-i18n="lg_share"><strong>Cesión:</strong> no se ceden datos a terceros, salvo obligación legal.</li>
+        <li data-i18n="lg_rights"><strong>Derechos:</strong> puedes ejercer tus derechos de acceso, rectificación, supresión y oposición escribiendo a <a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a>.</li>
+    </ul>
+    <p data-i18n="lg_p3b">Ten en cuenta que el formulario de contacto abre una conversación en <strong>WhatsApp</strong>, cuyo tratamiento de datos se rige por la política de privacidad de Meta Platforms, Inc.</p>
+
+    <h2 data-i18n="lg_h4">4. Política de cookies</h2>
+    <p data-i18n="lg_p4">Este sitio web <strong>no utiliza cookies de seguimiento ni de publicidad</strong>. Únicamente puede emplear el almacenamiento local del navegador (localStorage) para recordar el idioma que has elegido, un dato técnico que no identifica personalmente al usuario y que puedes borrar desde tu navegador.</p>
+
+    <h2 data-i18n="lg_h5">5. Propiedad intelectual</h2>
+    <p data-i18n="lg_p5">Los contenidos, el diseño y el código de este sitio son propiedad de Ilia Oskolkov, salvo los logotipos e imágenes de terceros (como el proyecto ALSISA), que pertenecen a sus respectivos titulares y se muestran a modo de portfolio con su conocimiento.</p>
+
+    <h2 data-i18n="lg_h6">6. Legislación aplicable</h2>
+    <p data-i18n="lg_p6">Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales que correspondan conforme a derecho.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

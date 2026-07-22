@@ -1,0 +1,12 @@
+# Herramientas locales / editor (no forman parte del sitio)
+.claude/
+.vscode/
+*.log
+
+# Sitio de referencia del cliente (no se publica en este repositorio)
+referencia-alsisa/
+
+# Archivos del sistema
+Thumbs.db
+.DS_Store
+desktop.ini

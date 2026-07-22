@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oskolkov Web Local · Diseño y desarrollo de páginas web para pequeños negocios</title>
+    <meta name="description" content="Estudio de diseño y desarrollo web para pequeños negocios en España. Webs rápidas, modernas y multilingües desde 300 €. Entrega en días y trato directo.">
+
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <link rel="apple-touch-icon" href="images/logo.svg">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="canonical" href="https://oskolkovweblocal.com/">
+
+    <!-- Vista previa al compartir (WhatsApp, Facebook, Instagram...) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Oskolkov Web Local · Páginas web para pequeños negocios">
+    <meta property="og:description" content="Webs rápidas, modernas y multiidioma desde 300 €. Entrega en días y trato directo.">
+    <meta property="og:image" content="https://oskolkovweblocal.com/images/og-cover.svg">
+    <meta property="og:url" content="https://oskolkovweblocal.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Datos para Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Oskolkov Web Local",
+      "description": "Diseño y desarrollo de páginas web para pequeños negocios.",
+      "image": "https://oskolkovweblocal.com/images/logo.svg",
+      "url": "https://oskolkovweblocal.com",
+      "email": "iliaoskolkov2004@gmail.com",
+      "telephone": "+34628806573",
+      "priceRange": "€€",
+      "areaServed": "ES",
+      "knowsLanguage": ["es", "ca", "en", "ru"],
+      "sameAs": ["https://wa.me/34628806573"]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<!-- Arte animado de fondo (constelación) -->
+<canvas id="bg-art" aria-hidden="true"></canvas>
+
+<!-- ===================== HEADER ===================== -->
+<header id="site-header">
+    <a href="#inicio" class="logo" aria-label="Oskolkov Web Local">
+        <img src="images/logo.svg" alt="" width="40" height="40">
+        <span class="logo-text">Oskolkov Web <b>Local</b></span>
+    </a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav">
+        <a href="#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="#proyecto" data-i18n="nav_case">Proyecto</a>
+        <a href="#demos" data-i18n="nav_demos">Demos</a>
+        <a href="#precios" data-i18n="nav_pricing">Precios</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+
+        <div class="language-dropdown" id="lang-dropdown">
+            <button class="language-btn" id="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Idioma / Language">
+                <img id="current-flag" class="flag-ico" src="images/es.png" alt="">
+                <span id="current-lang">ESP</span>
+                <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="language-menu" id="lang-menu" role="menu">
+                <button type="button" class="lang-opt" data-lang="es" role="menuitem">
+                    <img class="flag-ico" src="images/es.png" alt=""> <span>Español</span>
+                    <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </button>
+                <button type="button" class="lang-opt" data-lang="ca" role="menuitem">
+                    <img class="flag-ico" src="images/cat.png" alt=""> <span>Català</span>
+                    <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </button>
+                <button type="button" class="lang-opt" data-lang="en" role="menuitem">
+                    <img class="flag-ico" src="images/en.png" alt=""> <span>English</span>
+                    <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Quiero%20un%20presupuesto%20para%20mi%20web." class="nav-cta" target="_blank" rel="noopener" data-i18n="nav_quote">Presupuesto</a>
+    </nav>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+        <span class="badge reveal" data-i18n="hero_badge">Estudio web · España</span>
+
+        <h1 class="hero-title">
+            <span class="line" id="hero-title-1" data-i18n="hero_title_1">Webs que hacen crecer</span>
+            <span class="line accent" id="hero-title-2" data-i18n="hero_title_2">tu pequeño negocio</span>
+        </h1>
+
+        <p class="hero-sub reveal" data-i18n="hero_sub">
+            Diseño y desarrollo de páginas web rápidas, modernas y multilingües.
+            Entrega en días, precio cerrado y trato directo conmigo.
+        </p>
+
+        <div class="hero-buttons reveal">
+            <a href="https://wa.me/34628806573" class="btn btn-primary magnetic" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <span data-i18n="hero_cta1">Hablar por WhatsApp</span>
+            </a>
+            <a href="#precios" class="btn btn-ghost" data-i18n="hero_cta2">Ver precios</a>
+        </div>
+
+        <div class="hero-meta reveal">
+            <span><b>3–7</b> <span data-i18n="hero_m1">días de entrega</span></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span><b data-i18n="hero_m2">Multiidioma</b></span>
+            <span class="dot" aria-hidden="true"></span>
+            <span><b data-i18n="hero_m3">Desde 300 €</b></span>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section id="servicios" class="section services">
+    <div class="section-head">
+        <span class="kicker" data-i18n="services_kicker">Qué hago</span>
+        <h2 data-i18n="services_title">Webs pensadas para vender</h2>
+        <p class="section-sub" data-i18n="services_sub">Todo lo que un pequeño negocio necesita para tener presencia online de verdad.</p>
+    </div>
+
+    <div class="cards">
+        <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg></div>
+            <h3 data-i18n="s1_t">Landing pages</h3>
+            <p data-i18n="s1_d">Webs de una sola página, directas y orientadas a captar clientes.</p>
+        </article>
+        <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
+            <h3 data-i18n="s2_t">Multiidioma</h3>
+            <p data-i18n="s2_d">Añadimos los idiomas que necesites para llegar a muchos más clientes.</p>
+        </article>
+        <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+            <h3 data-i18n="s3_t">Diseño móvil</h3>
+            <p data-i18n="s3_d">Perfectas en el móvil, donde te ve la mayoría de tus clientes.</p>
+        </article>
+        <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-1 9h6l-7 11 1-9H6z"/></svg></div>
+            <h3 data-i18n="s4_t">SEO y velocidad</h3>
+            <p data-i18n="s4_d">Rápidas y optimizadas para aparecer en Google y cargar al instante.</p>
+        </article>
+    </div>
+</section>
+
+<!-- ===================== CASO ALSISA ===================== -->
+<section id="proyecto" class="section case">
+    <div class="case-inner">
+        <div class="case-media reveal">
+            <div class="browser-frame">
+                <div class="browser-bar">
+                    <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                    <span class="browser-url">alsisaconstrucciones.es</span>
+                </div>
+                <div class="browser-shot">
+                    <!-- Vista previa en vivo de la web real del cliente -->
+                    <iframe src="https://alsisaconstrucciones.es"
+                            title="Web de ALSISA Construcciones"
+                            loading="lazy" scrolling="no" tabindex="-1"></iframe>
+                    <a href="https://alsisaconstrucciones.es" class="shot-link"
+                       target="_blank" rel="noopener"
+                       aria-label="Abrir la web de ALSISA en una pestaña nueva"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-text reveal">
+            <span class="kicker" data-i18n="case_kicker">Mi primer proyecto</span>
+            <h2 data-i18n="case_title">ALSISA · Construcción y reformas</h2>
+            <p data-i18n="case_desc">Web multilingüe a medida para una empresa de construcción de Girona. Diseño propio, galería de proyectos, comparador «antes / después», mapa de la zona de trabajo y un formulario que envía la solicitud directa al WhatsApp de la empresa.</p>
+            <ul class="tags">
+                <li data-i18n="case_f1">HTML · CSS · JS</li>
+                <li data-i18n="case_f2">Multilingüe</li>
+                <li data-i18n="case_f3">100% responsive</li>
+                <li data-i18n="case_f4">SEO local</li>
+            </ul>
+            <a href="https://alsisaconstrucciones.es" class="btn btn-primary magnetic" target="_blank" rel="noopener">
+                <span data-i18n="case_cta">Ver web en vivo</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== DEMOS (capacidades en vivo) ===================== -->
+<section id="demos" class="section demos">
+    <div class="section-head">
+        <span class="kicker" data-i18n="demos_kicker">Míralo en acción</span>
+        <h2 data-i18n="demos_title">Lo que tu web puede hacer</h2>
+        <p class="section-sub" data-i18n="demos_sub">Sin tecnicismos: ejemplos reales en miniatura de lo que puedo montar en tu página.</p>
+    </div>
+
+    <div class="demo-grid">
+
+        <!-- Demo 1: Multiidioma -->
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-lang">
+                    <div class="demo-lang-word" id="demo-lang-word">¡Hola!</div>
+                    <div class="demo-lang-flags">
+                        <span class="demo-flag" data-di="0">ES</span>
+                        <span class="demo-flag" data-di="1">EN</span>
+                        <span class="demo-flag" data-di="2">FR</span>
+                        <span class="demo-flag" data-di="3">DE</span>
+                        <span class="demo-flag" data-di="4">IT</span>
+                    </div>
+                </div>
+            </div>
+            <h3 data-i18n="demo1_t">Tu web habla idiomas</h3>
+            <p data-i18n="demo1_d">El visitante elige su idioma y toda la página cambia al instante. Más idiomas = más clientes.</p>
+        </article>
+
+        <!-- Demo 2: Adaptable a cualquier pantalla -->
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-device" id="demo-device">
+                    <div class="demo-device-bar"><span></span><span></span><span></span></div>
+                    <div class="demo-device-body">
+                        <div class="dd-hero"></div>
+                        <div class="dd-cols">
+                            <div class="dd-block"></div>
+                            <div class="dd-block"></div>
+                            <div class="dd-block"></div>
+                        </div>
+                        <div class="dd-btn"></div>
+                    </div>
+                </div>
+            </div>
+            <h3 data-i18n="demo2_t">Se adapta a cualquier pantalla</h3>
+            <p data-i18n="demo2_d">Ordenador, tablet o móvil: la web se reorganiza sola y siempre se ve perfecta.</p>
+        </article>
+
+        <!-- Demo 3: Velocidad -->
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-speed">
+                    <div class="ds-row">
+                        <span class="ds-label" data-i18n="demo3_slow">Web típica</span>
+                        <div class="ds-track"><div class="ds-bar ds-slow" id="ds-slow"></div></div>
+                        <span class="ds-time ds-time-slow" id="ds-slow-t">6,2 s</span>
+                    </div>
+                    <div class="ds-row">
+                        <span class="ds-label ds-label-mine" data-i18n="demo3_fast">Mi web</span>
+                        <div class="ds-track"><div class="ds-bar ds-fast" id="ds-fast"></div></div>
+                        <span class="ds-time ds-time-fast" id="ds-fast-t">0,8 s</span>
+                    </div>
+                </div>
+            </div>
+            <h3 data-i18n="demo3_t">Carga en un parpadeo</h3>
+            <p data-i18n="demo3_d">Cada segundo de espera son clientes que se van. Código ligero, sin plantillas pesadas.</p>
+        </article>
+
+        <!-- Demo 4: Detalles que enamoran (interactivo) -->
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-tilt" id="demo-tilt">
+                    <div class="demo-tilt-inner">
+                        <span class="dt-shine"></span>
+                        <span class="dt-emoji">✨</span>
+                        <span class="dt-text" data-i18n="demo4_try">Pasa el ratón / toca</span>
+                    </div>
+                </div>
+            </div>
+            <h3 data-i18n="demo4_t">Detalles que enamoran</h3>
+            <p data-i18n="demo4_d">Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.</p>
+        </article>
+
+    </div>
+</section>
+
+<!-- ===================== PRECIOS ===================== -->
+<section id="precios" class="section pricing">
+    <div class="section-head">
+        <span class="kicker" data-i18n="pricing_kicker">Precios</span>
+        <h2 data-i18n="pricing_title">Claros y sin sorpresas</h2>
+        <p class="section-sub" data-i18n="pricing_sub">Sabes el precio final desde el primer día. Elige el plan que encaja con tu negocio.</p>
+    </div>
+
+    <div class="plans">
+        <!-- Básica -->
+        <article class="plan reveal">
+            <h3 class="plan-name" data-i18n="p1_name">Básica</h3>
+            <div class="plan-price"><span class="amount">300</span><span class="cur">€</span></div>
+            <p class="plan-for" data-i18n="p1_for">Una página, lista para publicar.</p>
+            <ul class="plan-feats">
+                <li data-i18n="p1_f1">Diseño 100% a medida</li>
+                <li data-i18n="p1_f2">Adaptada a móvil</li>
+                <li data-i18n="p1_f3">Formulario de contacto</li>
+                <li data-i18n="p1_f4">Botón directo de WhatsApp</li>
+            </ul>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20B%C3%A1sico%20(300%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta">Lo quiero</a>
+        </article>
+
+        <!-- Completa (destacada) -->
+        <article class="plan plan-featured reveal">
+            <span class="plan-badge" data-i18n="p2_badge">Más popular</span>
+            <h3 class="plan-name" data-i18n="p2_name">Completa</h3>
+            <div class="plan-price"><span class="amount">450</span><span class="cur">€</span></div>
+            <p class="plan-for" data-i18n="p2_for">Todo lo de Básica, y además:</p>
+            <ul class="plan-feats">
+                <li data-i18n="p2_f1">Multiidioma (los idiomas que quieras)</li>
+                <li data-i18n="p2_f2">Galería o portfolio</li>
+                <li data-i18n="p2_f3">SEO básico para Google</li>
+                <li data-i18n="p2_f4">Mapa de Google integrado</li>
+            </ul>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Completo%20(450%20%E2%82%AC)." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="plan_cta_2">Lo quiero</a>
+        </article>
+
+        <!-- Premium -->
+        <article class="plan reveal">
+            <h3 class="plan-name" data-i18n="p3_name">Premium</h3>
+            <div class="plan-price"><span class="amount">600</span><span class="cur">€</span></div>
+            <p class="plan-for" data-i18n="p3_for">Todo lo de Completa, y además:</p>
+            <ul class="plan-feats">
+                <li data-i18n="p3_f1">Animaciones avanzadas</li>
+                <li data-i18n="p3_f2">Secciones a medida extra</li>
+                <li data-i18n="p3_f3">Optimización SEO completa</li>
+                <li data-i18n="p3_f4">Soporte prioritario</li>
+            </ul>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(600%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
+        </article>
+    </div>
+
+    <p class="pricing-note" data-i18n="pricing_note">* Dominio y hosting no incluidos (unos 60–80 €/año). Te asesoro para contratarlos sin coste añadido.</p>
+</section>
+
+<!-- ===================== POR QUÉ RÁPIDO ===================== -->
+<section class="section why">
+    <div class="section-head">
+        <span class="kicker" data-i18n="why_kicker">Por qué tan rápido</span>
+        <h2 data-i18n="why_title">Menos espera, más resultados</h2>
+    </div>
+    <div class="why-grid">
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why1_v">Directo</div>
+            <h3 data-i18n="why1_t">Sin intermediarios</h3>
+            <p data-i18n="why1_d">Hablas conmigo, no con una agencia. Menos reuniones, decisiones al momento.</p>
+        </div>
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why2_v">3–7 días</div>
+            <h3 data-i18n="why2_t">Entrega ágil</h3>
+            <p data-i18n="why2_d">Me centro en lo esencial y en un flujo de trabajo probado, sin rodeos.</p>
+        </div>
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why3_v">A medida</div>
+            <h3 data-i18n="why3_t">Código propio</h3>
+            <p data-i18n="why3_d">Nada de plantillas pesadas: código limpio, ligero y hecho para tu negocio.</p>
+        </div>
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why4_v">Cerrado</div>
+            <h3 data-i18n="why4_t">Precio fijo</h3>
+            <p data-i18n="why4_d">Presupuesto cerrado antes de empezar. Sin sorpresas ni costes ocultos.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section id="contacto" class="section contact">
+    <div class="contact-inner reveal">
+        <span class="kicker" data-i18n="contact_kicker">Contacto</span>
+        <h2 data-i18n="contact_title">¿Hablamos de tu web?</h2>
+        <p class="section-sub" data-i18n="contact_sub">Cuéntame tu idea y te respondo con un presupuesto sin compromiso.</p>
+
+        <form id="quote-form" novalidate>
+            <div class="field">
+                <label for="input-name" data-i18n="form_name_l">Nombre</label>
+                <input type="text" id="input-name" name="name" autocomplete="name" placeholder="Ej. María García">
+            </div>
+            <div class="field">
+                <label for="input-business" data-i18n="form_business_l">Negocio</label>
+                <input type="text" id="input-business" name="business" autocomplete="organization" placeholder="Ej. Peluquería, restaurante...">
+            </div>
+            <div class="field field-full">
+                <label for="input-message" data-i18n="form_message_l">Tu proyecto</label>
+                <textarea id="input-message" name="message" rows="4" placeholder="Cuéntame qué necesitas..."></textarea>
+            </div>
+
+            <label class="consent field-full">
+                <input type="checkbox" id="consent-check">
+                <span data-i18n="consent_text">He leído y acepto la <a href="legal.html" target="_blank">Política de Privacidad</a>.</span>
+            </label>
+
+            <button type="submit" class="btn btn-primary magnetic field-full" id="submit-button">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <span data-i18n="submit_text">Enviar por WhatsApp</span>
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="logo">
+                <img src="images/logo.svg" alt="" width="36" height="36">
+                <span class="logo-text">Oskolkov Web <b>Local</b></span>
+            </div>
+            <p data-i18n="footer_tag">Diseño y desarrollo web para pequeños negocios.</p>
+        </div>
+        <div class="footer-contact">
+            <h4 data-i18n="footer_contact_t">Contacto</h4>
+            <p><a href="https://wa.me/34628806573" target="_blank" rel="noopener">WhatsApp · +34 628 806 573</a></p>
+            <p><a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a></p>
+            <p><a href="legal.html" data-i18n="footer_legal">Aviso legal · Privacidad · Cookies</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Oskolkov Web Local</span>
+        <span data-i18n="footer_made">Diseñado y programado por Ilia Oskolkov</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
