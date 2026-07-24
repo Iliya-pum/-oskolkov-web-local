@@ -172,6 +172,9 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 }
 .logo{ display:flex; align-items:center; gap:11px; }
 .logo img{ width:38px; height:38px; }
+/* Logotipo-lockup (imagen con marca + texto) */
+.logo img.logo-lockup{ width:auto; height:34px; }
+#site-footer .logo img.logo-lockup{ height:30px; }
 .logo-text{
     font-family:var(--font-head);
     font-weight:800;
@@ -853,6 +856,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     /* Header + menú móvil */
     #site-header{ padding:13px 18px; }
     #site-header.scrolled{ padding:11px 18px; }
+    .logo img.logo-lockup{ height:28px; }
     .menu-toggle{ display:flex; }
     #main-nav{
         position:absolute;

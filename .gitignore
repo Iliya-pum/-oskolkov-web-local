@@ -10,3 +10,6 @@ referencia-alsisa/
 Thumbs.db
 .DS_Store
 desktop.ini
+
+# Archivos comprimidos (fuentes de logo, etc.)
+*.zip

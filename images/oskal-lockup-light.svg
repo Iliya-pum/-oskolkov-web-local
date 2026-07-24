@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="180" viewBox="0 0 640 180">
+
+<line x1="96.00" y1="34.00" x2="144.50" y2="62.00" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<line x1="144.50" y1="62.00" x2="144.50" y2="118.00" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<line x1="144.50" y1="118.00" x2="96.00" y2="146.00" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<line x1="96.00" y1="146.00" x2="47.50" y2="118.00" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<line x1="47.50" y1="118.00" x2="47.50" y2="62.00" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<line x1="47.50" y1="62.00" x2="96.00" y2="34.00" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+<circle cx="96.00" cy="34.00" r="10.98" fill="#EF3B30"/>
+<circle cx="144.50" cy="62.00" r="9.00" fill="#FFFFFF"/>
+<circle cx="144.50" cy="118.00" r="9.00" fill="#FFFFFF"/>
+<circle cx="96.00" cy="146.00" r="9.00" fill="#FFFFFF"/>
+<circle cx="47.50" cy="118.00" r="9.00" fill="#FFFFFF"/>
+<circle cx="47.50" cy="62.00" r="9.00" fill="#FFFFFF"/>
+<text x="196" y="90" font-family="Montserrat Bold" font-size="54" fill="#FFFFFF" dominant-baseline="central">Oskal <tspan fill="#EF3B30">Studio</tspan></text>
+</svg>
