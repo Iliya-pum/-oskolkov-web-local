@@ -38,6 +38,14 @@ var I18N = {
     demo3_slow:"Web típica", demo3_fast:"Mi web",
     demo4_t:"Detalles que enamoran", demo4_d:"Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.",
     demo4_try:"Pasa el ratón / toca",
+    demo3_extra:"¿Ya tienes web? También la aceleramos, sin rehacerla.",
+
+    s5_t:"Arreglamos tu web actual",
+    s5_d:"¿Ya tienes web pero va lenta, no se ve bien en el móvil o está anticuada? La revisamos y la arreglamos sin empezar de cero.",
+    pr_badge:"Primer paso", pr_name:"Reparación", pr_from:"desde", pr_for:"Arregla la web que ya tienes.",
+    pr_f1:"Revisión completa de tu web actual", pr_f2:"Adaptación al móvil", pr_f3:"Mejora de velocidad", pr_f4:"Textos y fotos actualizados", pr_f5:"Botón de WhatsApp",
+    pr_cta:"Arreglar mi web",
+    form_message_hint:"¿Ya tienes web? Puedes pegar aquí su enlace.",
 
     pricing_kicker:"Precios",
     pricing_title:"Claros y sin sorpresas",
@@ -136,6 +144,14 @@ var I18N = {
     demo3_slow:"Web típica", demo3_fast:"La meva web",
     demo4_t:"Detalls que enamoren", demo4_d:"Animacions i efectes suaus que fan que el teu negoci sembli molt més gran del que és.",
     demo4_try:"Passa el ratolí / toca",
+    demo3_extra:"Ja tens web? També l'accelerem, sense refer-la.",
+
+    s5_t:"Arreglem la teva web actual",
+    s5_d:"Ja tens web però va lenta, no es veu bé al mòbil o està antiquada? La revisem i l'arreglem sense començar de zero.",
+    pr_badge:"Primer pas", pr_name:"Reparació", pr_from:"des de", pr_for:"Arregla la web que ja tens.",
+    pr_f1:"Revisió completa de la teva web actual", pr_f2:"Adaptació al mòbil", pr_f3:"Millora de velocitat", pr_f4:"Textos i fotos actualitzats", pr_f5:"Botó de WhatsApp",
+    pr_cta:"Arreglar la meva web",
+    form_message_hint:"Ja tens web? Pots enganxar aquí el seu enllaç.",
 
     pricing_kicker:"Preus",
     pricing_title:"Clars i sense sorpreses",
@@ -234,6 +250,14 @@ var I18N = {
     demo3_slow:"Typical site", demo3_fast:"My site",
     demo4_t:"Details people love", demo4_d:"Smooth animations and effects that make your business look much bigger than it is.",
     demo4_try:"Hover / touch me",
+    demo3_extra:"Already have a site? We speed it up too, without rebuilding it.",
+
+    s5_t:"We fix your current site",
+    s5_d:"Already have a website but it's slow, looks bad on mobile or feels outdated? We review it and fix it without starting from scratch.",
+    pr_badge:"First step", pr_name:"Repair", pr_from:"from", pr_for:"Fix the website you already have.",
+    pr_f1:"Full review of your current site", pr_f2:"Mobile adaptation", pr_f3:"Speed improvement", pr_f4:"Updated texts and photos", pr_f5:"WhatsApp button",
+    pr_cta:"Fix my website",
+    form_message_hint:"Already have a website? You can paste its link here.",
 
     pricing_kicker:"Pricing",
     pricing_title:"Clear, no surprises",

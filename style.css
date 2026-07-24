@@ -173,8 +173,8 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .logo{ display:flex; align-items:center; gap:11px; }
 .logo img{ width:38px; height:38px; }
 /* Logotipo-lockup (imagen con marca + texto) */
-.logo img.logo-lockup{ width:auto; height:34px; }
-#site-footer .logo img.logo-lockup{ height:30px; }
+.logo img.logo-lockup{ width:auto; height:48px; }
+#site-footer .logo img.logo-lockup{ height:42px; }
 .logo-text{
     font-family:var(--font-head);
     font-weight:800;
@@ -380,7 +380,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 /* ===== SERVICIOS ===== */
 .cards{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(5, 1fr);
     gap:20px;
 }
 .card{
@@ -498,6 +498,20 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 }
 .demo-card h3{ font-size:19px; margin:20px 0 8px; }
 .demo-card > p{ color:var(--muted); font-size:15px; }
+.demo-note{
+    margin-top:12px !important;
+    color:var(--accent-2) !important;
+    font-family:var(--font-head);
+    font-size:13.5px !important;
+    font-weight:600;
+    display:flex; align-items:center; gap:8px;
+}
+.demo-note::before{
+    content:""; flex-shrink:0;
+    width:6px; height:6px; border-radius:50%;
+    background:var(--accent-2);
+    box-shadow:0 0 8px var(--accent-2);
+}
 
 /* Escenario de cada demo */
 .demo-stage{
@@ -665,8 +679,8 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 /* ===== PRECIOS ===== */
 .plans{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:22px;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
     align-items:stretch;
 }
 .plan{
@@ -691,6 +705,28 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     color:#fff; background:var(--accent);
     padding:6px 16px; border-radius:100px;
     box-shadow:0 8px 20px -6px var(--accent-glow);
+}
+
+/* Reparación: tarjeta de entrada, más modesta que las 3 principales */
+.plan-lite{
+    background:var(--bg-2);
+    border:1px dashed var(--border-strong);
+    box-shadow:none;
+}
+.plan-lite:hover{ border-color:var(--accent); box-shadow:var(--shadow); }
+.plan-tag{
+    align-self:flex-start;
+    font-family:var(--font-head); font-size:11px; font-weight:700;
+    letter-spacing:.09em; text-transform:uppercase;
+    color:var(--muted);
+    padding:5px 12px; border:1px solid var(--border); border-radius:100px;
+    margin-bottom:14px;
+}
+.plan-lite .plan-price .amount{ font-size:44px; }
+.plan-price .from{
+    align-self:center;
+    font-family:var(--font-head); font-size:14px; font-weight:600;
+    color:var(--muted); margin-right:2px;
 }
 .plan-name{ font-size:22px; margin-bottom:10px; }
 .plan-price{ display:flex; align-items:flex-start; gap:3px; margin-bottom:6px; }
@@ -759,6 +795,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .field{ display:flex; flex-direction:column; gap:8px; }
 .field-full{ grid-column:1 / -1; }
 .field label{ font-family:var(--font-head); font-size:14px; font-weight:500; color:var(--muted); }
+.field-hint{ font-size:13px; color:var(--muted-2); margin-top:-1px; }
 #quote-form input[type="text"],
 #quote-form textarea{
     width:100%;
@@ -842,7 +879,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px){
-    .cards{ grid-template-columns:repeat(2, 1fr); }
+    .cards{ grid-template-columns:repeat(3, 1fr); }
     .demo-grid{ grid-template-columns:1fr; max-width:560px; margin:0 auto; }
     .plans{ grid-template-columns:1fr; max-width:440px; margin:0 auto; }
     .why-grid{ grid-template-columns:repeat(2, 1fr); }
@@ -856,7 +893,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     /* Header + menú móvil */
     #site-header{ padding:13px 18px; }
     #site-header.scrolled{ padding:11px 18px; }
-    .logo img.logo-lockup{ height:28px; }
+    .logo img.logo-lockup{ height:40px; }
     .menu-toggle{ display:flex; }
     #main-nav{
         position:absolute;
