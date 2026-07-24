@@ -1,6 +1,6 @@
-# Oskolkov Web Local
+# Oskal Studio
 
-Sitio web (tarjeta de presentación) del estudio **Oskolkov Web Local** — diseño y
+Sitio web (tarjeta de presentación) del estudio **Oskal Studio** — diseño y
 desarrollo de páginas web rápidas, modernas y multiidioma para pequeños negocios.
 
 🌐 **Contacto:** WhatsApp [+34 628 806 573](https://wa.me/34628806573) · iliaoskolkov2004@gmail.com

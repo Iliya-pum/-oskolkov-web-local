@@ -1,4 +1,4 @@
-<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oskolkov Web">
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oskal Studio">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0F172A"/>
@@ -23,13 +23,20 @@
     <path d="M120 0v630M300 0v630M480 0v630M660 0v630M840 0v630M1020 0v630"/>
   </g>
 
-  <!-- logo mark -->
-  <g transform="translate(120,120)">
-    <rect x="1.5" y="1.5" width="70" height="70" rx="20" fill="#111C2E" stroke="#DC2626" stroke-width="2"/>
-    <path d="M27 25 17 37l10 12" stroke="#F8FAFC" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M47 25l10 12-10 12" stroke="#DC2626" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M42 21 32 53" stroke="#94A3B8" stroke-width="4.5" stroke-linecap="round"/>
-    <text x="90" y="52" font-family="Archivo, Arial, sans-serif" font-size="38" font-weight="800" fill="#F8FAFC">Oskolkov Web <tspan fill="#EF4444">Local</tspan></text>
+  <!-- logo: constelación + wordmark -->
+  <g transform="translate(120,116)">
+    <g stroke="#94A3B8" stroke-opacity="0.5" stroke-width="1.6" stroke-linecap="round">
+      <path d="M6 46 L26 26 L38 40 L52 22 L62 44"/>
+      <path d="M38 40 L36 58 L6 46"/>
+    </g>
+    <circle cx="26" cy="26" r="3.4" fill="#F8FAFC"/>
+    <circle cx="38" cy="40" r="4"   fill="#F8FAFC"/>
+    <circle cx="62" cy="44" r="2.8" fill="#CBD5E1"/>
+    <circle cx="6"  cy="46" r="2.8" fill="#CBD5E1"/>
+    <circle cx="36" cy="58" r="2.4" fill="#94A3B8"/>
+    <circle cx="52" cy="22" r="9"   fill="#DC2626" opacity="0.22"/>
+    <circle cx="52" cy="22" r="4.6" fill="#EF4444"/>
+    <text x="86" y="52" font-family="Archivo, Arial, sans-serif" font-size="40" font-weight="800" fill="#F8FAFC">Oskal <tspan fill="#EF4444">Studio</tspan></text>
   </g>
 
   <!-- headline -->

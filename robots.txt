@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /legal.html
 
-Sitemap: https://oskolkovweblocal.com/sitemap.xml
+Sitemap: https://oskalstudio.com/sitemap.xml

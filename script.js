@@ -1,5 +1,5 @@
 /* ============================================================
-   Oskolkov Web — lógica del sitio
+   Oskal Studio — lógica del sitio
    i18n (ES/CA/EN) · animaciones · menú móvil · formulario→WhatsApp
    ============================================================ */
 
@@ -76,7 +76,7 @@ var I18N = {
     lg_updated:"Última actualización: julio de 2026",
     lg_h1:"1. Titular del sitio web",
     lg_p1:"En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa de que este sitio web pertenece a:",
-    lg_owner:'<strong>Titular:</strong> Ilia Oskolkov (Oskolkov Web Local)',
+    lg_owner:'<strong>Titular:</strong> Ilia Oskolkov (Oskal Studio)',
     lg_activity:'<strong>Actividad:</strong> Diseño y desarrollo de páginas web',
     lg_email:'<strong>Correo electrónico:</strong> <a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a>',
     lg_phone:'<strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/34628806573" target="_blank" rel="noopener">+34 628 806 573</a>',
@@ -174,7 +174,7 @@ var I18N = {
     lg_updated:"Última actualització: juliol de 2026",
     lg_h1:"1. Titular del lloc web",
     lg_p1:"En compliment de la Llei 34/2002 (LSSI-CE), s'informa que aquest lloc web pertany a:",
-    lg_owner:'<strong>Titular:</strong> Ilia Oskolkov (Oskolkov Web Local)',
+    lg_owner:'<strong>Titular:</strong> Ilia Oskolkov (Oskal Studio)',
     lg_activity:'<strong>Activitat:</strong> Disseny i desenvolupament de pàgines web',
     lg_email:'<strong>Correu electrònic:</strong> <a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a>',
     lg_phone:'<strong>Telèfon / WhatsApp:</strong> <a href="https://wa.me/34628806573" target="_blank" rel="noopener">+34 628 806 573</a>',
@@ -272,7 +272,7 @@ var I18N = {
     lg_updated:"Last updated: July 2026",
     lg_h1:"1. Website owner",
     lg_p1:"In compliance with Spanish Law 34/2002 (LSSI-CE), please note that this website belongs to:",
-    lg_owner:'<strong>Owner:</strong> Ilia Oskolkov (Oskolkov Web Local)',
+    lg_owner:'<strong>Owner:</strong> Ilia Oskolkov (Oskal Studio)',
     lg_activity:'<strong>Activity:</strong> Web design and development',
     lg_email:'<strong>Email:</strong> <a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a>',
     lg_phone:'<strong>Phone / WhatsApp:</strong> <a href="https://wa.me/34628806573" target="_blank" rel="noopener">+34 628 806 573</a>',
