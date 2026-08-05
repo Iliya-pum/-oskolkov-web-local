@@ -44,7 +44,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
     <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
@@ -57,7 +57,8 @@
 <!-- ===================== HEADER ===================== -->
 <header id="site-header">
     <a href="#inicio" class="logo" aria-label="Oskal Studio">
-        <img class="logo-lockup" src="images/lockup-light-1600.png" alt="Oskal Studio" width="171" height="48">
+        <img class="logo-mark" src="images/logo-mark.svg" alt="" width="44" height="50">
+        <span class="logo-word">Oskal <b>Studio</b></span>
     </a>
 
     <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false" aria-controls="main-nav">
@@ -305,65 +306,71 @@
         <p class="section-sub" data-i18n="pricing_sub">Sabes el precio final desde el primer día. Elige el plan que encaja con tu negocio.</p>
     </div>
 
-    <div class="plans">
-        <!-- Reparación (punto de entrada, estilo modesto) -->
-        <article class="plan plan-lite reveal">
-            <span class="plan-tag" data-i18n="pr_badge">Primer paso</span>
-            <h3 class="plan-name" data-i18n="pr_name">Reparación</h3>
-            <div class="plan-price"><span class="from" data-i18n="pr_from">desde</span><span class="amount">150</span><span class="cur">€</span></div>
-            <p class="plan-for" data-i18n="pr_for">Arregla la web que ya tienes.</p>
-            <ul class="plan-feats">
-                <li data-i18n="pr_f1">Revisión completa de tu web actual</li>
-                <li data-i18n="pr_f2">Adaptación al móvil</li>
-                <li data-i18n="pr_f3">Mejora de velocidad</li>
-                <li data-i18n="pr_f4">Textos y fotos actualizados</li>
-                <li data-i18n="pr_f5">Botón de WhatsApp</li>
-            </ul>
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Tengo%20una%20web%20y%20quiero%20arreglarla." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="pr_cta">Arreglar mi web</a>
-        </article>
+    <div class="pricing-split">
+        <div class="plans-main">
+            <!-- Básica -->
+            <article class="plan reveal">
+                <h3 class="plan-name" data-i18n="p1_name">Básica</h3>
+                <div class="plan-price"><span class="amount">300</span><span class="cur">€</span></div>
+                <p class="plan-for" data-i18n="p1_for">Una página, lista para publicar.</p>
+                <ul class="plan-feats">
+                    <li data-i18n="p1_f1">Diseño 100% a medida</li>
+                    <li data-i18n="p1_f2">Adaptada a móvil</li>
+                    <li data-i18n="p1_f3">Formulario de contacto</li>
+                    <li data-i18n="p1_f4">Botón directo de WhatsApp</li>
+                </ul>
+                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20B%C3%A1sico%20(300%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta">Lo quiero</a>
+            </article>
 
-        <!-- Básica -->
-        <article class="plan reveal">
-            <h3 class="plan-name" data-i18n="p1_name">Básica</h3>
-            <div class="plan-price"><span class="amount">300</span><span class="cur">€</span></div>
-            <p class="plan-for" data-i18n="p1_for">Una página, lista para publicar.</p>
-            <ul class="plan-feats">
-                <li data-i18n="p1_f1">Diseño 100% a medida</li>
-                <li data-i18n="p1_f2">Adaptada a móvil</li>
-                <li data-i18n="p1_f3">Formulario de contacto</li>
-                <li data-i18n="p1_f4">Botón directo de WhatsApp</li>
-            </ul>
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20B%C3%A1sico%20(300%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta">Lo quiero</a>
-        </article>
+            <!-- Completa (destacada) -->
+            <article class="plan plan-featured reveal">
+                <span class="plan-badge" data-i18n="p2_badge">Más popular</span>
+                <h3 class="plan-name" data-i18n="p2_name">Completa</h3>
+                <div class="plan-price"><span class="amount">450</span><span class="cur">€</span></div>
+                <p class="plan-for" data-i18n="p2_for">Todo lo de Básica, y además:</p>
+                <ul class="plan-feats">
+                    <li data-i18n="p2_f1">Multiidioma (los idiomas que quieras)</li>
+                    <li data-i18n="p2_f2">Galería o portfolio</li>
+                    <li data-i18n="p2_f3">SEO básico para Google</li>
+                    <li data-i18n="p2_f4">Mapa de Google integrado</li>
+                </ul>
+                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Completo%20(450%20%E2%82%AC)." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="plan_cta_2">Lo quiero</a>
+            </article>
 
-        <!-- Completa (destacada) -->
-        <article class="plan plan-featured reveal">
-            <span class="plan-badge" data-i18n="p2_badge">Más popular</span>
-            <h3 class="plan-name" data-i18n="p2_name">Completa</h3>
-            <div class="plan-price"><span class="amount">450</span><span class="cur">€</span></div>
-            <p class="plan-for" data-i18n="p2_for">Todo lo de Básica, y además:</p>
-            <ul class="plan-feats">
-                <li data-i18n="p2_f1">Multiidioma (los idiomas que quieras)</li>
-                <li data-i18n="p2_f2">Galería o portfolio</li>
-                <li data-i18n="p2_f3">SEO básico para Google</li>
-                <li data-i18n="p2_f4">Mapa de Google integrado</li>
-            </ul>
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Completo%20(450%20%E2%82%AC)." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="plan_cta_2">Lo quiero</a>
-        </article>
+            <!-- Premium -->
+            <article class="plan reveal">
+                <h3 class="plan-name" data-i18n="p3_name">Premium</h3>
+                <div class="plan-price"><span class="amount">600</span><span class="cur">€</span></div>
+                <p class="plan-for" data-i18n="p3_for">Todo lo de Completa, y además:</p>
+                <ul class="plan-feats">
+                    <li data-i18n="p3_f1">Animaciones avanzadas</li>
+                    <li data-i18n="p3_f2">Secciones a medida extra</li>
+                    <li data-i18n="p3_f3">Optimización SEO completa</li>
+                    <li data-i18n="p3_f4">Soporte prioritario</li>
+                </ul>
+                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(600%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
+            </article>
+        </div>
 
-        <!-- Premium -->
-        <article class="plan reveal">
-            <h3 class="plan-name" data-i18n="p3_name">Premium</h3>
-            <div class="plan-price"><span class="amount">600</span><span class="cur">€</span></div>
-            <p class="plan-for" data-i18n="p3_for">Todo lo de Completa, y además:</p>
-            <ul class="plan-feats">
-                <li data-i18n="p3_f1">Animaciones avanzadas</li>
-                <li data-i18n="p3_f2">Secciones a medida extra</li>
-                <li data-i18n="p3_f3">Optimización SEO completa</li>
-                <li data-i18n="p3_f4">Soporte prioritario</li>
-            </ul>
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(600%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
-        </article>
+        <div class="pricing-or"><span data-i18n="pricing_or">o</span></div>
+
+        <div class="plans-repair">
+            <!-- Reparación (otra vía: arreglar la web que ya tienes) -->
+            <article class="plan plan-lite reveal">
+                <span class="plan-tag" data-i18n="pr_badge">Primer paso</span>
+                <h3 class="plan-name" data-i18n="pr_name">Reparación</h3>
+                <div class="plan-price"><span class="from" data-i18n="pr_from">desde</span><span class="amount">150</span><span class="cur">€</span></div>
+                <p class="plan-for" data-i18n="pr_for">Arregla la web que ya tienes.</p>
+                <ul class="plan-feats">
+                    <li data-i18n="pr_f1">Revisión completa de tu web actual</li>
+                    <li data-i18n="pr_f2">Adaptación al móvil</li>
+                    <li data-i18n="pr_f3">Mejora de velocidad</li>
+                    <li data-i18n="pr_f4">Textos y fotos actualizados</li>
+                    <li data-i18n="pr_f5">Botón de WhatsApp</li>
+                </ul>
+                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Tengo%20una%20web%20y%20quiero%20arreglarla." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="pr_cta">Arreglar mi web</a>
+            </article>
+        </div>
     </div>
 
     <p class="pricing-note" data-i18n="pricing_note">* Dominio y hosting no incluidos (unos 60–80 €/año). Te asesoro para contratarlos sin coste añadido.</p>
@@ -439,7 +446,8 @@
     <div class="footer-inner">
         <div class="footer-brand">
             <div class="logo">
-                <img class="logo-lockup" src="images/lockup-light-1600.png" alt="Oskal Studio" width="149" height="42">
+                <img class="logo-mark" src="images/logo-mark.svg" alt="" width="37" height="42">
+                <span class="logo-word">Oskal <b>Studio</b></span>
             </div>
             <p data-i18n="footer_tag">Diseño y desarrollo web para pequeños negocios.</p>
         </div>

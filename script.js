@@ -47,7 +47,7 @@ var I18N = {
     pr_cta:"Arreglar mi web",
     form_message_hint:"¿Ya tienes web? Puedes pegar aquí su enlace.",
 
-    pricing_kicker:"Precios",
+    pricing_kicker:"Precios", pricing_or:"o",
     pricing_title:"Claros y sin sorpresas",
     pricing_sub:"Sabes el precio final desde el primer día. Elige el plan que encaja con tu negocio.",
     p1_name:"Básica", p1_for:"Una página, lista para publicar.",
@@ -153,7 +153,7 @@ var I18N = {
     pr_cta:"Arreglar la meva web",
     form_message_hint:"Ja tens web? Pots enganxar aquí el seu enllaç.",
 
-    pricing_kicker:"Preus",
+    pricing_kicker:"Preus", pricing_or:"o",
     pricing_title:"Clars i sense sorpreses",
     pricing_sub:"Saps el preu final des del primer dia. Tria el pla que encaixa amb el teu negoci.",
     p1_name:"Bàsica", p1_for:"Una pàgina, llesta per publicar.",
@@ -259,7 +259,7 @@ var I18N = {
     pr_cta:"Fix my website",
     form_message_hint:"Already have a website? You can paste its link here.",
 
-    pricing_kicker:"Pricing",
+    pricing_kicker:"Pricing", pricing_or:"or",
     pricing_title:"Clear, no surprises",
     pricing_sub:"You know the final price from day one. Choose the plan that fits your business.",
     p1_name:"Basic", p1_for:"One page, ready to publish.",
