@@ -6,7 +6,9 @@
 /* ---------- Traducciones ---------- */
 var I18N = {
   es: {
-    nav_services:"Servicios", nav_case:"Proyecto", nav_demos:"Demos", nav_pricing:"Precios", nav_contact:"Contacto", nav_quote:"Presupuesto",
+    nav_services:"Servicios", nav_case:"Proyecto", nav_demos:"Demos", nav_pricing:"Precios", nav_maint:"Mantenimiento", nav_contact:"Contacto", nav_quote:"Presupuesto",
+    seo_title:"Oskal Studio · Diseño y desarrollo de páginas web en España",
+    seo_desc:"Diseño y desarrollo de páginas web rápidas, modernas y multiidioma para pequeños negocios en España. Entrega en días, precio cerrado y mantenimiento mensual. Desde 300 €.",
 
     hero_badge:"Estudio web · España",
     hero_title_1:"Webs que hacen crecer",
@@ -57,7 +59,19 @@ var I18N = {
     p3_name:"Premium", p3_for:"Todo lo de Completa, y además:",
     p3_f1:"Animaciones avanzadas", p3_f2:"Secciones a medida extra", p3_f3:"Optimización SEO completa", p3_f4:"Soporte prioritario",
     plan_cta:"Lo quiero", plan_cta_2:"Lo quiero", plan_cta_3:"Lo quiero",
-    pricing_note:"* Dominio y hosting no incluidos (unos 60–80 €/año). Te asesoro para contratarlos sin coste añadido.",
+    pricing_note:"* El dominio y el alojamiento (hosting) son un gasto de infraestructura que pagas a tu proveedor —no a mí—, unos 60–80 € <strong>al año</strong>. Te asesoro sin coste para contratarlos.",
+
+    maint_kicker:"Después de la entrega",
+    maint_title:"Tu web siempre al día, sin que te preocupes",
+    maint_sub:"Publicar la web es solo el principio. Yo me encargo de que siga rápida, actualizada y segura. Tú no tocas nada.",
+    maint_price:"60–80 €", maint_per:"/ mes",
+    maint_cta:"Quiero mantenimiento",
+    maint_note:"Cuota mensual por mi trabajo continuo, sin permanencia. No la confundas con el dominio (~60–80 €/año): eso es un gasto aparte que pagas a tu proveedor.",
+    maint_f1_t:"Dominio renovado", maint_f1_d:"Me encargo de que no caduque nunca.",
+    maint_f2_t:"Pequeños cambios", maint_f2_d:"Teléfono, horario, fotos, precios... me lo dices y lo cambio.",
+    maint_f3_t:"Perfil de Google", maint_f3_d:"Mantengo tu ficha de Google al día para que te encuentren.",
+    maint_f4_t:"Vigilancia técnica", maint_f4_d:"Reviso que todo funcione y esté seguro.",
+    maint_f5_t:"Soporte prioritario", maint_f5_d:"Respondo rápido: tú eres lo primero.",
 
     why_kicker:"Por qué tan rápido",
     why_title:"Menos espera, más resultados",
@@ -112,7 +126,9 @@ var I18N = {
   },
 
   ca: {
-    nav_services:"Serveis", nav_case:"Projecte", nav_demos:"Demos", nav_pricing:"Preus", nav_contact:"Contacte", nav_quote:"Pressupost",
+    nav_services:"Serveis", nav_case:"Projecte", nav_demos:"Demos", nav_pricing:"Preus", nav_maint:"Manteniment", nav_contact:"Contacte", nav_quote:"Pressupost",
+    seo_title:"Oskal Studio · Disseny i desenvolupament de pàgines web a Espanya",
+    seo_desc:"Disseny i desenvolupament de pàgines web ràpides, modernes i multiidioma per a petits negocis a Espanya. Entrega en dies, preu tancat i manteniment mensual. Des de 300 €.",
 
     hero_badge:"Estudi web · Espanya",
     hero_title_1:"Webs que fan créixer",
@@ -163,7 +179,19 @@ var I18N = {
     p3_name:"Premium", p3_for:"Tot el de Completa, i a més:",
     p3_f1:"Animacions avançades", p3_f2:"Seccions a mida extra", p3_f3:"Optimització SEO completa", p3_f4:"Suport prioritari",
     plan_cta:"El vull", plan_cta_2:"El vull", plan_cta_3:"El vull",
-    pricing_note:"* Domini i allotjament no inclosos (uns 60–80 €/any). T'assessoro per contractar-los sense cost afegit.",
+    pricing_note:"* El domini i l'allotjament (hosting) són una despesa d'infraestructura que pagues al teu proveïdor —no a mi—, uns 60–80 € <strong>a l'any</strong>. T'assessoro sense cost per contractar-los.",
+
+    maint_kicker:"Després de l'entrega",
+    maint_title:"La teva web sempre al dia, sense que t'hi amoïnis",
+    maint_sub:"Publicar la web és només el principi. Jo m'encarrego que segueixi ràpida, actualitzada i segura. Tu no toques res.",
+    maint_price:"60–80 €", maint_per:"/ mes",
+    maint_cta:"Vull manteniment",
+    maint_note:"Quota mensual pel meu treball continu, sense permanència. No la confonguis amb el domini (~60–80 €/any): això és una despesa a part que pagues al teu proveïdor.",
+    maint_f1_t:"Domini renovat", maint_f1_d:"M'encarrego que no caduqui mai.",
+    maint_f2_t:"Petits canvis", maint_f2_d:"Telèfon, horari, fotos, preus... m'ho dius i ho canvio.",
+    maint_f3_t:"Perfil de Google", maint_f3_d:"Mantinc la teva fitxa de Google al dia perquè et trobin.",
+    maint_f4_t:"Vigilància tècnica", maint_f4_d:"Reviso que tot funcioni i estigui segur.",
+    maint_f5_t:"Suport prioritari", maint_f5_d:"Responc ràpid: tu ets el primer.",
 
     why_kicker:"Per què tan ràpid",
     why_title:"Menys espera, més resultats",
@@ -218,7 +246,9 @@ var I18N = {
   },
 
   en: {
-    nav_services:"Services", nav_case:"Project", nav_demos:"Demos", nav_pricing:"Pricing", nav_contact:"Contact", nav_quote:"Get a quote",
+    nav_services:"Services", nav_case:"Project", nav_demos:"Demos", nav_pricing:"Pricing", nav_maint:"Maintenance", nav_contact:"Contact", nav_quote:"Get a quote",
+    seo_title:"Oskal Studio · Web design and development in Spain",
+    seo_desc:"Design and development of fast, modern, multilingual websites for small businesses in Spain. Delivered in days, fixed price and monthly maintenance. From €300.",
 
     hero_badge:"Web studio · Spain",
     hero_title_1:"Websites that grow",
@@ -269,7 +299,19 @@ var I18N = {
     p3_name:"Premium", p3_for:"Everything in Complete, plus:",
     p3_f1:"Advanced animations", p3_f2:"Extra custom sections", p3_f3:"Full SEO optimization", p3_f4:"Priority support",
     plan_cta:"I want it", plan_cta_2:"I want it", plan_cta_3:"I want it",
-    pricing_note:"* Domain and hosting not included (around €60–80/year). I'll guide you to set them up at no extra cost.",
+    pricing_note:"* Domain and hosting are a separate infrastructure cost you pay to your provider —not to me—, around €60–80 <strong>per year</strong>. I'll guide you to set them up at no extra cost.",
+
+    maint_kicker:"After delivery",
+    maint_title:"Your website always up to date, without the hassle",
+    maint_sub:"Launching the site is just the beginning. I keep it fast, updated and secure. You don't touch a thing.",
+    maint_price:"€60–80", maint_per:"/ month",
+    maint_cta:"I want maintenance",
+    maint_note:"A monthly fee for my ongoing work, no lock-in. Don't confuse it with the domain (~€60–80/year): that's a separate cost you pay to your provider.",
+    maint_f1_t:"Domain renewed", maint_f1_d:"I make sure it never expires.",
+    maint_f2_t:"Small changes", maint_f2_d:"Phone, opening hours, photos, prices... just tell me and I change it.",
+    maint_f3_t:"Google profile", maint_f3_d:"I keep your Google listing up to date so people find you.",
+    maint_f4_t:"Technical monitoring", maint_f4_d:"I check that everything works and stays secure.",
+    maint_f5_t:"Priority support", maint_f5_d:"I reply fast: you come first.",
 
     why_kicker:"Why so fast",
     why_title:"Less waiting, more results",
@@ -334,6 +376,11 @@ function changeLanguage(lang){
   var dict = I18N[lang];
 
   document.documentElement.lang = (lang === "ca") ? "ca" : lang;
+
+  // Título y meta description por idioma (SEO)
+  if(dict.seo_title) document.title = dict.seo_title;
+  var metaDesc = document.querySelector('meta[name="description"]');
+  if(metaDesc && dict.seo_desc) metaDesc.setAttribute("content", dict.seo_desc);
 
   // Texto por data-i18n (usa innerHTML solo si la cadena lleva etiquetas)
   document.querySelectorAll("[data-i18n]").forEach(function(el){
@@ -724,9 +771,12 @@ function initForm(){
 
 /* ---------- Inicio ---------- */
 document.addEventListener("DOMContentLoaded", function(){
+  // Prioridad de idioma: ?lang= en la URL > guardado > español
+  var urlLang = null;
+  try { urlLang = new URLSearchParams(location.search).get("lang"); } catch(e){}
   var saved = null;
   try { saved = localStorage.getItem("ow_lang"); } catch(e){}
-  changeLanguage(saved && I18N[saved] ? saved : "es");
+  changeLanguage((urlLang && I18N[urlLang]) ? urlLang : (saved && I18N[saved] ? saved : "es"));
 
   var yearEl = document.getElementById("year");
   if(yearEl) yearEl.textContent = new Date().getFullYear();

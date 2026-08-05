@@ -195,7 +195,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 }
 .logo-text b{ color:var(--accent-2); font-weight:800; }
 
-#main-nav{ display:flex; align-items:center; gap:30px; }
+#main-nav{ display:flex; align-items:center; gap:26px; }
 #main-nav > a{
     font-family:var(--font-head);
     font-weight:500;
@@ -793,6 +793,46 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     margin-top:28px; max-width:620px; margin-left:auto; margin-right:auto;
 }
 
+/* ===== MANTENIMIENTO ===== */
+.maint-card{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    background:linear-gradient(135deg, rgba(220,38,38,.10), var(--surface) 55%);
+    border:1px solid var(--border-strong);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+.maint-left{ padding:46px 44px; }
+.maint-left .kicker{ margin-bottom:16px; }
+.maint-left h2{ font-size:clamp(24px, 3.2vw, 34px); text-align:left; margin-bottom:14px; }
+.maint-left .section-sub{ text-align:left; margin-bottom:0; }
+.maint-price{ display:flex; align-items:baseline; gap:8px; margin:24px 0 24px; }
+.maint-amount{ font-family:var(--font-head); font-size:46px; font-weight:900; letter-spacing:-.02em; color:var(--text); }
+.maint-per{ font-family:var(--font-head); font-size:22px; font-weight:800; color:var(--accent-2); }
+.maint-left .btn{ width:100%; max-width:340px; }
+.maint-note{ margin-top:16px; font-size:12.5px; line-height:1.6; color:var(--muted-2); max-width:420px; }
+
+.maint-right{
+    padding:40px 42px;
+    background:rgba(15,23,42,.35);
+    border-left:1px solid var(--border);
+}
+.maint-list{ list-style:none; display:flex; flex-direction:column; gap:20px; }
+.maint-list li{ display:flex; gap:15px; align-items:flex-start; }
+.mi-icon{
+    flex-shrink:0;
+    width:42px; height:42px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent-2);
+}
+.mi-icon svg{ width:21px; height:21px; }
+.maint-list strong{
+    display:block; font-family:var(--font-head); font-weight:600;
+    font-size:16px; color:var(--text); margin-bottom:3px;
+}
+.maint-list div > span{ color:var(--muted); font-size:14.5px; line-height:1.55; }
+
 /* ===== POR QUÉ RÁPIDO ===== */
 .why{ max-width:100%; padding-left:0; padding-right:0; }
 .why{
@@ -932,15 +972,8 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     .case-inner{ gap:40px; }
 }
 
-@media (max-width: 768px){
-    .section{ padding:76px 20px; }
-    .why-grid{ padding:0 20px; }
-
-    /* Header + menú móvil */
-    #site-header{ padding:13px 18px; }
-    #site-header.scrolled{ padding:11px 18px; }
-    .logo img.logo-mark{ height:42px; }
-    .logo-word{ font-size:25px; }
+/* Menú de cabecera: colapsa a hamburguesa cuando la nav (con logo) no cabe */
+@media (max-width: 1140px){
     .menu-toggle{ display:flex; }
     #main-nav{
         position:absolute;
@@ -994,6 +1027,17 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     }
     #main-nav .lang-opt.active{ border-color:var(--accent); }
     #main-nav .lang-opt .check{ display:none; }
+}
+
+@media (max-width: 768px){
+    .section{ padding:76px 20px; }
+    .why-grid{ padding:0 20px; }
+
+    /* Header: solo tamaño de logo en móvil (el colapso del menú está en @1140) */
+    #site-header{ padding:13px 18px; }
+    #site-header.scrolled{ padding:11px 18px; }
+    .logo img.logo-mark{ height:42px; }
+    .logo-word{ font-size:25px; }
 
     /* Hero */
     .hero{ padding:110px 22px 70px; }
@@ -1002,6 +1046,12 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     /* Caso */
     .case-inner{ grid-template-columns:1fr; gap:32px; }
     .case-media{ order:-1; }
+
+    /* Mantenimiento */
+    .maint-card{ grid-template-columns:1fr; }
+    .maint-left{ padding:34px 24px 28px; }
+    .maint-right{ padding:30px 24px 34px; border-left:none; border-top:1px solid var(--border); }
+    .maint-left .btn{ max-width:none; }
 
     /* Contacto */
     .contact-inner{ padding:38px 24px; }

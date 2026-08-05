@@ -9,35 +9,61 @@
     <link rel="icon" type="image/svg+xml" href="images/oskal-mark-light.svg">
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/mark-light-512.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon-180.png">
+    <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#0F172A">
+
     <link rel="canonical" href="https://oskalstudio.com/">
+    <link rel="alternate" hreflang="es" href="https://oskalstudio.com/?lang=es">
+    <link rel="alternate" hreflang="ca" href="https://oskalstudio.com/?lang=ca">
+    <link rel="alternate" hreflang="en" href="https://oskalstudio.com/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://oskalstudio.com/">
 
     <!-- Vista previa al compartir (WhatsApp, Facebook, Instagram...) -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Oskal Studio">
     <meta property="og:locale" content="es_ES">
-    <meta property="og:title" content="Oskal Studio · Páginas web para pequeños negocios">
-    <meta property="og:description" content="Webs rápidas, modernas y multiidioma desde 300 €. Entrega en días y trato directo.">
+    <meta property="og:locale:alternate" content="ca_ES">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:title" content="Oskal Studio · Diseño y desarrollo de páginas web en España">
+    <meta property="og:description" content="Páginas web rápidas, modernas y multiidioma para pequeños negocios. Entrega en días, precio cerrado y mantenimiento. Desde 300 €.">
     <meta property="og:image" content="https://oskalstudio.com/images/og-cover-1200x630.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Oskal Studio · páginas web para pequeños negocios">
     <meta property="og:url" content="https://oskalstudio.com">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Oskal Studio · Diseño y desarrollo de páginas web en España">
+    <meta name="twitter:description" content="Páginas web rápidas, modernas y multiidioma para pequeños negocios. Desde 300 €.">
+    <meta name="twitter:image" content="https://oskalstudio.com/images/og-cover-1200x630.png">
 
     <!-- Datos para Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
+      "@id": "https://oskalstudio.com/#studio",
       "name": "Oskal Studio",
-      "description": "Diseño y desarrollo de páginas web para pequeños negocios.",
-      "image": "https://oskalstudio.com/images/oskal-mark-light.svg",
+      "alternateName": "Oskal Studio · Diseño web",
+      "description": "Estudio de diseño y desarrollo de páginas web rápidas, modernas y multiidioma para pequeños negocios en España.",
+      "slogan": "Páginas web para pequeños negocios",
       "url": "https://oskalstudio.com",
+      "logo": "https://oskalstudio.com/images/mark-light-512.png",
+      "image": "https://oskalstudio.com/images/og-cover-1200x630.png",
       "email": "iliaoskolkov2004@gmail.com",
       "telephone": "+34628806573",
       "priceRange": "€€",
-      "areaServed": "ES",
+      "currenciesAccepted": "EUR",
+      "address": { "@type": "PostalAddress", "addressCountry": "ES" },
+      "areaServed": { "@type": "Country", "name": "España" },
+      "founder": { "@type": "Person", "name": "Ilia Oskolkov" },
       "knowsLanguage": ["es", "ca", "en", "ru"],
+      "makesOffer": [
+        { "@type": "Offer", "name": "Diseño de página web", "priceCurrency": "EUR", "price": "300" },
+        { "@type": "Offer", "name": "Reparación de web existente", "priceCurrency": "EUR", "price": "150" },
+        { "@type": "Offer", "name": "Mantenimiento web mensual", "priceCurrency": "EUR", "price": "60" }
+      ],
       "sameAs": ["https://wa.me/34628806573"]
     }
     </script>
@@ -70,6 +96,7 @@
         <a href="#proyecto" data-i18n="nav_case">Proyecto</a>
         <a href="#demos" data-i18n="nav_demos">Demos</a>
         <a href="#precios" data-i18n="nav_pricing">Precios</a>
+        <a href="#mantenimiento" data-i18n="nav_maint">Mantenimiento</a>
         <a href="#contacto" data-i18n="nav_contact">Contacto</a>
 
         <div class="language-dropdown" id="lang-dropdown">
@@ -373,7 +400,48 @@
         </div>
     </div>
 
-    <p class="pricing-note" data-i18n="pricing_note">* Dominio y hosting no incluidos (unos 60–80 €/año). Te asesoro para contratarlos sin coste añadido.</p>
+    <p class="pricing-note" data-i18n="pricing_note">* El dominio y el alojamiento (hosting) son un gasto de infraestructura que pagas a tu proveedor —no a mí—, unos 60–80 € <strong>al año</strong>. Te asesoro sin coste para contratarlos.</p>
+</section>
+
+<!-- ===================== MANTENIMIENTO ===================== -->
+<section id="mantenimiento" class="section maintenance">
+    <div class="maint-card reveal">
+        <div class="maint-left">
+            <span class="kicker" data-i18n="maint_kicker">Después de la entrega</span>
+            <h2 data-i18n="maint_title">Tu web siempre al día, sin que te preocupes</h2>
+            <p class="section-sub" data-i18n="maint_sub">Publicar la web es solo el principio. Yo me encargo de que siga rápida, actualizada y segura. Tú no tocas nada.</p>
+            <div class="maint-price">
+                <span class="maint-amount" data-i18n="maint_price">60–80 €</span>
+                <span class="maint-per" data-i18n="maint_per">/ mes</span>
+            </div>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Quiero%20informaci%C3%B3n%20sobre%20el%20mantenimiento%20mensual." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="maint_cta">Quiero mantenimiento</a>
+            <p class="maint-note" data-i18n="maint_note">Cuota mensual por mi trabajo continuo, sin permanencia. No la confundas con el dominio (~60–80 €/año): eso es un gasto aparte que pagas a tu proveedor.</p>
+        </div>
+        <div class="maint-right">
+            <ul class="maint-list">
+                <li>
+                    <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></span>
+                    <div><strong data-i18n="maint_f1_t">Dominio renovado</strong><span data-i18n="maint_f1_d">Me encargo de que no caduque nunca.</span></div>
+                </li>
+                <li>
+                    <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+                    <div><strong data-i18n="maint_f2_t">Pequeños cambios</strong><span data-i18n="maint_f2_d">Teléfono, horario, fotos, precios... me lo dices y lo cambio.</span></div>
+                </li>
+                <li>
+                    <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                    <div><strong data-i18n="maint_f3_t">Perfil de Google</strong><span data-i18n="maint_f3_d">Mantengo tu ficha de Google al día para que te encuentren.</span></div>
+                </li>
+                <li>
+                    <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6.3V11c0 5-3.6 8-8 9.4C7.6 19 4 16 4 11V6.3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                    <div><strong data-i18n="maint_f4_t">Vigilancia técnica</strong><span data-i18n="maint_f4_d">Reviso que todo funcione y esté seguro.</span></div>
+                </li>
+                <li>
+                    <span class="mi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-1 9h6l-7 11 1-9H6z"/></svg></span>
+                    <div><strong data-i18n="maint_f5_t">Soporte prioritario</strong><span data-i18n="maint_f5_d">Respondo rápido: tú eres lo primero.</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <!-- ===================== POR QUÉ RÁPIDO ===================== -->
