@@ -807,9 +807,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .maint-left .kicker{ margin-bottom:16px; }
 .maint-left h2{ font-size:clamp(24px, 3.2vw, 34px); text-align:left; margin-bottom:14px; }
 .maint-left .section-sub{ text-align:left; margin-bottom:0; }
-.maint-price{ display:flex; align-items:baseline; gap:8px; margin:24px 0 24px; }
-.maint-amount{ font-family:var(--font-head); font-size:46px; font-weight:900; letter-spacing:-.02em; color:var(--text); }
-.maint-per{ font-family:var(--font-head); font-size:22px; font-weight:800; color:var(--accent-2); }
+.maint-from{ font-family:var(--font-head); font-weight:700; font-size:17px; color:var(--text); margin:22px 0 16px; }
 .maint-left .btn{ width:100%; max-width:340px; }
 .maint-note{ margin-top:16px; font-size:12.5px; line-height:1.6; color:var(--muted-2); max-width:420px; }
 
@@ -818,20 +816,21 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     background:rgba(15,23,42,.35);
     border-left:1px solid var(--border);
 }
-.maint-list{ list-style:none; display:flex; flex-direction:column; gap:20px; }
-.maint-list li{ display:flex; gap:15px; align-items:flex-start; }
-.mi-icon{
-    flex-shrink:0;
-    width:42px; height:42px; border-radius:12px;
-    display:flex; align-items:center; justify-content:center;
-    background:var(--accent-soft); color:var(--accent-2);
+/* Tres planes de mantenimiento (mismo ritmo que la lista anterior) */
+.maint-plans{ display:flex; flex-direction:column; gap:22px; }
+.maint-plan-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:3px; }
+.maint-plan-name{ font-family:var(--font-head); font-weight:700; font-size:17px; color:var(--text); }
+.maint-plan-price{ font-family:var(--font-head); font-weight:800; font-size:16px; color:var(--text); white-space:nowrap; }
+.maint-plan-for{ color:var(--muted); font-size:14px; margin-bottom:10px; }
+/* Reutiliza el estilo de tildes de #precios (.plan-feats), con menos espacio */
+.maint-plan .plan-feats{ margin-bottom:0; gap:8px; }
+.maint-plan .plan-feats li{ font-size:14px; }
+/* Plan del medio (Activo): línea roja a la izquierda, sin insignia */
+.maint-plan-featured{
+    border-left:2px solid var(--accent);
+    padding-left:18px;
+    background:linear-gradient(90deg, var(--accent-soft), transparent 70%);
 }
-.mi-icon svg{ width:21px; height:21px; }
-.maint-list strong{
-    display:block; font-family:var(--font-head); font-weight:600;
-    font-size:16px; color:var(--text); margin-bottom:3px;
-}
-.maint-list div > span{ color:var(--muted); font-size:14.5px; line-height:1.55; }
 
 /* ===== POR QUÉ RÁPIDO ===== */
 .why{ max-width:100%; padding-left:0; padding-right:0; }
