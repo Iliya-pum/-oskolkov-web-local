@@ -25,7 +25,7 @@ var I18N = {
     s3_t:"Diseño móvil", s3_d:"Perfectas en el móvil, donde te ve la mayoría de tus clientes.",
     s4_t:"SEO y velocidad", s4_d:"Rápidas y optimizadas para aparecer en Google y cargar al instante.",
 
-    case_kicker:"Mi primer proyecto",
+    case_kicker:"Proyecto destacado",
     case_title:"ALSISA · Construcción y reformas",
     case_desc:"Web multilingüe a medida para una empresa de construcción de Girona. Diseño propio, galería de proyectos, comparador «antes / después», mapa de la zona de trabajo y un formulario que envía la solicitud directa al WhatsApp de la empresa.",
     case_f1:"HTML · CSS · JS", case_f2:"Multilingüe", case_f3:"100% responsive", case_f4:"SEO local",
@@ -49,7 +49,30 @@ var I18N = {
     pr_cta:"Arreglar mi web",
     form_message_hint:"¿Ya tienes web? Puedes pegar aquí su enlace.",
 
-    pricing_kicker:"Precios", pricing_or:"o",
+    rep_kicker:"¿Ya tienes web?",
+    rep_title:"Arreglarla cuesta menos que rehacerla",
+    rep_sub:"Si tu web funciona pero va lenta, no se ve bien en el móvil o está anticuada, la reviso y la pongo al día sin empezar de cero.",
+
+    faq_kicker:"Dudas frecuentes",
+    faq_title:"Lo que todo el mundo pregunta",
+    faq_q1:"¿La web es mía?",
+    faq_a1:"Sí, completamente. El diseño, los textos y el código son tuyos desde el día de la entrega.",
+    faq_q2:"¿A nombre de quién está el dominio?",
+    faq_a2:"El dominio es tuyo. Si contratas mantenimiento lo registro en mi cuenta para gestionarlo por ti y que no tengas que preocuparte de renovaciones. Te lo transfiero gratis y sin condiciones cuando lo pidas.",
+    faq_q3:"¿Qué pasa si dejo el mantenimiento?",
+    faq_a3:"Nada le pasa a tu web. Simplemente pasas a encargarte tú de renovar el dominio y el hosting y de cualquier cambio que quieras hacer. Sin permanencia ni penalización.",
+    faq_q4:"¿Cuánto se tarda?",
+    faq_a4:"Entre 3 y 7 días desde que tengo tus textos y fotos. El plazo depende sobre todo de la rapidez con la que me pasas el material.",
+    faq_q5:"¿Y si no me gusta el diseño?",
+    faq_a5:"Antes de publicar nada te enseño un borrador y lo ajustamos juntos. No se publica hasta que estés conforme.",
+    faq_q6:"¿Cómo se paga?",
+    faq_a6:"Entre un 30 % y un 50 % antes de empezar, y el resto el día de la entrega. El precio se cierra en el presupuesto y no cambia.",
+    faq_q7:"¿Puedo cambiar cosas yo mismo después?",
+    faq_a7:"Si quieres, te explico cómo hacer los cambios sencillos. Y si prefieres no tocar nada, para eso está el mantenimiento: me escribes por WhatsApp y lo cambio yo.",
+    faq_q8:"¿Solo trabajas en Girona?",
+    faq_a8:"Trabajo con toda España. Todo el proceso se puede hacer por WhatsApp, y si estás por la zona de Girona o Tarragona nos podemos ver en persona.",
+
+    pricing_kicker:"Precios",
     pricing_title:"Claros y sin sorpresas",
     pricing_sub:"Sabes el precio final desde el primer día. Elige el plan que encaja con tu negocio.",
     p1_name:"Básica", p1_for:"Una página, lista para publicar.",
@@ -91,7 +114,6 @@ var I18N = {
     footer_tag:"Diseño y desarrollo web para pequeños negocios.",
     footer_contact_t:"Contacto",
     footer_legal:"Aviso legal · Privacidad · Cookies",
-    footer_made:"Diseñado y programado por Ilia Oskolkov",
 
     /* --- Página legal --- */
     lg_back:"Volver al inicio",
@@ -146,7 +168,7 @@ var I18N = {
     s3_t:"Disseny mòbil", s3_d:"Perfectes al mòbil, on et veu la majoria dels teus clients.",
     s4_t:"SEO i velocitat", s4_d:"Ràpides i optimitzades per aparèixer a Google i carregar a l'instant.",
 
-    case_kicker:"El meu primer projecte",
+    case_kicker:"Projecte destacat",
     case_title:"ALSISA · Construcció i reformes",
     case_desc:"Web multilingüe a mida per a una empresa de construcció de Girona. Disseny propi, galeria de projectes, comparador «abans / després», mapa de la zona de treball i un formulari que envia la sol·licitud directa al WhatsApp de l'empresa.",
     case_f1:"HTML · CSS · JS", case_f2:"Multilingüe", case_f3:"100% responsive", case_f4:"SEO local",
@@ -170,7 +192,30 @@ var I18N = {
     pr_cta:"Arreglar la meva web",
     form_message_hint:"Ja tens web? Pots enganxar aquí el seu enllaç.",
 
-    pricing_kicker:"Preus", pricing_or:"o",
+    rep_kicker:"Ja tens web?",
+    rep_title:"Arreglar-la costa menys que refer-la",
+    rep_sub:"Si la teva web funciona però va lenta, no es veu bé al mòbil o està antiquada, la reviso i la poso al dia sense començar de zero.",
+
+    faq_kicker:"Dubtes freqüents",
+    faq_title:"El que tothom pregunta",
+    faq_q1:"La web és meva?",
+    faq_a1:"Sí, completament. El disseny, els textos i el codi són teus des del dia de l'entrega.",
+    faq_q2:"A nom de qui està el domini?",
+    faq_a2:"El domini és teu. Si contractes manteniment el registro al meu compte per gestionar-lo per tu i que no t'hagis de preocupar de renovacions. Te'l transfereixo gratis i sense condicions quan ho demanis.",
+    faq_q3:"Què passa si deixo el manteniment?",
+    faq_a3:"No li passa res a la teva web. Simplement passes a encarregar-te tu de renovar el domini i l'allotjament i de qualsevol canvi que vulguis fer. Sense permanència ni penalització.",
+    faq_q4:"Quant es triga?",
+    faq_a4:"Entre 3 i 7 dies des que tinc els teus textos i fotos. El termini depèn sobretot de la rapidesa amb què em passes el material.",
+    faq_q5:"I si no m'agrada el disseny?",
+    faq_a5:"Abans de publicar res t'ensenyo un esborrany i l'ajustem junts. No es publica fins que estiguis conforme.",
+    faq_q6:"Com es paga?",
+    faq_a6:"Entre un 30 % i un 50 % abans de començar, i la resta el dia de l'entrega. El preu es tanca al pressupost i no canvia.",
+    faq_q7:"Puc canviar coses jo mateix després?",
+    faq_a7:"Si vols, t'explico com fer els canvis senzills. I si prefereixes no tocar res, per això hi ha el manteniment: m'escrius per WhatsApp i ho canvio jo.",
+    faq_q8:"Només treballes a Girona?",
+    faq_a8:"Treballo amb tota Espanya. Tot el procés es pot fer per WhatsApp, i si ets per la zona de Girona o Tarragona ens podem veure en persona.",
+
+    pricing_kicker:"Preus",
     pricing_title:"Clars i sense sorpreses",
     pricing_sub:"Saps el preu final des del primer dia. Tria el pla que encaixa amb el teu negoci.",
     p1_name:"Bàsica", p1_for:"Una pàgina, llesta per publicar.",
@@ -212,7 +257,6 @@ var I18N = {
     footer_tag:"Disseny i desenvolupament web per a petits negocis.",
     footer_contact_t:"Contacte",
     footer_legal:"Avís legal · Privacitat · Cookies",
-    footer_made:"Dissenyat i programat per Ilia Oskolkov",
 
     /* --- Pàgina legal --- */
     lg_back:"Tornar a l'inici",
@@ -267,7 +311,7 @@ var I18N = {
     s3_t:"Mobile design", s3_d:"Perfect on mobile, where most of your customers see you.",
     s4_t:"SEO & speed", s4_d:"Fast and optimized to rank on Google and load instantly.",
 
-    case_kicker:"My first project",
+    case_kicker:"Featured project",
     case_title:"ALSISA · Construction & renovation",
     case_desc:"Custom multilingual website for a construction company in Girona. Bespoke design, project gallery, before/after slider, work-area map and a form that sends the request straight to the company's WhatsApp.",
     case_f1:"HTML · CSS · JS", case_f2:"Multilingual", case_f3:"100% responsive", case_f4:"Local SEO",
@@ -291,7 +335,30 @@ var I18N = {
     pr_cta:"Fix my website",
     form_message_hint:"Already have a website? You can paste its link here.",
 
-    pricing_kicker:"Pricing", pricing_or:"or",
+    rep_kicker:"Already have a website?",
+    rep_title:"Fixing it costs less than rebuilding it",
+    rep_sub:"If your website works but is slow, looks bad on mobile or feels outdated, I review it and bring it up to date without starting from scratch.",
+
+    faq_kicker:"Frequent questions",
+    faq_title:"What everyone asks",
+    faq_q1:"Is the website mine?",
+    faq_a1:"Yes, completely. The design, the texts and the code are yours from the day of delivery.",
+    faq_q2:"Whose name is the domain in?",
+    faq_a2:"The domain is yours. If you take out maintenance I register it in my account to manage it for you so you don't have to worry about renewals. I transfer it to you free and with no conditions whenever you ask.",
+    faq_q3:"What happens if I stop the maintenance?",
+    faq_a3:"Nothing happens to your website. You simply take over renewing the domain and hosting and making any changes you want. No lock-in, no penalty.",
+    faq_q4:"How long does it take?",
+    faq_a4:"Between 3 and 7 days from the moment I have your texts and photos. The timeline depends above all on how quickly you send me the material.",
+    faq_q5:"What if I don't like the design?",
+    faq_a5:"Before publishing anything I show you a draft and we adjust it together. Nothing goes live until you're happy with it.",
+    faq_q6:"How is payment handled?",
+    faq_a6:"Between 30 % and 50 % before starting, and the rest on the day of delivery. The price is fixed in the quote and does not change.",
+    faq_q7:"Can I change things myself afterwards?",
+    faq_a7:"If you want, I'll show you how to make the simple changes. And if you'd rather not touch anything, that's what maintenance is for: you message me on WhatsApp and I change it.",
+    faq_q8:"Do you only work in Girona?",
+    faq_a8:"I work across all of Spain. The whole process can be done over WhatsApp, and if you're around Girona or Tarragona we can meet in person.",
+
+    pricing_kicker:"Pricing",
     pricing_title:"Clear, no surprises",
     pricing_sub:"You know the final price from day one. Choose the plan that fits your business.",
     p1_name:"Basic", p1_for:"One page, ready to publish.",
@@ -333,7 +400,6 @@ var I18N = {
     footer_tag:"Web design & development for small businesses.",
     footer_contact_t:"Contact",
     footer_legal:"Legal notice · Privacy · Cookies",
-    footer_made:"Designed & coded by Ilia Oskolkov",
 
     /* --- Legal page --- */
     lg_back:"Back to home",
@@ -388,7 +454,7 @@ var I18N = {
     s3_t:"Мобильный дизайн", s3_d:"Идеально на телефоне, где тебя видит большинство клиентов.",
     s4_t:"SEO и скорость", s4_d:"Быстрые и оптимизированные — чтобы попадать в Google и грузиться мгновенно.",
 
-    case_kicker:"Мой первый проект",
+    case_kicker:"Избранный проект",
     case_title:"ALSISA · Строительство и ремонт",
     case_desc:"Многоязычный сайт на заказ для строительной компании из Жироны. Собственный дизайн, галерея проектов, сравнение «до / после», карта зоны работ и форма, которая отправляет заявку прямо в WhatsApp компании.",
     case_f1:"HTML · CSS · JS", case_f2:"Многоязычный", case_f3:"100% адаптив", case_f4:"Локальное SEO",
@@ -412,7 +478,30 @@ var I18N = {
     pr_cta:"Починить мой сайт",
     form_message_hint:"Уже есть сайт? Можешь вставить сюда его адрес.",
 
-    pricing_kicker:"Цены", pricing_or:"или",
+    rep_kicker:"Уже есть сайт?",
+    rep_title:"Починить дешевле, чем делать заново",
+    rep_sub:"Если твой сайт работает, но он медленный, плохо выглядит на телефоне или устарел — я проверю его и приведу в порядок, не начиная с нуля.",
+
+    faq_kicker:"Частые вопросы",
+    faq_title:"О чём спрашивают все",
+    faq_q1:"Сайт принадлежит мне?",
+    faq_a1:"Да, полностью. Дизайн, тексты и код твои со дня сдачи.",
+    faq_q2:"На кого зарегистрирован домен?",
+    faq_a2:"Домен твой. Если берёшь обслуживание, я регистрирую его на свой аккаунт, чтобы вести его за тебя и чтобы ты не думал о продлениях. Передам его тебе бесплатно и без условий, как только попросишь.",
+    faq_q3:"Что будет, если я откажусь от обслуживания?",
+    faq_a3:"С сайтом ничего не случится. Просто продлевать домен с хостингом и вносить любые изменения ты будешь сам. Без обязательств и штрафов.",
+    faq_q4:"Сколько это занимает?",
+    faq_a4:"От 3 до 7 дней с момента, когда у меня есть твои тексты и фото. Срок зависит прежде всего от того, как быстро ты передашь материалы.",
+    faq_q5:"А если мне не понравится дизайн?",
+    faq_a5:"Перед публикацией я показываю черновик, и мы правим его вместе. Ничего не публикуется, пока тебя всё не устроит.",
+    faq_q6:"Как происходит оплата?",
+    faq_a6:"От 30 % до 50 % до начала работ, остальное — в день сдачи. Цена фиксируется в смете и не меняется.",
+    faq_q7:"Смогу ли я потом менять что-то сам?",
+    faq_a7:"Если хочешь, объясню, как делать простые правки. А если предпочитаешь ничего не трогать — для этого есть обслуживание: пишешь мне в WhatsApp, и я меняю сам.",
+    faq_q8:"Ты работаешь только в Жироне?",
+    faq_a8:"Я работаю по всей Испании. Весь процесс можно пройти через WhatsApp, а если ты рядом с Жироной или Таррагоной — можем встретиться лично.",
+
+    pricing_kicker:"Цены",
     pricing_title:"Прозрачные, без сюрпризов",
     pricing_sub:"Ты знаешь итоговую цену с первого дня. Выбери тариф под свой бизнес.",
     p1_name:"Базовый", p1_for:"Одна страница, готовая к публикации.",
@@ -454,7 +543,6 @@ var I18N = {
     footer_tag:"Разработка и дизайн сайтов для малого бизнеса.",
     footer_contact_t:"Контакт",
     footer_legal:"Правовая информация · Конфиденциальность · Cookies",
-    footer_made:"Дизайн и разработка — Ilia Oskolkov",
 
     /* --- Правовая страница --- */
     lg_back:"Вернуться на главную",
@@ -805,6 +893,31 @@ function initDemos(){
   }
 }
 
+/* ---------- FAQ (acordeón: solo una respuesta abierta) ---------- */
+function initFaq(){
+  var items = document.querySelectorAll(".faq-item");
+  if(!items.length) return;
+
+  items.forEach(function(item){
+    var btn = item.querySelector(".faq-q");
+    if(!btn) return;
+    btn.addEventListener("click", function(){
+      var willOpen = !item.classList.contains("open");
+      // Cerrar todas
+      items.forEach(function(other){
+        other.classList.remove("open");
+        var b = other.querySelector(".faq-q");
+        if(b) b.setAttribute("aria-expanded", "false");
+      });
+      // Abrir la elegida
+      if(willOpen){
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+}
+
 /* ---------- Selector de idioma (desplegable con clic) ---------- */
 function initLangDropdown(){
   var dd = document.getElementById("lang-dropdown");
@@ -895,7 +1008,10 @@ function initForm(){
 
 /* ---------- Inicio ---------- */
 document.addEventListener("DOMContentLoaded", function(){
-  // Prioridad de idioma: ?lang= en la URL > guardado > español
+  // Idioma por defecto: SIEMPRE español.
+  // No hay detección automática por idioma del navegador (navigator.language):
+  // solo se aplica ?lang= de la URL o la elección explícita previa del visitante.
+  // Prioridad: ?lang= en la URL > elección guardada > español
   var urlLang = null;
   try { urlLang = new URLSearchParams(location.search).get("lang"); } catch(e){}
   var saved = null;
@@ -909,6 +1025,7 @@ document.addEventListener("DOMContentLoaded", function(){
   initReveal();
   initMagnetic();
   initDemos();
+  initFaq();
   initLangDropdown();
   initMobileMenu();
   initHeaderScroll();
