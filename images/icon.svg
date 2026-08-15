@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Oskal Studio">
+  <rect width="512" height="512" rx="110" fill="#0F172A"/>
+  <g transform="translate(18.5 21) scale(0.9276)">
+    <g stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity="0.5">
+      <line x1="256.00" y1="106.00" x2="385.90" y2="181.00"/>
+      <line x1="385.90" y1="181.00" x2="385.90" y2="331.00"/>
+      <line x1="385.90" y1="331.00" x2="256.00" y2="406.00"/>
+      <line x1="256.00" y1="406.00" x2="126.10" y2="331.00"/>
+      <line x1="126.10" y1="331.00" x2="126.10" y2="181.00"/>
+      <line x1="126.10" y1="181.00" x2="256.00" y2="106.00"/>
+    </g>
+    <circle cx="256.00" cy="106.00" r="29.28" fill="#EF3B30"/>
+    <circle cx="385.90" cy="181.00" r="24" fill="#FFFFFF"/>
+    <circle cx="385.90" cy="331.00" r="24" fill="#FFFFFF"/>
+    <circle cx="256.00" cy="406.00" r="24" fill="#FFFFFF"/>
+    <circle cx="126.10" cy="331.00" r="24" fill="#FFFFFF"/>
+    <circle cx="126.10" cy="181.00" r="24" fill="#FFFFFF"/>
+  </g>
+</svg>
