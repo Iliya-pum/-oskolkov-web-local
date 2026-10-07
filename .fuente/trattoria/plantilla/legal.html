@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+{% set titulo = textos.seo.titulo_legal %}
+{% set descripcion = textos.seo.descripcion_legal %}
+{% include "_head.html" %}
+<script src="{{ raiz }}script.js?v={{ asset_v }}" defer></script>
+</head>
+<body class="page-legal">
+{% include "_sprite.html" %}
+<a class="skip" href="#main">{{ textos.ui.saltar }}</a>
+{% if sitio.demo %}
+<p class="demo-bar">{{ textos.ui.demo_franja }}</p>
+{% endif %}
+
+<header class="hdr is-solid" id="top">
+  <div class="wrap hdr__in">
+    <a class="logo" href="{{ href_inicio }}" aria-label="{{ negocio.nombre }} — {{ textos.ui.inicio }}">
+      {% include "_logo.html" %}
+    </a>
+    <div class="hdr__end">
+      <nav class="lang lang--always" aria-label="{{ textos.ui.idioma }}">
+        {% for a in alternos %}
+        <a class="lang__a" href="{{ a.href }}" hreflang="{{ a.lang }}" lang="{{ a.lang }}" title="{{ a.nombre }}" data-lang-link{% if a.lang == lang %} aria-current="page"{% endif %}>{{ a.lang | upper }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="wrap wrap--text">
+    <a class="link link--back" href="{{ href_inicio }}"><svg class="i" aria-hidden="true"><use href="#i-izq"/></svg>{{ textos.ui.volver }}</a>
+    <h1 class="legal__t">{{ legal.titulo }}</h1>
+    <nav class="legal__toc" aria-label="{{ legal.titulo }}">
+      {% for s in legal.secciones %}
+      <a href="#{{ s.id }}">{{ s.titulo }}</a>
+      {% endfor %}
+    </nav>
+    {% if sitio.demo %}
+    <p class="legal__demo">{{ legal.nota_demo }}</p>
+    {% endif %}
+    {% for s in legal.secciones %}
+    <section class="legal__sec" id="{{ s.id }}" aria-labelledby="{{ s.id }}-t">
+      <h2 id="{{ s.id }}-t">{{ s.titulo }}</h2>
+      {{ s.html | campos | raw }}
+    </section>
+    {% endfor %}
+    <p class="legal__upd">{{ legal.actualizado }}</p>
+  </div>
+</main>
+
+{% include "_pie.html" %}
+</body>
+</html>

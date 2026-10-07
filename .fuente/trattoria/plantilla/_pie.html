@@ -1,0 +1,53 @@
+<footer class="ftr">
+  <div class="wrap ftr__grid">
+    <div class="ftr__brand">
+      <a class="logo logo--light" href="{{ href_inicio }}#top">
+        {% include "_logo.html" %}
+      </a>
+      <p class="ftr__lema">{{ textos.pie.lema }}</p>
+    </div>
+    <div class="ftr__col">
+      <p class="ftr__h">{{ textos.pie.visitanos }}</p>
+      <p>{{ negocio.direccion.calle }}<br>{{ negocio.direccion.cp }} {{ negocio.direccion.ciudad }}</p>
+      <p>{{ horario_resumen }}</p>
+    </div>
+    <nav class="ftr__col" aria-label="{{ textos.pie.la_web }}">
+      <p class="ftr__h">{{ textos.pie.la_web }}</p>
+      <ul class="ftr__links">
+        {% if secciones.carta %}
+        <li><a href="{{ href_inicio }}#carta">{{ textos.nav.carta }}</a></li>
+        {% endif %}
+        {% if secciones.platos %}
+        <li><a href="{{ href_inicio }}#platos">{{ textos.nav.platos }}</a></li>
+        {% endif %}
+        {% if secciones.reserva %}
+        <li><a href="{{ href_inicio }}#reservar">{{ textos.nav.reservar }}</a></li>
+        {% endif %}
+        {% if secciones.contacto %}
+        <li><a href="{{ href_inicio }}#contacto">{{ textos.nav.contacto }}</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+  <p class="ftr__big" aria-hidden="true">{{ negocio.nombre }}</p>
+  <div class="wrap ftr__bottom">
+    <p>© {{ anio }} {{ negocio.nombre }}{% if sitio.demo %} · {{ textos.pie.ficticio }}{% endif %}</p>
+    <ul class="ftr__legal">
+      <li><a href="{{ href_legal }}#aviso">{{ textos.pie.aviso }}</a></li>
+      <li><a href="{{ href_legal }}#privacidad">{{ textos.pie.privacidad }}</a></li>
+      <li><a href="{{ href_legal }}#cookies">{{ textos.pie.cookies }}</a></li>
+    </ul>
+    <p>{{ textos.pie.credito }}: <a href="{{ sitio.estudio.url }}" rel="noopener">{{ sitio.estudio.nombre }}</a></p>
+  </div>
+</footer>
+
+{% if sitio.demo and sitio.estudio.get('precio_desde') %}
+{% set et = sitio.estudio.textos %}
+<aside class="oskal" aria-label="{{ sitio.estudio.nombre }}" data-oskal>
+  <div class="wrap oskal__in">
+    <p class="oskal__marca"><a href="{{ sitio.estudio.url }}" rel="noopener">{{ sitio.estudio.nombre }}</a><span>{{ et.lema }}</span></p>
+    <p class="oskal__t">{{ et.titulo }} <span class="oskal__sep" aria-hidden="true">·</span> <span class="oskal__p">{{ et.desde }} <strong>{{ sitio.estudio.precio_desde | precio }}</strong></span></p>
+    <a class="btn oskal__btn" href="https://wa.me/{{ sitio.estudio.whatsapp }}?text={{ et.msg | url }}" target="_blank" rel="noopener" data-estudio><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ et.cta }}</a>
+  </div>
+</aside>
+{% endif %}

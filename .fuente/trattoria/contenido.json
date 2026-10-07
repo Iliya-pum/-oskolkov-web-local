@@ -1,0 +1,545 @@
+{
+  "_LEEME": "ВСЁ содержимое сайта — здесь: тексты на всех языках, цвета, шрифты, контакты, часы, меню, блюда, отзывы, места под фото. Поменял → python build.py → сайт собирается заново. Текст на языках — {\"es\": …, \"ca\": …, \"en\": …, \"it\": …}; <em> — курсив в заголовках, <br> — перенос строки. Названия блюд — по-итальянски, без перевода (поле nombre); описания — на всех языках.",
+
+  "idiomas": ["es", "ca", "en", "it"],
+  "idioma_principal": "es",
+  "idioma_nombres": {"es": "Español", "ca": "Català", "en": "English", "it": "Italiano"},
+  "og_locale": {"es": "es_ES", "ca": "ca_ES", "en": "en_GB", "it": "it_IT"},
+
+  "sitio": {
+    "_nota": "url — адрес сайта (canonical, hreflang, картинка в соцсетях). salida — куда собирать (относительно этой папки). en_raiz — сайт в корне домена (robots.txt, sitemap.xml, _headers); false — демо в подпапке сайта студии. demo — плашка «Diseño de ejemplo» и окно-пояснение вместо звонка и WhatsApp. noindex — не индексировать (снять только при сдаче).",
+    "url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/trattoria/",
+    "salida": "../../ejemplos/trattoria",
+    "en_raiz": false,
+    "demo": true,
+    "noindex": true,
+    "estudio": {
+      "_nota": "Плашка Oskal Studio внизу демо (только при demo: true). precio_desde — по smeta.py (Premium 600 €, расчёт в ПЛАН.md); кнопка — WhatsApp студии.",
+      "nombre": "Oskal Studio",
+      "url": "https://oskalstudio.com",
+      "whatsapp": "34628806573",
+      "precio_desde": 600,
+      "textos": {
+        "titulo": {"es": "Una web como esta", "ca": "Una web com aquesta", "en": "A website like this", "it": "Un sito come questo"},
+        "desde": {"es": "desde", "ca": "des de", "en": "from", "it": "da"},
+        "cta": {"es": "Quiero una así", "ca": "En vull una així", "en": "I want one like this", "it": "Ne voglio uno così"},
+        "lema": {"es": "Diseño y desarrollo web · Girona", "ca": "Disseny i desenvolupament web · Girona", "en": "Web design & development · Girona", "it": "Design e sviluppo web · Girona"},
+        "msg": {"es": "¡Hola, Ilia! He visto el diseño de ejemplo «Da Livia» (trattoria) y quiero una web así para mi negocio.", "ca": "Hola, Ilia! He vist el disseny d’exemple «Da Livia» (trattoria) i vull una web així per al meu negoci.", "en": "Hi Ilia! I’ve seen the “Da Livia” sample design (trattoria) and I’d like a website like this for my business.", "it": "Ciao Ilia! Ho visto il design di esempio «Da Livia» (trattoria) e vorrei un sito così per la mia attività."}
+      }
+    }
+  },
+
+  "secciones": {
+    "_nota": "Блоки страницы: false — блок и пункт меню пропадают (под тариф клиента).",
+    "cinta": true,
+    "platos": true,
+    "casa": true,
+    "cifras": true,
+    "carta": true,
+    "opiniones": true,
+    "reserva": true,
+    "contacto": true
+  },
+
+  "video_portada": {
+    "_nota": "Место под ролик в шапке. Положить в fotos\\ файл hero.mp4 (и по желанию hero.webm): 8–15 с, без звука, 1920×1080, до 4 МБ — сборка сама поставит его поверх фото hero (фото остаётся обложкой). Нет файла — шапка с фото. Ролик можно сделать навыком motion-design (Higgsfield, платно) — только по команде Ильи.",
+    "mp4": "hero.mp4",
+    "webm": "hero.webm"
+  },
+
+  "negocio": {
+    "_nota": "Данные бизнеса. В демо всё вымышленное: whatsapp пустой → кнопки показывают пример сообщения. У клиента: whatsapp — 9 цифр мобильного, данные для legal — из 2_PREPARADO\\aviso-legal.md.",
+    "nombre": "Da Livia",
+    "tipo_schema": "Restaurant",
+    "schema_extra": {"servesCuisine": ["Italian", "Pizza", "Pasta"], "acceptsReservations": true},
+    "telefono": "+34 600 000 000",
+    "whatsapp": "",
+    "email": "ciao@dalivia.example",
+    "rango_precios": "€€",
+    "direccion": {"calle": "Carrer de l’Exemple, 12", "cp": "17004", "ciudad": "Girona", "region": "Catalunya", "pais": "ES"},
+    "geo": {"lat": 41.98419, "lon": 2.82466, "zoom": 17},
+    "zona_horaria": "Europe/Madrid",
+    "horario": {
+      "lun": [],
+      "mar": [["13:00", "16:00"], ["20:00", "23:30"]],
+      "mie": [["13:00", "16:00"], ["20:00", "23:30"]],
+      "jue": [["13:00", "16:00"], ["20:00", "23:30"]],
+      "vie": [["13:00", "16:00"], ["20:00", "00:00"]],
+      "sab": [["13:00", "16:30"], ["20:00", "00:00"]],
+      "dom": [["13:00", "16:30"]]
+    },
+    "festivos": [],
+    "redes": {"instagram": ""},
+    "legal": {
+      "titular": {"es": "[Nombre y apellidos o razón social]", "ca": "[Nom i cognoms o raó social]", "en": "[Full name or company name]", "it": "[Nome e cognome o ragione sociale]"},
+      "nif": "[NIF]",
+      "domicilio": {"es": "[Domicilio fiscal completo]", "ca": "[Domicili fiscal complet]", "en": "[Registered address]", "it": "[Sede legale completa]"}
+    }
+  },
+
+  "tema": {
+    "_nota": "Цвета и шрифты — только здесь (в style.css только var(--…)). Контраст ≥ 4,5:1: texto, texto_suave, terracota_texto, vino — на fondo, fondo_alt, superficie; на тёмном (oscuro, oliva) — sobre_oscuro и oro_claro; terracota, oro, oliva_claro — линии, узоры, градиенты и крупные заголовки.",
+    "colores": {
+      "fondo": "#F5EEE1",
+      "fondo_alt": "#EDE2CF",
+      "superficie": "#FBF7EF",
+      "crema": "#E6D6BA",
+      "oliva": "#3E4A2C",
+      "oliva_medio": "#5D6B42",
+      "oliva_claro": "#A3AD84",
+      "terracota": "#C0643F",
+      "terracota_claro": "#DE9A72",
+      "terracota_texto": "#9E4628",
+      "vino": "#6B1E2B",
+      "vino_hondo": "#4E1420",
+      "oro": "#C9A25A",
+      "oro_claro": "#E2C78F",
+      "texto": "#2B2A20",
+      "texto_suave": "#5F5A47",
+      "oscuro": "#232B1A",
+      "oscuro_2": "#2F3923",
+      "sobre_oscuro": "#F3EBDD",
+      "linea": "#DFD1B9",
+      "exito": "#5E8A4E",
+      "error": "#A33B32",
+      "estudio_fondo": "#0F172A",
+      "estudio_texto": "#F8FAFC",
+      "estudio_acento": "#D42E24"
+    },
+    "fuentes": {
+      "titulos": "Fraunces",
+      "titulos_respaldo": "Georgia, 'Times New Roman', serif",
+      "texto": "DM Sans",
+      "texto_respaldo": "'Segoe UI', system-ui, -apple-system, Roboto, sans-serif",
+      "archivos": [
+        {"familia": "Fraunces", "archivo": "fraunces-latin.woff2", "peso": "300 700", "estilo": "normal", "precargar": true},
+        {"familia": "Fraunces", "archivo": "fraunces-italic-latin.woff2", "peso": "400 600", "estilo": "italic", "precargar": true},
+        {"familia": "DM Sans", "archivo": "dm-sans-latin.woff2", "peso": "300 700", "estilo": "normal", "precargar": false}
+      ],
+      "respaldos": [
+        {"familia": "Fraunces", "local": ["Georgia", "Times New Roman"], "size_adjust": "103%", "ascent": "95%", "descent": "25%"},
+        {"familia": "DM Sans", "local": ["Segoe UI", "Arial", "Roboto"], "size_adjust": "99%", "ascent": "99%", "descent": "31%"}
+      ]
+    },
+    "medidas": {"radio": "18px", "radio_sm": "12px", "ancho_max": "1440px"}
+  },
+
+  "textos": {
+    "marca": {
+      "tipo": {"es": "Trattoria", "ca": "Trattoria", "en": "Trattoria", "it": "Trattoria"},
+      "lema": {"es": "Trattoria · Girona", "ca": "Trattoria · Girona", "en": "Trattoria · Girona", "it": "Trattoria · Girona"}
+    },
+    "seo": {
+      "titulo": {"es": "Da Livia · Trattoria italiana en Girona — pasta fresca y pizza al horno de leña", "ca": "Da Livia · Trattoria italiana a Girona — pasta fresca i pizza al forn de llenya", "en": "Da Livia · Italian trattoria in Girona — fresh pasta & wood-fired pizza", "it": "Da Livia · Trattoria italiana a Girona — pasta fresca e pizza nel forno a legna"},
+      "descripcion": {"es": "Trattoria italiana en el Barri Vell de Girona: pasta fresca hecha cada mañana, pizza al horno de leña, vinos italianos y terraza. Reserva tu mesa por WhatsApp.", "ca": "Trattoria italiana al Barri Vell de Girona: pasta fresca feta cada matí, pizza al forn de llenya, vins italians i terrassa. Reserva taula per WhatsApp.", "en": "Italian trattoria in Girona’s Old Quarter: fresh pasta made every morning, wood-fired pizza, Italian wines and a terrace. Book your table on WhatsApp.", "it": "Trattoria italiana nel Barri Vell di Girona: pasta fresca fatta ogni mattina, pizza nel forno a legna, vini italiani e dehors. Prenota il tavolo su WhatsApp."},
+      "og_alt": {"es": "Da Livia, trattoria italiana en Girona", "ca": "Da Livia, trattoria italiana a Girona", "en": "Da Livia, Italian trattoria in Girona", "it": "Da Livia, trattoria italiana a Girona"},
+      "titulo_legal": {"es": "Aviso legal, privacidad y cookies · Da Livia", "ca": "Avís legal, privacitat i galetes · Da Livia", "en": "Legal notice, privacy and cookies · Da Livia", "it": "Note legali, privacy e cookie · Da Livia"},
+      "descripcion_legal": {"es": "Aviso legal, política de privacidad y política de cookies de Da Livia, trattoria italiana en Girona.", "ca": "Avís legal, política de privacitat i política de galetes de Da Livia, trattoria italiana a Girona.", "en": "Legal notice, privacy policy and cookie policy of Da Livia, Italian trattoria in Girona.", "it": "Note legali, informativa sulla privacy e cookie policy di Da Livia, trattoria italiana a Girona."}
+    },
+    "ui": {
+      "saltar": {"es": "Saltar al contenido", "ca": "Salta al contingut", "en": "Skip to content", "it": "Vai al contenuto"},
+      "demo_franja": {"es": "Diseño de ejemplo — negocio ficticio", "ca": "Disseny d’exemple — negoci fictici", "en": "Sample design — fictional business", "it": "Design di esempio — attività fittizia"},
+      "foto_ejemplo": {"es": "foto de ejemplo", "ca": "foto d’exemple", "en": "sample photo", "it": "foto di esempio"},
+      "ejemplo": {"es": "ejemplo", "ca": "exemple", "en": "sample", "it": "esempio"},
+      "abrir_menu": {"es": "Abrir menú", "ca": "Obre el menú", "en": "Open menu", "it": "Apri il menu"},
+      "cerrar_menu": {"es": "Cerrar menú", "ca": "Tanca el menú", "en": "Close menu", "it": "Chiudi il menu"},
+      "idioma": {"es": "Idioma", "ca": "Idioma", "en": "Language", "it": "Lingua"},
+      "nav_principal": {"es": "Navegación principal", "ca": "Navegació principal", "en": "Main navigation", "it": "Navigazione principale"},
+      "inicio": {"es": "Inicio", "ca": "Inici", "en": "Home", "it": "Home"},
+      "volver": {"es": "Volver al inicio", "ca": "Torna a l’inici", "en": "Back to home", "it": "Torna alla home"},
+      "desliza": {"es": "Desliza", "ca": "Llisca", "en": "Scroll", "it": "Scorri"},
+      "pausar_video": {"es": "Pausar vídeo", "ca": "Atura el vídeo", "en": "Pause video", "it": "Metti in pausa il video"}
+    },
+    "nav": {
+      "platos": {"es": "Especialidades", "ca": "Especialitats", "en": "Signature dishes", "it": "Specialità"},
+      "casa": {"es": "La casa", "ca": "La casa", "en": "Our story", "it": "La nostra storia"},
+      "carta": {"es": "La carta", "ca": "La carta", "en": "Menu", "it": "Il menù"},
+      "opiniones": {"es": "Opiniones", "ca": "Opinions", "en": "Reviews", "it": "Recensioni"},
+      "contacto": {"es": "Contacto", "ca": "Contacte", "en": "Contact", "it": "Contatti"},
+      "reservar": {"es": "Reservar mesa", "ca": "Reserva taula", "en": "Book a table", "it": "Prenota un tavolo"}
+    },
+    "hero": {
+      "antetitulo": {"es": "Trattoria italiana · Girona", "ca": "Trattoria italiana · Girona", "en": "Italian trattoria · Girona", "it": "Trattoria italiana · Girona"},
+      "titulo": {"es": "Pasta fresca,<br><em>fuego lento.</em>", "ca": "Pasta fresca,<br><em>foc lent.</em>", "en": "Fresh pasta,<br><em>slow fire.</em>", "it": "Pasta fresca,<br><em>fuoco lento.</em>"},
+      "texto": {"es": "Pasta hecha a mano cada mañana, pizza al horno de leña y los vinos que bebería la nonna. En pleno Barri Vell.", "ca": "Pasta feta a mà cada matí, pizza al forn de llenya i els vins que beuria la nonna. En ple Barri Vell.", "en": "Pasta made by hand every morning, wood-fired pizza and the wines nonna would pour. Right in the Old Quarter.", "it": "Pasta fatta a mano ogni mattina, pizza nel forno a legna e i vini che verserebbe la nonna. Nel cuore del Barri Vell."},
+      "cta_secundario": {"es": "Ver la carta", "ca": "Mira la carta", "en": "See the menu", "it": "Guarda il menù"},
+      "puntos": [
+        {"es": "Pasta fresca diaria", "ca": "Pasta fresca cada dia", "en": "Fresh pasta daily", "it": "Pasta fresca ogni giorno"},
+        {"es": "Horno de leña", "ca": "Forn de llenya", "en": "Wood-fired oven", "it": "Forno a legna"},
+        {"es": "Terraza en la plaza", "ca": "Terrassa a la plaça", "en": "Terrace on the square", "it": "Dehors in piazza"}
+      ]
+    },
+    "cinta": {
+      "lista": [
+        {"es": "Pasta fresca cada mañana", "ca": "Pasta fresca cada matí", "en": "Fresh pasta every morning", "it": "Pasta fresca ogni mattina"},
+        {"es": "Horno de leña a 450 °C", "ca": "Forn de llenya a 450 °C", "en": "Wood-fired oven at 450 °C", "it": "Forno a legna a 450 °C"},
+        {"es": "Masa con 48 h de reposo", "ca": "Massa amb 48 h de repòs", "en": "Dough rested for 48 hours", "it": "Impasto con 48 ore di riposo"},
+        {"es": "Vinos de Italia y del Empordà", "ca": "Vins d’Itàlia i de l’Empordà", "en": "Wines from Italy and the Empordà", "it": "Vini d’Italia e dell’Empordà"},
+        {"es": "El tiramisù de la nonna", "ca": "El tiramisù de la nonna", "en": "Nonna’s tiramisù", "it": "Il tiramisù della nonna"},
+        {"es": "Terraza en el Barri Vell", "ca": "Terrassa al Barri Vell", "en": "Terrace in the Old Quarter", "it": "Dehors nel Barri Vell"}
+      ]
+    },
+    "platos": {
+      "antetitulo": {"es": "Platos de la casa", "ca": "Plats de la casa", "en": "Signature dishes", "it": "Piatti della casa"},
+      "titulo": {"es": "Lo que <em>siempre</em> se pide", "ca": "El que <em>sempre</em> es demana", "en": "What <em>everyone</em> orders", "it": "Quello che <em>tutti</em> ordinano"},
+      "texto": {"es": "Seis platos que nos acompañan desde el primer día. Sigue bajando: pasan solos.", "ca": "Sis plats que ens acompanyen des del primer dia. Continua baixant: passen sols.", "en": "Six dishes that have been with us since day one. Keep scrolling — they glide past.", "it": "Sei piatti che ci accompagnano dal primo giorno. Continua a scorrere: passano da soli."},
+      "pedir": {"es": "Reservar y probarlo", "ca": "Reserva i tasta-ho", "en": "Book and try it", "it": "Prenota e assaggialo"}
+    },
+    "casa": {
+      "antetitulo": {"es": "La casa", "ca": "La casa", "en": "Our story", "it": "La nostra storia"},
+      "titulo": {"es": "De Bolonia <em>a Girona</em>", "ca": "De Bolonya <em>a Girona</em>", "en": "From Bologna <em>to Girona</em>", "it": "Da Bologna <em>a Girona</em>"},
+      "capitulos": [
+        {
+          "foto": "casa-1",
+          "titulo": {"es": "El cuaderno de la nonna", "ca": "La llibreta de la nonna", "en": "Nonna’s notebook", "it": "Il quaderno della nonna"},
+          "texto": {"es": "Livia llegó a Girona en 2010 con una maleta y el cuaderno de recetas de su abuela. Abrió una sala de doce mesas en el Barri Vell; hoy sigue cocinando con las mismas páginas, manchadas de harina.", "ca": "La Livia va arribar a Girona el 2010 amb una maleta i la llibreta de receptes de la seva àvia. Va obrir una sala de dotze taules al Barri Vell; avui encara cuina amb les mateixes pàgines, tacades de farina.", "en": "Livia arrived in Girona in 2010 with one suitcase and her grandmother’s recipe notebook. She opened a twelve-table dining room in the Old Quarter; she still cooks from the same flour-stained pages today.", "it": "Livia è arrivata a Girona nel 2010 con una valigia e il quaderno di ricette di sua nonna. Ha aperto una sala da dodici tavoli nel Barri Vell; ancora oggi cucina con le stesse pagine, macchiate di farina."}
+        },
+        {
+          "foto": "casa-2",
+          "titulo": {"es": "Pasta fresca cada mañana", "ca": "Pasta fresca cada matí", "en": "Fresh pasta every morning", "it": "Pasta fresca ogni mattina"},
+          "texto": {"es": "A las ocho ya estamos amasando: sémola de trigo duro, huevos de granja del Empordà y paciencia. Cada pasta se corta a mano el mismo día que llega a tu plato.", "ca": "A les vuit ja estem pastant: sèmola de blat dur, ous de granja de l’Empordà i paciència. Cada pasta es talla a mà el mateix dia que arriba al teu plat.", "en": "By eight we’re already kneading: durum wheat semolina, free-range eggs from the Empordà and patience. Every pasta is cut by hand on the day it reaches your plate.", "it": "Alle otto stiamo già impastando: semola di grano duro, uova di fattoria dell’Empordà e pazienza. Ogni pasta è tagliata a mano lo stesso giorno in cui arriva nel tuo piatto."}
+        },
+        {
+          "foto": "casa-3",
+          "titulo": {"es": "El fuego del horno", "ca": "El foc del forn", "en": "The fire in the oven", "it": "Il fuoco del forno"},
+          "texto": {"es": "Nuestra masa reposa 48 horas y se hornea en noventa segundos, a 450 °C, con leña de encina. Por eso queda ligera, con el borde inflado y un punto ahumado.", "ca": "La nostra massa reposa 48 hores i es cou en noranta segons, a 450 °C, amb llenya d’alzina. Per això queda lleugera, amb la vora inflada i un punt fumat.", "en": "Our dough rests for 48 hours and bakes in ninety seconds at 450 °C over holm-oak wood. That’s why it’s light, with a puffy crust and a hint of smoke.", "it": "Il nostro impasto riposa 48 ore e cuoce in novanta secondi a 450 °C con legna di leccio. Per questo è leggero, con il cornicione gonfio e un tocco affumicato."}
+        }
+      ]
+    },
+    "cifras": {
+      "titulo": {"es": "Da Livia en cifras", "ca": "Da Livia en xifres", "en": "Da Livia in numbers", "it": "Da Livia in cifre"}
+    },
+    "carta": {
+      "antetitulo": {"es": "La carta", "ca": "La carta", "en": "The menu", "it": "Il menù"},
+      "titulo": {"es": "Cocina italiana <em>de verdad</em>", "ca": "Cuina italiana <em>de veritat</em>", "en": "Real <em>Italian</em> cooking", "it": "Cucina italiana <em>vera</em>"},
+      "texto": {"es": "Los nombres, en italiano, como en casa. La carta cambia con la temporada; si tienes alguna alergia, dínoslo y lo adaptamos.", "ca": "Els noms, en italià, com a casa. La carta canvia amb la temporada; si tens alguna al·lèrgia, digues-nos-ho i ho adaptem.", "en": "The names stay in Italian, like at home. The menu changes with the seasons; tell us about any allergy and we’ll adapt your dish.", "it": "I nomi restano in italiano, come a casa. Il menù cambia con le stagioni; se hai un’allergia, dicci e adattiamo il piatto."},
+      "vegetariano": {"es": "Vegetariano", "ca": "Vegetarià", "en": "Vegetarian", "it": "Vegetariano"},
+      "picante": {"es": "Picante", "ca": "Picant", "en": "Spicy", "it": "Piccante"},
+      "copa": {"es": "copa", "ca": "copa", "en": "glass", "it": "calice"},
+      "botella": {"es": "botella", "ca": "ampolla", "en": "bottle", "it": "bottiglia"},
+      "nota": {"es": "Precios de ejemplo, con IVA incluido. Pan de la casa sin cargo.", "ca": "Preus d’exemple, amb IVA inclòs. Pa de la casa sense càrrec.", "en": "Sample prices, VAT included. House bread free of charge.", "it": "Prezzi di esempio, IVA inclusa. Pane della casa senza supplemento."}
+    },
+    "opiniones": {
+      "antetitulo": {"es": "Opiniones", "ca": "Opinions", "en": "Reviews", "it": "Recensioni"},
+      "titulo": {"es": "Lo que se dice <em>en la mesa</em>", "ca": "El que es diu <em>a taula</em>", "en": "Overheard <em>at the table</em>", "it": "Quello che si dice <em>a tavola</em>"},
+      "nota": {"es": "Reseñas de ejemplo", "ca": "Ressenyes d’exemple", "en": "Sample reviews", "it": "Recensioni di esempio"},
+      "nota_valoracion": {"es": "{n} reseñas en Google · ejemplo", "ca": "{n} ressenyes a Google · exemple", "en": "{n} Google reviews · sample", "it": "{n} recensioni su Google · esempio"},
+      "valoracion": 4.8,
+      "num_resenas": 326
+    },
+    "reserva": {
+      "antetitulo": {"es": "Reservas", "ca": "Reserves", "en": "Bookings", "it": "Prenotazioni"},
+      "titulo": {"es": "Te guardamos <em>la mesa</em>", "ca": "Et guardem <em>la taula</em>", "en": "We’ll save you <em>a table</em>", "it": "Ti teniamo <em>il tavolo</em>"},
+      "texto": {"es": "Rellena tu nombre y tu teléfono: se abrirá WhatsApp con la reserva ya escrita. Te confirmamos en unos minutos.", "ca": "Omple el teu nom i el teu telèfon: s’obrirà WhatsApp amb la reserva ja escrita. Te la confirmem en uns minuts.", "en": "Fill in your name and phone: WhatsApp will open with your booking already written. We’ll confirm within minutes.", "it": "Inserisci nome e telefono: si aprirà WhatsApp con la prenotazione già scritta. Ti confermiamo in pochi minuti."},
+      "nombre": {"es": "Nombre", "ca": "Nom", "en": "Name", "it": "Nome"},
+      "telefono": {"es": "Teléfono", "ca": "Telèfon", "en": "Phone", "it": "Telefono"},
+      "fecha": {"es": "Día", "ca": "Dia", "en": "Date", "it": "Giorno"},
+      "hora": {"es": "Hora", "ca": "Hora", "en": "Time", "it": "Ora"},
+      "personas": {"es": "Personas", "ca": "Persones", "en": "Guests", "it": "Persone"},
+      "persona_1": {"es": "persona", "ca": "persona", "en": "guest", "it": "persona"},
+      "persona_n": {"es": "personas", "ca": "persones", "en": "guests", "it": "persone"},
+      "comida": {"es": "Comida", "ca": "Dinar", "en": "Lunch", "it": "Pranzo"},
+      "cena": {"es": "Cena", "ca": "Sopar", "en": "Dinner", "it": "Cena"},
+      "comentario": {"es": "Comentario", "ca": "Comentari", "en": "Comments", "it": "Note"},
+      "comentario_ph": {"es": "Alergias, trona, terraza, celebración…", "ca": "Al·lèrgies, trona, terrassa, celebració…", "en": "Allergies, high chair, terrace, celebration…", "it": "Allergie, seggiolone, dehors, festa…"},
+      "obligatorio": {"es": "obligatorio", "ca": "obligatori", "en": "required", "it": "obbligatorio"},
+      "acepto": {"es": "Acepto que Da Livia use mis datos para gestionar la reserva (<a href=\"{legal}#privacidad\">privacidad</a>).", "ca": "Accepto que Da Livia faci servir les meves dades per gestionar la reserva (<a href=\"{legal}#privacidad\">privacitat</a>).", "en": "I agree that Da Livia may use my details to manage the booking (<a href=\"{legal}#privacidad\">privacy</a>).", "it": "Acconsento che Da Livia usi i miei dati per gestire la prenotazione (<a href=\"{legal}#privacidad\">privacy</a>)."},
+      "enviar": {"es": "Reservar por WhatsApp", "ca": "Reserva per WhatsApp", "en": "Book on WhatsApp", "it": "Prenota su WhatsApp"},
+      "grupos": {"es": "¿Más de 10 personas o un evento? Llámanos y lo preparamos juntos.", "ca": "Més de 10 persones o un esdeveniment? Truca’ns i ho preparem junts.", "en": "More than 10 guests or an event? Call us and we’ll plan it together.", "it": "Più di 10 persone o un evento? Chiamaci e lo organizziamo insieme."},
+      "horas_comida": ["13:00", "13:30", "14:00", "14:30", "15:00"],
+      "horas_cena": ["20:00", "20:30", "21:00", "21:30", "22:00", "22:30"]
+    },
+    "contacto": {
+      "antetitulo": {"es": "Contacto", "ca": "Contacte", "en": "Contact", "it": "Contatti"},
+      "titulo": {"es": "Ven a <em>cenar</em>", "ca": "Vine a <em>sopar</em>", "en": "Come for <em>dinner</em>", "it": "Vieni a <em>cena</em>"},
+      "texto": {"es": "En una plaza tranquila del Barri Vell, a cinco minutos a pie de la Catedral.", "ca": "En una plaça tranquil·la del Barri Vell, a cinc minuts a peu de la Catedral.", "en": "On a quiet square in the Old Quarter, a five-minute walk from the Cathedral.", "it": "In una piazzetta tranquilla del Barri Vell, a cinque minuti a piedi dalla Cattedrale."},
+      "direccion": {"es": "Dirección", "ca": "Adreça", "en": "Address", "it": "Indirizzo"},
+      "telefono": {"es": "Teléfono", "ca": "Telèfon", "en": "Phone", "it": "Telefono"},
+      "email": {"es": "Correo", "ca": "Correu", "en": "Email", "it": "Email"},
+      "whatsapp": {"es": "WhatsApp", "ca": "WhatsApp", "en": "WhatsApp", "it": "WhatsApp"},
+      "llamar": {"es": "Llamar", "ca": "Truca", "en": "Call", "it": "Chiama"},
+      "como_llegar": {"es": "Cómo llegar", "ca": "Com arribar-hi", "en": "Directions", "it": "Come arrivare"},
+      "llegar": [
+        {"icono": "i-pie", "titulo": {"es": "A pie", "ca": "A peu", "en": "On foot", "it": "A piedi"}, "texto": {"es": "5 min desde la Catedral, 3 min desde la Rambla.", "ca": "5 min des de la Catedral, 3 min des de la Rambla.", "en": "5 min from the Cathedral, 3 min from the Rambla.", "it": "5 min dalla Cattedrale, 3 min dalla Rambla."}},
+        {"icono": "i-coche", "titulo": {"es": "En coche", "ca": "En cotxe", "en": "By car", "it": "In auto"}, "texto": {"es": "Aparcamiento público a 300 m; el Barri Vell es zona peatonal.", "ca": "Aparcament públic a 300 m; el Barri Vell és zona de vianants.", "en": "Public car park 300 m away; the Old Quarter is pedestrian-only.", "it": "Parcheggio pubblico a 300 m; il Barri Vell è zona pedonale."}},
+        {"icono": "i-tren", "titulo": {"es": "En tren", "ca": "En tren", "en": "By train", "it": "In treno"}, "texto": {"es": "15 min a pie desde la estación de Girona.", "ca": "15 min a peu des de l’estació de Girona.", "en": "15-minute walk from Girona station.", "it": "15 min a piedi dalla stazione di Girona."}}
+      ],
+      "datos_ejemplo": {"es": "datos de ejemplo", "ca": "dades d’exemple", "en": "sample details", "it": "dati di esempio"},
+      "ubicacion_ejemplo": {"es": "Ubicación de ejemplo", "ca": "Ubicació d’exemple", "en": "Sample location", "it": "Posizione di esempio"},
+      "mapa": {"es": "Mapa con la ubicación del restaurante", "ca": "Mapa amb la ubicació del restaurant", "en": "Map showing the restaurant’s location", "it": "Mappa con la posizione del ristorante"}
+    },
+    "horario": {
+      "titulo": {"es": "Horario", "ca": "Horari", "en": "Opening hours", "it": "Orari"},
+      "cerrado": {"es": "Cerrado", "ca": "Tancat", "en": "Closed", "it": "Chiuso"},
+      "dias": [
+        {"es": "Lunes", "ca": "Dilluns", "en": "Monday", "it": "Lunedì"},
+        {"es": "Martes", "ca": "Dimarts", "en": "Tuesday", "it": "Martedì"},
+        {"es": "Miércoles", "ca": "Dimecres", "en": "Wednesday", "it": "Mercoledì"},
+        {"es": "Jueves", "ca": "Dijous", "en": "Thursday", "it": "Giovedì"},
+        {"es": "Viernes", "ca": "Divendres", "en": "Friday", "it": "Venerdì"},
+        {"es": "Sábado", "ca": "Dissabte", "en": "Saturday", "it": "Sabato"},
+        {"es": "Domingo", "ca": "Diumenge", "en": "Sunday", "it": "Domenica"}
+      ],
+      "dias_cortos": [
+        {"es": "Lun", "ca": "Dl", "en": "Mon", "it": "Lun"},
+        {"es": "Mar", "ca": "Dt", "en": "Tue", "it": "Mar"},
+        {"es": "Mié", "ca": "Dc", "en": "Wed", "it": "Mer"},
+        {"es": "Jue", "ca": "Dj", "en": "Thu", "it": "Gio"},
+        {"es": "Vie", "ca": "Dv", "en": "Fri", "it": "Ven"},
+        {"es": "Sáb", "ca": "Ds", "en": "Sat", "it": "Sab"},
+        {"es": "Dom", "ca": "Dg", "en": "Sun", "it": "Dom"}
+      ],
+      "dias_semana_js": [
+        {"es": "el domingo", "ca": "diumenge", "en": "on Sunday", "it": "domenica"},
+        {"es": "el lunes", "ca": "dilluns", "en": "on Monday", "it": "lunedì"},
+        {"es": "el martes", "ca": "dimarts", "en": "on Tuesday", "it": "martedì"},
+        {"es": "el miércoles", "ca": "dimecres", "en": "on Wednesday", "it": "mercoledì"},
+        {"es": "el jueves", "ca": "dijous", "en": "on Thursday", "it": "giovedì"},
+        {"es": "el viernes", "ca": "divendres", "en": "on Friday", "it": "venerdì"},
+        {"es": "el sábado", "ca": "dissabte", "en": "on Saturday", "it": "sabato"}
+      ]
+    },
+    "pie": {
+      "lema": {"es": "Pasta fresca, horno de leña y vinos italianos en el Barri Vell de Girona.", "ca": "Pasta fresca, forn de llenya i vins italians al Barri Vell de Girona.", "en": "Fresh pasta, a wood-fired oven and Italian wines in Girona’s Old Quarter.", "it": "Pasta fresca, forno a legna e vini italiani nel Barri Vell di Girona."},
+      "visitanos": {"es": "Visítanos", "ca": "Visita’ns", "en": "Visit us", "it": "Vieni a trovarci"},
+      "la_web": {"es": "La web", "ca": "La web", "en": "Explore", "it": "Il sito"},
+      "aviso": {"es": "Aviso legal", "ca": "Avís legal", "en": "Legal notice", "it": "Note legali"},
+      "privacidad": {"es": "Privacidad", "ca": "Privacitat", "en": "Privacy", "it": "Privacy"},
+      "cookies": {"es": "Cookies", "ca": "Galetes", "en": "Cookies", "it": "Cookie"},
+      "ficticio": {"es": "Negocio ficticio — diseño de ejemplo.", "ca": "Negoci fictici — disseny d’exemple.", "en": "Fictional business — sample design.", "it": "Attività fittizia — design di esempio."},
+      "credito": {"es": "Diseño web", "ca": "Disseny web", "en": "Web design", "it": "Web design"}
+    },
+    "js": {
+      "_nota": "Строки для script.js (ошибки формы, «открыто/закрыто», сообщения в WhatsApp…). {plato}, {h}, {dia}, {n} подставляет скрипт.",
+      "err_nombre": {"es": "Escribe tu nombre.", "ca": "Escriu el teu nom.", "en": "Please enter your name.", "it": "Scrivi il tuo nome."},
+      "err_tel": {"es": "Escribe tu teléfono para poder confirmarte la mesa.", "ca": "Escriu el teu telèfon perquè et puguem confirmar la taula.", "en": "Please enter your phone so we can confirm your table.", "it": "Scrivi il tuo telefono per poterti confermare il tavolo."},
+      "err_tel_corto": {"es": "Revisa el teléfono: debe tener al menos 9 cifras.", "ca": "Revisa el telèfon: ha de tenir com a mínim 9 xifres.", "en": "Please check the number: it needs at least 9 digits.", "it": "Controlla il numero: deve avere almeno 9 cifre."},
+      "err_acepto": {"es": "Necesitamos tu permiso para contestarte.", "ca": "Necessitem el teu permís per respondre’t.", "en": "We need your permission to reply to you.", "it": "Ci serve il tuo consenso per risponderti."},
+      "msg_general": {"es": "¡Hola, Da Livia! Me gustaría reservar una mesa.", "ca": "Hola, Da Livia! M’agradaria reservar una taula.", "en": "Hi Da Livia! I’d like to book a table.", "it": "Ciao Da Livia! Vorrei prenotare un tavolo."},
+      "msg_plato": {"es": "¡Hola, Da Livia! Quiero reservar mesa para probar: {plato}.", "ca": "Hola, Da Livia! Vull reservar taula per tastar: {plato}.", "en": "Hi Da Livia! I’d like to book a table to try: {plato}.", "it": "Ciao Da Livia! Vorrei prenotare un tavolo per assaggiare: {plato}."},
+      "msg_form": {"es": "¡Hola, Da Livia! Quiero reservar una mesa.", "ca": "Hola, Da Livia! Vull reservar una taula.", "en": "Hi Da Livia! I’d like to book a table.", "it": "Ciao Da Livia! Vorrei prenotare un tavolo."},
+      "l_nombre": {"es": "Nombre", "ca": "Nom", "en": "Name", "it": "Nome"},
+      "l_tel": {"es": "Teléfono", "ca": "Telèfon", "en": "Phone", "it": "Telefono"},
+      "l_fecha": {"es": "Día", "ca": "Dia", "en": "Date", "it": "Giorno"},
+      "l_hora": {"es": "Hora", "ca": "Hora", "en": "Time", "it": "Ora"},
+      "l_personas": {"es": "Personas", "ca": "Persones", "en": "Guests", "it": "Persone"},
+      "l_coment": {"es": "Comentario", "ca": "Comentari", "en": "Comments", "it": "Note"},
+      "abierto": {"es": "Abierto ahora", "ca": "Obert ara", "en": "Open now", "it": "Aperto ora"},
+      "cerrado": {"es": "Cerrado ahora", "ca": "Tancat ara", "en": "Closed now", "it": "Chiuso ora"},
+      "hasta": {"es": "hasta las {h}", "ca": "fins a les {h}", "en": "until {h}", "it": "fino alle {h}"},
+      "abre_hoy": {"es": "abrimos hoy a las {h}", "ca": "obrim avui a les {h}", "en": "opens today at {h}", "it": "apriamo oggi alle {h}"},
+      "abre_manana": {"es": "abrimos mañana a las {h}", "ca": "obrim demà a les {h}", "en": "opens tomorrow at {h}", "it": "apriamo domani alle {h}"},
+      "abre_dia": {"es": "abrimos {dia} a las {h}", "ca": "obrim {dia} a les {h}", "en": "opens {dia} at {h}", "it": "apriamo {dia} alle {h}"},
+      "mapa_cargando": {"es": "Cargando mapa…", "ca": "Carregant el mapa…", "en": "Loading map…", "it": "Caricamento della mappa…"},
+      "mapa_error": {"es": "No se ha podido cargar el mapa.", "ca": "No s’ha pogut carregar el mapa.", "en": "The map could not be loaded.", "it": "Impossibile caricare la mappa."},
+      "demo_wa_titulo": {"es": "Así funciona la reserva", "ca": "Així funciona la reserva", "en": "How booking works", "it": "Ecco come funziona la prenotazione"},
+      "demo_wa_texto": {"es": "Esto es un diseño de ejemplo. En la web real, este botón abre el WhatsApp del restaurante con el mensaje ya escrito:", "ca": "Això és un disseny d’exemple. A la web real, aquest botó obre el WhatsApp del restaurant amb el missatge ja escrit:", "en": "This is a sample design. On the real website, this button opens the restaurant’s WhatsApp with the message already written:", "it": "Questo è un design di esempio. Sul sito reale, questo pulsante apre il WhatsApp del ristorante con il messaggio già scritto:"},
+      "demo_probar": {"es": "Probar en mi WhatsApp", "ca": "Prova-ho al meu WhatsApp", "en": "Try it in my WhatsApp", "it": "Prova nel mio WhatsApp"},
+      "demo_probar_nota": {"es": "Se abrirá WhatsApp con este texto y podrás elegir a quién enviarlo.", "ca": "S’obrirà WhatsApp amb aquest text i podràs triar a qui enviar-lo.", "en": "WhatsApp will open with this text and you can choose who to send it to.", "it": "Si aprirà WhatsApp con questo testo e potrai scegliere a chi inviarlo."},
+      "demo_tel_titulo": {"es": "Llamada al restaurante", "ca": "Trucada al restaurant", "en": "Calling the restaurant", "it": "Chiamata al ristorante"},
+      "demo_tel_texto": {"es": "Esto es un diseño de ejemplo y el número es ficticio. En la web real, este botón llama al restaurante con un solo toque.", "ca": "Això és un disseny d’exemple i el número és fictici. A la web real, aquest botó truca al restaurant amb un sol toc.", "en": "This is a sample design and the number is fictional. On the real website, this button calls the restaurant with a single tap.", "it": "Questo è un design di esempio e il numero è fittizio. Sul sito reale, questo pulsante chiama il ristorante con un solo tocco."},
+      "cerrar": {"es": "Cerrar", "ca": "Tanca", "en": "Close", "it": "Chiudi"}
+    }
+  },
+
+  "cifras": [
+    {"valor": 15, "prefijo": "+", "texto": {"es": "años en el Barri Vell", "ca": "anys al Barri Vell", "en": "years in the Old Quarter", "it": "anni nel Barri Vell"}},
+    {"valor": 48, "sufijo": " h", "texto": {"es": "de reposo de la masa", "ca": "de repòs de la massa", "en": "of rest for the dough", "it": "di riposo dell’impasto"}},
+    {"valor": 450, "sufijo": " °C", "texto": {"es": "en el horno de leña", "ca": "al forn de llenya", "en": "in the wood-fired oven", "it": "nel forno a legna"}},
+    {"valor": 4.8, "decimales": 1, "sufijo": "★", "texto": {"es": "en Google (ejemplo)", "ca": "a Google (exemple)", "en": "on Google (sample)", "it": "su Google (esempio)"}}
+  ],
+
+  "platos": [
+    {"nombre": "Tagliatelle al ragù", "foto": "plato-1", "precio": 15, "etiqueta": {"es": "La favorita", "ca": "La preferida", "en": "Guest favourite", "it": "La preferita"},
+     "texto": {"es": "Ragù a la boloñesa cocinado seis horas, como en Bolonia.", "ca": "Ragù a la bolonyesa cuinat sis hores, com a Bolonya.", "en": "Bolognese ragù slow-cooked for six hours, just like in Bologna.", "it": "Ragù alla bolognese cotto sei ore, come a Bologna."}},
+    {"nombre": "Pizza tartufata", "foto": "plato-2", "precio": 16.5, "etiqueta": {"es": "Horno de leña", "ca": "Forn de llenya", "en": "Wood-fired", "it": "Forno a legna"},
+     "texto": {"es": "Crema de trufa negra, fior di latte y champiñones.", "ca": "Crema de tòfona negra, fior di latte i xampinyons.", "en": "Black truffle cream, fior di latte and mushrooms.", "it": "Crema di tartufo nero, fior di latte e funghi."}},
+    {"nombre": "Burrata pugliese", "foto": "plato-3", "precio": 14.5, "etiqueta": {"es": "Para compartir", "ca": "Per compartir", "en": "To share", "it": "Da condividere"},
+     "texto": {"es": "Burrata cremosa, tomates de temporada, albahaca y aceite de Liguria.", "ca": "Burrata cremosa, tomàquets de temporada, alfàbrega i oli de la Ligúria.", "en": "Creamy burrata, seasonal tomatoes, basil and Ligurian olive oil.", "it": "Burrata cremosa, pomodori di stagione, basilico e olio ligure."}},
+    {"nombre": "Cacio e pepe", "foto": "plato-4", "precio": 13, "etiqueta": {"es": "Receta romana", "ca": "Recepta romana", "en": "Roman classic", "it": "Ricetta romana"},
+     "texto": {"es": "Pecorino romano y pimienta negra recién molida. Nada más, nada menos.", "ca": "Pecorino romano i pebre negre acabat de moldre. Res més, res menys.", "en": "Pecorino romano and freshly ground black pepper. Nothing more, nothing less.", "it": "Pecorino romano e pepe nero macinato al momento. Niente di più, niente di meno."}},
+    {"nombre": "Pappardelle al cinghiale", "foto": "plato-5", "precio": 17, "etiqueta": {"es": "Temporada", "ca": "Temporada", "en": "Seasonal", "it": "Di stagione"},
+     "texto": {"es": "Ragù de jabalí al vino tinto, a fuego lento toda la mañana.", "ca": "Ragù de senglar al vi negre, a foc lent tot el matí.", "en": "Wild boar ragù in red wine, simmered all morning.", "it": "Ragù di cinghiale al vino rosso, a fuoco lento tutta la mattina."}},
+    {"nombre": "Tiramisù della nonna", "foto": "plato-6", "precio": 7, "etiqueta": {"es": "Receta de la nonna", "ca": "Recepta de la nonna", "en": "Nonna’s recipe", "it": "Ricetta della nonna"},
+     "texto": {"es": "Mascarpone, café de moka y savoiardi. La receta de siempre.", "ca": "Mascarpone, cafè de moka i savoiardi. La recepta de sempre.", "en": "Mascarpone, moka coffee and savoiardi. The recipe that never changes.", "it": "Mascarpone, caffè della moka e savoiardi. La ricetta di sempre."}}
+  ],
+
+  "carta": [
+    {
+      "id": "antipasti", "nombre": "Antipasti",
+      "sub": {"es": "Para empezar y compartir", "ca": "Per començar i compartir", "en": "To start and share", "it": "Per iniziare e condividere"},
+      "platos": [
+        {"nombre": "Burrata pugliese", "precio": 14.5, "veg": true, "texto": {"es": "Tomates de temporada, albahaca y aceite de Liguria.", "ca": "Tomàquets de temporada, alfàbrega i oli de la Ligúria.", "en": "Seasonal tomatoes, basil and Ligurian olive oil.", "it": "Pomodori di stagione, basilico e olio ligure."}},
+        {"nombre": "Vitello tonnato", "precio": 13, "texto": {"es": "Ternera rosada en láminas con salsa de atún y alcaparras.", "ca": "Vedella rosada a làmines amb salsa de tonyina i tàperes.", "en": "Thin slices of pink veal with tuna sauce and capers.", "it": "Fettine di vitello rosato con salsa tonnata e capperi."}},
+        {"nombre": "Carpaccio di manzo", "precio": 14, "texto": {"es": "Buey con rúcula, parmigiano de 24 meses y limón.", "ca": "Bou amb ruca, parmigiano de 24 mesos i llimona.", "en": "Beef with rocket, 24-month parmigiano and lemon.", "it": "Manzo con rucola, parmigiano 24 mesi e limone."}},
+        {"nombre": "Arancini siciliani", "precio": 9.5, "texto": {"es": "Tres croquetas de arroz rellenas de ragù y mozzarella.", "ca": "Tres croquetes d’arròs farcides de ragù i mozzarella.", "en": "Three rice balls filled with ragù and mozzarella.", "it": "Tre arancini ripieni di ragù e mozzarella."}},
+        {"nombre": "Parmigiana di melanzane", "precio": 12, "veg": true, "texto": {"es": "Berenjena al horno con tomate, mozzarella y parmigiano.", "ca": "Albergínia al forn amb tomàquet, mozzarella i parmigiano.", "en": "Baked aubergine with tomato, mozzarella and parmigiano.", "it": "Melanzane al forno con pomodoro, mozzarella e parmigiano."}}
+      ]
+    },
+    {
+      "id": "pizze", "nombre": "Pizze",
+      "sub": {"es": "Del horno de leña · masa de 48 h", "ca": "Del forn de llenya · massa de 48 h", "en": "From the wood-fired oven · 48-hour dough", "it": "Dal forno a legna · impasto 48 ore"},
+      "platos": [
+        {"nombre": "Margherita", "precio": 11, "veg": true, "texto": {"es": "Tomate San Marzano, fior di latte y albahaca.", "ca": "Tomàquet San Marzano, fior di latte i alfàbrega.", "en": "San Marzano tomato, fior di latte and basil.", "it": "Pomodoro San Marzano, fior di latte e basilico."}},
+        {"nombre": "Diavola", "precio": 13.5, "picante": true, "texto": {"es": "Tomate, fior di latte y salami picante de Calabria.", "ca": "Tomàquet, fior di latte i salami picant de Calàbria.", "en": "Tomato, fior di latte and spicy Calabrian salami.", "it": "Pomodoro, fior di latte e salame piccante calabrese."}},
+        {"nombre": "Quattro formaggi", "precio": 14, "veg": true, "texto": {"es": "Fior di latte, gorgonzola, taleggio y parmigiano.", "ca": "Fior di latte, gorgonzola, taleggio i parmigiano.", "en": "Fior di latte, gorgonzola, taleggio and parmigiano.", "it": "Fior di latte, gorgonzola, taleggio e parmigiano."}},
+        {"nombre": "Prosciutto e funghi", "precio": 14, "texto": {"es": "Tomate, fior di latte, jamón cocido y champiñones.", "ca": "Tomàquet, fior di latte, pernil dolç i xampinyons.", "en": "Tomato, fior di latte, cooked ham and mushrooms.", "it": "Pomodoro, fior di latte, prosciutto cotto e funghi."}},
+        {"nombre": "Pizza tartufata", "precio": 16.5, "veg": true, "texto": {"es": "Crema de trufa negra, fior di latte y champiñones.", "ca": "Crema de tòfona negra, fior di latte i xampinyons.", "en": "Black truffle cream, fior di latte and mushrooms.", "it": "Crema di tartufo nero, fior di latte e funghi."}}
+      ]
+    },
+    {
+      "id": "pasta", "nombre": "Pasta",
+      "sub": {"es": "Fresca, hecha cada mañana", "ca": "Fresca, feta cada matí", "en": "Fresh, made every morning", "it": "Fresca, fatta ogni mattina"},
+      "platos": [
+        {"nombre": "Tagliatelle al ragù", "precio": 15, "texto": {"es": "Ragù a la boloñesa cocinado seis horas.", "ca": "Ragù a la bolonyesa cuinat sis hores.", "en": "Bolognese ragù slow-cooked for six hours.", "it": "Ragù alla bolognese cotto sei ore."}},
+        {"nombre": "Cacio e pepe", "precio": 13, "veg": true, "texto": {"es": "Tonnarelli con pecorino romano y pimienta negra.", "ca": "Tonnarelli amb pecorino romano i pebre negre.", "en": "Tonnarelli with pecorino romano and black pepper.", "it": "Tonnarelli con pecorino romano e pepe nero."}},
+        {"nombre": "Spaghetti alle vongole", "precio": 18, "texto": {"es": "Almejas, ajo, perejil y un toque de guindilla.", "ca": "Cloïsses, all, julivert i un toc de bitxo.", "en": "Clams, garlic, parsley and a touch of chilli.", "it": "Vongole, aglio, prezzemolo e un tocco di peperoncino."}},
+        {"nombre": "Ravioli ricotta e spinaci", "precio": 15, "veg": true, "texto": {"es": "Con mantequilla y salvia.", "ca": "Amb mantega i sàlvia.", "en": "With butter and sage.", "it": "Con burro e salvia."}},
+        {"nombre": "Pappardelle al cinghiale", "precio": 17, "texto": {"es": "Ragù de jabalí al vino tinto.", "ca": "Ragù de senglar al vi negre.", "en": "Wild boar ragù in red wine.", "it": "Ragù di cinghiale al vino rosso."}}
+      ]
+    },
+    {
+      "id": "dolci", "nombre": "Dolci",
+      "sub": {"es": "Para terminar", "ca": "Per acabar", "en": "To finish", "it": "Per finire"},
+      "platos": [
+        {"nombre": "Tiramisù della nonna", "precio": 7, "veg": true, "texto": {"es": "Mascarpone, café de moka y savoiardi.", "ca": "Mascarpone, cafè de moka i savoiardi.", "en": "Mascarpone, moka coffee and savoiardi.", "it": "Mascarpone, caffè della moka e savoiardi."}},
+        {"nombre": "Panna cotta ai frutti di bosco", "precio": 6.5, "veg": true, "texto": {"es": "Nata cocida con vainilla y frutos rojos.", "ca": "Nata cuita amb vainilla i fruits vermells.", "en": "Vanilla panna cotta with berries.", "it": "Panna cotta alla vaniglia con frutti di bosco."}},
+        {"nombre": "Cannoli siciliani", "precio": 7, "veg": true, "texto": {"es": "Rellenos al momento de ricotta y pistacho.", "ca": "Farcits al moment de ricotta i festuc.", "en": "Filled to order with ricotta and pistachio.", "it": "Riempiti al momento con ricotta e pistacchio."}},
+        {"nombre": "Affogato al caffè", "precio": 5.5, "veg": true, "texto": {"es": "Helado de vainilla con un espresso caliente por encima.", "ca": "Gelat de vainilla amb un espresso calent per sobre.", "en": "Vanilla ice cream drowned in a hot espresso.", "it": "Gelato alla vaniglia affogato in un espresso caldo."}}
+      ]
+    },
+    {
+      "id": "vini", "nombre": "Vini",
+      "sub": {"es": "Copa · botella", "ca": "Copa · ampolla", "en": "Glass · bottle", "it": "Calice · bottiglia"},
+      "platos": [
+        {"nombre": "Prosecco DOC", "precio": 5.5, "botella": 26, "texto": {"es": "Burbuja fina para empezar. Véneto.", "ca": "Bombolla fina per començar. Vèneto.", "en": "Fine bubbles to begin. Veneto.", "it": "Bollicina fine per iniziare. Veneto."}},
+        {"nombre": "Vermentino di Sardegna", "precio": 5, "botella": 24, "texto": {"es": "Blanco fresco y salino. Cerdeña.", "ca": "Blanc fresc i salí. Sardenya.", "en": "Fresh, saline white. Sardinia.", "it": "Bianco fresco e sapido. Sardegna."}},
+        {"nombre": "Chianti Classico DOCG", "precio": 6, "botella": 29, "texto": {"es": "Tinto de sangiovese, cereza y especias. Toscana.", "ca": "Negre de sangiovese, cirera i espècies. Toscana.", "en": "Sangiovese red, cherry and spice. Tuscany.", "it": "Rosso di sangiovese, ciliegia e spezie. Toscana."}},
+        {"nombre": "Primitivo di Manduria", "precio": 6.5, "botella": 31, "texto": {"es": "Tinto intenso y redondo. Apulia.", "ca": "Negre intens i rodó. Pulla.", "en": "Deep, round red. Apulia.", "it": "Rosso intenso e morbido. Puglia."}},
+        {"nombre": "Barolo DOCG", "botella": 58, "texto": {"es": "Nebbiolo para una noche especial. Piamonte.", "ca": "Nebbiolo per a una nit especial. Piemont.", "en": "Nebbiolo for a special night. Piedmont.", "it": "Nebbiolo per una serata speciale. Piemonte."}}
+      ]
+    }
+  ],
+
+  "resenas": [
+    {"nombre": "Marta G.", "estrellas": 5, "cuando": {"es": "hace 2 semanas", "ca": "fa 2 setmanes", "en": "2 weeks ago", "it": "2 settimane fa"},
+     "texto": {"es": "Las tagliatelle al ragù me llevaron directa a Bolonia. Volveremos solo por el tiramisù.", "ca": "Les tagliatelle al ragù em van portar directa a Bolonya. Tornarem només pel tiramisù.", "en": "The tagliatelle al ragù took me straight to Bologna. We’ll be back just for the tiramisù.", "it": "Le tagliatelle al ragù mi hanno portata dritta a Bologna. Torneremo solo per il tiramisù."}},
+    {"nombre": "Jordi P.", "estrellas": 5, "cuando": {"es": "hace 1 mes", "ca": "fa 1 mes", "en": "1 month ago", "it": "1 mese fa"},
+     "texto": {"es": "Pizza ligera, borde perfecto y un servicio encantador. La terraza por la noche es un lujo.", "ca": "Pizza lleugera, vora perfecta i un servei encantador. La terrassa a la nit és un luxe.", "en": "Light pizza, perfect crust and lovely service. The terrace at night is a treat.", "it": "Pizza leggera, cornicione perfetto e un servizio delizioso. Il dehors la sera è un lusso."}},
+    {"nombre": "Giulia R.", "estrellas": 5, "cuando": {"es": "hace 3 semanas", "ca": "fa 3 setmanes", "en": "3 weeks ago", "it": "3 settimane fa"},
+     "texto": {"es": "Cacio e pepe de verdad, cremosa y sin nata. Por fin en Girona, como en Roma.", "ca": "Cacio e pepe de veritat, cremosa i sense nata. Per fi a Girona, com a Roma.", "en": "Proper cacio e pepe, creamy with no cream. Finally in Girona, just like in Rome.", "it": "Una cacio e pepe vera, cremosa e senza panna. Finalmente a Girona, come a Roma."}},
+    {"nombre": "Anna i Pere", "estrellas": 5, "cuando": {"es": "hace 2 meses", "ca": "fa 2 mesos", "en": "2 months ago", "it": "2 mesi fa"},
+     "texto": {"es": "Reservamos por WhatsApp en un minuto y nos guardaron mesa en la terraza. Todo buenísimo.", "ca": "Vam reservar per WhatsApp en un minut i ens van guardar taula a la terrassa. Tot boníssim.", "en": "We booked on WhatsApp in a minute and they saved us a table on the terrace. Everything was delicious.", "it": "Abbiamo prenotato su WhatsApp in un minuto e ci hanno tenuto un tavolo nel dehors. Tutto buonissimo."}},
+    {"nombre": "Laura M.", "estrellas": 4, "cuando": {"es": "hace 1 semana", "ca": "fa 1 setmana", "en": "1 week ago", "it": "1 settimana fa"},
+     "texto": {"es": "La burrata con un Vermentino bien frío: plan perfecto para una noche de verano. Los viernes, mejor reservar.", "ca": "La burrata amb un Vermentino ben fred: pla perfecte per a una nit d’estiu. Els divendres, millor reservar.", "en": "Burrata with an ice-cold Vermentino: the perfect summer evening. Book ahead on Fridays.", "it": "Burrata e un Vermentino ben freddo: serata estiva perfetta. Il venerdì meglio prenotare."}}
+  ],
+
+  "legal": {
+    "_nota": "Тексты legal.html. {titular}, {nif}, {domicilio}, {email}, {telefono}, {nombre}, {ciudad} — из negocio. У клиента данные — только из 2_PREPARADO\\aviso-legal.md.",
+    "titulo": {"es": "Aviso legal, privacidad y cookies", "ca": "Avís legal, privacitat i galetes", "en": "Legal notice, privacy and cookies", "it": "Note legali, privacy e cookie"},
+    "nota_demo": {"es": "Da Livia es un negocio ficticio, creado por Oskal Studio como diseño de ejemplo. Los datos entre corchetes se sustituyen por los reales en cada web.", "ca": "Da Livia és un negoci fictici, creat per Oskal Studio com a disseny d’exemple. Les dades entre claudàtors se substitueixen per les reals a cada web.", "en": "Da Livia is a fictional business created by Oskal Studio as a sample design. The details in square brackets are replaced with real ones on each website.", "it": "Da Livia è un’attività fittizia, creata da Oskal Studio come design di esempio. I dati tra parentesi quadre vengono sostituiti con quelli reali in ogni sito."},
+    "actualizado": {"es": "Última actualización: octubre de 2026", "ca": "Última actualització: octubre de 2026", "en": "Last updated: October 2026", "it": "Ultimo aggiornamento: ottobre 2026"},
+    "secciones": [
+      {
+        "id": "aviso",
+        "titulo": {"es": "Aviso legal", "ca": "Avís legal", "en": "Legal notice", "it": "Note legali"},
+        "html": {
+          "es": "<p>En cumplimiento de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), te informamos de los datos del titular de esta web:</p><ul><li><strong>Titular:</strong> {titular}</li><li><strong>NIF:</strong> {nif}</li><li><strong>Domicilio:</strong> {domicilio}</li><li><strong>Correo:</strong> {email}</li><li><strong>Teléfono:</strong> {telefono}</li></ul><h3>Objeto</h3><p>Esta web presenta el restaurante {nombre}, su carta y su horario, y facilita reservar mesa.</p><h3>Propiedad intelectual</h3><p>Los textos, las imágenes, el logotipo y el diseño de esta web pertenecen a su titular o se usan con autorización. No se pueden reproducir sin permiso.</p><h3>Responsabilidad</h3><p>El titular no se hace responsable del mal uso que terceros puedan hacer de la información publicada. La carta y los precios pueden cambiar según la temporada.</p><h3>Legislación</h3><p>Esta web se rige por la legislación española. Para cualquier conflicto, las partes se someten a los juzgados y tribunales de {ciudad}.</p>",
+          "ca": "<p>En compliment de la Llei 34/2002, de serveis de la societat de la informació i de comerç electrònic (LSSI-CE), t’informem de les dades del titular d’aquest web:</p><ul><li><strong>Titular:</strong> {titular}</li><li><strong>NIF:</strong> {nif}</li><li><strong>Domicili:</strong> {domicilio}</li><li><strong>Correu:</strong> {email}</li><li><strong>Telèfon:</strong> {telefono}</li></ul><h3>Objecte</h3><p>Aquest web presenta el restaurant {nombre}, la seva carta i el seu horari, i facilita reservar taula.</p><h3>Propietat intel·lectual</h3><p>Els textos, les imatges, el logotip i el disseny d’aquest web pertanyen al seu titular o s’utilitzen amb autorització. No es poden reproduir sense permís.</p><h3>Responsabilitat</h3><p>El titular no es fa responsable del mal ús que tercers puguin fer de la informació publicada. La carta i els preus poden canviar segons la temporada.</p><h3>Legislació</h3><p>Aquest web es regeix per la legislació espanyola. Per a qualsevol conflicte, les parts se sotmeten als jutjats i tribunals de {ciudad}.</p>",
+          "en": "<p>In compliance with Spanish Law 34/2002 on information society services and e-commerce (LSSI-CE), these are the details of the owner of this website:</p><ul><li><strong>Owner:</strong> {titular}</li><li><strong>Tax ID (NIF):</strong> {nif}</li><li><strong>Address:</strong> {domicilio}</li><li><strong>Email:</strong> {email}</li><li><strong>Phone:</strong> {telefono}</li></ul><h3>Purpose</h3><p>This website presents the {nombre} restaurant, its menu and opening hours, and makes it easy to book a table.</p><h3>Intellectual property</h3><p>The texts, images, logo and design of this website belong to its owner or are used with permission. They may not be reproduced without consent.</p><h3>Liability</h3><p>The owner is not responsible for any misuse of the published information by third parties. The menu and prices may change with the seasons.</p><h3>Governing law</h3><p>This website is governed by Spanish law. Any dispute will be submitted to the courts of {ciudad}.</p>",
+          "it": "<p>Ai sensi della Legge spagnola 34/2002 sui servizi della società dell’informazione e sul commercio elettronico (LSSI-CE), ecco i dati del titolare di questo sito:</p><ul><li><strong>Titolare:</strong> {titular}</li><li><strong>Codice fiscale (NIF):</strong> {nif}</li><li><strong>Sede:</strong> {domicilio}</li><li><strong>Email:</strong> {email}</li><li><strong>Telefono:</strong> {telefono}</li></ul><h3>Oggetto</h3><p>Questo sito presenta il ristorante {nombre}, il suo menù e i suoi orari, e permette di prenotare un tavolo.</p><h3>Proprietà intellettuale</h3><p>I testi, le immagini, il logo e il design di questo sito appartengono al titolare o sono usati con autorizzazione. Non possono essere riprodotti senza permesso.</p><h3>Responsabilità</h3><p>Il titolare non è responsabile dell’uso improprio delle informazioni pubblicate da parte di terzi. Il menù e i prezzi possono cambiare con le stagioni.</p><h3>Legge applicabile</h3><p>Questo sito è regolato dalla legge spagnola. Per qualsiasi controversia, le parti si sottomettono ai tribunali di {ciudad}.</p>"
+        }
+      },
+      {
+        "id": "privacidad",
+        "titulo": {"es": "Política de privacidad", "ca": "Política de privacitat", "en": "Privacy policy", "it": "Informativa sulla privacy"},
+        "html": {
+          "es": "<p>De acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), te explicamos cómo tratamos tus datos.</p><h3>Responsable</h3><p>{titular} — NIF {nif} — {domicilio} — {email}.</p><h3>Qué datos y para qué</h3><p>Los datos que escribes en el formulario de reserva (nombre, teléfono, día, hora, número de personas y comentario) se usan solo para gestionar tu reserva y contestarte. Si nos cuentas alergias o intolerancias, las usamos únicamente para preparar tu comida con seguridad. Al enviar el formulario se abre WhatsApp con tu mensaje: el envío lo haces tú y queda sujeto también a la política de privacidad de WhatsApp (Meta).</p><h3>Base legal</h3><p>Tu consentimiento, que das al marcar la casilla y enviar el mensaje.</p><h3>Conservación</h3><p>Mientras sea necesario para gestionar tu reserva y, después, durante el tiempo que exija la ley.</p><h3>Destinatarios</h3><p>No cedemos tus datos a terceros, salvo obligación legal.</p><h3>Tus derechos</h3><p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación y la portabilidad de tus datos escribiendo a {email}. También puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).</p>",
+          "ca": "<p>D’acord amb el Reglament (UE) 2016/679 (RGPD) i la Llei orgànica 3/2018 (LOPDGDD), t’expliquem com tractem les teves dades.</p><h3>Responsable</h3><p>{titular} — NIF {nif} — {domicilio} — {email}.</p><h3>Quines dades i per a què</h3><p>Les dades que escrius al formulari de reserva (nom, telèfon, dia, hora, nombre de persones i comentari) s’utilitzen només per gestionar la teva reserva i respondre’t. Si ens expliques al·lèrgies o intoleràncies, les fem servir únicament per preparar el teu menjar amb seguretat. En enviar el formulari s’obre WhatsApp amb el teu missatge: l’enviament el fas tu i també està subjecte a la política de privacitat de WhatsApp (Meta).</p><h3>Base legal</h3><p>El teu consentiment, que dones en marcar la casella i enviar el missatge.</p><h3>Conservació</h3><p>Mentre sigui necessari per gestionar la teva reserva i, després, durant el temps que exigeixi la llei.</p><h3>Destinataris</h3><p>No cedim les teves dades a tercers, tret d’obligació legal.</p><h3>Els teus drets</h3><p>Pots demanar l’accés, la rectificació, la supressió, l’oposició, la limitació i la portabilitat de les teves dades escrivint a {email}. També pots reclamar davant l’Agència Espanyola de Protecció de Dades (www.aepd.es).</p>",
+          "en": "<p>In accordance with Regulation (EU) 2016/679 (GDPR) and Spanish Organic Law 3/2018 (LOPDGDD), here is how we handle your data.</p><h3>Data controller</h3><p>{titular} — Tax ID {nif} — {domicilio} — {email}.</p><h3>What data and why</h3><p>The details you enter in the booking form (name, phone, date, time, number of guests and comments) are used only to manage your booking and reply to you. If you tell us about allergies or intolerances, we use them solely to prepare your food safely. Submitting the form opens WhatsApp with your message: you send it yourself, and it is also subject to WhatsApp’s (Meta) privacy policy.</p><h3>Legal basis</h3><p>Your consent, given by ticking the box and sending the message.</p><h3>Retention</h3><p>As long as needed to manage your booking and, afterwards, for the period required by law.</p><h3>Recipients</h3><p>We do not share your data with third parties unless required by law.</p><h3>Your rights</h3><p>You can request access, rectification, erasure, objection, restriction and portability of your data by writing to {email}. You can also complain to the Spanish Data Protection Agency (www.aepd.es).</p>",
+          "it": "<p>In conformità al Regolamento (UE) 2016/679 (GDPR) e alla Legge organica spagnola 3/2018 (LOPDGDD), ti spieghiamo come trattiamo i tuoi dati.</p><h3>Titolare del trattamento</h3><p>{titular} — NIF {nif} — {domicilio} — {email}.</p><h3>Quali dati e per cosa</h3><p>I dati che inserisci nel modulo di prenotazione (nome, telefono, giorno, ora, numero di persone e note) servono solo a gestire la prenotazione e a risponderti. Se ci segnali allergie o intolleranze, le usiamo esclusivamente per preparare il tuo pasto in sicurezza. Inviando il modulo si apre WhatsApp con il tuo messaggio: l’invio lo fai tu ed è soggetto anche all’informativa sulla privacy di WhatsApp (Meta).</p><h3>Base giuridica</h3><p>Il tuo consenso, che dai spuntando la casella e inviando il messaggio.</p><h3>Conservazione</h3><p>Per il tempo necessario a gestire la prenotazione e, in seguito, per il periodo previsto dalla legge.</p><h3>Destinatari</h3><p>Non cediamo i tuoi dati a terzi, salvo obbligo di legge.</p><h3>I tuoi diritti</h3><p>Puoi chiedere l’accesso, la rettifica, la cancellazione, l’opposizione, la limitazione e la portabilità dei tuoi dati scrivendo a {email}. Puoi anche presentare reclamo all’Agenzia spagnola per la protezione dei dati (www.aepd.es).</p>"
+        }
+      },
+      {
+        "id": "cookies",
+        "titulo": {"es": "Política de cookies", "ca": "Política de galetes", "en": "Cookie policy", "it": "Cookie policy"},
+        "html": {
+          "es": "<p>Esta web <strong>no usa cookies</strong> de análisis, seguimiento ni publicidad, y no crea perfiles de los visitantes. Las fuentes tipográficas y las librerías de animación se sirven desde la propia web.</p><p>El mapa se muestra con OpenStreetMap y la librería Leaflet, que se carga desde unpkg.com. Al mostrar el mapa, tu navegador se conecta a esos servidores, que pueden tratar tu dirección IP; no instalan cookies.</p>",
+          "ca": "<p>Aquest web <strong>no utilitza galetes</strong> d’anàlisi, seguiment ni publicitat, i no crea perfils dels visitants. Les fonts tipogràfiques i les biblioteques d’animació se serveixen des del mateix web.</p><p>El mapa es mostra amb OpenStreetMap i la biblioteca Leaflet, que es carrega des d’unpkg.com. En mostrar el mapa, el teu navegador es connecta a aquests servidors, que poden tractar la teva adreça IP; no hi instal·len galetes.</p>",
+          "en": "<p>This website <strong>does not use cookies</strong> for analytics, tracking or advertising, and does not build visitor profiles. Fonts and animation libraries are served from this website itself.</p><p>The map is displayed with OpenStreetMap and the Leaflet library, loaded from unpkg.com. When the map is shown, your browser connects to those servers, which may process your IP address; they do not set cookies.</p>",
+          "it": "<p>Questo sito <strong>non usa cookie</strong> di analisi, tracciamento o pubblicità e non crea profili dei visitatori. I caratteri tipografici e le librerie di animazione sono serviti dal sito stesso.</p><p>La mappa è mostrata con OpenStreetMap e la libreria Leaflet, caricata da unpkg.com. Quando la mappa viene mostrata, il tuo browser si collega a questi server, che possono trattare il tuo indirizzo IP; non installano cookie.</p>"
+        }
+      }
+    ]
+  },
+
+  "fotos": {
+    "_reglas": "- Делать **в одном чате ChatGPT, по порядку** — так свет и цвет будут одинаковыми (тёплый вечер, крем, тёмная олива, терракота, вино).\n- Каждый запрос — целиком, он самодостаточный (стиль уже внутри).\n- Получилось «пластиково» или слишком глянцево — ответить: `Make it look like a real camera photo: natural textures, softer and less contrasty light, lower saturation, no glossy finish, keep everything else.`\n- Еда: без лишнего блеска, порция как в ресторане, без надписей на тарелках и бутылках; руки — 5 пальцев, лица — не видны.\n- Скачать PNG, назвать как в таблице (`hero.png` можно — сборка сама сделает WebP), положить в `fotos\\`, запустить `python build.py`.\n- Ролик в шапку (необязательно): `hero.mp4` в `fotos\\` — см. `video_portada` в contenido.json.\n- Для сайта настоящего клиента — только его фото (после `fotos.py`), эти — только для демо.",
+    "hero": {
+      "archivo": "hero.webp", "ancho": 1536, "alto": 1024, "encuadre": "68% 50%", "encuadre_movil": "70% 50%", "tono": "noche", "motivo": "olivo",
+      "donde": "Первый экран на всю ширину (лёгкий параллакс); слева поверх — текст. Место под ролик — video_portada",
+      "alt": {"es": "Sala de Da Livia al atardecer: pared de piedra, velas y botellas de vino", "ca": "Sala de Da Livia al vespre: paret de pedra, espelmes i ampolles de vi", "en": "Da Livia’s dining room at dusk: stone wall, candles and wine bottles", "it": "La sala di Da Livia al tramonto: muro in pietra, candele e bottiglie di vino"},
+      "prompt": "Photorealistic wide interior photo of a cosy Italian trattoria in an old stone building in Girona, Spain, at dusk. On the right half: an exposed warm stone wall, three small wooden tables with cream linen napkins, short candles in glass holders, a carafe of red wine and two glasses, a dark olive-green painted wall with wooden shelves of wine bottles (no readable labels), warm low pendant lights. The left half: calmer, darker stone and soft shadow — empty space for text. Warm evening light, golden candle glow, deep shadows, no people. Eye-level, straight-on composition. Colours: cream, dark olive green, terracotta, deep wine red, warm gold. Real materials and textures (stone, linen, old wood, glass), true-to-life colours, subtle film grain, like a food-magazine interior photo on a full-frame camera with a 35 mm lens. Not a 3D render, no glossy CGI look, no text, no logos, no watermark. Horizontal 3:2, 1536×1024. File name: hero.webp"
+    },
+    "plato-1": {
+      "archivo": "plato-1.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 55%", "tono": "tomate", "motivo": "pasta",
+      "donde": "Лента «Platos de la casa» — Tagliatelle al ragù",
+      "alt": {"es": "Tagliatelle al ragù en un plato de cerámica", "ca": "Tagliatelle al ragù en un plat de ceràmica", "en": "Tagliatelle al ragù in a ceramic bowl", "it": "Tagliatelle al ragù in un piatto di ceramica"},
+      "prompt": "Photorealistic food photo: a plate of fresh egg tagliatelle with rich Bolognese ragù and freshly grated parmigiano, in a cream ceramic plate with a thin terracotta rim, on a rustic dark wooden table with a crumpled cream linen napkin and a fork. Warm evening side light from the left, deep olive-green background softly out of focus, a glass of red wine partly visible at the edge. 45-degree angle, 50 mm lens look, shallow depth of field, natural textures (pasta ribbons, sauce, cheese), restaurant-size portion, true-to-life colours, subtle film grain. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: plato-1.webp"
+    },
+    "plato-2": {
+      "archivo": "plato-2.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "oliva", "motivo": "pizza",
+      "donde": "Лента «Platos de la casa» — Pizza tartufata",
+      "alt": {"es": "Pizza tartufata recién salida del horno de leña", "ca": "Pizza tartufata acabada de sortir del forn de llenya", "en": "Pizza tartufata fresh from the wood-fired oven", "it": "Pizza tartufata appena sfornata dal forno a legna"},
+      "prompt": "Photorealistic food photo: a Neapolitan-style pizza with black truffle cream, melted fior di latte and sliced mushrooms, puffy leopard-spotted crust with real char marks, served on a round wooden board on a rustic table. Warm evening light, soft glow of a wood-fired oven out of focus in the dark olive background. Seen from a high 60-degree angle, 50 mm lens look, shallow depth of field, natural textures, true-to-life colours, subtle film grain. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: plato-2.webp"
+    },
+    "plato-3": {
+      "archivo": "plato-3.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "crema", "motivo": "tomate",
+      "donde": "Лента «Platos de la casa» — Burrata pugliese",
+      "alt": {"es": "Burrata con tomates de temporada y albahaca", "ca": "Burrata amb tomàquets de temporada i alfàbrega", "en": "Burrata with seasonal tomatoes and basil", "it": "Burrata con pomodori di stagione e basilico"},
+      "prompt": "Photorealistic food photo: a whole creamy burrata just cut open, surrounded by colourful seasonal tomatoes (red, yellow, dark), fresh basil leaves, flaky salt and a drizzle of green olive oil, on a cream ceramic plate on a rustic wooden table with a cream linen napkin. Warm evening side light, dark olive-green background out of focus. 45-degree angle, 50 mm lens look, shallow depth of field, natural textures, true-to-life colours, subtle film grain. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: plato-3.webp"
+    },
+    "plato-4": {
+      "archivo": "plato-4.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 55%", "tono": "crema", "motivo": "trigo",
+      "donde": "Лента «Platos de la casa» — Cacio e pepe",
+      "alt": {"es": "Cacio e pepe cremosa con pimienta negra", "ca": "Cacio e pepe cremosa amb pebre negre", "en": "Creamy cacio e pepe with black pepper", "it": "Cacio e pepe cremosa con pepe nero"},
+      "prompt": "Photorealistic food photo: a twisted nest of tonnarelli cacio e pepe, glossy creamy pecorino sauce and plenty of coarse black pepper, in a shallow cream ceramic bowl on a rustic wooden table, a small block of pecorino and a pepper mill softly out of focus. Warm evening side light, dark olive-green background. 45-degree angle, 50 mm lens look, shallow depth of field, natural textures, true-to-life colours, subtle film grain. Not greasy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: plato-4.webp"
+    },
+    "plato-5": {
+      "archivo": "plato-5.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 55%", "tono": "vino", "motivo": "olivo",
+      "donde": "Лента «Platos de la casa» — Pappardelle al cinghiale",
+      "alt": {"es": "Pappardelle con ragù de jabalí al vino tinto", "ca": "Pappardelle amb ragù de senglar al vi negre", "en": "Pappardelle with wild boar ragù in red wine", "it": "Pappardelle al ragù di cinghiale al vino rosso"},
+      "prompt": "Photorealistic food photo: wide fresh pappardelle ribbons with a dark, rustic wild boar ragù cooked in red wine, a sprig of rosemary, in a cream ceramic plate with a terracotta rim on a dark wooden table, a glass of deep red wine beside it. Warm evening light, dark wine-red and olive background out of focus. 45-degree angle, 50 mm lens look, shallow depth of field, natural textures, true-to-life colours, subtle film grain. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: plato-5.webp"
+    },
+    "plato-6": {
+      "archivo": "plato-6.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "tomate", "motivo": "copa",
+      "donde": "Лента «Platos de la casa» — Tiramisù della nonna",
+      "alt": {"es": "Tiramisù casero espolvoreado con cacao", "ca": "Tiramisù casolà empolsat amb cacau", "en": "Homemade tiramisù dusted with cocoa", "it": "Tiramisù fatto in casa spolverato di cacao"},
+      "prompt": "Photorealistic food photo: a generous square of homemade tiramisù showing clear layers of mascarpone cream and coffee-soaked savoiardi, dusted with cocoa, on a small cream plate with a dessert spoon, an espresso cup on a saucer behind it, on a rustic wooden table. Warm evening side light, terracotta and dark olive background out of focus. 45-degree angle, 50 mm lens look, shallow depth of field, natural textures, true-to-life colours, subtle film grain. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: plato-6.webp"
+    },
+    "casa-1": {
+      "archivo": "casa-1.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "crema", "motivo": "cuaderno",
+      "donde": "«La casa» — глава 1: тетрадь рецептов нонны",
+      "alt": {"es": "Manos pasando las páginas de un viejo cuaderno de recetas con harina", "ca": "Mans passant les pàgines d’una llibreta vella de receptes amb farina", "en": "Hands turning the pages of an old flour-dusted recipe notebook", "it": "Mani che sfogliano un vecchio quaderno di ricette infarinato"},
+      "prompt": "Photorealistic close-up: the hands of a woman in her fifties (face not visible) turning the pages of an old handwritten Italian recipe notebook with worn edges and a few flour marks, on a floured wooden kitchen table, a rolling pin and a small bowl of eggs nearby. The handwriting is illegible and blurred (no readable words). Warm soft window light, cream and terracotta tones, dark olive kitchen background out of focus. Real skin texture, exactly five fingers on each hand. 50 mm lens look, shallow depth of field, true-to-life colours, subtle film grain, quiet documentary style. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: casa-1.webp"
+    },
+    "casa-2": {
+      "archivo": "casa-2.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "oliva", "motivo": "pasta",
+      "donde": "«La casa» — глава 2: свежая паста по утрам",
+      "alt": {"es": "Manos cortando tagliatelle frescas sobre una tabla enharinada", "ca": "Mans tallant tagliatelle fresques sobre una taula enfarinada", "en": "Hands cutting fresh tagliatelle on a floured board", "it": "Mani che tagliano tagliatelle fresche su un tagliere infarinato"},
+      "prompt": "Photorealistic close-up in a small restaurant kitchen in the morning: a cook’s hands (face not visible) cutting a rolled sheet of fresh yellow egg pasta into tagliatelle with a knife on a large floured wooden board, a few nests of finished tagliatelle on the side, a well of flour and eggs in the background. Soft morning window light, cream and warm yellow tones, dark olive background. Real skin and flour texture, exactly five fingers on each hand. 50 mm lens look, shallow depth of field, true-to-life colours, subtle film grain. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: casa-2.webp"
+    },
+    "casa-3": {
+      "archivo": "casa-3.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "noche", "motivo": "horno",
+      "donde": "«La casa» — глава 3: дровяная печь",
+      "alt": {"es": "Horno de leña encendido con una pizza en la pala", "ca": "Forn de llenya encès amb una pizza a la pala", "en": "Glowing wood-fired oven with a pizza on the peel", "it": "Forno a legna acceso con una pizza sulla pala"},
+      "prompt": "Photorealistic photo of a domed brick wood-fired pizza oven glowing inside with flames and embers on the left, a pizzaiolo’s hand and forearm (face not visible) sliding a pizza on a long metal peel into the oven. Warm firelight on the brick arch, dark surroundings, a stack of holm-oak logs at the bottom. Real textures (brick, ash, flour), slight motion of flames, true-to-life colours, subtle film grain, 35 mm lens look. Not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: casa-3.webp"
+    },
+    "reserva": {
+      "archivo": "reserva.webp", "ancho": 1536, "alto": 1024, "encuadre": "50% 60%", "tono": "noche", "motivo": "copa",
+      "donde": "Фон блока «Reservar mesa» (тёмный, поверх — форма)",
+      "alt": {"es": "Terraza de la trattoria en una plaza del Barri Vell por la noche", "ca": "Terrassa de la trattoria en una plaça del Barri Vell a la nit", "en": "The trattoria’s terrace on an Old Quarter square at night", "it": "Il dehors della trattoria in una piazzetta del Barri Vell di sera"},
+      "prompt": "Photorealistic photo of a small restaurant terrace on a quiet stone-paved square in the old town of Girona at blue hour: a few wooden tables with cream tablecloths, candles in glass, wine glasses, warm string lights above, old stone façades with green wooden shutters, no people or only distant blurred silhouettes. Deep blue sky, warm golden light from the tables, cinematic but natural. 35 mm lens look, true-to-life colours, subtle film grain. Not CGI, no text, no logos, no readable signs. Horizontal 3:2, 1536×1024. File name: reserva.webp"
+    }
+  }
+}

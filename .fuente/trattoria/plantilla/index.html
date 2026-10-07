@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+{% set titulo = textos.seo.titulo %}
+{% set descripcion = textos.seo.descripcion %}
+{% include "_head.html" %}
+<script type="application/ld+json">
+{{ jsonld | raw }}
+</script>
+<script src="{{ raiz }}script.js?v={{ asset_v }}" defer></script>
+</head>
+<body data-libs="{{ raiz }}lib/gsap-3.13.0.min.js,{{ raiz }}lib/ScrollTrigger-3.13.0.min.js,{{ raiz }}lib/lenis-1.3.4.min.js">
+{% include "_sprite.html" %}
+<a class="skip" href="#main">{{ textos.ui.saltar }}</a>
+{% if sitio.demo %}
+<p class="demo-bar">{{ textos.ui.demo_franja }}</p>
+{% endif %}
+{% set msg_general = textos.js.msg_general %}
+
+<header class="hdr" id="top" data-hdr>
+  <div class="wrap hdr__in">
+    <a class="logo" href="#top" aria-label="{{ negocio.nombre }} — {{ textos.ui.inicio }}">
+      {% include "_logo.html" %}
+    </a>
+    <nav class="nav" aria-label="{{ textos.ui.nav_principal }}">
+      <ul class="nav__list">
+        {% include "_nav.html" %}
+      </ul>
+    </nav>
+    <div class="hdr__end">
+      <span class="status hdr__status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span>
+      <nav class="lang" aria-label="{{ textos.ui.idioma }}">
+        {% for a in alternos %}
+        <a class="lang__a" href="{{ a.href }}" hreflang="{{ a.lang }}" lang="{{ a.lang }}" title="{{ a.nombre }}" data-lang-link{% if a.lang == lang %} aria-current="page"{% endif %}>{{ a.lang | upper }}</a>
+        {% endfor %}
+      </nav>
+      <a class="btn btn--vino btn--sm hdr__cta" href="#reservar">{{ textos.nav.reservar }}</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="{{ textos.ui.abrir_menu }}" data-burger data-open="{{ textos.ui.abrir_menu }}" data-close="{{ textos.ui.cerrar_menu }}"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav" id="menu" data-menu hidden>
+  <nav class="mnav__nav" aria-label="{{ textos.ui.nav_principal }}">
+    <ul>
+      {% include "_nav.html" %}
+    </ul>
+  </nav>
+  <div class="mnav__foot">
+    <a class="btn btn--vino btn--full" href="#reservar">{{ textos.nav.reservar }}</a>
+    <p class="mnav__info">{{ negocio.direccion.calle }}, {{ negocio.direccion.ciudad }}<br>{{ horario_resumen }}</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-t" data-spy>
+  <div class="hero__media">
+    <div class="hero__par" data-hero-par>
+      {{ 'hero' | foto('hero__img', 'eager', '100vw', True) }}
+      {% if video_portada %}
+      <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" data-hero-video>
+        {% if video_portada.get('webm') %}
+        <source src="{{ raiz }}{{ video_portada.get('webm') }}" type="video/webm">
+        {% endif %}
+        {% if video_portada.get('mp4') %}
+        <source src="{{ raiz }}{{ video_portada.get('mp4') }}" type="video/mp4">
+        {% endif %}
+      </video>
+      {% endif %}
+    </div>
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <svg class="decor hero__olivo" data-par="-0.12" aria-hidden="true" focusable="false"><use href="#m-olivo"/></svg>
+  <div class="wrap hero__in">
+    <div class="hero__txt">
+      <p class="hero__live hero__a" style="--d:0"><span class="status status--glass" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-txt></span></span></p>
+      <p class="over over--light hero__a" style="--d:1">{{ textos.hero.antetitulo }}</p>
+      <h1 class="hero__t" id="hero-t">{{ textos.hero.titulo | letras }}</h1>
+      <p class="hero__p hero__a" style="--d:7">{{ textos.hero.texto }}</p>
+      <div class="hero__ctas hero__a" style="--d:8">
+        <a class="btn btn--vino btn--lg" id="hero-cta" href="#reservar">{{ textos.nav.reservar }}</a>
+        {% if secciones.carta %}
+        <a class="btn btn--glass btn--lg" href="#carta">{{ textos.hero.cta_secundario }}</a>
+        {% endif %}
+      </div>
+      <ul class="hero__pts hero__a" style="--d:9">
+        {% for p in textos.hero.puntos %}
+        <li>{{ p }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% if video_portada %}
+  <button class="ibtn ibtn--light hero__pausa" type="button" aria-label="{{ textos.ui.pausar_video }}" data-video-pausa hidden><svg class="i" aria-hidden="true"><use href="#i-pausa"/></svg></button>
+  {% endif %}
+  <a class="hero__scroll" href="#platos" aria-hidden="true" tabindex="-1"><span>{{ textos.ui.desliza }}</span><i></i></a>
+</section>
+
+{% if secciones.cinta %}
+<div class="cinta" aria-hidden="true">
+  <div class="cinta__track">
+    {% for vuelta in [1, 2] %}
+    <p class="cinta__grupo">
+      {% for t in textos.cinta.lista %}
+      <span>{{ t }}</span><svg class="cinta__sep"><use href="#i-hoja"/></svg>
+      {% endfor %}
+    </p>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if secciones.platos %}
+<section class="platos" id="platos" aria-labelledby="pl-t">
+  <div class="platos__pin" data-hpin>
+    <div class="wrap platos__head">
+      <div>
+        <p class="over over--light reveal">{{ textos.platos.antetitulo }}</p>
+        <h2 class="sec__t split" id="pl-t">{{ textos.platos.titulo | palabras }}</h2>
+      </div>
+      <p class="sec__p reveal" style="--d:1">{{ textos.platos.texto }}</p>
+    </div>
+    <div class="platos__vp" data-hvp>
+      <ol class="platos__track" data-htrack>
+        {% for p in platos %}
+        {% set msg_p = textos.js.msg_plato.replace('{plato}', p.nombre) %}
+        <li class="dish" data-dish>
+          <div class="dish__card" data-tilt>
+            <div class="dish__media">{{ p.foto | foto('dish__img', 'lazy', '(min-width: 960px) 30vw, 78vw') }}</div>
+            <span class="dish__n" aria-hidden="true">0{{ loop.index }}</span>
+            <span class="dish__tag">{{ p.etiqueta }}</span>
+            <div class="dish__body">
+              <h3 class="dish__t" lang="it">{{ p.nombre }}</h3>
+              <p class="dish__p">{{ p.texto }}</p>
+              <div class="dish__foot">
+                <span class="dish__precio">{{ p.precio | precio }}</span>
+                <a class="link link--light" href="{{ msg_p | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_p }}">{{ textos.platos.pedir }}<svg class="i" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="wrap platos__bar" aria-hidden="true">
+      <span class="platos__prog"><i data-hbar></i></span>
+      <span class="platos__count"><b data-hnum>01</b> / 0{{ len(platos) }}</span>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.casa %}
+<section class="sec casa" id="casa" aria-labelledby="casa-t">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="over reveal">{{ textos.casa.antetitulo }}</p>
+      <h2 class="sec__t split" id="casa-t">{{ textos.casa.titulo | palabras }}</h2>
+    </header>
+    <div class="casa__grid" data-casa>
+      <div class="casa__media">
+        <div class="casa__frame">
+          {% for c in textos.casa.capitulos %}
+          <div class="casa__img{% if loop.first %} is-on{% endif %}" data-casa-img>{{ c.foto | foto('', 'lazy', '(min-width: 960px) 42vw, 92vw') }}</div>
+          {% endfor %}
+          <span class="casa__num" aria-hidden="true"><b data-casa-num>01</b> / 0{{ len(textos.casa.capitulos) }}</span>
+          <span class="casa__prog" aria-hidden="true"><i data-casa-bar></i></span>
+        </div>
+      </div>
+      <ol class="casa__steps">
+        {% for c in textos.casa.capitulos %}
+        <li class="casa__step{% if loop.first %} is-on{% endif %}" data-casa-step>
+          <span class="casa__k" aria-hidden="true">0{{ loop.index }}</span>
+          <h3 class="casa__t">{{ c.titulo }}</h3>
+          <p class="casa__p">{{ c.texto }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.cifras %}
+<section class="cifras" aria-label="{{ textos.cifras.titulo }}">
+  <svg class="decor cifras__trigo" data-par="0.1" aria-hidden="true" focusable="false"><use href="#m-trigo"/></svg>
+  <div class="wrap cifras__grid">
+    {% for c in cifras %}
+    <div class="cifra reveal" style="--d:{{ loop.index0 }}">
+      <p class="cifra__n">{{ c.get('prefijo', '') }}<span data-count="{{ c.valor }}" data-dec="{{ c.get('decimales', 0) }}">{{ c.valor | numero(c.get('decimales', 0)) }}</span><span class="cifra__suf">{{ c.get('sufijo', '') }}</span></p>
+      <p class="cifra__t">{{ c.texto }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.carta %}
+<section class="sec sec--alt carta" id="carta" aria-labelledby="carta-t">
+  <svg class="decor carta__tomate" data-par="-0.08" aria-hidden="true" focusable="false"><use href="#m-tomate"/></svg>
+  <div class="wrap wrap--mid">
+    <header class="sec__head sec__head--c">
+      <p class="over reveal">{{ textos.carta.antetitulo }}</p>
+      <h2 class="sec__t split" id="carta-t">{{ textos.carta.titulo | palabras }}</h2>
+      <p class="sec__p reveal" style="--d:1">{{ textos.carta.texto }}</p>
+    </header>
+    <div class="tabs reveal" data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="{{ textos.carta.antetitulo }}">
+        {% for s in carta %}
+        <button class="tabs__tab" type="button" role="tab" id="tab-{{ s.id }}" aria-controls="panel-{{ s.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}" data-tab="{{ s.id }}" lang="it">{{ s.nombre }}</button>
+        {% endfor %}
+        <span class="tabs__ink" aria-hidden="true"></span>
+      </div>
+      <div class="tabs__box" data-tabs-box>
+        {% for s in carta %}
+        <div class="tabs__panel{% if loop.first %} is-on{% endif %}" role="tabpanel" id="panel-{{ s.id }}" aria-labelledby="tab-{{ s.id }}" tabindex="0">
+          <p class="menu__sub"><span lang="it">{{ s.nombre }}</span> · {{ s.sub }}</p>
+          <ul class="menu">
+            {% for p in s.platos %}
+            <li class="menu__it" data-mi>
+              <div class="menu__row">
+                <h3 class="menu__n"><span lang="it">{{ p.nombre }}</span>{% if p.get('veg') %}<svg class="i menu__ic menu__ic--veg" role="img" aria-label="{{ textos.carta.vegetariano }}"><title>{{ textos.carta.vegetariano }}</title><use href="#i-hoja"/></svg>{% endif %}{% if p.get('picante') %}<svg class="i menu__ic menu__ic--pic" role="img" aria-label="{{ textos.carta.picante }}"><title>{{ textos.carta.picante }}</title><use href="#i-picante"/></svg>{% endif %}</h3>
+                <span class="menu__dots" aria-hidden="true"></span>
+                <p class="menu__pr">
+                  {% if p.get('botella') %}
+                  {% if p.get('precio') %}<span>{{ p.precio | precio }} <small>{{ textos.carta.copa }}</small></span>{% endif %}
+                  <span>{{ p.botella | precio }} <small>{{ textos.carta.botella }}</small></span>
+                  {% else %}
+                  <span>{{ p.precio | precio }}</span>
+                  {% endif %}
+                </p>
+              </div>
+              <p class="menu__d">{{ p.texto }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="carta__pie reveal">
+      <p class="carta__ley"><span><svg class="i menu__ic menu__ic--veg" aria-hidden="true"><use href="#i-hoja"/></svg>{{ textos.carta.vegetariano }}</span><span><svg class="i menu__ic menu__ic--pic" aria-hidden="true"><use href="#i-picante"/></svg>{{ textos.carta.picante }}</span></p>
+      <p class="carta__nota">{{ textos.carta.nota }}</p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.opiniones %}
+<section class="sec opiniones" id="opiniones" aria-labelledby="op-t">
+  <div class="wrap">
+    <header class="sec__head sec__head--split">
+      <div>
+        <p class="over reveal">{{ textos.opiniones.antetitulo }}</p>
+        <h2 class="sec__t split" id="op-t">{{ textos.opiniones.titulo | palabras }}</h2>
+      </div>
+      <div class="score reveal" style="--d:1">
+        <p class="score__n">{{ textos.opiniones.valoracion | numero(1) }}</p>
+        <div>
+          <p class="stars" aria-hidden="true">{% for i in range(5) %}<svg class="i"><use href="#i-estrella"/></svg>{% endfor %}</p>
+          <p class="score__t">{{ textos.opiniones.nota_valoracion.replace('{n}', str(textos.opiniones.num_resenas)) }}</p>
+        </div>
+      </div>
+    </header>
+    <ul class="revs">
+      {% for r in resenas %}
+      <li class="rev reveal" style="--d:{{ loop.index0 % 3 }}">
+        <figure class="rev__card" data-tilt>
+          <p class="stars" role="img" aria-label="{{ r.estrellas }}/5">{% for i in range(5) %}<svg class="i{% if i >= r.estrellas %} is-off{% endif %}" aria-hidden="true"><use href="#i-estrella"/></svg>{% endfor %}</p>
+          <blockquote class="rev__q"><p>{{ r.texto }}</p></blockquote>
+          <figcaption class="rev__by"><span class="rev__av" aria-hidden="true">{{ r.nombre[0] }}</span><span><strong>{{ r.nombre }}</strong><small>{{ r.cuando }} · Google</small></span></figcaption>
+        </figure>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if sitio.demo %}
+    <p class="chip chip--c reveal">{{ textos.opiniones.nota }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.reserva %}
+<section class="reserva" id="reservar" aria-labelledby="rs-t">
+  <div class="reserva__bg" aria-hidden="true"><div class="reserva__par" data-par-bg>{{ 'reserva' | foto('reserva__img', 'lazy', '100vw') }}</div></div>
+  <div class="reserva__veil" aria-hidden="true"></div>
+  <div class="wrap reserva__in">
+    <div class="reserva__txt">
+      <p class="over over--light reveal">{{ textos.reserva.antetitulo }}</p>
+      <h2 class="sec__t split" id="rs-t">{{ textos.reserva.titulo | palabras }}</h2>
+      <p class="sec__p reveal" style="--d:1">{{ textos.reserva.texto }}</p>
+      <p class="reserva__grupos reveal" style="--d:2"><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{ textos.reserva.grupos }}</p>
+    </div>
+    <form class="form marco reveal" style="--d:1" novalidate data-form>
+      <div class="field field--full">
+        <label for="f-nombre">{{ textos.reserva.nombre }} <abbr title="{{ textos.reserva.obligatorio }}">*</abbr></label>
+        <input id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre">
+        <p class="field__err" id="e-nombre" aria-live="polite"></p>
+      </div>
+      <div class="field field--full">
+        <label for="f-tel">{{ textos.reserva.telefono }} <abbr title="{{ textos.reserva.obligatorio }}">*</abbr></label>
+        <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-tel">
+        <p class="field__err" id="e-tel" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-fecha">{{ textos.reserva.fecha }}</label>
+        <input id="f-fecha" name="fecha" type="date">
+      </div>
+      <div class="field">
+        <label for="f-hora">{{ textos.reserva.hora }}</label>
+        <select id="f-hora" name="hora">
+          <optgroup label="{{ textos.reserva.comida }}">
+            {% for h in textos.reserva.horas_comida %}
+            <option>{{ h }}</option>
+            {% endfor %}
+          </optgroup>
+          <optgroup label="{{ textos.reserva.cena }}">
+            {% for h in textos.reserva.horas_cena %}
+            <option{% if h == '21:00' %} selected{% endif %}>{{ h }}</option>
+            {% endfor %}
+          </optgroup>
+        </select>
+      </div>
+      <div class="field field--full">
+        <label for="f-personas">{{ textos.reserva.personas }}</label>
+        <div class="pax" role="radiogroup" aria-label="{{ textos.reserva.personas }}">
+          {% for n in range(1, 9) %}
+          <label class="pax__op"><input type="radio" name="personas" value="{{ n }}"{% if n == 2 %} checked{% endif %}><span>{{ n }}</span></label>
+          {% endfor %}
+          <label class="pax__op pax__op--mas"><input type="radio" name="personas" value="9+"><span>9+</span></label>
+        </div>
+      </div>
+      <div class="field field--full">
+        <label for="f-com">{{ textos.reserva.comentario }}</label>
+        <textarea id="f-com" name="comentario" rows="2" placeholder="{{ textos.reserva.comentario_ph }}"></textarea>
+      </div>
+      <div class="field field--full field--check">
+        <input id="f-acepto" name="acepto" type="checkbox" aria-describedby="e-acepto">
+        <label for="f-acepto">{{ textos.reserva.acepto.replace('{legal}', href_legal) | raw }}</label>
+        <p class="field__err" id="e-acepto" aria-live="polite"></p>
+      </div>
+      <button class="btn btn--vino btn--lg btn--full" type="submit"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.reserva.enviar }}</button>
+    </form>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.contacto %}
+<section class="sec contacto" id="contacto" aria-labelledby="ct-t">
+  <div class="wrap contact">
+    <div class="contact__info">
+      <p class="over reveal">{{ textos.contacto.antetitulo }}</p>
+      <h2 class="sec__t split" id="ct-t">{{ textos.contacto.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.contacto.texto }}</p>
+      {% if sitio.demo %}
+      <p class="chip reveal">{{ textos.contacto.datos_ejemplo }}</p>
+      {% endif %}
+      <dl class="clist reveal">
+        <div class="clist__row">
+          <dt><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{ textos.contacto.direccion }}</dt>
+          <dd>{{ negocio.direccion.calle }}<br>{{ negocio.direccion.cp }} {{ negocio.direccion.ciudad }}</dd>
+        </div>
+        <div class="clist__row">
+          <dt><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{ textos.contacto.telefono }}</dt>
+          <dd><a href="{{ '#contacto' if sitio.demo else tel(negocio.telefono) }}"{% if sitio.demo %} data-demo-tel{% endif %}>{{ negocio.telefono }}</a></dd>
+        </div>
+        {% if negocio.email %}
+        <div class="clist__row">
+          <dt><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>{{ textos.contacto.email }}</dt>
+          <dd><a href="mailto:{{ negocio.email }}">{{ negocio.email }}</a></dd>
+        </div>
+        {% endif %}
+      </dl>
+      <div class="contact__btns reveal">
+        <a class="btn btn--dark btn--sm" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.contacto.whatsapp }}</a>
+        <a class="btn btn--line btn--sm" href="{{ '#contacto' if sitio.demo else tel(negocio.telefono) }}"{% if sitio.demo %} data-demo-tel{% endif %}><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{ textos.contacto.llamar }}</a>
+        <a class="btn btn--line btn--sm" href="{{ url_mapa }}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-ruta"/></svg>{{ textos.contacto.como_llegar }}</a>
+      </div>
+      <div class="hours reveal">
+        <h3 class="hours__t">{{ textos.horario.titulo }} <span class="status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span></h3>
+        <table class="hours__tbl">
+          <tbody>
+            {% for f in horario_filas %}
+            <tr data-dia="{{ f.js }}"{% if f.cerrado %} class="is-closed"{% endif %}><th scope="row">{{ f.dia }}</th><td>{{ f.texto }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="contact__side">
+      <div class="contact__map reveal">
+        <div class="map marco" id="mapa" data-map role="region" aria-label="{{ textos.contacto.mapa }}">
+          <div class="map__ph" data-map-ph>
+            <svg class="map__pin" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>
+            <span data-map-msg>{{ negocio.direccion.calle }}, {{ negocio.direccion.ciudad }}</span>
+          </div>
+        </div>
+        {% if sitio.demo %}
+        <p class="map__note">{{ textos.contacto.ubicacion_ejemplo }}</p>
+        {% endif %}
+      </div>
+      <div class="llegar reveal">
+        <h3 class="llegar__t">{{ textos.contacto.como_llegar }}</h3>
+        <ul class="llegar__list">
+          {% for l in textos.contacto.llegar %}
+          <li><svg class="i" aria-hidden="true"><use href="#{{ l.icono }}"/></svg><span><strong>{{ l.titulo }}</strong> {{ l.texto }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+</main>
+
+{% include "_pie.html" %}
+
+<div class="bookbar" data-bookbar>
+  <a class="btn btn--vino btn--full" href="#reservar">{{ textos.nav.reservar }}</a>
+</div>
+
+{% if sitio.demo %}
+<dialog class="modal" data-modal aria-labelledby="modal-t">
+  <div class="modal__box">
+    <p class="over">{{ textos.ui.demo_franja }}</p>
+    <h2 class="modal__t" id="modal-t" data-modal-t></h2>
+    <p class="modal__p" data-modal-p></p>
+    <div class="bubble" data-modal-bubble>
+      <p class="bubble__txt" data-modal-msg></p>
+      <span class="bubble__meta" aria-hidden="true">21:04 <svg class="i"><use href="#i-check"/></svg></span>
+    </div>
+    <p class="modal__note" data-modal-note>{{ textos.js.demo_probar_nota }}</p>
+    <div class="modal__btns">
+      <a class="btn btn--vino" href="#" target="_blank" rel="noopener" data-modal-try><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.js.demo_probar }}</a>
+      <button class="btn btn--line" type="button" data-modal-close>{{ textos.js.cerrar }}</button>
+    </div>
+  </div>
+</dialog>
+{% endif %}
+
+<script type="application/json" id="datos">{{ datos_js | json }}</script>
+</body>
+</html>
