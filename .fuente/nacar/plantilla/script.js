@@ -69,6 +69,8 @@
       el.textContent = nf.format(end * e);
       if (t < 1) requestAnimationFrame(step);
     };
+    // ancho del número final (ya escrito en el HTML) reservado: al contar, nada a su lado se mueve
+    el.style.minWidth = el.getBoundingClientRect().width + "px";
     el.textContent = nf.format(0);
     requestAnimationFrame(step);
   };
@@ -84,13 +86,13 @@
         $$("[data-count]", en.target).forEach(countUp);
         rio.unobserve(en.target);
       });
-    }, { rootMargin: "0px 0px -7% 0px", threshold: 0.06 });
+    }, { rootMargin: "0px 0px 15% 0px", threshold: 0 }); // empieza con el bloque aún un 15 % por debajo de la pantalla
     animated.forEach(function (el) { rio.observe(el); });
   }
 
-  /* ---------- Parallax suave de los adornos ---------- */
+  /* ---------- Parallax suave de los adornos (solo con ratón: en el teléfono, nada se mueve al deslizar) ---------- */
   var pars = $$("[data-par]");
-  if (pars.length && !reduce && hasIO) {
+  if (pars.length && !reduce && hasIO && fine) {
     var visible = new Set(), ticking = false;
     var paint = function () {
       ticking = false;
@@ -434,7 +436,7 @@
     $$("[data-estado-txt]").forEach(function (el) { el.textContent = s.text; });
     $$("[data-estado-corto]").forEach(function (el) { el.textContent = s.short; });
     $$("[data-estado-dot]").forEach(function (el) { el.classList.toggle("is-open", s.open); el.classList.toggle("is-closed", !s.open); });
-    $$("[data-estado-pill]").forEach(function (el) { el.hidden = false; });
+    $$("[data-estado-pill]").forEach(function (el) { el.classList.remove("is-wait"); });
     $$("tr[data-dia]").forEach(function (tr) { tr.classList.toggle("is-today", +tr.getAttribute("data-dia") === s.dow); });
   };
   paintStatus();

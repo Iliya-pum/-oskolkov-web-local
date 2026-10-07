@@ -290,7 +290,7 @@ html.menu-open{ overflow:hidden; }
 
 /* ---------- Platos de la casa: cinta horizontal con la rueda ---------- */
 .platos{ position:relative; background:var(--grano), radial-gradient(70% 60% at 85% 10%, rgb(var(--vino-rgb) / .45), transparent 70%), var(--oscuro); color:var(--sobre-oscuro); }
-.platos__pin{ display:flex; flex-direction:column; justify-content:center; gap:clamp(26px, 4vh, 48px); padding:clamp(88px, 11vh, 130px) 0 clamp(56px, 8vh, 96px); }
+.platos__pin{ display:flex; flex-direction:column; justify-content:center; gap:clamp(26px, 4svh, 48px); padding:clamp(88px, 11svh, 130px) 0 clamp(56px, 8svh, 96px); }
 .platos__head{ display:grid; gap:16px; align-items:end; }
 @media (min-width:960px){ .platos__head{ grid-template-columns:1fr minmax(0, 420px); gap:64px; } .platos__head .sec__p{ margin:0 0 .5em; } }
 .platos .sec__t em{ color:var(--terracota-claro); }
@@ -325,9 +325,9 @@ html.menu-open{ overflow:hidden; }
 .platos__prog i{ position:absolute; inset:0; background:var(--oro-claro); transform:scaleX(var(--p, .16)); transform-origin:left; }
 .platos__count{ font-size:13px; letter-spacing:.14em; color:rgb(var(--sobre-oscuro-rgb) / .75); font-variant-numeric:tabular-nums; }
 .platos__count b{ font-weight:500; color:var(--sobre-oscuro); }
-/* con movimiento: la cinta la mueve la rueda (ScrollTrigger), no el dedo */
-.rv-ok .platos__vp{ overflow:visible; scroll-snap-type:none; }
-.rv-ok .platos{ overflow:hidden; }
+/* ordenador (.mfull): la cinta la mueve la rueda (ScrollTrigger); en el teléfono — el dedo */
+.mfull .platos__vp{ overflow:visible; scroll-snap-type:none; }
+.mfull .platos{ overflow:hidden; }
 
 /* ---------- La casa: bloques que cambian al bajar ---------- */
 .casa__grid{ display:grid; gap:32px; }
@@ -685,7 +685,7 @@ html.menu-open{ overflow:hidden; }
 /* ---------- Ajustes de composición ---------- */
 .hero .ph__tag{ top:auto; bottom:28px; right:var(--gut); left:auto; }
 @media (max-width:959px){ .hero .ph__tag{ top:calc(var(--hdr-h) + 14px); bottom:auto; left:auto; right:var(--gut); } }
-.platos__pin{ padding-top:calc(var(--hdr-h) + clamp(18px, 4vh, 48px)); padding-bottom:clamp(28px, 5vh, 64px); gap:clamp(20px, 3.4vh, 40px); min-height:100svh; }
+.platos__pin{ padding-top:calc(var(--hdr-h) + clamp(18px, 4svh, 48px)); padding-bottom:clamp(28px, 5svh, 64px); gap:clamp(20px, 3.4svh, 40px); min-height:100svh; }
 .platos .sec__t{ font-size:clamp(2.4rem, 1.2rem + 3.4vw, 4.4rem); }
 .platos .over{ margin-bottom:14px; }
 .dish__media{ aspect-ratio:auto; height:clamp(190px, 34svh, 400px); }
@@ -704,3 +704,52 @@ html.menu-open{ overflow:hidden; }
   .logo__txt{ font-size:25px; }
 }
 .dish .ph__tag{ right:14%; }
+
+/* ---------- Aparición de bloques (todos los dispositivos; script.js + IntersectionObserver) ----------
+   Sube 20 px y se aclara en 0,7 s con frenada suave; empieza con el bloque aún un 15 % por debajo
+   de la pantalla, una sola vez. Solo transform y opacity: el tamaño no cambia, los vecinos no se mueven. */
+@media (prefers-reduced-motion:no-preference){
+  .rv .reveal{ opacity:0; translate:0 20px; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); transition-delay:min(calc(var(--d, 0) * 70ms), 280ms); }
+  .rv .reveal.is-in{ opacity:1; translate:0 0; }
+  .rv .split .wi{ transform:translateY(105%); transition:transform .8s var(--ease-out); transition-delay:min(calc(var(--i) * 50ms), 400ms); }
+  .rv .split.is-in .wi{ transform:none; }
+  /* platos de la casa: entran uno a uno, 24 px de lado */
+  .rv .platos__vp .dish{ opacity:0; translate:24px 0; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); transition-delay:min(calc(var(--d, 0) * 80ms), 400ms); }
+  .rv .platos__vp.is-in .dish{ opacity:1; translate:0 0; }
+  /* la carta: al cambiar de pestaña el panel se aclara y los platos entran uno a uno */
+  .tabs.is-tabs .tabs__panel.is-on{ animation:panel-in .4s var(--ease-out) both; }
+  .tabs.is-in .tabs__panel.is-on [data-mi]{ animation:mi-in .6s var(--ease-out) both; animation-delay:min(calc(var(--i) * 45ms), 360ms); }
+}
+@keyframes panel-in{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes mi-in{ from{ opacity:0; transform:translateX(-14px); } to{ opacity:1; transform:none; } }
+/* Teléfono y pantallas táctiles: títulos sin el efecto palabra a palabra, solo se aclaran y suben */
+@media (prefers-reduced-motion:no-preference) and (max-width:900px), (prefers-reduced-motion:no-preference) and (pointer:coarse){
+  .rv .split{ opacity:0; translate:0 20px; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); }
+  .rv .split.is-in{ opacity:1; translate:0 0; }
+  .rv .split .wi, .rv .split.is-in .wi{ transform:none; transition:none; }
+}
+/* Estado «abierto / cerrado»: el sitio se guarda desde el principio (sin saltos al rellenarlo) */
+.is-wait{ visibility:hidden; }
+/* Cifras que cuentan: ancho del número final reservado */
+[data-count]{ display:inline-block; text-align:end; font-variant-numeric:tabular-nums; }
+
+/* ---------- Teléfono y pantallas táctiles: sin fijar nada, desplazamiento nativo ----------
+   Movimiento completo (cinta fijada que avanza con la rueda, foto fija en «La casa») — solo
+   con ratón y ≥ 901 px; el mismo límite que fullMQ en script.js. */
+.casa__foto{ display:none; }
+@media (max-width:900px), (pointer:coarse){
+  /* cinta de platos: se desliza con el dedo y se detiene en cada plato */
+  .platos__pin{ min-height:0; padding:clamp(72px, 12vw, 112px) 0 clamp(44px, 8vw, 72px); gap:26px; }
+  .platos__vp{ scroll-snap-type:x mandatory; scroll-padding-inline:var(--gut); }
+  .dish{ scroll-snap-align:start; }
+  .dish__media{ height:auto; aspect-ratio:4 / 3.5; }
+  /* «La casa»: tres bloques uno debajo de otro, cada uno con su foto */
+  .casa__media{ display:none; }
+  .casa__grid{ display:block; }
+  .casa__steps{ display:grid; gap:clamp(44px, 9vw, 72px); }
+  .casa__step{ min-height:0; padding:0; gap:12px; }
+  .casa__step::before{ display:none; }
+  .casa__step .casa__t{ color:var(--texto); }
+  .casa__foto{ display:block; position:relative; aspect-ratio:4 / 3; overflow:hidden; margin-bottom:8px; border-radius:var(--radio); background:var(--crema); box-shadow:var(--sombra-1); }
+  .casa__foto > .foto, .casa__foto > .ph{ width:100%; height:100%; object-fit:cover; }
+}

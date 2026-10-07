@@ -28,7 +28,7 @@
       </ul>
     </nav>
     <div class="hdr__end">
-      <span class="status hdr__status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span>
+      <span class="status hdr__status is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-corto>{{ textos.js.cerrado }}</span></span>
       <nav class="lang" aria-label="{{ textos.ui.idioma }}">
         {% for a in alternos %}
         <a class="lang__a" href="{{ a.href }}" hreflang="{{ a.lang }}" lang="{{ a.lang }}" title="{{ a.nombre }}" data-lang-link{% if a.lang == lang %} aria-current="page"{% endif %}>{{ a.lang | upper }}</a>
@@ -74,7 +74,7 @@
   <svg class="decor hero__olivo" data-par="-0.12" aria-hidden="true" focusable="false"><use href="#m-olivo"/></svg>
   <div class="wrap hero__in">
     <div class="hero__txt">
-      <p class="hero__live hero__a" style="--d:0"><span class="status status--glass" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-txt></span></span></p>
+      <p class="hero__live hero__a" style="--d:0"><span class="status status--glass is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-txt>{{ textos.js.cerrado }}</span></span></p>
       <p class="over over--light hero__a" style="--d:1">{{ textos.hero.antetitulo }}</p>
       <h1 class="hero__t" id="hero-t">{{ textos.hero.titulo | letras }}</h1>
       <p class="hero__p hero__a" style="--d:7">{{ textos.hero.texto }}</p>
@@ -121,11 +121,11 @@
       </div>
       <p class="sec__p reveal" style="--d:1">{{ textos.platos.texto }}</p>
     </div>
-    <div class="platos__vp" data-hvp>
+    <div class="platos__vp" data-hvp data-in>
       <ol class="platos__track" data-htrack>
         {% for p in platos %}
         {% set msg_p = textos.js.msg_plato.replace('{plato}', p.nombre) %}
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:{{ loop.index0 }}">
           <div class="dish__card" data-tilt>
             <div class="dish__media">{{ p.foto | foto('dish__img', 'lazy', '(min-width: 960px) 30vw, 78vw') }}</div>
             <span class="dish__n" aria-hidden="true">0{{ loop.index }}</span>
@@ -170,7 +170,8 @@
       </div>
       <ol class="casa__steps">
         {% for c in textos.casa.capitulos %}
-        <li class="casa__step{% if loop.first %} is-on{% endif %}" data-casa-step>
+        <li class="casa__step reveal{% if loop.first %} is-on{% endif %}" data-casa-step>
+          <div class="casa__foto">{{ c.foto | foto('', 'lazy', '92vw') }}</div>
           <span class="casa__k" aria-hidden="true">0{{ loop.index }}</span>
           <h3 class="casa__t">{{ c.titulo }}</h3>
           <p class="casa__p">{{ c.texto }}</p>
@@ -218,7 +219,7 @@
           <p class="menu__sub"><span lang="it">{{ s.nombre }}</span> · {{ s.sub }}</p>
           <ul class="menu">
             {% for p in s.platos %}
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:{{ loop.index0 }}">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">{{ p.nombre }}</span>{% if p.get('veg') %}<svg class="i menu__ic menu__ic--veg" role="img" aria-label="{{ textos.carta.vegetariano }}"><title>{{ textos.carta.vegetariano }}</title><use href="#i-hoja"/></svg>{% endif %}{% if p.get('picante') %}<svg class="i menu__ic menu__ic--pic" role="img" aria-label="{{ textos.carta.picante }}"><title>{{ textos.carta.picante }}</title><use href="#i-picante"/></svg>{% endif %}</h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -378,7 +379,7 @@
         <a class="btn btn--line btn--sm" href="{{ url_mapa }}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-ruta"/></svg>{{ textos.contacto.como_llegar }}</a>
       </div>
       <div class="hours reveal">
-        <h3 class="hours__t">{{ textos.horario.titulo }} <span class="status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span></h3>
+        <h3 class="hours__t">{{ textos.horario.titulo }} <span class="status is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-corto>{{ textos.js.cerrado }}</span></span></h3>
         <table class="hours__tbl">
           <tbody>
             {% for f in horario_filas %}

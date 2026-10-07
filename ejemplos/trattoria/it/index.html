@@ -19,7 +19,7 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../style.css?v=63c3aed0">
+<link rel="stylesheet" href="../style.css?v=08ad59d9">
 <script>(function(d){var c=d.classList;c.add("js");if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){c.add("rv");addEventListener("load",function(){setTimeout(function(){if(!c.contains("rv-ok"))c.remove("rv")},1500)})}})(document.documentElement)</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Da Livia">
@@ -109,7 +109,7 @@
   "acceptsReservations": true
 }
 </script>
-<script src="../script.js?v=63c3aed0" defer></script>
+<script src="../script.js?v=08ad59d9" defer></script>
 </head>
 <body data-libs="../lib/gsap-3.13.0.min.js,../lib/ScrollTrigger-3.13.0.min.js,../lib/lenis-1.3.4.min.js">
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +157,7 @@
       </ul>
     </nav>
     <div class="hdr__end">
-      <span class="status hdr__status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span>
+      <span class="status hdr__status is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-corto>Chiuso ora</span></span>
       <nav class="lang" aria-label="Lingua">
         <a class="lang__a" href="../index.html" hreflang="es" lang="es" title="Español" data-lang-link>ES</a>
         <a class="lang__a" href="../ca/index.html" hreflang="ca" lang="ca" title="Català" data-lang-link>CA</a>
@@ -198,7 +198,7 @@
   <svg class="decor hero__olivo" data-par="-0.12" aria-hidden="true" focusable="false"><use href="#m-olivo"/></svg>
   <div class="wrap hero__in">
     <div class="hero__txt">
-      <p class="hero__live hero__a" style="--d:0"><span class="status status--glass" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-txt></span></span></p>
+      <p class="hero__live hero__a" style="--d:0"><span class="status status--glass is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-txt>Chiuso ora</span></span></p>
       <p class="over over--light hero__a" style="--d:1">Trattoria italiana · Girona</p>
       <h1 class="hero__t" id="hero-t"><span class="sr">Pasta fresca, fuoco lento.</span><span class="letras" aria-hidden="true"><span class="wd"><span class="ch" style="--i:0">P</span><span class="ch" style="--i:1">a</span><span class="ch" style="--i:2">s</span><span class="ch" style="--i:3">t</span><span class="ch" style="--i:4">a</span></span> <span class="wd"><span class="ch" style="--i:5">f</span><span class="ch" style="--i:6">r</span><span class="ch" style="--i:7">e</span><span class="ch" style="--i:8">s</span><span class="ch" style="--i:9">c</span><span class="ch" style="--i:10">a</span><span class="ch" style="--i:11">,</span></span><br><em><span class="wd"><span class="ch" style="--i:12">f</span><span class="ch" style="--i:13">u</span><span class="ch" style="--i:14">o</span><span class="ch" style="--i:15">c</span><span class="ch" style="--i:16">o</span></span> <span class="wd"><span class="ch" style="--i:17">l</span><span class="ch" style="--i:18">e</span><span class="ch" style="--i:19">n</span><span class="ch" style="--i:20">t</span><span class="ch" style="--i:21">o</span><span class="ch" style="--i:22">.</span></span></em></span></h1>
       <p class="hero__p hero__a" style="--d:7">Pasta fatta a mano ogni mattina, pizza nel forno a legna e i vini che verserebbe la nonna. Nel cuore del Barri Vell.</p>
@@ -246,9 +246,9 @@
       </div>
       <p class="sec__p reveal" style="--d:1">Sei piatti che ci accompagnano dal primo giorno. Continua a scorrere: passano da soli.</p>
     </div>
-    <div class="platos__vp" data-hvp>
+    <div class="platos__vp" data-hvp data-in>
       <ol class="platos__track" data-htrack>
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:0">
           <div class="dish__card" data-tilt>
             <div class="dish__media"><div class="ph ph--tomate ph--v dish__img" role="img" aria-label="Tagliatelle al ragù in un piatto di ceramica" data-foto="plato-1.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-pasta"/></svg><span class="ph__tag">foto di esempio</span></div></div>
             <span class="dish__n" aria-hidden="true">01</span>
@@ -263,7 +263,7 @@
             </div>
           </div>
         </li>
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:1">
           <div class="dish__card" data-tilt>
             <div class="dish__media"><div class="ph ph--oliva ph--v dish__img" role="img" aria-label="Pizza tartufata appena sfornata dal forno a legna" data-foto="plato-2.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-pizza"/></svg><span class="ph__tag">foto di esempio</span></div></div>
             <span class="dish__n" aria-hidden="true">02</span>
@@ -278,7 +278,7 @@
             </div>
           </div>
         </li>
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:2">
           <div class="dish__card" data-tilt>
             <div class="dish__media"><div class="ph ph--crema ph--v dish__img" role="img" aria-label="Burrata con pomodori di stagione e basilico" data-foto="plato-3.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-tomate"/></svg><span class="ph__tag">foto di esempio</span></div></div>
             <span class="dish__n" aria-hidden="true">03</span>
@@ -293,7 +293,7 @@
             </div>
           </div>
         </li>
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:3">
           <div class="dish__card" data-tilt>
             <div class="dish__media"><div class="ph ph--crema ph--v dish__img" role="img" aria-label="Cacio e pepe cremosa con pepe nero" data-foto="plato-4.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-trigo"/></svg><span class="ph__tag">foto di esempio</span></div></div>
             <span class="dish__n" aria-hidden="true">04</span>
@@ -308,7 +308,7 @@
             </div>
           </div>
         </li>
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:4">
           <div class="dish__card" data-tilt>
             <div class="dish__media"><div class="ph ph--vino ph--v dish__img" role="img" aria-label="Pappardelle al ragù di cinghiale al vino rosso" data-foto="plato-5.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-olivo"/></svg><span class="ph__tag">foto di esempio</span></div></div>
             <span class="dish__n" aria-hidden="true">05</span>
@@ -323,7 +323,7 @@
             </div>
           </div>
         </li>
-        <li class="dish" data-dish>
+        <li class="dish" data-dish style="--d:5">
           <div class="dish__card" data-tilt>
             <div class="dish__media"><div class="ph ph--tomate ph--v dish__img" role="img" aria-label="Tiramisù fatto in casa spolverato di cacao" data-foto="plato-6.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-copa"/></svg><span class="ph__tag">foto di esempio</span></div></div>
             <span class="dish__n" aria-hidden="true">06</span>
@@ -364,17 +364,20 @@
         </div>
       </div>
       <ol class="casa__steps">
-        <li class="casa__step is-on" data-casa-step>
+        <li class="casa__step reveal is-on" data-casa-step>
+          <div class="casa__foto"><div class="ph ph--crema ph--v " role="img" aria-label="Mani che sfogliano un vecchio quaderno di ricette infarinato" data-foto="casa-1.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-cuaderno"/></svg><span class="ph__tag">foto di esempio</span></div></div>
           <span class="casa__k" aria-hidden="true">01</span>
           <h3 class="casa__t">Il quaderno della nonna</h3>
           <p class="casa__p">Livia è arrivata a Girona nel 2010 con una valigia e il quaderno di ricette di sua nonna. Ha aperto una sala da dodici tavoli nel Barri Vell; ancora oggi cucina con le stesse pagine, macchiate di farina.</p>
         </li>
-        <li class="casa__step" data-casa-step>
+        <li class="casa__step reveal" data-casa-step>
+          <div class="casa__foto"><div class="ph ph--oliva ph--v " role="img" aria-label="Mani che tagliano tagliatelle fresche su un tagliere infarinato" data-foto="casa-2.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-pasta"/></svg><span class="ph__tag">foto di esempio</span></div></div>
           <span class="casa__k" aria-hidden="true">02</span>
           <h3 class="casa__t">Pasta fresca ogni mattina</h3>
           <p class="casa__p">Alle otto stiamo già impastando: semola di grano duro, uova di fattoria dell’Empordà e pazienza. Ogni pasta è tagliata a mano lo stesso giorno in cui arriva nel tuo piatto.</p>
         </li>
-        <li class="casa__step" data-casa-step>
+        <li class="casa__step reveal" data-casa-step>
+          <div class="casa__foto"><div class="ph ph--noche ph--v " role="img" aria-label="Forno a legna acceso con una pizza sulla pala" data-foto="casa-3.webp"><svg class="ph__m" aria-hidden="true" focusable="false"><use href="#m-horno"/></svg><span class="ph__tag">foto di esempio</span></div></div>
           <span class="casa__k" aria-hidden="true">03</span>
           <h3 class="casa__t">Il fuoco del forno</h3>
           <p class="casa__p">Il nostro impasto riposa 48 ore e cuoce in novanta secondi a 450 °C con legna di leccio. Per questo è leggero, con il cornicione gonfio e un tocco affumicato.</p>
@@ -427,7 +430,7 @@
         <div class="tabs__panel is-on" role="tabpanel" id="panel-antipasti" aria-labelledby="tab-antipasti" tabindex="0">
           <p class="menu__sub"><span lang="it">Antipasti</span> · Per iniziare e condividere</p>
           <ul class="menu">
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:0">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Burrata pugliese</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -437,7 +440,7 @@
               </div>
               <p class="menu__d">Pomodori di stagione, basilico e olio ligure.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:1">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Vitello tonnato</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -447,7 +450,7 @@
               </div>
               <p class="menu__d">Fettine di vitello rosato con salsa tonnata e capperi.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:2">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Carpaccio di manzo</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -457,7 +460,7 @@
               </div>
               <p class="menu__d">Manzo con rucola, parmigiano 24 mesi e limone.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:3">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Arancini siciliani</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -467,7 +470,7 @@
               </div>
               <p class="menu__d">Tre arancini ripieni di ragù e mozzarella.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:4">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Parmigiana di melanzane</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -482,7 +485,7 @@
         <div class="tabs__panel" role="tabpanel" id="panel-pizze" aria-labelledby="tab-pizze" tabindex="0">
           <p class="menu__sub"><span lang="it">Pizze</span> · Dal forno a legna · impasto 48 ore</p>
           <ul class="menu">
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:0">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Margherita</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -492,7 +495,7 @@
               </div>
               <p class="menu__d">Pomodoro San Marzano, fior di latte e basilico.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:1">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Diavola</span><svg class="i menu__ic menu__ic--pic" role="img" aria-label="Piccante"><title>Piccante</title><use href="#i-picante"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -502,7 +505,7 @@
               </div>
               <p class="menu__d">Pomodoro, fior di latte e salame piccante calabrese.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:2">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Quattro formaggi</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -512,7 +515,7 @@
               </div>
               <p class="menu__d">Fior di latte, gorgonzola, taleggio e parmigiano.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:3">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Prosciutto e funghi</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -522,7 +525,7 @@
               </div>
               <p class="menu__d">Pomodoro, fior di latte, prosciutto cotto e funghi.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:4">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Pizza tartufata</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -537,7 +540,7 @@
         <div class="tabs__panel" role="tabpanel" id="panel-pasta" aria-labelledby="tab-pasta" tabindex="0">
           <p class="menu__sub"><span lang="it">Pasta</span> · Fresca, fatta ogni mattina</p>
           <ul class="menu">
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:0">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Tagliatelle al ragù</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -547,7 +550,7 @@
               </div>
               <p class="menu__d">Ragù alla bolognese cotto sei ore.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:1">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Cacio e pepe</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -557,7 +560,7 @@
               </div>
               <p class="menu__d">Tonnarelli con pecorino romano e pepe nero.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:2">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Spaghetti alle vongole</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -567,7 +570,7 @@
               </div>
               <p class="menu__d">Vongole, aglio, prezzemolo e un tocco di peperoncino.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:3">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Ravioli ricotta e spinaci</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -577,7 +580,7 @@
               </div>
               <p class="menu__d">Con burro e salvia.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:4">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Pappardelle al cinghiale</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -592,7 +595,7 @@
         <div class="tabs__panel" role="tabpanel" id="panel-dolci" aria-labelledby="tab-dolci" tabindex="0">
           <p class="menu__sub"><span lang="it">Dolci</span> · Per finire</p>
           <ul class="menu">
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:0">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Tiramisù della nonna</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -602,7 +605,7 @@
               </div>
               <p class="menu__d">Mascarpone, caffè della moka e savoiardi.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:1">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Panna cotta ai frutti di bosco</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -612,7 +615,7 @@
               </div>
               <p class="menu__d">Panna cotta alla vaniglia con frutti di bosco.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:2">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Cannoli siciliani</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -622,7 +625,7 @@
               </div>
               <p class="menu__d">Riempiti al momento con ricotta e pistacchio.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:3">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Affogato al caffè</span><svg class="i menu__ic menu__ic--veg" role="img" aria-label="Vegetariano"><title>Vegetariano</title><use href="#i-hoja"/></svg></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -637,7 +640,7 @@
         <div class="tabs__panel" role="tabpanel" id="panel-vini" aria-labelledby="tab-vini" tabindex="0">
           <p class="menu__sub"><span lang="it">Vini</span> · Calice · bottiglia</p>
           <ul class="menu">
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:0">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Prosecco DOC</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -647,7 +650,7 @@
               </div>
               <p class="menu__d">Bollicina fine per iniziare. Veneto.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:1">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Vermentino di Sardegna</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -657,7 +660,7 @@
               </div>
               <p class="menu__d">Bianco fresco e sapido. Sardegna.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:2">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Chianti Classico DOCG</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -667,7 +670,7 @@
               </div>
               <p class="menu__d">Rosso di sangiovese, ciliegia e spezie. Toscana.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:3">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Primitivo di Manduria</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -677,7 +680,7 @@
               </div>
               <p class="menu__d">Rosso intenso e morbido. Puglia.</p>
             </li>
-            <li class="menu__it" data-mi>
+            <li class="menu__it" data-mi style="--i:4">
               <div class="menu__row">
                 <h3 class="menu__n"><span lang="it">Barolo DOCG</span></h3>
                 <span class="menu__dots" aria-hidden="true"></span>
@@ -854,7 +857,7 @@
         <a class="btn btn--line btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=41.98419,2.82466" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-ruta"/></svg>Come arrivare</a>
       </div>
       <div class="hours reveal">
-        <h3 class="hours__t">Orari <span class="status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span></h3>
+        <h3 class="hours__t">Orari <span class="status is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-corto>Chiuso ora</span></span></h3>
         <table class="hours__tbl">
           <tbody>
             <tr data-dia="1" class="is-closed"><th scope="row">Lunedì</th><td>Chiuso</td></tr>

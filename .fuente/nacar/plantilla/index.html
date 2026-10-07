@@ -542,7 +542,7 @@
         <a class="btn btn--line btn--sm" href="{{ url_mapa }}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-ruta"/></svg>{{ textos.contacto.como_llegar }}</a>
       </div>
       <div class="hours reveal">
-        <h3 class="hours__t">{{ textos.horario.titulo }} <span class="status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span></h3>
+        <h3 class="hours__t">{{ textos.horario.titulo }} <span class="status is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-corto>{{ textos.js.cerrado }}</span></span></h3>
         <table class="hours__tbl">
           <tbody>
             {% for f in horario_filas %}

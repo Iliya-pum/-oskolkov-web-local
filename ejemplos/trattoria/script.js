@@ -1,7 +1,11 @@
 /* Script de la web. Textos y datos: <script id="datos"> (se genera desde contenido.json).
-   Movimiento: GSAP + ScrollTrigger + Lenis (lib/). No frenan la carga: se piden al primer gesto
-   (rueda, dedo, tecla) o cuando la página ya está tranquila; hasta entonces todo se ve, quieto.
-   Con prefers-reduced-motion no se cargan nunca. */
+   Dos niveles de movimiento:
+   - en todas partes: aparición suave de bloques (CSS + IntersectionObserver), pestañas con CSS;
+   - solo en ordenador con ratón (≥ 901 px, pointer: fine): GSAP + ScrollTrigger + Lenis (lib/) —
+     desplazamiento suave, cinta de platos fijada que avanza con la rueda, scrub, parallax, inclinación.
+     Se piden al primer gesto o con la página ya tranquila. En el teléfono no se cargan: desplazamiento nativo,
+     la cinta se desliza con el dedo, «La casa» son bloques uno debajo de otro.
+   Con prefers-reduced-motion no hay ni aparición ni librerías. */
 (function () {
   "use strict";
 
@@ -12,13 +16,16 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasIO = "IntersectionObserver" in window;
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  // movimiento completo: solo ordenador con ratón (el mismo límite que en style.css)
+  var fullMQ = window.matchMedia("(min-width: 901px) and (hover: hover) and (pointer: fine)");
+  var full = fullMQ.matches && !reduce;
   var G = null, ST = null;
-  var motion = false;       // true cuando GSAP + ScrollTrigger ya están listos
+  var motion = false;       // true cuando GSAP + ScrollTrigger ya están listos (solo en ordenador)
   var lenis = null;
   var hooks = [];           // lo que se activa al llegar las librerías
   var onMotion = function (fn) { hooks.push(fn); };
-  // solo se anima lo que aún no se ha visto (lo que ya está en pantalla no parpadea)
-  var below = function (el) { return el.getBoundingClientRect().top > window.innerHeight * 0.92; };
+  // el efecto de entrada solo para lo que aún no se ha visto (lo que ya está en pantalla no parpadea)
+  var below = function (el) { return el.getBoundingClientRect().top > window.innerHeight; };
 
   function $(s, c) { return (c || document).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
@@ -87,36 +94,44 @@
     window.matchMedia("(min-width: 1080px)").addEventListener("change", function (m) { if (m.matches && isOpen()) closeMenu(false); });
   }
 
-  /* ---------- Cifras que cuentan ---------- */
+  /* ---------- Cifras que cuentan (el ancho del número final ya está reservado en el CSS) ---------- */
   var countUp = function (el) {
     var end = parseFloat(el.getAttribute("data-count")), dec = +el.getAttribute("data-dec") || 0;
     var nf = new Intl.NumberFormat(D.lang || "es", { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: end >= 10000 });
-    if (!motion) { el.textContent = nf.format(end); return; }
-    var o = { v: 0 };
+    if (reduce) { el.textContent = nf.format(end); return; }
+    var t0 = performance.now(), dur = 1500;
+    var step = function (now) {
+      var t = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - t, 3);
+      el.textContent = nf.format(end * e);
+      if (t < 1) requestAnimationFrame(step);
+    };
+    // ancho del número final (ya escrito en el HTML) reservado: al contar, nada a su lado se mueve
+    el.style.minWidth = el.getBoundingClientRect().width + "px";
     el.textContent = nf.format(0);
-    G.to(o, { v: end, duration: 1.8, ease: "power3.out", onUpdate: function () { el.textContent = nf.format(o.v); } });
+    requestAnimationFrame(step);
   };
 
-  /* ---------- Movimiento al bajar (GSAP + ScrollTrigger) ---------- */
-  onMotion(function () {
-    // bloques que suben y aparecen, en tandas (solo los que aún están por debajo)
-    var rev = $$(".reveal").filter(below);
-    G.set(rev, { opacity: 0, y: 36 });
-    ST.batch(rev, {
-      start: "top 90%", once: true,
-      onEnter: function (els) {
-        G.to(els, { opacity: 1, y: 0, duration: 1.1, ease: "expo.out", stagger: 0.09, overwrite: true });
-        els.forEach(function (el) { $$("[data-count]", el).forEach(countUp); });
-      }
-    });
-    // títulos que suben palabra a palabra
-    $$(".split").filter(below).forEach(function (t) {
-      G.fromTo($$(".wi", t), { yPercent: 110 }, {
-        yPercent: 0, duration: 1.15, ease: "expo.out", stagger: 0.07,
-        scrollTrigger: { trigger: t, start: "top 90%", once: true }
+  /* ---------- Aparición al bajar: CSS + IntersectionObserver, en todos los dispositivos ----------
+     La clase «rv» la pone el <head> antes de pintar; el bloque sube 20 px y se aclara (0,7 s),
+     empezando cuando aún está un 15 % por debajo de la pantalla; una sola vez. */
+  if (root.classList.contains("rv")) root.classList.add("rv-ok");
+  var animated = $$(".reveal, .split, [data-in]");
+  if (hasIO && !reduce && root.classList.contains("rv")) {
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("is-in");
+        $$("[data-count]", en.target).forEach(countUp);
+        rio.unobserve(en.target);
       });
-    });
-    // parallax: adornos y fondos
+    }, { rootMargin: "0px 0px 15% 0px", threshold: 0 });
+    animated.forEach(function (el) { rio.observe(el); });
+  } else {
+    animated.forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  /* ---------- Solo ordenador: parallax de adornos y fondos (GSAP, scrub) ---------- */
+  onMotion(function () {
     $$("[data-par]").forEach(function (el) {
       var k = parseFloat(el.getAttribute("data-par")) * 100;
       G.fromTo(el, { yPercent: -k }, { yPercent: k, ease: "none", scrollTrigger: { trigger: el.parentNode, start: "top bottom", end: "bottom top", scrub: true } });
@@ -149,13 +164,6 @@
     onMotion(function () {
       vp.scrollLeft = 0;
       var dist = function () { return Math.max(0, track.scrollWidth - vp.clientWidth); };
-      // los platos entran uno a uno antes de fijarse
-      if (below(hpin)) {
-        G.fromTo(dishes, { opacity: 0, x: 120, rotate: 2 }, {
-          opacity: 1, x: 0, rotate: 0, duration: 1.1, ease: "expo.out", stagger: 0.1,
-          scrollTrigger: { trigger: hpin, start: "top 75%", once: true }
-        });
-      }
       var ribbon = G.to(track, {
         x: function () { return -dist(); }, ease: "none",
         scrollTrigger: {
@@ -264,48 +272,34 @@
     a.addEventListener("touchstart", pre, { passive: true });
   });
 
-  /* ---------- La carta: pestañas con cambio suave; los platos entran uno a uno ---------- */
+  /* ---------- La carta: pestañas; el cambio y la entrada de los platos uno a uno — con CSS ---------- */
   $$("[data-tabs]").forEach(function (tabsBox) {
     var tabs = $$("[role=tab]", tabsBox);
     var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
-    var ink = $(".tabs__ink", tabsBox), panelBox = $("[data-tabs-box]", tabsBox);
-    var cur = 0, busy = false;
+    var ink = $(".tabs__ink", tabsBox);
+    var cur = 0;
     var moveInk = function () {
       if (!ink) return;
       ink.style.setProperty("--x", tabs[cur].offsetLeft + "px");
       ink.style.setProperty("--w", tabs[cur].offsetWidth + "px");
     };
-    var itemsIn = function (panel) {
-      if (!motion) return;
-      G.fromTo($$("[data-mi]", panel), { opacity: 0, x: -34 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out", stagger: 0.06, overwrite: true });
-    };
     var select = function (i, focus) {
-      if (i === cur || busy) { if (focus) tabs[i].focus(); return; }
-      var from = panels[cur], to = panels[i];
+      if (i === cur) { if (focus) tabs[i].focus(); return; }
       tabs.forEach(function (t, j) {
         var on = i === j;
         t.setAttribute("aria-selected", on ? "true" : "false");
         t.tabIndex = on ? 0 : -1;
+        panels[j].classList.toggle("is-on", on);
       });
       cur = i;
       moveInk();
       if (focus) tabs[i].focus();
-      tabs[i].scrollIntoView({ block: "nearest", inline: "center", behavior: reduce ? "auto" : "smooth" });
-      if (!motion) { from.classList.remove("is-on"); to.classList.add("is-on"); return; }
-      busy = true;
-      var h0 = panelBox.offsetHeight;
-      G.to($$("[data-mi], .menu__sub", from), {
-        opacity: 0, y: -10, duration: 0.22, ease: "power2.in", stagger: 0.015,
-        onComplete: function () {
-          G.set($$("[data-mi], .menu__sub", from), { clearProps: "all" });
-          from.classList.remove("is-on");
-          to.classList.add("is-on");
-          var h1 = panelBox.offsetHeight;
-          G.fromTo(panelBox, { height: h0 }, { height: h1, duration: 0.45, ease: "power2.inOut", clearProps: "height", onComplete: function () { busy = false; ST.refresh(); } });
-          G.fromTo($(".menu__sub", to), { opacity: 0 }, { opacity: 1, duration: 0.5 });
-          itemsIn(to);
-        }
-      });
+      // la lista de pestañas se desplaza sola en el teléfono; la página no se mueve
+      var list = tabs[i].parentNode, t = tabs[i];
+      if (list.scrollWidth > list.clientWidth) {
+        list.scrollTo({ left: t.offsetLeft - (list.clientWidth - t.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" });
+      }
+      if (motion) ST.refresh(); // el alto de la carta cambió: recolocar lo que va debajo
     };
     tabs.forEach(function (t, i) {
       t.addEventListener("click", function () { select(i); });
@@ -324,13 +318,10 @@
     requestAnimationFrame(moveInk);
     window.addEventListener("resize", moveInk);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInk);
-    onMotion(function () {
-      if (below(panelBox)) ST.create({ trigger: panelBox, start: "top 85%", once: true, onEnter: function () { itemsIn(panels[cur]); } });
-    });
   });
 
   /* ---------- Inclinación 3D ligera (platos y opiniones), solo con ratón ---------- */
-  if (fine) onMotion(function () {
+  onMotion(function () {
     $$("[data-tilt]").forEach(function (card) {
       G.set(card, { transformPerspective: 900 });
       var rx = G.quickTo(card, "rotationX", { duration: 0.5, ease: "power3.out" });
@@ -402,7 +393,7 @@
     $$("[data-estado-txt]").forEach(function (el) { el.textContent = s.text; });
     $$("[data-estado-corto]").forEach(function (el) { el.textContent = s.short; });
     $$("[data-estado-dot]").forEach(function (el) { el.classList.toggle("is-open", s.open); el.classList.toggle("is-closed", !s.open); });
-    $$("[data-estado-pill]").forEach(function (el) { el.hidden = false; });
+    $$("[data-estado-pill]").forEach(function (el) { el.classList.remove("is-wait"); });
     $$("tr[data-dia]").forEach(function (tr) { tr.classList.toggle("is-today", +tr.getAttribute("data-dia") === s.dow); });
   };
   paintStatus();
@@ -535,7 +526,7 @@
       endOn = seen.size > 0;
       paintBook();
     });
-    $$(".ftr, [data-oskal], .platos").forEach(function (x) { eio.observe(x); });
+    $$(".ftr, [data-oskal]").forEach(function (x) { eio.observe(x); });
     new IntersectionObserver(function (en) {
       heroGone = !en[0].isIntersecting && en[0].boundingClientRect.top < 0;
       paintBook();
@@ -544,20 +535,21 @@
     if (resv) new IntersectionObserver(function (en) { formOn = en[0].isIntersecting; paintBook(); }, { threshold: 0.1 }).observe(resv);
   }
 
-  /* ---------- Librerías de movimiento: al primer gesto o con la página ya tranquila ---------- */
+  /* ---------- Solo ordenador: librerías de movimiento, al primer gesto o con la página ya tranquila ---------- */
   var startMotion = function () {
     G = window.gsap; ST = window.ScrollTrigger;
-    if (!G || !ST) return;
+    if (!G || !ST || !fullMQ.matches) return;
     G.registerPlugin(ST);
+    // la barra de direcciones de un móvil no recalcula nada (por si una tableta con ratón llega aquí)
     ST.config({ ignoreMobileResize: true });
     var hp = $("[data-hpin]");
     var pastRibbon = hp && hp.getBoundingClientRect().bottom < 0; // ya pasó la cinta: compensar su espacio
     var y0 = window.scrollY;
     motion = true;
-    root.classList.add("rv-ok");
+    root.classList.add("mfull");
     if (window.Lenis) {
-      // en pantallas táctiles Lenis deja el desplazamiento nativo del dedo (60 fps, sin retrasos)
-      lenis = new window.Lenis({ lerp: 0.11, wheelMultiplier: 1, anchors: false });
+      // desplazamiento suave solo con rueda; syncTouch apagado (por defecto): el dedo nunca pasa por Lenis
+      lenis = new window.Lenis({ lerp: 0.11, wheelMultiplier: 1, syncTouch: false, anchors: false });
       lenis.on("scroll", ST.update);
       G.ticker.add(function (t) { lenis.raf(t * 1000); });
       G.ticker.lagSmoothing(0);
@@ -573,7 +565,9 @@
     settle();
   };
   var libs = (document.body.getAttribute("data-libs") || "").split(",").filter(Boolean);
-  if (!reduce && libs.length) {
+  // ventana que cruza el límite ordenador ↔ teléfono con el movimiento ya montado: recargar limpio
+  fullMQ.addEventListener("change", function () { if (motion) location.reload(); });
+  if (full && libs.length) {
     var requested = false;
     var load = function (src) {
       return new Promise(function (ok, ko) {

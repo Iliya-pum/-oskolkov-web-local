@@ -244,7 +244,7 @@ html.menu-open{ overflow:hidden; }
 .hero__scroll i{ width:1px; height:46px; background:linear-gradient(var(--oro), transparent); transform-origin:top; }
 
 /* Sello circular que gira */
-.sello{ position:absolute; right:clamp(26px, 7vw, 150px); top:clamp(26px, 6vh, 90px); z-index:2; width:clamp(92px, 9vw, 148px); aspect-ratio:1; display:grid; place-items:center; text-decoration:none; color:var(--texto); }
+.sello{ position:absolute; right:clamp(26px, 7vw, 150px); top:clamp(26px, 6svh, 90px); z-index:2; width:clamp(92px, 9vw, 148px); aspect-ratio:1; display:grid; place-items:center; text-decoration:none; color:var(--texto); }
 .sello__txt{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
 .sello__txt text{ fill:currentColor; font-family:var(--font-texto); font-size:11.5px; font-weight:500; letter-spacing:.2em; }
 .sello__perla{ width:34%; height:34%; }
@@ -257,7 +257,7 @@ html.menu-open{ overflow:hidden; }
   .hero__side{ align-self:end; }
   .hero__perlas{ display:block; }
   .hero__scroll{ display:flex; }
-  .sello{ top:clamp(54px, 9vh, 110px); right:clamp(54px, 5.5vw, 110px); }
+  .sello{ top:clamp(54px, 9svh, 110px); right:clamp(54px, 5.5vw, 110px); }
 }
 
 /* ---------- Cinta de servicios ---------- */
@@ -681,7 +681,7 @@ html.menu-open{ overflow:hidden; }
 .pin::after{ content:""; position:absolute; left:50%; top:16px; width:12px; height:12px; margin-left:-6px; border-radius:50%; background:var(--oro-claro); }
 @media (min-width:960px){
   .contact{ grid-template-columns:1fr 1fr; gap:clamp(56px, 7vw, 120px); align-items:start; }
-  .map{ aspect-ratio:auto; height:min(680px, 80vh); position:sticky; top:calc(var(--hdr-h) + 32px); }
+  .map{ aspect-ratio:auto; height:min(680px, 80svh); position:sticky; top:calc(var(--hdr-h) + 32px); }
 }
 
 /* ---------- Pie ---------- */
@@ -849,18 +849,34 @@ html.menu-open{ overflow:hidden; }
   .dot.is-open{ animation:pulse 2.6s ease-out infinite; }
   .ba__knob::after{ animation:pulso 2.4s var(--ease) infinite; }
   .gcard__shine{ animation:brillo 7s var(--ease) infinite; }
-  .rv .reveal{ opacity:0; translate:0 30px; transition:opacity 1.1s var(--ease-out), translate 1.1s var(--ease-out); transition-delay:calc(var(--d, 0) * 110ms); }
+  /* Aparición: sube 20 px y se aclara, 0,7 s con frenada suave; empieza cuando el bloque aún está
+     un 15 % por debajo de la pantalla (script.js), una sola vez. Solo transform y opacity:
+     no cambia el tamaño de nada, los vecinos no se mueven. */
+  .rv .reveal{ opacity:0; translate:0 20px; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); transition-delay:min(calc(var(--d, 0) * 70ms), 280ms); }
   .rv .reveal.is-in{ opacity:1; translate:0 0; }
-  .rv .split .wi{ transform:translateY(108%); transition:transform 1.05s var(--ease-out); transition-delay:calc(var(--i) * 70ms); }
+  .rv .split .wi{ transform:translateY(105%); transition:transform .8s var(--ease-out); transition-delay:min(calc(var(--i) * 50ms), 400ms); }
   .rv .split.is-in .wi{ transform:none; }
-  .rv .mask{ clip-path:inset(0 0 100% 0); transition:clip-path 1.25s var(--ease-out); transition-delay:calc(var(--d, 0) * 110ms + 150ms); }
-  .rv .mask > *{ transform:scale(1.16); transition:transform 1.7s var(--ease-out); transition-delay:calc(var(--d, 0) * 110ms + 150ms); }
+  .rv .mask{ clip-path:inset(0 0 100% 0); transition:clip-path .9s var(--ease-out); transition-delay:min(calc(var(--d, 0) * 70ms + 80ms), 360ms); }
+  .rv .mask > *{ transform:scale(1.08); transition:transform 1.1s var(--ease-out); transition-delay:min(calc(var(--d, 0) * 70ms + 80ms), 360ms); }
   .rv .is-in .mask, .rv .mask.is-in{ clip-path:inset(0 0 0 0); }
   .rv .is-in .mask > *, .rv .mask.is-in > *{ transform:none; }
   .lb[open]{ animation:fade .3s var(--ease); }
   .lb__img > *{ animation:zoom-in .45s var(--ease-out); }
   .modal[open] .modal__box{ animation:pop .45s var(--ease-out); }
 }
+/* Teléfono y pantallas táctiles: lo mismo, más simple — títulos y fotos solo se aclaran y suben 20 px */
+@media (prefers-reduced-motion:no-preference) and (max-width:900px), (prefers-reduced-motion:no-preference) and (pointer:coarse){
+  .rv .split{ opacity:0; translate:0 20px; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); }
+  .rv .split.is-in{ opacity:1; translate:0 0; }
+  .rv .split .wi, .rv .split.is-in .wi{ transform:none; transition:none; }
+  .rv .mask{ clip-path:none; opacity:0; transition:opacity .7s var(--ease-out); }
+  .rv .is-in .mask, .rv .mask.is-in{ opacity:1; }
+  .rv .mask > *, .rv .is-in .mask > *, .rv .mask.is-in > *{ transform:none; transition:none; }
+}
+/* Estado «abierto / cerrado»: el sitio se guarda desde el principio (sin saltos al rellenarlo) */
+.is-wait{ visibility:hidden; }
+/* Cifras que cuentan: ancho del número final reservado, los vecinos no se mueven */
+[data-count]{ display:inline-block; text-align:end; font-variant-numeric:tabular-nums; }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{ transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; }
   .gcard{ transform:none; }
@@ -880,5 +896,6 @@ html.menu-open{ overflow:hidden; }
 @keyframes zoom-in{ from{ opacity:0; transform:scale(.96); } to{ opacity:1; transform:none; } }
 @keyframes pop{ from{ opacity:0; transform:translateY(16px) scale(.97); } to{ opacity:1; transform:none; } }
 
-/* Secciones lejos de la pantalla no se calculan hasta acercarse (carga más ligera en móvil) */
-main > section:nth-of-type(n+4), .ftr{ content-visibility:auto; contain-intrinsic-size:auto 1100px; }
+/* Sin content-visibility en las secciones: con alturas estimadas la página «saltaba» al volver
+   hacia arriba. Solo el pie (es lo último, nada se mueve por él). */
+.ftr{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
