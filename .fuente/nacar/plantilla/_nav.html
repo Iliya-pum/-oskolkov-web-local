@@ -1,0 +1,18 @@
+{% if secciones.servicios %}
+<li><a href="#servicios">{{ textos.nav.servicios }}</a></li>
+{% endif %}
+{% if secciones.precios %}
+<li><a href="#precios">{{ textos.nav.precios }}</a></li>
+{% endif %}
+{% if secciones.antes_despues or secciones.galeria %}
+<li><a href="{{ '#trabajos' if secciones.antes_despues else '#galeria' }}">{{ textos.nav.trabajos }}</a></li>
+{% endif %}
+{% if secciones.equipo %}
+<li><a href="#equipo">{{ textos.nav.equipo }}</a></li>
+{% endif %}
+{% if secciones.opiniones %}
+<li><a href="#opiniones">{{ textos.nav.opiniones }}</a></li>
+{% endif %}
+{% if secciones.contacto %}
+<li><a href="#contacto">{{ textos.nav.contacto }}</a></li>
+{% endif %}

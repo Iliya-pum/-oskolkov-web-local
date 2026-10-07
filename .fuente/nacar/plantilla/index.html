@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+{% set titulo = textos.seo.titulo %}
+{% set descripcion = textos.seo.descripcion %}
+{% include "_head.html" %}
+<script type="application/ld+json">
+{{ jsonld | raw }}
+</script>
+<script src="{{ raiz }}script.js?v={{ asset_v }}" defer></script>
+</head>
+<body>
+{% include "_sprite.html" %}
+<a class="skip" href="#main">{{ textos.ui.saltar }}</a>
+{% if sitio.demo %}
+<p class="demo-bar">{{ textos.ui.demo_franja }}</p>
+{% endif %}
+{% set msg_general = textos.js.msg_general %}
+
+<header class="hdr" id="top" data-hdr>
+  <div class="wrap hdr__in">
+    <a class="logo" href="#top" aria-label="{{ negocio.nombre }} — {{ textos.ui.inicio }}">
+      {% include "_logo.html" %}
+    </a>
+    <nav class="nav" aria-label="{{ textos.ui.nav_principal }}">
+      <ul class="nav__list">
+        {% include "_nav.html" %}
+      </ul>
+    </nav>
+    <div class="hdr__end">
+      <nav class="lang" aria-label="{{ textos.ui.idioma }}">
+        {% for a in alternos %}
+        <a class="lang__a" href="{{ a.href }}" hreflang="{{ a.lang }}" lang="{{ a.lang }}" title="{{ a.nombre }}" data-lang-link{% if a.lang == lang %} aria-current="page"{% endif %}>{{ a.lang | upper }}</a>
+        {% endfor %}
+      </nav>
+      <a class="btn btn--dark btn--sm hdr__cta" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}">{{ textos.nav.reservar }}</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="{{ textos.ui.abrir_menu }}" data-burger data-open="{{ textos.ui.abrir_menu }}" data-close="{{ textos.ui.cerrar_menu }}"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mnav" id="menu" data-menu hidden>
+  <nav class="mnav__nav" aria-label="{{ textos.ui.nav_principal }}">
+    <ul>
+      {% include "_nav.html" %}
+    </ul>
+  </nav>
+  <div class="mnav__foot">
+    <a class="btn btn--dark btn--full" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.nav.reservar }}</a>
+    <p class="mnav__info">{{ negocio.direccion.calle }}, {{ negocio.direccion.ciudad }}<br>{{ horario_resumen }}</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-t" data-spy>
+  <div class="hero__bg">
+    <div class="hero__zoom">{{ 'hero' | foto('hero__img', 'eager', '100vw', True) }}</div>
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <span class="hero__frame" aria-hidden="true"></span>
+  <svg class="decor hero__rama" data-par="-0.10" aria-hidden="true" focusable="false"><use href="#m-rama"/></svg>
+  <svg class="decor hero__perlas" data-par="0.12" aria-hidden="true" focusable="false"><use href="#m-perla"/></svg>
+  <div class="wrap hero__in">
+    <div class="hero__txt">
+      <p class="over hero__a" style="--d:0">{{ textos.hero.antetitulo }}</p>
+      <h1 class="hero__t split split--hero" id="hero-t">{{ textos.hero.titulo | palabras }}</h1>
+      <p class="hero__p hero__a" style="--d:4">{{ textos.hero.texto }}</p>
+      <div class="hero__ctas hero__a" style="--d:5">
+        <a class="btn btn--dark btn--lg" id="hero-cta" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.nav.reservar }}</a>
+        {% if secciones.precios %}
+        <a class="btn btn--line btn--lg" href="#precios">{{ textos.hero.cta_secundario }}</a>
+        {% endif %}
+      </div>
+      <ul class="hero__pts hero__a" style="--d:6">
+        {% for p in textos.hero.puntos %}
+        <li>{{ p }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="hero__side hero__a" style="--d:6">
+      <p class="hero__card"><span class="dot" data-estado-dot></span><span data-estado-txt>{{ horario_resumen }}</span></p>
+    </div>
+  </div>
+  <a class="sello" href="#servicios"><span class="sr">{{ textos.hero.descubre }}</span>
+    <svg class="sello__txt" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+      <defs><path id="sello-c" d="M80 80 m-62 0 a62 62 0 1 1 124 0 a62 62 0 1 1 -124 0"/></defs>
+      <text><textPath href="#sello-c" textLength="386" lengthAdjust="spacing">{{ textos.hero.sello | upper }}</textPath></text>
+    </svg>
+    <svg class="sello__perla" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><circle cx="14" cy="14" r="11.2" fill="url(#g-perla)"/><circle cx="14" cy="14" r="11.2" class="logo__ring"/><ellipse cx="10.4" cy="9.6" rx="3.4" ry="2.1" transform="rotate(-32 10.4 9.6)" class="logo__shine"/></svg>
+  </a>
+  <a class="hero__scroll" href="#servicios"><span>{{ textos.hero.descubre }}</span><i aria-hidden="true"></i></a>
+</section>
+
+{% if secciones.marquesina %}
+<section class="marq" aria-label="{{ textos.marquesina.aria }}">
+  <div class="marq__track">
+    {% for copia in range(2) %}
+    <ul class="marq__list" role="list"{% if copia %} aria-hidden="true"{% endif %}>
+      {% for s in textos.marquesina.lista %}
+      <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.cifras %}
+<section class="cifras-sec" aria-label="{{ textos.cifras.aria }}">
+  <div class="wrap">
+    <ul class="cifras" role="list">
+      {% for c in cifras %}
+      <li class="cifra reveal" style="--d:{{ loop.index0 }}">
+        <p class="cifra__n"><span class="cifra__pre">{{ c.get('prefijo', '') }}</span><span data-count="{{ c.valor }}" data-dec="{{ c.get('decimales', 0) }}">{{ c.valor | numero(c.get('decimales', 0)) }}</span><span class="cifra__suf">{{ c.get('sufijo', '') }}</span></p>
+        <p class="cifra__t">{{ c.texto }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if sitio.demo %}
+    <p class="chip chip--c">{{ textos.cifras.etiqueta }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.servicios %}
+<section class="sec" id="servicios" aria-labelledby="srv-t">
+  <div class="wrap">
+    <div class="sec__head sec__head--split">
+      <div>
+        <p class="over reveal">{{ textos.servicios.antetitulo }}</p>
+        <h2 class="sec__t split" id="srv-t">{{ textos.servicios.titulo | palabras }}</h2>
+      </div>
+      <p class="sec__p reveal">{{ textos.servicios.texto }}</p>
+    </div>
+    <ul class="srv" role="list">
+      {% for s in servicios %}
+      {% set cat = [c for c in precios if c.id == s.tab][0] %}
+      <li class="srv__it reveal" style="--d:{{ loop.index0 }}">
+        <article class="srv__card">
+          <div class="srv__media mask">{{ s.foto | foto('srv__img', 'lazy', '(min-width: 960px) 30vw, 78vw') }}</div>
+          <div class="srv__body">
+            <span class="srv__n" aria-hidden="true">0{{ loop.index }}</span>
+            <h3 class="srv__t">{{ s.titulo }}</h3>
+            <p class="srv__p">{{ s.texto }}</p>
+            <p class="srv__from">{{ textos.servicios.desde }} <strong>{{ min(l.precio for l in cat.lineas) | precio }}</strong></p>
+            {% if secciones.precios %}
+            <a class="link" href="#precios" data-tab-link="{{ s.tab }}">{{ textos.servicios.ver_precios }}<span class="sr"> — {{ s.titulo }}</span><svg class="i" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+            {% endif %}
+          </div>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.porque %}
+<section class="sec sec--alt porque" id="porque" aria-labelledby="pq-t">
+  <svg class="decor porque__concha" data-par="0.08" aria-hidden="true" focusable="false"><use href="#m-concha"/></svg>
+  <div class="wrap porque__grid">
+    <figure class="porque__panel reveal">
+      <svg class="porque__perlas" aria-hidden="true" focusable="false"><use href="#m-perla"/></svg>
+      <blockquote class="porque__cita"><p>{{ textos.porque.cita }}</p></blockquote>
+      <figcaption class="porque__firma">— {{ textos.porque.firma }}</figcaption>
+    </figure>
+    <div class="porque__body">
+      <p class="over reveal">{{ textos.porque.antetitulo }}</p>
+      <h2 class="sec__t split" id="pq-t">{{ textos.porque.titulo | palabras }}</h2>
+      <ul class="pq" role="list">
+        {% for p in porque %}
+        <li class="pq__it reveal" style="--d:{{ loop.index0 }}">
+          <span class="pq__ico" aria-hidden="true"><svg class="i"><use href="#{{ p.icono }}"/></svg></span>
+          <h3 class="pq__t">{{ p.titulo }}</h3>
+          <p class="pq__p">{{ p.texto }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.precios %}
+<section class="sec" id="precios" aria-labelledby="pre-t">
+  <div class="wrap wrap--mid">
+    <div class="sec__head sec__head--c">
+      <p class="over reveal">{{ textos.precios.antetitulo }}</p>
+      <h2 class="sec__t split" id="pre-t">{{ textos.precios.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.precios.texto }}</p>
+    </div>
+    <div class="tabs marco reveal" data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="{{ textos.precios.tabs_aria }}">
+        {% for cat in precios %}
+        <button class="tabs__tab" type="button" role="tab" id="tab-{{ cat.id }}" aria-controls="panel-{{ cat.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}"{% if not loop.first %} tabindex="-1"{% endif %} data-tab="{{ cat.id }}">{{ cat.nombre }}</button>
+        {% endfor %}
+        <span class="tabs__ink" aria-hidden="true"></span>
+      </div>
+      {% for cat in precios %}
+      <div class="tabs__panel{% if loop.first %} is-on{% endif %}" role="tabpanel" id="panel-{{ cat.id }}" aria-labelledby="tab-{{ cat.id }}" tabindex="0">
+        <ul class="plist" role="list">
+          {% for l in cat.lineas %}
+          {% set msg = textos.js.msg_servicio.replace('{servicio}', l.nombre) %}
+          <li class="plist__row">
+            <div class="plist__main">
+              <h3 class="plist__name">{{ l.nombre }}</h3>
+              <p class="plist__desc">{{ l.desc }}{% if l.get('min') %}<span class="plist__dur"> · {{ l.min | duracion }}</span>{% endif %}</p>
+            </div>
+            <p class="plist__price">{% if l.get('desde') %}<span class="plist__from">{{ textos.precios.desde }}</span> {% endif %}{{ l.precio | precio }}</p>
+            <a class="plist__book" href="{{ msg | wa }}" target="_blank" rel="noopener" data-wa="{{ msg }}" aria-label="{{ textos.precios.reservar_aria }} {{ l.nombre }}">{{ textos.precios.reservar }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.antes_despues %}
+<section class="sec sec--oscuro ba-sec" id="trabajos" aria-labelledby="ba-t">
+  <svg class="decor ba-sec__rama" data-par="-0.08" aria-hidden="true" focusable="false"><use href="#m-rama"/></svg>
+  <div class="wrap">
+    <div class="sec__head sec__head--c">
+      <p class="over reveal">{{ textos.antes_despues.antetitulo }}</p>
+      <h2 class="sec__t split" id="ba-t">{{ textos.antes_despues.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.antes_despues.texto }}</p>
+    </div>
+    <div class="ba ba--xl reveal" data-ba style="--pos:50%">
+      <div class="ba__img">{{ antes_despues.despues | foto('', 'lazy', '(min-width: 960px) 80vw, 100vw') }}</div>
+      <div class="ba__img ba__img--antes">{{ antes_despues.antes | foto('', 'lazy', '(min-width: 960px) 80vw, 100vw') }}</div>
+      <span class="ba__tag ba__tag--l" aria-hidden="true">{{ textos.antes_despues.antes }}</span>
+      <span class="ba__tag ba__tag--r" aria-hidden="true">{{ textos.antes_despues.despues }}</span>
+      <span class="ba__line" aria-hidden="true"><span class="ba__knob"><svg class="i"><use href="#i-izq"/></svg><svg class="i"><use href="#i-der"/></svg></span></span>
+      <input class="ba__range" type="range" min="0" max="100" value="50" step="1" aria-label="{{ textos.antes_despues.aria }}" data-ba-range>
+    </div>
+    <div class="ba-foot reveal">
+      <p class="ba-hint" aria-hidden="true"><svg class="i"><use href="#i-izq"/></svg>{{ textos.antes_despues.pista }}<svg class="i"><use href="#i-der"/></svg></p>
+      <dl class="ba-info">
+        {% for d in textos.antes_despues.datos %}
+        <div><dt>{{ d.k }}</dt><dd>{{ d.v }}</dd></div>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.galeria %}
+<section class="sec sec--alt" id="galeria" aria-labelledby="gal-t">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="over reveal">{{ textos.galeria.antetitulo }}</p>
+      <h2 class="sec__t split" id="gal-t">{{ textos.galeria.titulo | palabras }}</h2>
+    </div>
+    <ul class="gal" role="list" data-gal>
+      {% for g in galeria %}
+      <li class="gal__it gal__it--{{ g.forma }} reveal" style="--d:{{ loop.index0 }}">
+        <button class="gal__btn mask" type="button" data-lb="{{ loop.index0 }}" data-cap="{{ g.pie }}" data-w="{{ fotos[g.foto].ancho }}" data-h="{{ fotos[g.foto].alto }}" aria-label="{{ textos.galeria.ampliar }} {{ g.pie }}">
+          {{ g.foto | foto('gal__img', 'lazy', '(min-width: 960px) 33vw, 50vw') }}
+          <span class="gal__cap" aria-hidden="true">{{ g.pie }}</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.marcas %}
+<section class="marcas" aria-labelledby="mar-t">
+  <div class="wrap">
+    <div class="marcas__head">
+      <p class="over reveal">{{ textos.marcas.antetitulo }}</p>
+      <h2 class="marcas__t split" id="mar-t">{{ textos.marcas.titulo | palabras }}</h2>
+      {% if sitio.demo %}
+      <p class="chip reveal">{{ textos.marcas.etiqueta }}</p>
+      {% endif %}
+    </div>
+    <ul class="marcas__list" role="list">
+      {% for m in marcas %}
+      <li class="marca marca--{{ m.estilo }} reveal" style="--d:{{ loop.index0 }}">{{ m.nombre }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.equipo %}
+<section class="sec" id="equipo" aria-labelledby="eq-t">
+  <div class="wrap">
+    <div class="sec__head sec__head--c">
+      <p class="over reveal">{{ textos.equipo.antetitulo }}</p>
+      <h2 class="sec__t split" id="eq-t">{{ textos.equipo.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.equipo.texto }}</p>
+    </div>
+    <ul class="team" role="list">
+      {% for m in equipo %}
+      <li class="team__card reveal" style="--d:{{ loop.index0 }}">
+        <div class="team__ph">
+          {% if m.foto %}
+          {{ m.foto | foto('team__img', 'lazy', '(min-width: 960px) 22vw, 60vw') }}
+          {% else %}
+          <svg class="team__deco" aria-hidden="true" focusable="false"><use href="#{{ ['m-flor', 'm-concha', 'm-rama'][loop.index0 % 3] }}"/></svg>
+          <span class="team__mono" aria-hidden="true">{{ m.nombre[0] }}</span>
+          {% endif %}
+        </div>
+        <h3 class="team__n">{{ m.nombre }}</h3>
+        <p class="team__r">{{ m.rol }}</p>
+        <p class="team__p">{{ m.texto }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.opiniones %}
+<section class="sec sec--rosa" id="opiniones" aria-labelledby="op-t">
+  <div class="wrap">
+    <div class="rev-top">
+      <div>
+        <p class="over reveal">{{ textos.opiniones.antetitulo }}</p>
+        <h2 class="sec__t split" id="op-t">{{ textos.opiniones.titulo | palabras }}</h2>
+      </div>
+      <div class="rating reveal">
+        <p class="rating__n">{{ textos.opiniones.nota }}</p>
+        <div>
+          <p class="stars" role="img" aria-label="{{ textos.opiniones.media }}">{% for i in range(5) %}<svg class="i" aria-hidden="true"><use href="#i-estrella"/></svg>{% endfor %}</p>
+          <p class="rating__t">{{ textos.opiniones.total }}</p>
+          {% if sitio.demo %}
+          <p class="chip">{{ textos.opiniones.etiqueta }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="rev reveal" data-rev role="region" aria-roledescription="{{ textos.opiniones.carrusel }}" aria-label="{{ textos.opiniones.region }}">
+      <div class="rev__track" data-rev-track>
+        {% for r in resenas %}
+        <div class="rev__slide" role="group" aria-roledescription="{{ textos.opiniones.diapositiva }}" aria-label="{{ textos.js.de.replace('{n}', str(loop.index)).replace('{total}', str(loop.length)) }}">
+          <figure class="rev__card">
+            <p class="stars" role="img" aria-label="{{ textos.opiniones.estrellas }}">{% for i in range(5) %}<svg class="i" aria-hidden="true"><use href="#i-estrella"/></svg>{% endfor %}</p>
+            <blockquote class="rev__q"><p>{{ r.texto }}</p></blockquote>
+            <figcaption class="rev__who"><span class="rev__av" aria-hidden="true">{{ r.nombre[0] }}</span><span><span class="rev__n">{{ r.nombre }}</span><span class="rev__s">{{ r.servicio }} · {{ r.cuando }}</span></span></figcaption>
+          </figure>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="rev__ctrl">
+        <button class="ibtn" type="button" data-rev-prev aria-label="{{ textos.opiniones.anterior }}"><svg class="i" aria-hidden="true"><use href="#i-izq"/></svg></button>
+        <span class="rev__bar" aria-hidden="true"><i data-rev-bar></i></span>
+        <button class="ibtn" type="button" data-rev-next aria-label="{{ textos.opiniones.siguiente }}"><svg class="i" aria-hidden="true"><use href="#i-der"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.regalo %}
+{% set msg_regalo = textos.regalo.msg.replace('{opcion}', textos.regalo.opciones[0]) %}
+<section class="sec regalo" id="regalo" aria-labelledby="reg-t">
+  <div class="wrap regalo__grid">
+    <div class="regalo__vis reveal">
+      <div class="gcard" data-tilt>
+        <div class="gcard__in">
+          <span class="gcard__shine" aria-hidden="true"></span>
+          <svg class="gcard__concha" aria-hidden="true" focusable="false"><use href="#m-concha"/></svg>
+          <p class="gcard__logo">{{ negocio.nombre }}</p>
+          <p class="gcard__k">{{ textos.regalo.tarjeta }}</p>
+          <p class="gcard__v" data-gift-value>{{ textos.regalo.opciones[0] }}</p>
+          <p class="gcard__foot"><span>{{ textos.regalo.validez }}</span><span>N.º 0001</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="regalo__txt">
+      <p class="over reveal">{{ textos.regalo.antetitulo }}</p>
+      <h2 class="sec__t split" id="reg-t">{{ textos.regalo.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.regalo.texto }}</p>
+      <fieldset class="opts reveal">
+        <legend class="opts__l">{{ textos.regalo.elige }}</legend>
+        {% for o in textos.regalo.opciones %}
+        <label class="opt"><input type="radio" name="regalo" value="{{ o }}"{% if loop.first %} checked{% endif %} data-gift-opt><span>{{ o }}</span></label>
+        {% endfor %}
+      </fieldset>
+      <a class="btn btn--dark btn--lg reveal" href="{{ msg_regalo | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_regalo }}" data-gift-cta data-msg="{{ textos.regalo.msg }}"><svg class="i" aria-hidden="true"><use href="#i-regalo"/></svg>{{ textos.regalo.cta }}</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.instagram %}
+<section class="sec sec--alt ig" id="instagram" aria-labelledby="ig-t">
+  <div class="wrap">
+    <div class="ig__head">
+      <div>
+        <p class="over reveal">{{ textos.instagram.antetitulo }}</p>
+        <h2 class="sec__t split" id="ig-t">{{ textos.instagram.titulo | palabras }}</h2>
+      </div>
+      <div class="ig__acc reveal">
+        <p class="ig__user"><svg class="i" aria-hidden="true"><use href="#i-insta"/></svg>{{ negocio.instagram_usuario }}</p>
+        {% if sitio.demo %}
+        <p class="chip">{{ textos.instagram.etiqueta }}</p>
+        {% endif %}
+        <a class="btn btn--line" href="{{ negocio.redes.instagram or '#instagram' }}"{% if sitio.demo or not negocio.redes.instagram %} data-demo-ig{% else %} target="_blank" rel="noopener"{% endif %}>{{ textos.instagram.cta }}</a>
+      </div>
+    </div>
+    <ul class="ig__grid" role="list">
+      {% for f in instagram %}
+      <li class="reveal" style="--d:{{ loop.index0 }}">
+        <a class="ig__item mask" href="{{ negocio.redes.instagram or '#instagram' }}"{% if sitio.demo or not negocio.redes.instagram %} data-demo-ig{% else %} target="_blank" rel="noopener"{% endif %} aria-label="{{ textos.instagram.ver }}: {{ fotos[f].alt }}">
+          {{ f | foto('ig__img', 'lazy', '(min-width: 960px) 16vw, 33vw') }}
+          <span class="ig__ov" aria-hidden="true"><svg class="i"><use href="#i-corazon"/></svg></span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.reserva %}
+<section class="sec" id="reserva" aria-labelledby="res-t">
+  <div class="wrap book">
+    <div class="book__txt">
+      <p class="over reveal">{{ textos.reserva.antetitulo }}</p>
+      <h2 class="sec__t split" id="res-t">{{ textos.reserva.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.reserva.texto }}</p>
+      <ul class="ticks reveal" role="list">
+        {% for p in textos.reserva.puntos %}
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>{{ p }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <form class="form marco reveal" id="form-cita" novalidate data-form>
+      <div class="field">
+        <label for="f-nombre">{{ textos.reserva.nombre }} <span class="req" aria-hidden="true">*</span></label>
+        <input id="f-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre" maxlength="80">
+        <p class="field__err" id="e-nombre" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-tel">{{ textos.reserva.telefono }} <span class="req" aria-hidden="true">*</span></label>
+        <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-tel" maxlength="20">
+        <p class="field__err" id="e-tel" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-servicio">{{ textos.reserva.servicio }}</label>
+        <select id="f-servicio" name="servicio">
+          <option value="">{{ textos.reserva.servicio_vacio }}</option>
+          {% for cat in precios %}
+          <optgroup label="{{ cat.nombre }}">
+            {% for l in cat.lineas %}
+            <option>{{ l.nombre }}</option>
+            {% endfor %}
+          </optgroup>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-dia">{{ textos.reserva.dia }}</label>
+          <input id="f-dia" name="dia" type="date">
+        </div>
+        <div class="field">
+          <label for="f-franja">{{ textos.reserva.franja }}</label>
+          <select id="f-franja" name="franja">
+            {% for f in textos.reserva.franjas %}
+            <option>{{ f }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-coment">{{ textos.reserva.comentario }} <span class="opt-l">({{ textos.reserva.opcional }})</span></label>
+        <textarea id="f-coment" name="comentario" rows="3" maxlength="400" placeholder="{{ textos.reserva.comentario_ph }}"></textarea>
+      </div>
+      <div class="field field--check">
+        <input id="f-acepto" name="acepto" type="checkbox" required aria-describedby="e-acepto">
+        <label for="f-acepto">{{ textos.reserva.acepto }} <a href="{{ href_legal }}#privacidad">{{ textos.reserva.politica }}</a>. <span class="req" aria-hidden="true">*</span></label>
+        <p class="field__err" id="e-acepto" aria-live="polite"></p>
+      </div>
+      <button class="btn btn--dark btn--full" type="submit"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.reserva.enviar }}</button>
+      <p class="form__note"><span aria-hidden="true">*</span> {{ textos.reserva.obligatorio }}. {{ textos.reserva.nota }}</p>
+    </form>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.faq %}
+{% set msg_faq = textos.faq.msg %}
+<section class="sec sec--alt faq" id="faq" aria-labelledby="faq-t">
+  <div class="wrap faq__grid">
+    <div class="faq__head">
+      <p class="over reveal">{{ textos.faq.antetitulo }}</p>
+      <h2 class="sec__t split" id="faq-t">{{ textos.faq.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.faq.texto }}</p>
+      <a class="link reveal" href="{{ msg_faq | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_faq }}">{{ textos.faq.cta }}<svg class="i" aria-hidden="true"><use href="#i-flecha"/></svg></a>
+    </div>
+    <div class="faq__list">
+      {% for q in faq %}
+      <details class="faq__it reveal" style="--d:{{ loop.index0 }}">
+        <summary><span>{{ q.p }}</span><svg class="i" aria-hidden="true"><use href="#i-mas"/></svg></summary>
+        <div class="faq__a"><p>{{ q.r }}</p></div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if secciones.contacto %}
+<section class="sec" id="contacto" aria-labelledby="ct-t">
+  <div class="wrap contact">
+    <div class="contact__info">
+      <p class="over reveal">{{ textos.contacto.antetitulo }}</p>
+      <h2 class="sec__t split" id="ct-t">{{ textos.contacto.titulo | palabras }}</h2>
+      <p class="sec__p reveal">{{ textos.contacto.texto }}</p>
+      {% if sitio.demo %}
+      <p class="chip reveal">{{ textos.contacto.datos_ejemplo }}</p>
+      {% endif %}
+      <dl class="clist reveal">
+        <div class="clist__row">
+          <dt><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>{{ textos.contacto.direccion }}</dt>
+          <dd>{{ negocio.direccion.calle }}<br>{{ negocio.direccion.cp }} {{ negocio.direccion.ciudad }}</dd>
+        </div>
+        <div class="clist__row">
+          <dt><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{ textos.contacto.telefono }}</dt>
+          <dd><a href="{{ '#contacto' if sitio.demo else tel(negocio.telefono) }}"{% if sitio.demo %} data-demo-tel{% endif %}>{{ negocio.telefono }}</a></dd>
+        </div>
+        {% if negocio.email %}
+        <div class="clist__row">
+          <dt><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>{{ textos.contacto.email }}</dt>
+          <dd><a href="mailto:{{ negocio.email }}">{{ negocio.email }}</a></dd>
+        </div>
+        {% endif %}
+      </dl>
+      <div class="contact__btns reveal">
+        <a class="btn btn--dark btn--sm" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.contacto.whatsapp }}</a>
+        <a class="btn btn--line btn--sm" href="{{ '#contacto' if sitio.demo else tel(negocio.telefono) }}"{% if sitio.demo %} data-demo-tel{% endif %}><svg class="i" aria-hidden="true"><use href="#i-tel"/></svg>{{ textos.contacto.llamar }}</a>
+        <a class="btn btn--line btn--sm" href="{{ url_mapa }}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-ruta"/></svg>{{ textos.contacto.como_llegar }}</a>
+      </div>
+      <div class="hours reveal">
+        <h3 class="hours__t">{{ textos.horario.titulo }} <span class="status" data-estado-pill hidden><span class="dot" data-estado-dot></span><span data-estado-corto></span></span></h3>
+        <table class="hours__tbl">
+          <tbody>
+            {% for f in horario_filas %}
+            <tr data-dia="{{ f.js }}"{% if f.cerrado %} class="is-closed"{% endif %}><th scope="row">{{ f.dia }}</th><td>{{ f.texto }}</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="contact__map reveal">
+      <div class="map marco" id="mapa" data-map role="region" aria-label="{{ textos.contacto.mapa }}">
+        <div class="map__ph" data-map-ph>
+          <svg class="map__pin" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>
+          <span data-map-msg>{{ negocio.direccion.calle }}, {{ negocio.direccion.ciudad }}</span>
+        </div>
+      </div>
+      {% if sitio.demo %}
+      <p class="map__note">{{ textos.contacto.ubicacion_ejemplo }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+</main>
+
+{% include "_pie.html" %}
+
+<div class="bookbar" data-bookbar>
+  <a class="btn btn--dark btn--full" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.nav.reservar }}</a>
+</div>
+
+<dialog class="lb" data-lb-dialog aria-label="{{ textos.galeria.antetitulo }}">
+  <figure class="lb__fig">
+    <div class="lb__img" data-lb-img></div>
+    <figcaption class="lb__cap"><span data-lb-cap></span> <span class="lb__n" data-lb-n></span></figcaption>
+  </figure>
+  <button class="ibtn ibtn--light lb__x" type="button" data-lb-close aria-label="{{ textos.js.cerrar }}"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <button class="ibtn ibtn--light lb__prev" type="button" data-lb-prev aria-label="{{ textos.js.lb_anterior }}"><svg class="i" aria-hidden="true"><use href="#i-izq"/></svg></button>
+  <button class="ibtn ibtn--light lb__next" type="button" data-lb-next aria-label="{{ textos.js.lb_siguiente }}"><svg class="i" aria-hidden="true"><use href="#i-der"/></svg></button>
+</dialog>
+
+{% if sitio.demo %}
+<dialog class="modal" data-modal aria-labelledby="modal-t">
+  <div class="modal__box">
+    <p class="over">{{ textos.ui.demo_franja }}</p>
+    <h2 class="modal__t" id="modal-t" data-modal-t></h2>
+    <p class="modal__p" data-modal-p></p>
+    <div class="bubble" data-modal-bubble>
+      <p class="bubble__txt" data-modal-msg></p>
+      <span class="bubble__meta" aria-hidden="true">10:24 <svg class="i"><use href="#i-check"/></svg></span>
+    </div>
+    <p class="modal__note" data-modal-note>{{ textos.js.demo_probar_nota }}</p>
+    <div class="modal__btns">
+      <a class="btn btn--dark" href="#" target="_blank" rel="noopener" data-modal-try><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.js.demo_probar }}</a>
+      <button class="btn btn--line" type="button" data-modal-close>{{ textos.js.cerrar }}</button>
+    </div>
+  </div>
+</dialog>
+{% endif %}
+
+<script type="application/json" id="datos">{{ datos_js | json }}</script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+{
+  "_LEEME": "ВСЁ содержимое сайта — здесь: тексты на всех языках, цвета, шрифты, контакты, часы, прайс, команда, отзывы, места под фото. Поменял → python build.py → сайт собирается заново. Текст на языках — {\"es\": …, \"ca\": …, \"en\": …}; <em> — курсив в заголовках, <br> — перенос строки.",
+
+  "idiomas": ["es", "ca", "en"],
+  "idioma_principal": "es",
+  "idioma_nombres": {"es": "Español", "ca": "Català", "en": "English"},
+  "og_locale": {"es": "es_ES", "ca": "ca_ES", "en": "en_GB"},
+
+  "sitio": {
+    "_nota": "url — адрес сайта (canonical, hreflang, картинка в соцсетях). salida — куда собирать (относительно этой папки). en_raiz — сайт в корне домена (robots.txt, sitemap.xml, _headers); false — демо в подпапке сайта студии. demo — плашка «Diseño de ejemplo» и окно-пояснение вместо звонка и WhatsApp. noindex — не индексировать (снять только при сдаче).",
+    "url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/nacar/",
+    "salida": "../../ejemplos/nacar",
+    "en_raiz": false,
+    "demo": true,
+    "noindex": true,
+    "estudio": {"nombre": "Oskal Studio", "url": "https://oskalstudio.com"}
+  },
+
+  "secciones": {
+    "_nota": "Блоки страницы: false — блок и пункт меню пропадают (под тариф клиента).",
+    "marquesina": true,
+    "cifras": true,
+    "servicios": true,
+    "porque": true,
+    "precios": true,
+    "antes_despues": true,
+    "galeria": true,
+    "marcas": true,
+    "equipo": true,
+    "opiniones": true,
+    "regalo": true,
+    "instagram": true,
+    "reserva": true,
+    "faq": true,
+    "contacto": true
+  },
+
+  "negocio": {
+    "_nota": "Данные бизнеса. В демо всё вымышленное: whatsapp пустой → кнопки показывают пример сообщения. У клиента: whatsapp — 9 цифр мобильного, данные для legal — из 2_PREPARADO\\aviso-legal.md.",
+    "nombre": "Nácar",
+    "tipo_schema": "BeautySalon",
+    "telefono": "+34 600 000 000",
+    "whatsapp": "",
+    "email": "hola@nacar.example",
+    "rango_precios": "€€",
+    "direccion": {"calle": "Carrer de l’Exemple, 7", "cp": "17001", "ciudad": "Girona", "region": "Catalunya", "pais": "ES"},
+    "geo": {"lat": 41.98587, "lon": 2.82355, "zoom": 16},
+    "zona_horaria": "Europe/Madrid",
+    "horario": {
+      "lun": [],
+      "mar": [["10:00", "20:00"]],
+      "mie": [["10:00", "20:00"]],
+      "jue": [["10:00", "20:00"]],
+      "vie": [["10:00", "20:00"]],
+      "sab": [["09:00", "15:00"]],
+      "dom": []
+    },
+    "festivos": [],
+    "redes": {"instagram": ""},
+    "instagram_usuario": "@nacar.girona",
+    "legal": {
+      "titular": {"es": "[Nombre y apellidos o razón social]", "ca": "[Nom i cognoms o raó social]", "en": "[Full name or company name]"},
+      "nif": "[NIF]",
+      "domicilio": {"es": "[Domicilio fiscal completo]", "ca": "[Domicili fiscal complet]", "en": "[Registered address]"}
+    }
+  },
+
+  "tema": {
+    "_nota": "Цвета и шрифты — только здесь (в style.css только var(--…)). Контраст ≥ 4,5:1: texto, texto_suave, oro_texto — на fondo, fondo_alt и rosa; rosa_texto — курсив в крупных заголовках; на тёмном (oscuro) — sobre_oscuro и oro_claro; oro, rosa_hondo, champan, lila — только линии, узоры и градиенты.",
+    "colores": {
+      "fondo": "#FBF6F0",
+      "fondo_alt": "#F5ECE4",
+      "superficie": "#FFFCF8",
+      "rosa": "#F0D8D2",
+      "rosa_medio": "#E4BDB4",
+      "rosa_hondo": "#C9958B",
+      "champan": "#EAD8BC",
+      "lila": "#E6DAE6",
+      "texto": "#3B2A25",
+      "texto_suave": "#6E5751",
+      "rosa_texto": "#9A5D55",
+      "oro": "#B8935A",
+      "oro_texto": "#7A5B28",
+      "oro_claro": "#D9BF8C",
+      "oscuro": "#2E201C",
+      "oscuro_2": "#3B2B26",
+      "sobre_oscuro": "#F6EDE6",
+      "linea": "#E8DAD0",
+      "exito": "#5E8A68",
+      "error": "#A33B32"
+    },
+    "fuentes": {
+      "titulos": "Cormorant Garamond",
+      "titulos_respaldo": "Georgia, 'Times New Roman', serif",
+      "texto": "Jost",
+      "texto_respaldo": "'Segoe UI', system-ui, -apple-system, Roboto, sans-serif",
+      "archivos": [
+        {"familia": "Cormorant Garamond", "archivo": "cormorant-garamond-latin.woff2", "peso": "300 700", "estilo": "normal", "precargar": true},
+        {"familia": "Cormorant Garamond", "archivo": "cormorant-garamond-italic-latin.woff2", "peso": "500", "estilo": "italic", "precargar": true},
+        {"familia": "Jost", "archivo": "jost-latin.woff2", "peso": "100 900", "estilo": "normal", "precargar": true}
+      ],
+      "respaldos": [
+        {"familia": "Cormorant Garamond", "local": ["Georgia", "Times New Roman"], "size_adjust": "86%", "ascent": "105%", "descent": "32%"},
+        {"familia": "Jost", "local": ["Segoe UI", "Arial", "Roboto"], "size_adjust": "97%", "ascent": "108%", "descent": "36%"}
+      ]
+    },
+    "medidas": {"radio": "22px", "radio_sm": "14px", "ancho_max": "1440px"}
+  },
+
+  "textos": {
+    "marca": {
+      "tipo": {"es": "Salón de belleza", "ca": "Saló de bellesa", "en": "Beauty salon"}
+    },
+    "seo": {
+      "titulo": {"es": "Nácar · Salón de belleza en Girona — cabello, uñas y estética", "ca": "Nácar · Saló de bellesa a Girona — cabell, ungles i estètica", "en": "Nácar · Beauty salon in Girona — hair, nails & skincare"},
+      "descripcion": {"es": "Salón de belleza en el centro de Girona: corte y color, balayage, manicura, pedicura y faciales. Pide tu cita por WhatsApp en un minuto.", "ca": "Saló de bellesa al centre de Girona: tall i color, balayage, manicura, pedicura i facials. Demana cita per WhatsApp en un minut.", "en": "Beauty salon in the centre of Girona: cuts and colour, balayage, manicures, pedicures and facials. Book on WhatsApp in a minute."},
+      "og_alt": {"es": "Nácar, salón de belleza en Girona", "ca": "Nácar, saló de bellesa a Girona", "en": "Nácar, beauty salon in Girona"},
+      "titulo_legal": {"es": "Aviso legal, privacidad y cookies · Nácar", "ca": "Avís legal, privacitat i galetes · Nácar", "en": "Legal notice, privacy and cookies · Nácar"},
+      "descripcion_legal": {"es": "Aviso legal, política de privacidad y política de cookies de Nácar, salón de belleza en Girona.", "ca": "Avís legal, política de privacitat i política de galetes de Nácar, saló de bellesa a Girona.", "en": "Legal notice, privacy policy and cookie policy of Nácar, beauty salon in Girona."}
+    },
+    "ui": {
+      "saltar": {"es": "Saltar al contenido", "ca": "Salta al contingut", "en": "Skip to content"},
+      "demo_franja": {"es": "Diseño de ejemplo — negocio ficticio", "ca": "Disseny d’exemple — negoci fictici", "en": "Sample design — fictional business"},
+      "foto_ejemplo": {"es": "foto de ejemplo", "ca": "foto d’exemple", "en": "sample photo"},
+      "ejemplo": {"es": "ejemplo", "ca": "exemple", "en": "sample"},
+      "abrir_menu": {"es": "Abrir menú", "ca": "Obre el menú", "en": "Open menu"},
+      "cerrar_menu": {"es": "Cerrar menú", "ca": "Tanca el menú", "en": "Close menu"},
+      "idioma": {"es": "Idioma", "ca": "Idioma", "en": "Language"},
+      "nav_principal": {"es": "Navegación principal", "ca": "Navegació principal", "en": "Main navigation"},
+      "inicio": {"es": "Inicio", "ca": "Inici", "en": "Home"},
+      "volver": {"es": "Volver al inicio", "ca": "Torna a l’inici", "en": "Back to home"}
+    },
+    "nav": {
+      "servicios": {"es": "Servicios", "ca": "Serveis", "en": "Services"},
+      "precios": {"es": "Precios", "ca": "Preus", "en": "Prices"},
+      "trabajos": {"es": "Trabajos", "ca": "Treballs", "en": "Our work"},
+      "equipo": {"es": "Equipo", "ca": "Equip", "en": "Team"},
+      "opiniones": {"es": "Opiniones", "ca": "Opinions", "en": "Reviews"},
+      "contacto": {"es": "Contacto", "ca": "Contacte", "en": "Contact"},
+      "reservar": {"es": "Reservar cita", "ca": "Demana cita", "en": "Book now"}
+    },
+    "hero": {
+      "antetitulo": {"es": "Salón de belleza · Girona", "ca": "Saló de bellesa · Girona", "en": "Beauty salon · Girona"},
+      "titulo": {"es": "La belleza,<br><em>sin prisas.</em>", "ca": "La bellesa,<br><em>sense presses.</em>", "en": "Beauty,<br><em>unhurried.</em>"},
+      "texto": {"es": "Cabello, uñas y estética en un espacio tranquilo en el centro de Girona. Te escuchamos, te aconsejamos y cuidamos cada detalle.", "ca": "Cabell, ungles i estètica en un espai tranquil al centre de Girona. T’escoltem, t’aconsellem i cuidem cada detall.", "en": "Hair, nails and skincare in a calm space in the heart of Girona. We listen, we advise and we take care of every detail."},
+      "cta_secundario": {"es": "Ver precios", "ca": "Veure preus", "en": "See prices"},
+      "puntos": [
+        {"es": "Cita por WhatsApp", "ca": "Cita per WhatsApp", "en": "Book on WhatsApp"},
+        {"es": "Productos veganos", "ca": "Productes vegans", "en": "Vegan products"},
+        {"es": "Diagnóstico gratis", "ca": "Diagnosi gratuïta", "en": "Free consultation"}
+      ],
+      "sello": {"es": "Nácar · Salón de belleza · Girona ·", "ca": "Nácar · Saló de bellesa · Girona ·", "en": "Nácar · Beauty salon · Girona ·"},
+      "descubre": {"es": "Descubre", "ca": "Descobreix", "en": "Discover"}
+    },
+    "marquesina": {
+      "aria": {"es": "Nuestros servicios", "ca": "Els nostres serveis", "en": "Our services"},
+      "lista": [
+        {"es": "Balayage", "ca": "Balayage", "en": "Balayage"},
+        {"es": "Color natural", "ca": "Color natural", "en": "Natural colour"},
+        {"es": "Manicura semipermanente", "ca": "Manicura semipermanent", "en": "Gel manicure"},
+        {"es": "Lifting de pestañas", "ca": "Lifting de pestanyes", "en": "Lash lift"},
+        {"es": "Recogidos de novia", "ca": "Recollits de núvia", "en": "Bridal updos"},
+        {"es": "Ritual facial", "ca": "Ritual facial", "en": "Facial ritual"},
+        {"es": "Pedicura spa", "ca": "Pedicura spa", "en": "Spa pedicure"},
+        {"es": "Diseño de cejas", "ca": "Disseny de celles", "en": "Brow design"}
+      ]
+    },
+    "cifras": {
+      "aria": {"es": "Nácar en cifras", "ca": "Nácar en xifres", "en": "Nácar in numbers"},
+      "etiqueta": {"es": "Cifras de ejemplo", "ca": "Xifres d’exemple", "en": "Sample figures"}
+    },
+    "servicios": {
+      "antetitulo": {"es": "Servicios", "ca": "Serveis", "en": "Services"},
+      "titulo": {"es": "Cuidamos de ti,<br><em>de pies a cabeza</em>", "ca": "Et cuidem<br><em>de cap a peus</em>", "en": "Caring for you,<br><em>head to toe</em>"},
+      "texto": {"es": "Tres especialidades y una misma manera de trabajar: escuchar primero, aconsejar con honestidad y no correr nunca.", "ca": "Tres especialitats i una mateixa manera de treballar: escoltar primer, aconsellar amb honestedat i no córrer mai.", "en": "Three specialities, one way of working: listen first, advise honestly and never rush."},
+      "ver_precios": {"es": "Ver precios", "ca": "Veure preus", "en": "See prices"},
+      "desde": {"es": "desde", "ca": "des de", "en": "from"}
+    },
+    "porque": {
+      "antetitulo": {"es": "Por qué Nácar", "ca": "Per què Nácar", "en": "Why Nácar"},
+      "titulo": {"es": "El lujo es tener<br><em>tiempo para ti</em>", "ca": "El luxe és tenir<br><em>temps per a tu</em>", "en": "True luxury is<br><em>time for yourself</em>"},
+      "cita": {"es": "Cada cita empieza con una conversación, no con unas tijeras.", "ca": "Cada cita comença amb una conversa, no amb unes tisores.", "en": "Every appointment starts with a conversation, not with scissors."},
+      "firma": {"es": "Laia, fundadora", "ca": "Laia, fundadora", "en": "Laia, founder"}
+    },
+    "precios": {
+      "antetitulo": {"es": "Precios", "ca": "Preus", "en": "Prices"},
+      "titulo": {"es": "Precios claros,<br><em>sin sorpresas</em>", "ca": "Preus clars,<br><em>sense sorpreses</em>", "en": "Clear prices,<br><em>no surprises</em>"},
+      "texto": {"es": "IVA incluido. En cabellos largos o tratamientos combinados, te decimos el precio exacto antes de empezar.", "ca": "IVA inclòs. En cabells llargs o tractaments combinats, et diem el preu exacte abans de començar.", "en": "VAT included. For long hair or combined treatments, we confirm the exact price before we start."},
+      "desde": {"es": "desde", "ca": "des de", "en": "from"},
+      "reservar": {"es": "Reservar", "ca": "Reserva", "en": "Book"},
+      "reservar_aria": {"es": "Reservar por WhatsApp:", "ca": "Reserva per WhatsApp:", "en": "Book on WhatsApp:"},
+      "tabs_aria": {"es": "Categorías de precios", "ca": "Categories de preus", "en": "Price categories"}
+    },
+    "antes_despues": {
+      "antetitulo": {"es": "Antes y después", "ca": "Abans i després", "en": "Before & after"},
+      "titulo": {"es": "El cambio,<br><em>a la vista</em>", "ca": "El canvi,<br><em>a la vista</em>", "en": "See the<br><em>difference</em>"},
+      "texto": {"es": "Balayage miel sobre castaño oscuro: luz donde la pondría el sol y el cabello igual de sano que al entrar.", "ca": "Balayage mel sobre castany fosc: llum on la posaria el sol i el cabell tan sa com quan has entrat.", "en": "Honey balayage on dark brunette: light where the sun would put it, and hair as healthy as when you walked in."},
+      "pista": {"es": "Desliza para comparar", "ca": "Llisca per comparar", "en": "Drag to compare"},
+      "antes": {"es": "Antes", "ca": "Abans", "en": "Before"},
+      "despues": {"es": "Después", "ca": "Després", "en": "After"},
+      "aria": {"es": "Comparar antes y después", "ca": "Compara l’abans i el després", "en": "Compare before and after"},
+      "datos": [
+        {"k": {"es": "Servicio", "ca": "Servei", "en": "Service"}, "v": {"es": "Balayage miel", "ca": "Balayage mel", "en": "Honey balayage"}},
+        {"k": {"es": "Tiempo", "ca": "Temps", "en": "Time"}, "v": {"es": "2 h 30 min", "ca": "2 h 30 min", "en": "2 h 30 min"}},
+        {"k": {"es": "Estilista", "ca": "Estilista", "en": "Stylist"}, "v": {"es": "Laia", "ca": "Laia", "en": "Laia"}}
+      ]
+    },
+    "galeria": {
+      "antetitulo": {"es": "Galería", "ca": "Galeria", "en": "Gallery"},
+      "titulo": {"es": "Detalles<br><em>que se notan</em>", "ca": "Detalls<br><em>que es noten</em>", "en": "Details<br><em>that show</em>"},
+      "ampliar": {"es": "Ampliar foto:", "ca": "Amplia la foto:", "en": "Enlarge photo:"}
+    },
+    "marcas": {
+      "antetitulo": {"es": "Productos", "ca": "Productes", "en": "Products"},
+      "titulo": {"es": "Solo firmas en las que<br><em>confiamos</em>", "ca": "Només marques en què<br><em>confiem</em>", "en": "Only brands<br><em>we trust</em>"},
+      "etiqueta": {"es": "Marcas ficticias de ejemplo", "ca": "Marques fictícies d’exemple", "en": "Fictional sample brands"}
+    },
+    "equipo": {
+      "antetitulo": {"es": "Equipo", "ca": "Equip", "en": "Team"},
+      "titulo": {"es": "Manos expertas,<br><em>trato cercano</em>", "ca": "Mans expertes,<br><em>tracte proper</em>", "en": "Expert hands,<br><em>a personal touch</em>"},
+      "texto": {"es": "Somos tres y te llamaremos por tu nombre desde la primera visita.", "ca": "Som tres i et cridarem pel teu nom des de la primera visita.", "en": "There are three of us, and we’ll know you by name from your very first visit."}
+    },
+    "opiniones": {
+      "antetitulo": {"es": "Opiniones", "ca": "Opinions", "en": "Reviews"},
+      "titulo": {"es": "Lo que dicen<br><em>nuestras clientas</em>", "ca": "El que diuen<br><em>les nostres clientes</em>", "en": "What our<br><em>clients say</em>"},
+      "etiqueta": {"es": "Reseñas de ejemplo", "ca": "Ressenyes d’exemple", "en": "Sample reviews"},
+      "nota": {"es": "4,9", "ca": "4,9", "en": "4.9"},
+      "total": {"es": "128 reseñas en Google", "ca": "128 ressenyes a Google", "en": "128 reviews on Google"},
+      "region": {"es": "Opiniones de clientas", "ca": "Opinions de clientes", "en": "Client reviews"},
+      "carrusel": {"es": "carrusel", "ca": "carrusel", "en": "carousel"},
+      "diapositiva": {"es": "opinión", "ca": "opinió", "en": "review"},
+      "estrellas": {"es": "5 de 5 estrellas", "ca": "5 de 5 estrelles", "en": "5 out of 5 stars"},
+      "media": {"es": "Valoración media: 4,9 de 5", "ca": "Valoració mitjana: 4,9 de 5", "en": "Average rating: 4.9 out of 5"},
+      "anterior": {"es": "Opiniones anteriores", "ca": "Opinions anteriors", "en": "Previous reviews"},
+      "siguiente": {"es": "Más opiniones", "ca": "Més opinions", "en": "More reviews"}
+    },
+    "regalo": {
+      "antetitulo": {"es": "Tarjeta regalo", "ca": "Targeta regal", "en": "Gift card"},
+      "titulo": {"es": "Regala un momento<br><em>sin prisas</em>", "ca": "Regala un moment<br><em>sense presses</em>", "en": "Give the gift of<br><em>unhurried time</em>"},
+      "texto": {"es": "Para un cumpleaños, un aniversario o porque sí. Elige un importe o un ritual y la preparamos en una caja con lazo, lista para regalar.", "ca": "Per a un aniversari, un sant o perquè sí. Tria un import o un ritual i la preparem en una capsa amb llaç, a punt per regalar.", "en": "For a birthday, an anniversary or just because. Choose an amount or a ritual and we’ll wrap it in a ribboned box, ready to give."},
+      "elige": {"es": "Elige el regalo", "ca": "Tria el regal", "en": "Choose the gift"},
+      "opciones": [
+        {"es": "50 €", "ca": "50 €", "en": "€50"},
+        {"es": "80 €", "ca": "80 €", "en": "€80"},
+        {"es": "120 €", "ca": "120 €", "en": "€120"},
+        {"es": "Ritual Nácar", "ca": "Ritual Nácar", "en": "Nácar ritual"}
+      ],
+      "cta": {"es": "Pedir tarjeta regalo", "ca": "Demana la targeta regal", "en": "Order a gift card"},
+      "msg": {"es": "¡Hola, Nácar! Me gustaría una tarjeta regalo de {opcion}.", "ca": "Hola, Nácar! M’agradaria una targeta regal de {opcion}.", "en": "Hi Nácar! I’d like a gift card for {opcion}."},
+      "tarjeta": {"es": "Tarjeta regalo", "ca": "Targeta regal", "en": "Gift card"},
+      "validez": {"es": "Válida 12 meses", "ca": "Vàlida 12 mesos", "en": "Valid for 12 months"}
+    },
+    "instagram": {
+      "antetitulo": {"es": "Instagram", "ca": "Instagram", "en": "Instagram"},
+      "titulo": {"es": "Momentos<br><em>Nácar</em>", "ca": "Moments<br><em>Nácar</em>", "en": "Nácar<br><em>moments</em>"},
+      "etiqueta": {"es": "Cuenta de ejemplo", "ca": "Compte d’exemple", "en": "Sample account"},
+      "cta": {"es": "Síguenos en Instagram", "ca": "Segueix-nos a Instagram", "en": "Follow us on Instagram"},
+      "ver": {"es": "Ver en Instagram", "ca": "Mira-ho a Instagram", "en": "View on Instagram"}
+    },
+    "reserva": {
+      "antetitulo": {"es": "Reservas", "ca": "Reserves", "en": "Booking"},
+      "titulo": {"es": "Pide tu cita<br><em>en un minuto</em>", "ca": "Demana cita<br><em>en un minut</em>", "en": "Book your visit<br><em>in a minute</em>"},
+      "texto": {"es": "Rellena lo básico y se abrirá WhatsApp con tu mensaje ya escrito. Te confirmamos día y hora lo antes posible.", "ca": "Omple el bàsic i s’obrirà WhatsApp amb el missatge ja escrit. Et confirmem dia i hora tan aviat com puguem.", "en": "Fill in the basics and WhatsApp will open with your message ready to send. We’ll confirm the day and time as soon as we can."},
+      "puntos": [
+        {"es": "Sin registros ni contraseñas", "ca": "Sense registres ni contrasenyes", "en": "No sign-ups, no passwords"},
+        {"es": "Cambios y cancelaciones gratis hasta 24 h antes", "ca": "Canvis i cancel·lacions gratuïts fins a 24 h abans", "en": "Free changes and cancellations up to 24 h before"},
+        {"es": "¿Dudas? Te aconsejamos qué servicio elegir", "ca": "Dubtes? T’aconsellem quin servei triar", "en": "Not sure? We’ll help you choose"}
+      ],
+      "nombre": {"es": "Nombre", "ca": "Nom", "en": "Name"},
+      "telefono": {"es": "Teléfono", "ca": "Telèfon", "en": "Phone"},
+      "servicio": {"es": "Servicio", "ca": "Servei", "en": "Service"},
+      "servicio_vacio": {"es": "Aún no lo sé — necesito consejo", "ca": "Encara no ho sé — necessito consell", "en": "Not sure yet — I’d like advice"},
+      "dia": {"es": "Día preferido", "ca": "Dia preferit", "en": "Preferred day"},
+      "franja": {"es": "Horario", "ca": "Horari", "en": "Time of day"},
+      "franjas": [
+        {"es": "Me da igual", "ca": "M’és igual", "en": "Any time"},
+        {"es": "Por la mañana", "ca": "Al matí", "en": "Morning"},
+        {"es": "Por la tarde", "ca": "A la tarda", "en": "Afternoon"}
+      ],
+      "comentario": {"es": "Comentario", "ca": "Comentari", "en": "Comments"},
+      "opcional": {"es": "opcional", "ca": "opcional", "en": "optional"},
+      "comentario_ph": {"es": "Por ejemplo: pelo largo, primera visita, alergias…", "ca": "Per exemple: cabell llarg, primera visita, al·lèrgies…", "en": "For example: long hair, first visit, allergies…"},
+      "acepto": {"es": "He leído y acepto la", "ca": "He llegit i accepto la", "en": "I have read and accept the"},
+      "politica": {"es": "política de privacidad", "ca": "política de privacitat", "en": "privacy policy"},
+      "enviar": {"es": "Enviar por WhatsApp", "ca": "Envia per WhatsApp", "en": "Send via WhatsApp"},
+      "obligatorio": {"es": "obligatorio", "ca": "obligatori", "en": "required"},
+      "nota": {"es": "Se abrirá WhatsApp con tu mensaje: no se envía nada hasta que tú lo confirmes.", "ca": "S’obrirà WhatsApp amb el teu missatge: no s’envia res fins que tu ho confirmis.", "en": "WhatsApp will open with your message — nothing is sent until you confirm it."}
+    },
+    "faq": {
+      "antetitulo": {"es": "Preguntas frecuentes", "ca": "Preguntes freqüents", "en": "FAQ"},
+      "titulo": {"es": "Lo que nos<br><em>preguntáis</em>", "ca": "El que ens<br><em>pregunteu</em>", "en": "What you<br><em>ask us</em>"},
+      "texto": {"es": "¿Otra duda? Escríbenos por WhatsApp y te contestamos enseguida.", "ca": "Un altre dubte? Escriu-nos per WhatsApp i et responem de seguida.", "en": "Anything else? Message us on WhatsApp and we’ll reply straight away."},
+      "cta": {"es": "Preguntar por WhatsApp", "ca": "Pregunta per WhatsApp", "en": "Ask on WhatsApp"},
+      "msg": {"es": "¡Hola, Nácar! Tengo una pregunta:", "ca": "Hola, Nácar! Tinc una pregunta:", "en": "Hi Nácar! I have a question:"}
+    },
+    "contacto": {
+      "antetitulo": {"es": "Contacto", "ca": "Contacte", "en": "Contact"},
+      "titulo": {"es": "Ven a <em>vernos</em>", "ca": "Vine a <em>veure’ns</em>", "en": "Come and <em>see us</em>"},
+      "texto": {"es": "En el centro de Girona, a pocos minutos a pie del Barri Vell.", "ca": "Al centre de Girona, a pocs minuts a peu del Barri Vell.", "en": "In the centre of Girona, a short walk from the Old Quarter."},
+      "direccion": {"es": "Dirección", "ca": "Adreça", "en": "Address"},
+      "telefono": {"es": "Teléfono", "ca": "Telèfon", "en": "Phone"},
+      "email": {"es": "Correo", "ca": "Correu", "en": "Email"},
+      "whatsapp": {"es": "WhatsApp", "ca": "WhatsApp", "en": "WhatsApp"},
+      "llamar": {"es": "Llamar", "ca": "Truca", "en": "Call"},
+      "como_llegar": {"es": "Cómo llegar", "ca": "Com arribar-hi", "en": "Directions"},
+      "datos_ejemplo": {"es": "datos de ejemplo", "ca": "dades d’exemple", "en": "sample details"},
+      "ubicacion_ejemplo": {"es": "Ubicación de ejemplo", "ca": "Ubicació d’exemple", "en": "Sample location"},
+      "mapa": {"es": "Mapa con la ubicación del salón", "ca": "Mapa amb la ubicació del saló", "en": "Map showing the salon’s location"}
+    },
+    "horario": {
+      "titulo": {"es": "Horario", "ca": "Horari", "en": "Opening hours"},
+      "cerrado": {"es": "Cerrado", "ca": "Tancat", "en": "Closed"},
+      "dias": [
+        {"es": "Lunes", "ca": "Dilluns", "en": "Monday"},
+        {"es": "Martes", "ca": "Dimarts", "en": "Tuesday"},
+        {"es": "Miércoles", "ca": "Dimecres", "en": "Wednesday"},
+        {"es": "Jueves", "ca": "Dijous", "en": "Thursday"},
+        {"es": "Viernes", "ca": "Divendres", "en": "Friday"},
+        {"es": "Sábado", "ca": "Dissabte", "en": "Saturday"},
+        {"es": "Domingo", "ca": "Diumenge", "en": "Sunday"}
+      ],
+      "dias_cortos": [
+        {"es": "Lun", "ca": "Dl", "en": "Mon"},
+        {"es": "Mar", "ca": "Dt", "en": "Tue"},
+        {"es": "Mié", "ca": "Dc", "en": "Wed"},
+        {"es": "Jue", "ca": "Dj", "en": "Thu"},
+        {"es": "Vie", "ca": "Dv", "en": "Fri"},
+        {"es": "Sáb", "ca": "Ds", "en": "Sat"},
+        {"es": "Dom", "ca": "Dg", "en": "Sun"}
+      ],
+      "dias_semana_js": [
+        {"es": "el domingo", "ca": "diumenge", "en": "on Sunday"},
+        {"es": "el lunes", "ca": "dilluns", "en": "on Monday"},
+        {"es": "el martes", "ca": "dimarts", "en": "on Tuesday"},
+        {"es": "el miércoles", "ca": "dimecres", "en": "on Wednesday"},
+        {"es": "el jueves", "ca": "dijous", "en": "on Thursday"},
+        {"es": "el viernes", "ca": "divendres", "en": "on Friday"},
+        {"es": "el sábado", "ca": "dissabte", "en": "on Saturday"}
+      ]
+    },
+    "pie": {
+      "lema": {"es": "Cabello, uñas y estética en el centro de Girona.", "ca": "Cabell, ungles i estètica al centre de Girona.", "en": "Hair, nails and skincare in the centre of Girona."},
+      "visitanos": {"es": "Visítanos", "ca": "Visita’ns", "en": "Visit us"},
+      "la_web": {"es": "La web", "ca": "La web", "en": "Explore"},
+      "aviso": {"es": "Aviso legal", "ca": "Avís legal", "en": "Legal notice"},
+      "privacidad": {"es": "Privacidad", "ca": "Privacitat", "en": "Privacy"},
+      "cookies": {"es": "Cookies", "ca": "Galetes", "en": "Cookies"},
+      "ficticio": {"es": "Negocio ficticio — diseño de ejemplo.", "ca": "Negoci fictici — disseny d’exemple.", "en": "Fictional business — sample design."},
+      "credito": {"es": "Diseño web", "ca": "Disseny web", "en": "Web design"}
+    },
+    "js": {
+      "_nota": "Строки для script.js (ошибки формы, «открыто/закрыто», сообщения в WhatsApp…). {servicio}, {h}, {dia}, {n}, {total} подставляет скрипт.",
+      "err_nombre": {"es": "Escribe tu nombre.", "ca": "Escriu el teu nom.", "en": "Please enter your name."},
+      "err_tel": {"es": "Escribe tu teléfono para poder confirmarte la cita.", "ca": "Escriu el teu telèfon perquè et puguem confirmar la cita.", "en": "Please enter your phone so we can confirm your appointment."},
+      "err_tel_corto": {"es": "Revisa el teléfono: debe tener al menos 9 cifras.", "ca": "Revisa el telèfon: ha de tenir com a mínim 9 xifres.", "en": "Please check the number: it needs at least 9 digits."},
+      "err_acepto": {"es": "Necesitamos tu permiso para contestarte.", "ca": "Necessitem el teu permís per respondre’t.", "en": "We need your permission to reply to you."},
+      "msg_general": {"es": "¡Hola, Nácar! Me gustaría reservar una cita.", "ca": "Hola, Nácar! M’agradaria demanar cita.", "en": "Hi Nácar! I’d like to book an appointment."},
+      "msg_servicio": {"es": "¡Hola, Nácar! Me gustaría reservar: {servicio}.", "ca": "Hola, Nácar! M’agradaria reservar: {servicio}.", "en": "Hi Nácar! I’d like to book: {servicio}."},
+      "msg_form": {"es": "¡Hola, Nácar! Quiero pedir cita.", "ca": "Hola, Nácar! Vull demanar cita.", "en": "Hi Nácar! I’d like to book an appointment."},
+      "l_nombre": {"es": "Nombre", "ca": "Nom", "en": "Name"},
+      "l_tel": {"es": "Teléfono", "ca": "Telèfon", "en": "Phone"},
+      "l_servicio": {"es": "Servicio", "ca": "Servei", "en": "Service"},
+      "l_dia": {"es": "Día preferido", "ca": "Dia preferit", "en": "Preferred day"},
+      "l_franja": {"es": "Horario", "ca": "Horari", "en": "Time of day"},
+      "l_coment": {"es": "Comentario", "ca": "Comentari", "en": "Comments"},
+      "abierto": {"es": "Abierto ahora", "ca": "Obert ara", "en": "Open now"},
+      "cerrado": {"es": "Cerrado ahora", "ca": "Tancat ara", "en": "Closed now"},
+      "hasta": {"es": "hasta las {h}", "ca": "fins a les {h}", "en": "until {h}"},
+      "abre_hoy": {"es": "abrimos hoy a las {h}", "ca": "obrim avui a les {h}", "en": "opens today at {h}"},
+      "abre_manana": {"es": "abrimos mañana a las {h}", "ca": "obrim demà a les {h}", "en": "opens tomorrow at {h}"},
+      "abre_dia": {"es": "abrimos {dia} a las {h}", "ca": "obrim {dia} a les {h}", "en": "opens {dia} at {h}"},
+      "de": {"es": "{n} de {total}", "ca": "{n} de {total}", "en": "{n} of {total}"},
+      "mapa_cargando": {"es": "Cargando mapa…", "ca": "Carregant el mapa…", "en": "Loading map…"},
+      "mapa_error": {"es": "No se ha podido cargar el mapa.", "ca": "No s’ha pogut carregar el mapa.", "en": "The map could not be loaded."},
+      "demo_wa_titulo": {"es": "Así funciona la reserva", "ca": "Així funciona la reserva", "en": "How booking works"},
+      "demo_wa_texto": {"es": "Esto es un diseño de ejemplo. En la web real, este botón abre el WhatsApp del salón con el mensaje ya escrito:", "ca": "Això és un disseny d’exemple. A la web real, aquest botó obre el WhatsApp del saló amb el missatge ja escrit:", "en": "This is a sample design. On the real website, this button opens the salon’s WhatsApp with the message already written:"},
+      "demo_probar": {"es": "Probar en mi WhatsApp", "ca": "Prova-ho al meu WhatsApp", "en": "Try it in my WhatsApp"},
+      "demo_probar_nota": {"es": "Se abrirá WhatsApp con este texto y podrás elegir a quién enviarlo.", "ca": "S’obrirà WhatsApp amb aquest text i podràs triar a qui enviar-lo.", "en": "WhatsApp will open with this text and you can choose who to send it to."},
+      "demo_tel_titulo": {"es": "Llamada al salón", "ca": "Trucada al saló", "en": "Calling the salon"},
+      "demo_tel_texto": {"es": "Esto es un diseño de ejemplo y el número es ficticio. En la web real, este botón llama al salón con un solo toque.", "ca": "Això és un disseny d’exemple i el número és fictici. A la web real, aquest botó truca al saló amb un sol toc.", "en": "This is a sample design and the number is fictional. On the real website, this button calls the salon with a single tap."},
+      "demo_ig_titulo": {"es": "Instagram del salón", "ca": "Instagram del saló", "en": "The salon’s Instagram"},
+      "demo_ig_texto": {"es": "Esto es un diseño de ejemplo y la cuenta es ficticia. En la web real, este botón abre el Instagram del salón y la cuadrícula muestra sus últimas fotos.", "ca": "Això és un disseny d’exemple i el compte és fictici. A la web real, aquest botó obre l’Instagram del saló i la quadrícula mostra les últimes fotos.", "en": "This is a sample design and the account is fictional. On the real website, this button opens the salon’s Instagram and the grid shows its latest photos."},
+      "cerrar": {"es": "Cerrar", "ca": "Tanca", "en": "Close"},
+      "lb_anterior": {"es": "Foto anterior", "ca": "Foto anterior", "en": "Previous photo"},
+      "lb_siguiente": {"es": "Foto siguiente", "ca": "Foto següent", "en": "Next photo"}
+    }
+  },
+
+  "cifras": [
+    {"valor": 12, "texto": {"es": "años cuidando de Girona", "ca": "anys cuidant Girona", "en": "years caring for Girona"}},
+    {"valor": 3500, "prefijo": "+", "texto": {"es": "clientas que vuelven", "ca": "clientes que tornen", "en": "clients who come back"}},
+    {"valor": 4.9, "decimales": 1, "sufijo": "★", "texto": {"es": "valoración en Google", "ca": "valoració a Google", "en": "rating on Google"}},
+    {"valor": 100, "sufijo": "%", "texto": {"es": "productos veganos", "ca": "productes vegans", "en": "vegan products"}}
+  ],
+
+  "servicios": [
+    {
+      "tab": "cabello",
+      "foto": "servicio-cabello",
+      "titulo": {"es": "Cabello", "ca": "Cabell", "en": "Hair"},
+      "texto": {"es": "Cortes que respetan tu estilo, color a medida y balayage natural. También peinados para bodas y eventos.", "ca": "Talls que respecten el teu estil, color a mida i balayage natural. També pentinats per a casaments i esdeveniments.", "en": "Cuts that suit your style, made-to-measure colour and natural balayage. Wedding and event styling, too."}
+    },
+    {
+      "tab": "unas",
+      "foto": "servicio-unas",
+      "titulo": {"es": "Uñas", "ca": "Ungles", "en": "Nails"},
+      "texto": {"es": "Manicura y pedicura con esmaltes de larga duración. Acabados discretos o nail art para ocasiones especiales.", "ca": "Manicura i pedicura amb esmalts de llarga durada. Acabats discrets o nail art per a ocasions especials.", "en": "Manicures and pedicures with long-lasting polish. Subtle finishes, or nail art for special occasions."}
+    },
+    {
+      "tab": "estetica",
+      "foto": "servicio-estetica",
+      "titulo": {"es": "Estética", "ca": "Estètica", "en": "Skincare"},
+      "texto": {"es": "Faciales personalizados, cejas y pestañas. Una hora para ti, sin ruido y sin prisas.", "ca": "Facials personalitzats, celles i pestanyes. Una hora per a tu, sense soroll i sense presses.", "en": "Tailored facials, brows and lashes. An hour just for you — quiet and unhurried."}
+    }
+  ],
+
+  "porque": [
+    {"icono": "i-lupa", "titulo": {"es": "Diagnóstico a medida", "ca": "Diagnosi a mida", "en": "Tailored diagnosis"}, "texto": {"es": "Analizamos tu cabello y tu piel antes de proponerte nada. Sin ventas forzadas.", "ca": "Analitzem el teu cabell i la teva pell abans de proposar-te res. Sense vendes forçades.", "en": "We look at your hair and skin before suggesting anything. No pushy upselling."}},
+    {"icono": "i-hoja", "titulo": {"es": "Productos veganos", "ca": "Productes vegans", "en": "Vegan products"}, "texto": {"es": "Fórmulas veganas y sin crueldad animal, suaves con tu cabello y con el planeta.", "ca": "Fórmules veganes i sense crueltat animal, suaus amb el teu cabell i amb el planeta.", "en": "Vegan, cruelty-free formulas — gentle on your hair and on the planet."}},
+    {"icono": "i-reloj", "titulo": {"es": "Tiempo solo para ti", "ca": "Temps només per a tu", "en": "Time just for you"}, "texto": {"es": "Nunca dos clientas a la vez con la misma profesional. Tu hora es tuya.", "ca": "Mai dues clientes alhora amb la mateixa professional. La teva hora és teva.", "en": "Never two clients at once with the same stylist. Your hour is yours."}},
+    {"icono": "i-escudo", "titulo": {"es": "Higiene impecable", "ca": "Higiene impecable", "en": "Impeccable hygiene"}, "texto": {"es": "Material esterilizado y desechables en cada servicio de uñas y estética.", "ca": "Material esterilitzat i d’un sol ús en cada servei d’ungles i estètica.", "en": "Sterilised tools and single-use items in every nail and skincare service."}}
+  ],
+
+  "precios": [
+    {
+      "id": "cabello",
+      "nombre": {"es": "Cabello", "ca": "Cabell", "en": "Hair"},
+      "lineas": [
+        {"nombre": {"es": "Corte y peinado", "ca": "Tall i pentinat", "en": "Cut & blow-dry"}, "desc": {"es": "Lavado, corte a medida y peinado.", "ca": "Rentat, tall a mida i pentinat.", "en": "Wash, tailored cut and styling."}, "precio": 38, "desde": true, "min": 45},
+        {"nombre": {"es": "Corte de caballero", "ca": "Tall de cavaller", "en": "Men’s cut"}, "desc": {"es": "Corte, lavado y acabado.", "ca": "Tall, rentat i acabat.", "en": "Cut, wash and finish."}, "precio": 20, "min": 30},
+        {"nombre": {"es": "Lavado y peinado", "ca": "Rentat i pentinat", "en": "Wash & style"}, "desc": {"es": "Brushing, ondas o liso pulido.", "ca": "Brushing, ones o llis polit.", "en": "Blow-dry, waves or sleek and straight."}, "precio": 24, "desde": true, "min": 30},
+        {"nombre": {"es": "Color de raíz", "ca": "Color d’arrel", "en": "Root colour"}, "desc": {"es": "Tinte sin amoníaco y peinado.", "ca": "Tint sense amoníac i pentinat.", "en": "Ammonia-free colour and styling."}, "precio": 45, "desde": true, "min": 75},
+        {"nombre": {"es": "Balayage", "ca": "Balayage", "en": "Balayage"}, "desc": {"es": "Mechas pintadas a mano, matiz y tratamiento.", "ca": "Metxes pintades a mà, matís i tractament.", "en": "Hand-painted highlights, toner and treatment."}, "precio": 95, "desde": true, "min": 150},
+        {"nombre": {"es": "Ritual de hidratación", "ca": "Ritual d’hidratació", "en": "Hydration ritual"}, "desc": {"es": "Mascarilla profunda y masaje craneal.", "ca": "Mascareta profunda i massatge cranial.", "en": "Deep conditioning mask and scalp massage."}, "precio": 30, "min": 30},
+        {"nombre": {"es": "Recogido de evento", "ca": "Recollit d’esdeveniment", "en": "Event updo"}, "desc": {"es": "Novias e invitadas. Prueba previa opcional.", "ca": "Núvies i convidades. Prova prèvia opcional.", "en": "Brides and guests. Optional trial session."}, "precio": 55, "desde": true, "min": 60}
+      ]
+    },
+    {
+      "id": "unas",
+      "nombre": {"es": "Uñas", "ca": "Ungles", "en": "Nails"},
+      "lineas": [
+        {"nombre": {"es": "Manicura clásica", "ca": "Manicura clàssica", "en": "Classic manicure"}, "desc": {"es": "Limado, cutículas, hidratación y esmalte.", "ca": "Llimat, cutícules, hidratació i esmalt.", "en": "Shaping, cuticle care, hydration and polish."}, "precio": 18, "min": 30},
+        {"nombre": {"es": "Manicura semipermanente", "ca": "Manicura semipermanent", "en": "Gel polish manicure"}, "desc": {"es": "Brillo intacto hasta tres semanas.", "ca": "Brillantor intacta fins a tres setmanes.", "en": "Flawless shine for up to three weeks."}, "precio": 26, "min": 45},
+        {"nombre": {"es": "Uñas de gel", "ca": "Ungles de gel", "en": "Gel extensions"}, "desc": {"es": "Esculpidas o con tips, forma a tu gusto.", "ca": "Esculpides o amb tips, forma al teu gust.", "en": "Sculpted or tips, in the shape you like."}, "precio": 45, "desde": true, "min": 75},
+        {"nombre": {"es": "Pedicura spa", "ca": "Pedicura spa", "en": "Spa pedicure"}, "desc": {"es": "Baño, exfoliación, masaje y esmalte.", "ca": "Bany, exfoliació, massatge i esmalt.", "en": "Soak, scrub, massage and polish."}, "precio": 35, "min": 50},
+        {"nombre": {"es": "Nail art", "ca": "Nail art", "en": "Nail art"}, "desc": {"es": "Diseño a mano alzada, por uña.", "ca": "Disseny a mà alçada, per ungla.", "en": "Freehand design, per nail."}, "precio": 3, "desde": true},
+        {"nombre": {"es": "Retirada de semipermanente", "ca": "Retirada de semipermanent", "en": "Gel polish removal"}, "desc": {"es": "Sin limar la uña natural.", "ca": "Sense llimar l’ungla natural.", "en": "Without filing your natural nail."}, "precio": 8, "min": 15}
+      ]
+    },
+    {
+      "id": "estetica",
+      "nombre": {"es": "Estética", "ca": "Estètica", "en": "Skincare"},
+      "lineas": [
+        {"nombre": {"es": "Limpieza facial profunda", "ca": "Neteja facial profunda", "en": "Deep cleansing facial"}, "desc": {"es": "Diagnóstico de piel, extracción y mascarilla.", "ca": "Diagnosi de pell, extracció i mascareta.", "en": "Skin analysis, extractions and mask."}, "precio": 55, "min": 60},
+        {"nombre": {"es": "Ritual Nácar", "ca": "Ritual Nácar", "en": "Nácar ritual"}, "desc": {"es": "Facial hidratante con masaje de rostro, cuello y manos.", "ca": "Facial hidratant amb massatge de cara, coll i mans.", "en": "Hydrating facial with face, neck and hand massage."}, "precio": 75, "min": 75},
+        {"nombre": {"es": "Lifting de pestañas", "ca": "Lifting de pestanyes", "en": "Lash lift"}, "desc": {"es": "Con tinte. Dura de seis a ocho semanas.", "ca": "Amb tint. Dura de sis a vuit setmanes.", "en": "Tint included. Lasts six to eight weeks."}, "precio": 45, "min": 50},
+        {"nombre": {"es": "Diseño de cejas", "ca": "Disseny de celles", "en": "Brow shaping"}, "desc": {"es": "Hilo o cera y perfilado a tu rostro.", "ca": "Fil o cera i perfilat a la teva cara.", "en": "Threading or wax, shaped to your face."}, "precio": 15, "min": 20},
+        {"nombre": {"es": "Depilación piernas completas", "ca": "Depilació cames senceres", "en": "Full leg wax"}, "desc": {"es": "Cera tibia de baja temperatura.", "ca": "Cera tèbia de baixa temperatura.", "en": "Low-temperature warm wax."}, "precio": 28, "min": 40}
+      ]
+    }
+  ],
+
+  "antes_despues": {"antes": "antes", "despues": "despues"},
+
+  "galeria": [
+    {"foto": "galeria-recogido", "forma": "alta", "pie": {"es": "Recogido de novia", "ca": "Recollit de núvia", "en": "Bridal updo"}},
+    {"foto": "galeria-detalle", "forma": "cuadrada", "pie": {"es": "Nuestros básicos", "ca": "Els nostres bàsics", "en": "Our essentials"}},
+    {"foto": "galeria-pestanas", "forma": "cuadrada", "pie": {"es": "Lifting de pestañas", "ca": "Lifting de pestanyes", "en": "Lash lift"}},
+    {"foto": "galeria-lavado", "forma": "ancha", "pie": {"es": "El rincón de lavado", "ca": "El racó de rentat", "en": "The wash area"}}
+  ],
+
+  "marcas": [
+    {"nombre": "Brumal", "estilo": "serif"},
+    {"nombre": "VELLUM ROSÉ", "estilo": "caps"},
+    {"nombre": "casa ondina", "estilo": "light"},
+    {"nombre": "LUNE & SEL", "estilo": "wide"},
+    {"nombre": "Mirabel", "estilo": "italic"},
+    {"nombre": "OSTRA BOTANICS", "estilo": "caps2"}
+  ],
+
+  "equipo": [
+    {
+      "nombre": "Laia",
+      "foto": "",
+      "rol": {"es": "Estilista y colorista · fundadora", "ca": "Estilista i colorista · fundadora", "en": "Stylist & colourist · founder"},
+      "texto": {"es": "Especialista en balayage y color natural. Te dirá qué te queda bien, aunque no sea lo que venías a pedir.", "ca": "Especialista en balayage i color natural. Et dirà què et queda bé, encara que no sigui el que venies a demanar.", "en": "Balayage and natural colour specialist. She’ll tell you what suits you — even if it’s not what you came in for."}
+    },
+    {
+      "nombre": "Nora",
+      "foto": "",
+      "rol": {"es": "Manicura y nail art", "ca": "Manicura i nail art", "en": "Manicurist & nail artist"},
+      "texto": {"es": "Perfeccionista con las formas y los acabados. Sus diseños son discretos, salvo que le pidas lo contrario.", "ca": "Perfeccionista amb les formes i els acabats. Els seus dissenys són discrets, tret que li demanis el contrari.", "en": "A perfectionist about shapes and finishes. Her designs are subtle — unless you ask otherwise."}
+    },
+    {
+      "nombre": "Clara",
+      "foto": "",
+      "rol": {"es": "Esteticista", "ca": "Esteticista", "en": "Beauty therapist"},
+      "texto": {"es": "Faciales a medida para cada piel y unas manos que hacen olvidar el reloj.", "ca": "Facials a mida per a cada pell i unes mans que fan oblidar el rellotge.", "en": "Tailored facials for every skin type — and hands that make you forget the time."}
+    }
+  ],
+
+  "resenas": [
+    {"nombre": "Marta G.", "cuando": {"es": "hace 2 semanas", "ca": "fa 2 setmanes", "en": "2 weeks ago"}, "servicio": {"es": "Balayage", "ca": "Balayage", "en": "Balayage"}, "texto": {"es": "Salí con el balayage que llevaba meses buscando. Laia me explicó cada paso y el resultado es natural, nada de rayas.", "ca": "Vaig sortir amb el balayage que feia mesos que buscava. La Laia m’ho va explicar tot i el resultat és natural, res de ratlles.", "en": "I left with the balayage I’d been after for months. Laia explained every step and it looks completely natural — no stripes."}},
+    {"nombre": "Júlia R.", "cuando": {"es": "hace 1 mes", "ca": "fa 1 mes", "en": "1 month ago"}, "servicio": {"es": "Manicura semipermanente", "ca": "Manicura semipermanent", "en": "Gel polish manicure"}, "texto": {"es": "La manicura me dura tres semanas intacta. El salón es precioso y se respira calma desde que entras.", "ca": "La manicura em dura tres setmanes intacta. El saló és preciós i s’hi respira calma des que hi entres.", "en": "My manicure stays perfect for three weeks. The salon is beautiful and you feel calm the moment you walk in."}},
+    {"nombre": "Anna P.", "cuando": {"es": "hace 1 mes", "ca": "fa 1 mes", "en": "1 month ago"}, "servicio": {"es": "Ritual Nácar", "ca": "Ritual Nácar", "en": "Nácar ritual"}, "texto": {"es": "El facial de Clara es mi momento del mes. Piel luminosa y ni una sola prisa.", "ca": "El facial de la Clara és el meu moment del mes. Pell lluminosa i cap pressa.", "en": "Clara’s facial is my monthly treat. Glowing skin and not a hint of rush."}},
+    {"nombre": "Laura M.", "cuando": {"es": "hace 2 meses", "ca": "fa 2 mesos", "en": "2 months ago"}, "servicio": {"es": "Recogido de evento", "ca": "Recollit d’esdeveniment", "en": "Event updo"}, "texto": {"es": "Me peinaron para la boda de mi hermana y el recogido aguantó perfecto hasta el final de la fiesta.", "ca": "Em van pentinar per al casament de la meva germana i el recollit va aguantar perfecte fins al final de la festa.", "en": "They did my hair for my sister’s wedding and the updo stayed perfect until the very end of the party."}},
+    {"nombre": "Carla S.", "cuando": {"es": "hace 3 meses", "ca": "fa 3 mesos", "en": "3 months ago"}, "servicio": {"es": "Corte y peinado", "ca": "Tall i pentinat", "en": "Cut & blow-dry"}, "texto": {"es": "Pedí cita por WhatsApp en un minuto y me contestaron enseguida. Volveré seguro.", "ca": "Vaig demanar cita per WhatsApp en un minut i em van respondre de seguida. Hi tornaré segur.", "en": "I booked on WhatsApp in a minute and got a reply straight away. I’ll definitely be back."}},
+    {"nombre": "Elena V.", "cuando": {"es": "hace 3 meses", "ca": "fa 3 mesos", "en": "3 months ago"}, "servicio": {"es": "Uñas de gel", "ca": "Ungles de gel", "en": "Gel extensions"}, "texto": {"es": "Nora me hizo las uñas para mi boda y aguantaron perfectas todo el viaje de novios.", "ca": "La Nora em va fer les ungles per al casament i van aguantar perfectes tot el viatge de noces.", "en": "Nora did my nails for my wedding and they stayed perfect for the whole honeymoon."}}
+  ],
+
+  "instagram": ["ig-1", "ig-2", "ig-3", "ig-4", "ig-5", "ig-6"],
+
+  "faq": [
+    {"p": {"es": "¿Necesito cita previa?", "ca": "Necessito cita prèvia?", "en": "Do I need an appointment?"}, "r": {"es": "Te recomendamos reservar, sobre todo para color y estética. Si hay un hueco libre, te atendemos al momento: escríbenos por WhatsApp y te lo decimos.", "ca": "Et recomanem reservar, sobretot per a color i estètica. Si hi ha un forat lliure, t’atenem al moment: escriu-nos per WhatsApp i t’ho diem.", "en": "We recommend booking, especially for colour and skincare. If there’s a free slot we’ll see you straight away — just message us on WhatsApp."}},
+    {"p": {"es": "¿Cuánto dura un balayage?", "ca": "Quant dura un balayage?", "en": "How long does a balayage take?"}, "r": {"es": "Entre dos y tres horas, según el largo y el tono de partida. En el diagnóstico te damos el tiempo y el precio exactos.", "ca": "Entre dues i tres hores, segons el llarg i el to de partida. A la diagnosi et donem el temps i el preu exactes.", "en": "Between two and three hours, depending on length and starting shade. We’ll give you the exact time and price at your consultation."}},
+    {"p": {"es": "¿Puedo cambiar o cancelar mi cita?", "ca": "Puc canviar o cancel·lar la cita?", "en": "Can I change or cancel my appointment?"}, "r": {"es": "Claro. Avísanos con 24 horas de antelación y no tiene ningún coste.", "ca": "És clar. Avisa’ns amb 24 hores d’antelació i no té cap cost.", "en": "Of course. Let us know 24 hours in advance and there’s no charge."}},
+    {"p": {"es": "¿Hacéis peinados de novia a domicilio?", "ca": "Feu pentinats de núvia a domicili?", "en": "Do you do bridal hair on location?"}, "r": {"es": "Sí, en Girona y alrededores. Incluimos una prueba previa en el salón para que el día de la boda todo salga perfecto.", "ca": "Sí, a Girona i rodalia. Hi incloem una prova prèvia al saló perquè el dia del casament tot surti perfecte.", "en": "Yes, in and around Girona. We include a trial at the salon so everything is perfect on the day."}},
+    {"p": {"es": "¿Qué productos usáis?", "ca": "Quins productes feu servir?", "en": "Which products do you use?"}, "r": {"es": "Fórmulas veganas y sin amoníaco para el color, y cosmética natural para los tratamientos. Si tienes alguna alergia, dínoslo al reservar.", "ca": "Fórmules veganes i sense amoníac per al color, i cosmètica natural per als tractaments. Si tens alguna al·lèrgia, digues-nos-ho en reservar.", "en": "Vegan, ammonia-free colour and natural skincare for treatments. If you have any allergies, let us know when you book."}},
+    {"p": {"es": "¿Cómo puedo pagar?", "ca": "Com puc pagar?", "en": "How can I pay?"}, "r": {"es": "Con tarjeta, en efectivo o con Bizum.", "ca": "Amb targeta, en efectiu o amb Bizum.", "en": "By card, cash or Bizum."}}
+  ],
+
+  "legal": {
+    "_nota": "Тексты legal.html. {titular}, {nif}, {domicilio}, {email}, {telefono}, {nombre}, {ciudad} — из negocio. У клиента данные — только из 2_PREPARADO\\aviso-legal.md.",
+    "titulo": {"es": "Aviso legal, privacidad y cookies", "ca": "Avís legal, privacitat i galetes", "en": "Legal notice, privacy and cookies"},
+    "nota_demo": {"es": "Nácar es un negocio ficticio, creado por Oskal Studio como diseño de ejemplo. Los datos entre corchetes se sustituyen por los reales en cada web.", "ca": "Nácar és un negoci fictici, creat per Oskal Studio com a disseny d’exemple. Les dades entre claudàtors se substitueixen per les reals a cada web.", "en": "Nácar is a fictional business created by Oskal Studio as a sample design. The details in square brackets are replaced with real ones on each website."},
+    "actualizado": {"es": "Última actualización: octubre de 2026", "ca": "Última actualització: octubre de 2026", "en": "Last updated: October 2026"},
+    "secciones": [
+      {
+        "id": "aviso",
+        "titulo": {"es": "Aviso legal", "ca": "Avís legal", "en": "Legal notice"},
+        "html": {
+          "es": "<p>En cumplimiento de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), te informamos de los datos del titular de esta web:</p><ul><li><strong>Titular:</strong> {titular}</li><li><strong>NIF:</strong> {nif}</li><li><strong>Domicilio:</strong> {domicilio}</li><li><strong>Correo:</strong> {email}</li><li><strong>Teléfono:</strong> {telefono}</li></ul><h3>Objeto</h3><p>Esta web presenta los servicios del salón de belleza {nombre} y facilita pedir cita.</p><h3>Propiedad intelectual</h3><p>Los textos, las imágenes, el logotipo y el diseño de esta web pertenecen a su titular o se usan con autorización. No se pueden reproducir sin permiso.</p><h3>Responsabilidad</h3><p>El titular no se hace responsable del mal uso que terceros puedan hacer de la información publicada. Los precios son orientativos y pueden variar según el servicio final.</p><h3>Legislación</h3><p>Esta web se rige por la legislación española. Para cualquier conflicto, las partes se someten a los juzgados y tribunales de {ciudad}.</p>",
+          "ca": "<p>En compliment de la Llei 34/2002, de serveis de la societat de la informació i de comerç electrònic (LSSI-CE), t’informem de les dades del titular d’aquest web:</p><ul><li><strong>Titular:</strong> {titular}</li><li><strong>NIF:</strong> {nif}</li><li><strong>Domicili:</strong> {domicilio}</li><li><strong>Correu:</strong> {email}</li><li><strong>Telèfon:</strong> {telefono}</li></ul><h3>Objecte</h3><p>Aquest web presenta els serveis del saló de bellesa {nombre} i facilita demanar cita.</p><h3>Propietat intel·lectual</h3><p>Els textos, les imatges, el logotip i el disseny d’aquest web pertanyen al seu titular o s’utilitzen amb autorització. No es poden reproduir sense permís.</p><h3>Responsabilitat</h3><p>El titular no es fa responsable del mal ús que tercers puguin fer de la informació publicada. Els preus són orientatius i poden variar segons el servei final.</p><h3>Legislació</h3><p>Aquest web es regeix per la legislació espanyola. Per a qualsevol conflicte, les parts se sotmeten als jutjats i tribunals de {ciudad}.</p>",
+          "en": "<p>In compliance with Spanish Law 34/2002 on information society services and e-commerce (LSSI-CE), these are the details of the owner of this website:</p><ul><li><strong>Owner:</strong> {titular}</li><li><strong>Tax ID (NIF):</strong> {nif}</li><li><strong>Address:</strong> {domicilio}</li><li><strong>Email:</strong> {email}</li><li><strong>Phone:</strong> {telefono}</li></ul><h3>Purpose</h3><p>This website presents the services of the {nombre} beauty salon and makes it easy to book an appointment.</p><h3>Intellectual property</h3><p>The texts, images, logo and design of this website belong to its owner or are used with permission. They may not be reproduced without consent.</p><h3>Liability</h3><p>The owner is not responsible for any misuse of the published information by third parties. Prices are indicative and may vary depending on the final service.</p><h3>Governing law</h3><p>This website is governed by Spanish law. Any dispute will be submitted to the courts of {ciudad}.</p>"
+        }
+      },
+      {
+        "id": "privacidad",
+        "titulo": {"es": "Política de privacidad", "ca": "Política de privacitat", "en": "Privacy policy"},
+        "html": {
+          "es": "<p>De acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), te explicamos cómo tratamos tus datos.</p><h3>Responsable</h3><p>{titular} — NIF {nif} — {domicilio} — {email}.</p><h3>Qué datos y para qué</h3><p>Los datos que escribes en el formulario de cita (nombre, teléfono, servicio, día y horario preferidos y comentario) se usan solo para gestionar tu cita y contestarte. Al enviar el formulario se abre WhatsApp con tu mensaje: el envío lo haces tú y queda sujeto también a la política de privacidad de WhatsApp (Meta).</p><h3>Base legal</h3><p>Tu consentimiento, que das al marcar la casilla y enviar el mensaje.</p><h3>Conservación</h3><p>Mientras sea necesario para gestionar tu cita y, después, durante el tiempo que exija la ley.</p><h3>Destinatarios</h3><p>No cedemos tus datos a terceros, salvo obligación legal.</p><h3>Tus derechos</h3><p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación y la portabilidad de tus datos escribiendo a {email}. También puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).</p>",
+          "ca": "<p>D’acord amb el Reglament (UE) 2016/679 (RGPD) i la Llei orgànica 3/2018 (LOPDGDD), t’expliquem com tractem les teves dades.</p><h3>Responsable</h3><p>{titular} — NIF {nif} — {domicilio} — {email}.</p><h3>Quines dades i per a què</h3><p>Les dades que escrius al formulari de cita (nom, telèfon, servei, dia i horari preferits i comentari) s’utilitzen només per gestionar la teva cita i respondre’t. En enviar el formulari s’obre WhatsApp amb el teu missatge: l’enviament el fas tu i també està subjecte a la política de privacitat de WhatsApp (Meta).</p><h3>Base legal</h3><p>El teu consentiment, que dones en marcar la casella i enviar el missatge.</p><h3>Conservació</h3><p>Mentre sigui necessari per gestionar la teva cita i, després, durant el temps que exigeixi la llei.</p><h3>Destinataris</h3><p>No cedim les teves dades a tercers, tret d’obligació legal.</p><h3>Els teus drets</h3><p>Pots demanar l’accés, la rectificació, la supressió, l’oposició, la limitació i la portabilitat de les teves dades escrivint a {email}. També pots reclamar davant l’Agència Espanyola de Protecció de Dades (www.aepd.es).</p>",
+          "en": "<p>In accordance with Regulation (EU) 2016/679 (GDPR) and Spanish Organic Law 3/2018 (LOPDGDD), here is how we handle your data.</p><h3>Data controller</h3><p>{titular} — Tax ID {nif} — {domicilio} — {email}.</p><h3>What data and why</h3><p>The details you enter in the booking form (name, phone, service, preferred day and time, and comments) are used only to manage your appointment and reply to you. Submitting the form opens WhatsApp with your message: you send it yourself, and it is also subject to WhatsApp’s (Meta) privacy policy.</p><h3>Legal basis</h3><p>Your consent, given by ticking the box and sending the message.</p><h3>Retention</h3><p>As long as needed to manage your appointment and, afterwards, for the period required by law.</p><h3>Recipients</h3><p>We do not share your data with third parties unless required by law.</p><h3>Your rights</h3><p>You can request access, rectification, erasure, objection, restriction and portability of your data by writing to {email}. You can also complain to the Spanish Data Protection Agency (www.aepd.es).</p>"
+        }
+      },
+      {
+        "id": "cookies",
+        "titulo": {"es": "Política de cookies", "ca": "Política de galetes", "en": "Cookie policy"},
+        "html": {
+          "es": "<p>Esta web <strong>no usa cookies</strong> de análisis, seguimiento ni publicidad, y no crea perfiles de los visitantes. Las fuentes tipográficas se sirven desde la propia web.</p><p>El mapa se muestra con OpenStreetMap y la librería Leaflet, que se carga desde unpkg.com. Al mostrar el mapa, tu navegador se conecta a esos servidores, que pueden tratar tu dirección IP; no instalan cookies.</p>",
+          "ca": "<p>Aquest web <strong>no utilitza galetes</strong> d’anàlisi, seguiment ni publicitat, i no crea perfils dels visitants. Les fonts tipogràfiques se serveixen des del mateix web.</p><p>El mapa es mostra amb OpenStreetMap i la biblioteca Leaflet, que es carrega des d’unpkg.com. En mostrar el mapa, el teu navegador es connecta a aquests servidors, que poden tractar la teva adreça IP; no hi instal·len galetes.</p>",
+          "en": "<p>This website <strong>does not use cookies</strong> for analytics, tracking or advertising, and does not build visitor profiles. Fonts are served from this website itself.</p><p>The map is displayed with OpenStreetMap and the Leaflet library, loaded from unpkg.com. When the map is shown, your browser connects to those servers, which may process your IP address; they do not set cookies.</p>"
+        }
+      }
+    ]
+  },
+
+  "fotos": {
+    "_reglas": "- Делать **в одном чате ChatGPT, по порядку** — так свет и цвет будут одинаковыми. №6 — сразу после №5: это правка той же картинки (иначе «до» и «после» будут разными людьми).\n- Каждый запрос — целиком, он самодостаточный (стиль уже внутри).\n- Получилось «пластиково» или слишком глянцево — ответить: `Make it look like a real camera photo: natural skin and hair texture, softer and less contrasty light, lower saturation, no glossy finish, keep everything else.`\n- Руки: проверить пальцы (5 на руке) и ногти; лица — без сходства с реальными людьми.\n- Скачать PNG, назвать как в таблице (`hero.png` можно — сборка сама сделает WebP), положить в `fotos\\`, запустить `python build.py`.\n- Для сайта настоящего клиента — только его фото (после `fotos.py`), эти — только для демо.",
+    "hero": {
+      "archivo": "hero.webp", "ancho": 1536, "alto": 1024, "encuadre": "72% 50%", "encuadre_movil": "66% 40%", "tono": "nacar", "motivo": "arco",
+      "donde": "Первый экран на всю ширину (медленный зум); слева поверх — текст",
+      "alt": {"es": "Interior del salón Nácar: espejo en arco y sillón rosa empolvado", "ca": "Interior del saló Nácar: mirall en arc i butaca rosa empolsinat", "en": "Inside the Nácar salon: arched mirror and powder-pink chair"},
+      "prompt": "Photorealistic wide interior photo of a small boutique beauty salon in an old stone building in Girona, Spain, on a quiet morning. On the right third of the frame: a tall arched mirror with a thin brass frame on a warm cream plaster wall, one powder-pink velvet styling chair in front of it, a small travertine side table with a glass vase of dried flowers and pampas grass, light oak floor. The left two thirds: calm, softly lit cream wall and floor with gentle shadows — empty space for text. Soft natural window light from the left, long gentle shadows, no people. Eye-level, straight-on composition. Colours: cream, powder pink, warm brass, light oak. Real materials and textures (lime plaster, velvet pile, stone), true-to-life colours, subtle film grain, like an interiors-magazine photo shot on a full-frame camera with a 35 mm lens. Not a 3D render, no glossy CGI look, no text, no logos, no watermark. Horizontal 3:2, 1536×1024. File name: hero.webp"
+    },
+    "servicio-cabello": {
+      "archivo": "servicio-cabello.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 45%", "tono": "miel", "motivo": "ondas",
+      "donde": "Услуги — карточка «Cabello»",
+      "alt": {"es": "Estilista peinando ondas suaves en una melena castaña", "ca": "Estilista pentinant ones suaus en una cabellera castanya", "en": "Stylist creating soft waves in long brunette hair"},
+      "prompt": "Photorealistic close-up in a boutique hair salon: a hairstylist’s hands styling a woman’s long brunette hair into soft waves with a round brush and a hairdryer, seen from behind and slightly to the side, the client’s face not visible. Soft natural daylight from a window, warm cream wall softly out of focus, a hint of a powder-pink salon cape. Real hair texture with a few flyaways, natural skin on the hands, short neat nails. 50 mm lens look, shallow depth of field, true-to-life colours, subtle film grain, quiet editorial documentary style. Not glossy, not a 3D render, no text, no logos. Vertical 2:3, 1024×1536. File name: servicio-cabello.webp"
+    },
+    "servicio-unas": {
+      "archivo": "servicio-unas.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 50%", "tono": "rosa", "motivo": "esmalte",
+      "donde": "Услуги — карточка «Uñas»",
+      "alt": {"es": "Manicura con esmalte nude sobre una toalla de lino", "ca": "Manicura amb esmalt nude sobre una tovallola de lli", "en": "Manicure with nude polish on a linen towel"},
+      "prompt": "Photorealistic close-up of a manicure in progress at a beauty salon: a manicurist applying nude-pink polish to a client’s hand resting on a folded cream linen towel, two small unlabelled glass bottles of polish and a little brass dish nearby. Soft window light from the upper left, gentle shadows. Natural skin texture with fine lines and real cuticles, realistic proportions, exactly five fingers on each hand. 45-degree top-down angle, 50 mm macro lens look, shallow depth of field, warm cream and powder-pink palette, subtle film grain, true-to-life colours. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: servicio-unas.webp"
+    },
+    "servicio-estetica": {
+      "archivo": "servicio-estetica.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 40%", "tono": "nacar", "motivo": "rama",
+      "donde": "Услуги — карточка «Estética»",
+      "alt": {"es": "Tratamiento facial con la clienta relajada y los ojos cerrados", "ca": "Tractament facial amb la clienta relaxada i els ulls tancats", "en": "Facial treatment, client relaxed with her eyes closed"},
+      "prompt": "Photorealistic photo of a facial treatment in a calm beauty salon room: a woman lying on a treatment bed with a soft cream towel wrapped around her hair, eyes closed, relaxed; a beauty therapist’s hands gently applying cream to her cheeks. Natural window light, warm cream walls, a touch of powder-pink linen, a small vase of dried flowers far in the background, out of focus. Real skin with pores and natural texture, no heavy make-up, no retouching. Seen from slightly above, from the head of the bed. 50 mm lens look, shallow depth of field, subtle film grain, true-to-life colours, quiet editorial mood. Not glossy, not CGI, no text, no logos. Vertical 2:3, 1024×1536. File name: servicio-estetica.webp"
+    },
+    "antes": {
+      "archivo": "antes.webp", "ancho": 1536, "alto": 1024, "encuadre": "50% 45%", "tono": "gris", "motivo": "ondas",
+      "donde": "До / после — «Antes» (большой слайдер; пара с №6)",
+      "alt": {"es": "Antes: melena castaña sin brillo", "ca": "Abans: cabellera castanya sense brillantor", "en": "Before: dull brunette hair"},
+      "prompt": "Photorealistic photo for a hair salon before/after comparison — the BEFORE shot. A woman seen from behind, sitting in a salon chair, with long dark brown hair that is flat, dull and slightly frizzy, one even colour, no shine. She wears a plain cream salon cape. The woman is exactly in the centre of the frame, with plain warm cream wall on both sides; soft even daylight from a window on the left. Camera at shoulder height, straight from behind; the hair fills the centre from the crown to the ends. Real hair texture, natural and unstyled, no retouching. Editorial documentary style, true-to-life colours, subtle film grain. Not glossy, not CGI, no text. Horizontal 3:2, 1536×1024. File name: antes.webp",
+      "nota": "Сразу после этого запроса — №6 в том же чате."
+    },
+    "despues": {
+      "archivo": "despues.webp", "ancho": 1536, "alto": 1024, "encuadre": "50% 45%", "tono": "miel", "motivo": "ondas",
+      "donde": "До / после — «Después» (правка №5)",
+      "alt": {"es": "Después: balayage miel con ondas suaves", "ca": "Després: balayage mel amb ones suaus", "en": "After: honey balayage with soft waves"},
+      "prompt": "Now edit the previous image to create the AFTER shot. Keep exactly the same woman, pose, framing, camera position, cape, background and light — change only the hair: a soft honey-caramel balayage on the dark brown base, brighter around the face and towards the ends, healthy natural shine, loose soft waves. Realistic hair texture, natural, not glossy or plastic, no text. Same size: horizontal 3:2, 1536×1024. File name: despues.webp"
+    },
+    "galeria-recogido": {
+      "archivo": "galeria-recogido.webp", "ancho": 1024, "alto": 1536, "encuadre": "50% 35%", "tono": "rosa", "motivo": "perla",
+      "donde": "Галерея — высокое фото слева",
+      "alt": {"es": "Recogido bajo de novia con horquillas de perlas", "ca": "Recollit baix de núvia amb forquilles de perles", "en": "Low bridal bun with pearl pins"},
+      "prompt": "Photorealistic photo of a bridal low bun seen from behind: a soft, textured chignon at the nape of the neck with a few loose face-framing strands and three small pearl hair pins, warm light-brown hair. The woman wears an off-white silk dress with an open back; only the back of her head, neck and shoulders are visible. Soft natural window light, cream background softly out of focus. 85 mm lens look, shallow depth of field, real hair texture with flyaways, natural skin, subtle film grain. Elegant, quiet, editorial — not glossy, not CGI, no text. Vertical 2:3, 1024×1536. File name: galeria-recogido.webp"
+    },
+    "galeria-detalle": {
+      "archivo": "galeria-detalle.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "miel", "motivo": "frasco",
+      "donde": "Галерея — квадрат, вверху",
+      "alt": {"es": "Frascos de ámbar, cepillo y tijeras sobre un estante de travertino", "ca": "Flascons d’ambre, raspall i tisores sobre un prestatge de travertí", "en": "Amber bottles, brush and scissors on a travertine shelf"},
+      "prompt": "Photorealistic still life in a boutique beauty salon: unlabelled amber glass bottles of hair oil and skincare, a wooden round brush, a pair of brass hairdressing scissors and a small vase of dried flowers on a travertine shelf against a warm cream plaster wall. Soft natural morning light with gentle shadows. Straight-on, eye-level, 50 mm lens look, true-to-life colours in cream, powder pink and warm brass, subtle film grain. Real materials with small imperfections, nothing that looks staged. Not a 3D render, no text, no logos, no brand names. Square 1:1, 1024×1024. File name: galeria-detalle.webp"
+    },
+    "galeria-pestanas": {
+      "archivo": "galeria-pestanas.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "nacar", "motivo": "flor",
+      "donde": "Галерея — квадрат, вверху",
+      "alt": {"es": "Ojo cerrado con pestañas recién elevadas", "ca": "Ull tancat amb pestanyes acabades d’elevar", "en": "Closed eye with freshly lifted lashes"},
+      "prompt": "Photorealistic close-up of a woman’s closed eye right after a lash lift and tint: naturally curled dark lashes, a groomed eyebrow, real skin texture with fine lines and pores, no make-up. Soft daylight, the edge of a cream towel at the side of the frame. Macro lens look, shallow depth of field, true-to-life colours, subtle film grain. Calm, clean and editorial — not glossy, not retouched, not CGI, no text. Square 1:1, 1024×1024. File name: galeria-pestanas.webp"
+    },
+    "galeria-lavado": {
+      "archivo": "galeria-lavado.webp", "ancho": 1536, "alto": 1024, "encuadre": "50% 50%", "tono": "rosa", "motivo": "arco",
+      "donde": "Галерея — широкое фото внизу",
+      "alt": {"es": "Zona de lavado con lavacabezas crema y sillones rosa", "ca": "Zona de rentat amb rentacaps crema i butaques rosa", "en": "Wash area with cream basins and pink chairs"},
+      "prompt": "Photorealistic photo of the wash area in a boutique hair salon: two cream ceramic backwash basins with powder-pink velvet chairs, brass taps, rolled cream towels on an oak shelf, a large green plant in the corner. One client relaxing with her head back in the basin, eyes closed and peaceful, a stylist’s hands massaging her scalp with foam. Warm natural light from a side window, calm atmosphere. Eye-level, 35 mm lens look, true-to-life colours, subtle film grain, real textures. Editorial interior style — not glossy, not CGI, no text, no logos. Horizontal 3:2, 1536×1024. File name: galeria-lavado.webp"
+    },
+    "ig-1": {
+      "archivo": "ig-1.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "miel", "motivo": "ondas",
+      "donde": "Instagram — 1",
+      "alt": {"es": "Ondas brillantes de un balayage miel", "ca": "Ones brillants d’un balayage mel", "en": "Glossy waves of a honey balayage"},
+      "prompt": "Photorealistic close-up of glossy honey-caramel balayage waves catching soft window light, seen from behind over the shoulder, cream background. Real hair texture with a few flyaways, natural shine, not plastic. 85 mm lens look, shallow depth of field, warm cream and honey palette, subtle film grain. No face, no text, no logos. Square 1:1, 1024×1024. File name: ig-1.webp"
+    },
+    "ig-2": {
+      "archivo": "ig-2.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "rosa", "motivo": "esmalte",
+      "donde": "Instagram — 2",
+      "alt": {"es": "Manicura nude sujetando una taza de café", "ca": "Manicura nude agafant una tassa de cafè", "en": "Nude manicure holding a coffee cup"},
+      "prompt": "Photorealistic top-down photo of a woman’s hands with a fresh nude-pink manicure holding a small ceramic coffee cup on a travertine table, a sprig of dried flowers beside it. Soft morning light, gentle shadows, natural skin with fine lines, exactly five fingers on each hand. 50 mm lens look, cream and powder-pink palette, subtle film grain. Not glossy, no text, no logos. Square 1:1, 1024×1024. File name: ig-2.webp"
+    },
+    "ig-3": {
+      "archivo": "ig-3.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "nacar", "motivo": "flor",
+      "donde": "Instagram — 3",
+      "alt": {"es": "Flores secas en un jarrón de cerámica junto al espejo", "ca": "Flors seques en un gerro de ceràmica al costat del mirall", "en": "Dried flowers in a ceramic vase by the mirror"},
+      "prompt": "Photorealistic still life in a beauty salon: dried peonies and pampas grass in a matte cream ceramic vase next to the edge of an arched brass mirror, on a travertine shelf. Soft natural light, long gentle shadows on a cream plaster wall. 50 mm lens look, true-to-life colours, subtle film grain, quiet and elegant. No text, no logos. Square 1:1, 1024×1024. File name: ig-3.webp"
+    },
+    "ig-4": {
+      "archivo": "ig-4.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 40%", "tono": "rosa", "motivo": "perla",
+      "donde": "Instagram — 4",
+      "alt": {"es": "Estilista colocando una peineta de perlas en un recogido", "ca": "Estilista col·locant una pinta de perles en un recollit", "en": "Stylist placing a pearl comb in an updo"},
+      "prompt": "Photorealistic close-up of a hairstylist’s hands placing a small pearl hair comb into a soft bridal updo, seen from behind; warm light-brown hair, off-white silk at the shoulders. Soft window light, cream background out of focus. 85 mm lens look, shallow depth of field, real hair texture, natural skin, subtle film grain. No face, no text, no logos. Square 1:1, 1024×1024. File name: ig-4.webp"
+    },
+    "ig-5": {
+      "archivo": "ig-5.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "miel", "motivo": "frasco",
+      "donde": "Instagram — 5",
+      "alt": {"es": "Sérum facial goteando de una pipeta de cristal", "ca": "Sèrum facial degotant d’una pipeta de vidre", "en": "Facial serum dripping from a glass dropper"},
+      "prompt": "Photorealistic macro photo of a drop of golden facial serum falling from a glass dropper onto a cream linen surface, an unlabelled amber bottle softly out of focus behind. Warm natural light, true-to-life colours, subtle film grain, elegant and calm. No text, no logos, no brand names. Square 1:1, 1024×1024. File name: ig-5.webp"
+    },
+    "ig-6": {
+      "archivo": "ig-6.webp", "ancho": 1024, "alto": 1024, "encuadre": "50% 50%", "tono": "nacar", "motivo": "concha",
+      "donde": "Instagram — 6",
+      "alt": {"es": "Caja regalo crema con lazo de satén y tarjeta", "ca": "Capsa regal crema amb llaç de setí i targeta", "en": "Cream gift box with a satin ribbon and a card"},
+      "prompt": "Photorealistic photo of a cream gift box tied with a powder-pink satin ribbon, a small blank gift card with a thin gold border tucked under the ribbon, on a powder-pink velvet chair. Soft natural light, gentle shadows, true-to-life colours, subtle film grain, elegant and quiet. No text on the card, no logos. Square 1:1, 1024×1024. File name: ig-6.webp"
+    }
+  }
+}

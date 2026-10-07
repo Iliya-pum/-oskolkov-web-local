@@ -1,0 +1,1 @@
+Сюда — настоящие фото (имена в FOTOS.md: hero.png / .jpg / .webp …), потом python build.py.

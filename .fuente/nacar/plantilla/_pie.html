@@ -1,0 +1,42 @@
+<footer class="ftr">
+  <div class="wrap ftr__grid">
+    <div class="ftr__brand">
+      <a class="logo logo--light" href="{{ href_inicio }}#top">
+        {% include "_logo.html" %}
+      </a>
+      <p class="ftr__lema">{{ textos.pie.lema }}</p>
+    </div>
+    <div class="ftr__col">
+      <p class="ftr__h">{{ textos.pie.visitanos }}</p>
+      <p>{{ negocio.direccion.calle }}<br>{{ negocio.direccion.cp }} {{ negocio.direccion.ciudad }}</p>
+      <p>{{ horario_resumen }}</p>
+    </div>
+    <nav class="ftr__col" aria-label="{{ textos.pie.la_web }}">
+      <p class="ftr__h">{{ textos.pie.la_web }}</p>
+      <ul class="ftr__links">
+        {% if secciones.servicios %}
+        <li><a href="{{ href_inicio }}#servicios">{{ textos.nav.servicios }}</a></li>
+        {% endif %}
+        {% if secciones.precios %}
+        <li><a href="{{ href_inicio }}#precios">{{ textos.nav.precios }}</a></li>
+        {% endif %}
+        {% if secciones.reserva %}
+        <li><a href="{{ href_inicio }}#reserva">{{ textos.nav.reservar }}</a></li>
+        {% endif %}
+        {% if secciones.contacto %}
+        <li><a href="{{ href_inicio }}#contacto">{{ textos.nav.contacto }}</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+  <p class="ftr__big" data-word="{{ negocio.nombre }}" aria-hidden="true"></p>
+  <div class="wrap ftr__bottom">
+    <p>© {{ anio }} {{ negocio.nombre }}{% if sitio.demo %} · {{ textos.pie.ficticio }}{% endif %}</p>
+    <ul class="ftr__legal">
+      <li><a href="{{ href_legal }}#aviso">{{ textos.pie.aviso }}</a></li>
+      <li><a href="{{ href_legal }}#privacidad">{{ textos.pie.privacidad }}</a></li>
+      <li><a href="{{ href_legal }}#cookies">{{ textos.pie.cookies }}</a></li>
+    </ul>
+    <p>{{ textos.pie.credito }}: <a href="{{ sitio.estudio.url }}" rel="noopener">{{ sitio.estudio.nombre }}</a></p>
+  </div>
+</footer>
