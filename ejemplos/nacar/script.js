@@ -566,8 +566,15 @@
   var bar = $("[data-bookbar]");
   var heroCta = $("#hero-cta");
   if (bar && heroCta && hasIO) {
-    var heroGone = false, formOn = false;
-    var paintBar = function () { bar.classList.toggle("is-on", heroGone && !formOn); };
+    var heroGone = false, formOn = false, endOn = false;
+    var paintBar = function () { bar.classList.toggle("is-on", heroGone && !formOn && !endOn); };
+    var ends = $$(".ftr, [data-oskal]"), seen = new Set();
+    var eio = new IntersectionObserver(function (en) {
+      en.forEach(function (x) { x.isIntersecting ? seen.add(x.target) : seen.delete(x.target); });
+      endOn = seen.size > 0;
+      paintBar();
+    });
+    ends.forEach(function (x) { eio.observe(x); });
     new IntersectionObserver(function (en) {
       heroGone = !en[0].isIntersecting && en[0].boundingClientRect.top < 0;
       paintBar();

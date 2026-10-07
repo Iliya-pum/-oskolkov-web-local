@@ -571,6 +571,17 @@
 
 {% include "_pie.html" %}
 
+{% if sitio.demo and sitio.estudio.get('precio_desde') %}
+{% set et = sitio.estudio.textos %}
+<aside class="oskal" aria-label="{{ sitio.estudio.nombre }}" data-oskal>
+  <div class="wrap oskal__in">
+    <p class="oskal__marca"><a href="{{ sitio.estudio.url }}" rel="noopener">{{ sitio.estudio.nombre }}</a><span>{{ et.lema }}</span></p>
+    <p class="oskal__t">{{ et.titulo }} <span class="oskal__sep" aria-hidden="true">·</span> <span class="oskal__p">{{ et.desde }} <strong>{{ sitio.estudio.precio_desde | precio }}</strong></span></p>
+    <a class="btn oskal__btn" href="https://wa.me/{{ sitio.estudio.whatsapp }}?text={{ et.msg | url }}" target="_blank" rel="noopener" data-estudio><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ et.cta }}</a>
+  </div>
+</aside>
+{% endif %}
+
 <div class="bookbar" data-bookbar>
   <a class="btn btn--dark btn--full" href="{{ msg_general | wa }}" target="_blank" rel="noopener" data-wa="{{ msg_general }}"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ textos.nav.reservar }}</a>
 </div>

@@ -24,6 +24,9 @@
   --linea:#E8DAD0; --linea-rgb:232 218 208;
   --exito:#5E8A68; --exito-rgb:94 138 104;
   --error:#A33B32; --error-rgb:163 59 50;
+  --estudio-fondo:#0F172A; --estudio-fondo-rgb:15 23 42;
+  --estudio-texto:#F8FAFC; --estudio-texto-rgb:248 250 252;
+  --estudio-acento:#D42E24; --estudio-acento-rgb:212 46 36;
   --font-titulos:"Cormorant Garamond","Cormorant Garamond Fallback",Georgia, 'Times New Roman', serif;
   --font-texto:"Jost","Jost Fallback",'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
   --radio:22px;
@@ -742,6 +745,21 @@ html.menu-open{ overflow:hidden; }
 .ftr :focus-visible{ outline-color:var(--oro-claro); }
 @media (min-width:800px){ .ftr__grid{ grid-template-columns:1.4fr 1fr 1fr; } }
 @media (max-width:1079px){ .ftr{ padding-bottom:calc(104px + env(safe-area-inset-bottom)); } }
+
+/* ---------- Plaza de Oskal Studio (solo en las demos) ---------- */
+.oskal{ position:relative; padding:24px 0; background:var(--estudio-fondo); color:var(--estudio-texto); border-top:1px solid rgb(var(--estudio-texto-rgb) / .12); }
+.oskal__in{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px 32px; }
+.oskal__marca{ display:flex; flex-direction:column; gap:2px; margin:0; font-size:12px; letter-spacing:.06em; color:rgb(var(--estudio-texto-rgb) / .72); }
+.oskal__marca a{ display:inline-flex; align-items:center; gap:8px; min-height:28px; font-size:15px; font-weight:600; letter-spacing:.04em; color:var(--estudio-texto); text-decoration:none; }
+.oskal__marca a::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--estudio-acento); }
+.oskal__t{ margin:0; font-size:clamp(1.1rem, .95rem + .6vw, 1.45rem); font-weight:500; letter-spacing:.01em; }
+.oskal__sep{ margin:0 .3em; color:rgb(var(--estudio-texto-rgb) / .45); }
+.oskal__p strong{ font-weight:600; }
+.oskal__btn{ background:var(--estudio-acento); color:var(--estudio-texto); }
+.oskal__btn:hover{ box-shadow:0 12px 26px -12px rgb(0 0 0 / .6); transform:translateY(-2px); }
+.oskal :focus-visible{ outline-color:var(--estudio-texto); }
+.ftr:has(+ .oskal){ padding-bottom:32px; }
+@media (max-width:1079px){ .oskal{ padding-bottom:calc(24px + env(safe-area-inset-bottom)); } .oskal__btn{ width:100%; } }
 
 /* Botón fijo «Reservar cita» (móvil) */
 .bookbar{
