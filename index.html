@@ -69,22 +69,29 @@
       "founder": { "@type": "Person", "name": "Ilia Oskolkov" },
       "knowsLanguage": ["es", "ca", "en", "ru"],
       "makesOffer": [
-        { "@type": "Offer", "name": "Diseño de página web", "priceCurrency": "EUR", "price": "300" },
+        { "@type": "Offer", "name": "Página web · plan Básica", "priceCurrency": "EUR", "price": "300" },
+        { "@type": "Offer", "name": "Página web · plan Completa", "priceCurrency": "EUR", "price": "450" },
+        { "@type": "Offer", "name": "Página web · plan Premium con motion design", "priceCurrency": "EUR", "price": "700" },
         { "@type": "Offer", "name": "Reparación de web existente", "priceCurrency": "EUR", "price": "150" },
-        { "@type": "Offer", "name": "Mantenimiento web mensual", "priceCurrency": "EUR", "price": "60" }
+        { "@type": "Offer", "name": "Mantenimiento web mensual", "priceCurrency": "EUR", "price": "25" }
       ],
       "sameAs": ["https://wa.me/34628806573"]
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- Fuentes propias (sin Google Fonts: carga más rápida y sin saltos) -->
+    <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add("js")</script>
     <noscript><style>.reveal{opacity:1!important;transform:none!important;}</style></noscript>
 </head>
 <body>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+    <symbol id="i-out" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></symbol>
+</svg>
 
 <!-- Arte animado de fondo (constelación) -->
 <canvas id="bg-art" aria-hidden="true"></canvas>
@@ -102,33 +109,32 @@
 
     <nav id="main-nav">
         <a href="#servicios" data-i18n="nav_services">Servicios</a>
-        <a href="#proyecto" data-i18n="nav_case">Proyecto</a>
-        <a href="#demos" data-i18n="nav_demos">Demos</a>
+        <a href="#trabajos" data-i18n="nav_work">Trabajos</a>
         <a href="#precios" data-i18n="nav_pricing">Precios</a>
-        <a href="#mantenimiento" data-i18n="nav_maint">Mantenimiento</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
         <a href="#contacto" data-i18n="nav_contact">Contacto</a>
 
         <div class="language-dropdown" id="lang-dropdown">
             <button class="language-btn" id="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Idioma / Language">
-                <img id="current-flag" class="flag-ico" src="images/es.png" alt="">
+                <img id="current-flag" class="flag-ico" src="images/es.png" alt="" width="20" height="14">
                 <span id="current-lang">ESP</span>
                 <svg class="chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="language-menu" id="lang-menu" role="menu">
                 <button type="button" class="lang-opt" data-lang="es" role="menuitem">
-                    <img class="flag-ico" src="images/es.png" alt=""> <span>Español</span>
+                    <img class="flag-ico" src="images/es.png" alt="" width="20" height="14"> <span>Español</span>
                     <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </button>
                 <button type="button" class="lang-opt" data-lang="ca" role="menuitem">
-                    <img class="flag-ico" src="images/cat.png" alt=""> <span>Català</span>
+                    <img class="flag-ico" src="images/cat.png" alt="" width="20" height="14"> <span>Català</span>
                     <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </button>
                 <button type="button" class="lang-opt" data-lang="en" role="menuitem">
-                    <img class="flag-ico" src="images/en.png" alt=""> <span>English</span>
+                    <img class="flag-ico" src="images/en.png" alt="" width="20" height="14"> <span>English</span>
                     <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </button>
                 <button type="button" class="lang-opt" data-lang="ru" role="menuitem">
-                    <img class="flag-ico" src="images/ru.svg" alt=""> <span>Русский</span>
+                    <img class="flag-ico" src="images/ru.svg" alt="" width="20" height="14"> <span>Русский</span>
                     <svg class="check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </button>
             </div>
@@ -138,7 +144,9 @@
     </nav>
 </header>
 
-<!-- ===================== HERO ===================== -->
+<main>
+
+<!-- ===================== 1. HERO ===================== -->
 <section class="hero" id="inicio">
     <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
     <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
@@ -154,28 +162,36 @@
 
         <p class="hero-sub reveal" data-i18n="hero_sub">
             Diseño y desarrollo de páginas web rápidas, modernas y multilingües.
-            Entrega en días, precio cerrado y trato directo conmigo.
+            Entrega en días, precio cerrado y trato directo, sin agencias.
         </p>
 
         <div class="hero-buttons reveal">
             <a href="https://wa.me/34628806573" class="btn btn-primary magnetic" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>
                 <span data-i18n="hero_cta1">Hablar por WhatsApp</span>
             </a>
-            <a href="#precios" class="btn btn-ghost" data-i18n="hero_cta2">Ver precios</a>
+            <a href="#trabajos" class="btn btn-ghost" data-i18n="hero_cta2">Ver trabajos</a>
         </div>
 
-        <div class="hero-meta reveal">
-            <span><b>3–7</b> <span data-i18n="hero_m1">días de entrega</span></span>
-            <span class="dot" aria-hidden="true"></span>
-            <span><b data-i18n="hero_m2">Multiidioma</b></span>
-            <span class="dot" aria-hidden="true"></span>
-            <span><b data-i18n="hero_m3">Desde 300 €</b></span>
-        </div>
+        <ul class="hero-meta reveal">
+            <li><b>3–7</b> <span data-i18n="hero_m1">días de entrega</span></li>
+            <li><b data-i18n="hero_m2">Multiidioma</b></li>
+            <li><b data-i18n="hero_m3">Desde 300 €</b></li>
+        </ul>
     </div>
 </section>
 
-<!-- ===================== SERVICIOS ===================== -->
+<!-- ===================== 2. FRANJA DE CONFIANZA ===================== -->
+<section class="trust" aria-label="Por qué trabajar con nosotros" data-i18n-label="trust_label">
+    <ul class="trust-list">
+        <li class="trust-item reveal"><b data-i18n="tr1_v">Directo</b><span data-i18n="tr1_t">Trato directo, sin agencias</span></li>
+        <li class="trust-item reveal"><b data-i18n="tr2_v">3–7 días</b><span data-i18n="tr2_t">De la idea a la web publicada</span></li>
+        <li class="trust-item reveal"><b data-i18n="tr3_v">A medida</b><span data-i18n="tr3_t">Código propio, sin plantillas</span></li>
+        <li class="trust-item reveal"><b data-i18n="tr4_v">Precio fijo</b><span data-i18n="tr4_t">Presupuesto cerrado, sin sorpresas</span></li>
+    </ul>
+</section>
+
+<!-- ===================== 3. SERVICIOS ===================== -->
 <section id="servicios" class="section services">
     <div class="section-head">
         <span class="kicker" data-i18n="services_kicker">Qué hago</span>
@@ -186,206 +202,240 @@
     <div class="cards">
         <article class="card reveal">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-            <h3 data-i18n="s5_t">Arreglamos tu web actual</h3>
-            <p data-i18n="s5_d">¿Ya tienes web pero va lenta, no se ve bien en el móvil o está anticuada? La revisamos y la arreglamos sin empezar de cero.</p>
+            <div class="card-text">
+                <h3 data-i18n="s5_t">Arreglamos tu web actual</h3>
+                <p data-i18n="s5_d">¿Ya tienes web pero va lenta, no se ve bien en el móvil o está anticuada? La revisamos y la arreglamos sin empezar de cero.</p>
+            </div>
         </article>
         <article class="card reveal">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01M10 6.5h.01"/></svg></div>
-            <h3 data-i18n="s1_t">Landing pages</h3>
-            <p data-i18n="s1_d">Webs de una sola página, directas y orientadas a captar clientes.</p>
+            <div class="card-text">
+                <h3 data-i18n="s1_t">Landing pages</h3>
+                <p data-i18n="s1_d">Webs de una sola página, directas y orientadas a captar clientes.</p>
+            </div>
         </article>
         <article class="card reveal">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
-            <h3 data-i18n="s2_t">Multiidioma</h3>
-            <p data-i18n="s2_d">Añadimos los idiomas que necesites para llegar a muchos más clientes.</p>
+            <div class="card-text">
+                <h3 data-i18n="s2_t">Multiidioma</h3>
+                <p data-i18n="s2_d">Añadimos los idiomas que necesites para llegar a muchos más clientes.</p>
+            </div>
         </article>
         <article class="card reveal">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
-            <h3 data-i18n="s3_t">Diseño móvil</h3>
-            <p data-i18n="s3_d">Perfectas en el móvil, donde te ve la mayoría de tus clientes.</p>
+            <div class="card-text">
+                <h3 data-i18n="s3_t">Diseño móvil</h3>
+                <p data-i18n="s3_d">Perfectas en el móvil, donde te ve la mayoría de tus clientes.</p>
+            </div>
         </article>
         <article class="card reveal">
             <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-1 9h6l-7 11 1-9H6z"/></svg></div>
-            <h3 data-i18n="s4_t">SEO y velocidad</h3>
-            <p data-i18n="s4_d">Rápidas y optimizadas para aparecer en Google y cargar al instante.</p>
+            <div class="card-text">
+                <h3 data-i18n="s4_t">SEO y velocidad</h3>
+                <p data-i18n="s4_d">Rápidas y optimizadas para aparecer en Google y cargar al instante.</p>
+            </div>
         </article>
     </div>
 </section>
 
-<!-- ===================== REPARACIÓN ===================== -->
-<section id="reparacion" class="section repair">
+<!-- ===================== 4. TRABAJOS ===================== -->
+<!-- Antiguos #proyecto y #demos llevan aquí (anclas invisibles más abajo) -->
+<section id="trabajos" class="section work">
+    <span id="proyecto" class="anchor" aria-hidden="true"></span>
     <div class="section-head">
-        <span class="kicker" data-i18n="rep_kicker">¿Ya tienes web?</span>
-        <h2 data-i18n="rep_title">Arreglarla cuesta menos que rehacerla</h2>
-        <p class="section-sub" data-i18n="rep_sub">Si tu web funciona pero va lenta, no se ve bien en el móvil o está anticuada, la reviso y la pongo al día sin empezar de cero.</p>
+        <span class="kicker" data-i18n="work_kicker">Trabajos</span>
+        <h2 data-i18n="work_title">Webs reales y diseños de ejemplo</h2>
+        <p class="section-sub" data-i18n="work_sub">Un proyecto real y dos diseños de ejemplo. Ábrelos: funcionan como una web de verdad.</p>
     </div>
 
-    <article class="plan plan-lite repair-card reveal">
-        <div class="repair-main">
-            <span class="plan-tag" data-i18n="pr_badge">Primer paso</span>
-            <h3 class="plan-name" data-i18n="pr_name">Reparación</h3>
-            <div class="plan-price"><span class="from" data-i18n="pr_from">desde</span><span class="amount">150</span><span class="cur">€</span></div>
-            <p class="plan-for" data-i18n="pr_for">Arregla la web que ya tienes.</p>
-        </div>
-
-        <ul class="plan-feats repair-feats">
-            <li data-i18n="pr_f1">Revisión completa de tu web actual</li>
-            <li data-i18n="pr_f2">Adaptación al móvil</li>
-            <li data-i18n="pr_f3">Mejora de velocidad</li>
-            <li data-i18n="pr_f4">Textos y fotos actualizados</li>
-            <li data-i18n="pr_f5">Botón de WhatsApp</li>
-        </ul>
-
-        <div class="repair-cta">
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Tengo%20una%20web%20y%20quiero%20arreglarla." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="pr_cta">Arreglar mi web</a>
-        </div>
-    </article>
-</section>
-
-<!-- ===================== CASO ALSISA ===================== -->
-<section id="proyecto" class="section case">
-    <div class="case-inner">
-        <div class="case-media reveal">
-            <div class="browser-frame">
-                <div class="browser-bar">
-                    <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-                    <span class="browser-url">alsisaconstrucciones.es</span>
+    <div class="work-grid">
+        <article class="work reveal">
+            <a class="work-frame" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener" style="--dur:8s">
+                <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">alsisaconstrucciones.es</span></div>
+                <div class="work-shot">
+                    <img src="images/work-alsisa.webp" srcset="images/work-alsisa-480.webp 480w, images/work-alsisa.webp 720w" sizes="(max-width: 1024px) 92vw, 360px" width="720" height="3000" loading="lazy" decoding="async" alt="Web de ALSISA Construcciones" data-i18n-alt="w1_alt">
+                    <span class="work-tag work-tag-real" data-i18n="tag_real">Proyecto real</span>
                 </div>
-                <div class="browser-shot">
-                    <!-- Vista previa en vivo de la web real del cliente -->
-                    <iframe src="https://alsisaconstrucciones.es"
-                            title="Web de ALSISA Construcciones"
-                            loading="lazy" scrolling="no" tabindex="-1"></iframe>
-                    <a href="https://alsisaconstrucciones.es" class="shot-link"
-                       target="_blank" rel="noopener"
-                       aria-label="Abrir la web de ALSISA en una pestaña nueva"></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="case-text reveal">
-            <span class="kicker" data-i18n="case_kicker">Proyecto destacado</span>
-            <h2 data-i18n="case_title">ALSISA · Construcción y reformas</h2>
-            <p data-i18n="case_desc">Web multilingüe a medida para una empresa de construcción de Girona. Diseño propio, galería de proyectos, comparador «antes / después», mapa de la zona de trabajo y un formulario que envía la solicitud directa al WhatsApp de la empresa.</p>
-            <ul class="tags">
-                <li data-i18n="case_f1">HTML · CSS · JS</li>
-                <li data-i18n="case_f2">Multilingüe</li>
-                <li data-i18n="case_f3">100% responsive</li>
-                <li data-i18n="case_f4">SEO local</li>
-            </ul>
-            <a href="https://alsisaconstrucciones.es" class="btn btn-primary magnetic" target="_blank" rel="noopener">
-                <span data-i18n="case_cta">Ver web en vivo</span>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
             </a>
-        </div>
-    </div>
-</section>
-
-<!-- ===================== TESTIMONIO ===================== -->
-<!-- TODO: раскомментировать, когда будет отзыв от ALSISA -->
-<!--
-<section id="testimonio" class="section testimonial">
-    <div class="testi-card reveal">
-        <blockquote class="testi-quote">[TEXTO]</blockquote>
-        <div class="testi-author">
-            <img class="testi-logo" src="images/alsisa-case.jpg" alt="[EMPRESA]" width="56" height="56">
-            <div class="testi-meta">
-                <strong class="testi-name">[NOMBRE]</strong>
-                <span class="testi-role">[CARGO] · [EMPRESA]</span>
-            </div>
-        </div>
-    </div>
-</section>
--->
-
-<!-- ===================== DEMOS (capacidades en vivo) ===================== -->
-<section id="demos" class="section demos">
-    <div class="section-head">
-        <span class="kicker" data-i18n="demos_kicker">Míralo en acción</span>
-        <h2 data-i18n="demos_title">Lo que tu web puede hacer</h2>
-        <p class="section-sub" data-i18n="demos_sub">Sin tecnicismos: ejemplos reales en miniatura de lo que puedo montar en tu página.</p>
-    </div>
-
-    <div class="demo-grid">
-
-        <!-- Demo 1: Multiidioma -->
-        <article class="demo-card reveal">
-            <div class="demo-stage" aria-hidden="true">
-                <div class="demo-lang">
-                    <div class="demo-lang-word" id="demo-lang-word">¡Hola!</div>
-                    <div class="demo-lang-flags">
-                        <span class="demo-flag" data-di="0">ES</span>
-                        <span class="demo-flag" data-di="1">EN</span>
-                        <span class="demo-flag" data-di="2">FR</span>
-                        <span class="demo-flag" data-di="3">DE</span>
-                        <span class="demo-flag" data-di="4">IT</span>
-                    </div>
+            <div class="work-info">
+                <div>
+                    <h3>ALSISA <span class="work-niche" data-i18n="w1_niche">Construcción y reformas · Girona</span></h3>
+                    <p class="work-plan" data-i18n="w_plan_c">Plan Completa · 450 €</p>
                 </div>
+                <a class="btn btn-sm btn-outline-auto" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener"><span data-i18n="w_cta_web">Ver web</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
             </div>
-            <h3 data-i18n="demo1_t">Tu web habla idiomas</h3>
-            <p data-i18n="demo1_d">El visitante elige su idioma y toda la página cambia al instante. Más idiomas = más clientes.</p>
         </article>
 
-        <!-- Demo 2: Adaptable a cualquier pantalla -->
-        <article class="demo-card reveal">
-            <div class="demo-stage" aria-hidden="true">
-                <div class="demo-device" id="demo-device">
-                    <div class="demo-device-bar"><span></span><span></span><span></span></div>
-                    <div class="demo-device-body">
-                        <div class="dd-hero"></div>
-                        <div class="dd-cols">
-                            <div class="dd-block"></div>
-                            <div class="dd-block"></div>
-                            <div class="dd-block"></div>
+        <article class="work reveal">
+            <a class="work-frame" href="ejemplos/nacar/" target="_blank" rel="noopener" style="--dur:9s">
+                <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">Nácar</span></div>
+                <div class="work-shot">
+                    <img src="images/work-nacar.webp" srcset="images/work-nacar-480.webp 480w, images/work-nacar.webp 720w" sizes="(max-width: 1024px) 92vw, 360px" width="720" height="3000" loading="lazy" decoding="async" alt="Diseño de ejemplo: salón de belleza Nácar" data-i18n-alt="w2_alt">
+                    <span class="work-tag" data-i18n="tag_demo">Diseño de ejemplo</span>
+                </div>
+            </a>
+            <div class="work-info">
+                <div>
+                    <h3>Nácar <span class="work-niche" data-i18n="w2_niche">Salón de belleza</span></h3>
+                    <p class="work-plan" data-i18n="w_plan_c">Plan Completa · 450 €</p>
+                </div>
+                <a class="btn btn-sm btn-outline-auto" href="ejemplos/nacar/" target="_blank" rel="noopener"><span data-i18n="w_cta_demo">Ver demo</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
+            </div>
+        </article>
+
+        <article class="work reveal">
+            <a class="work-frame" href="ejemplos/trattoria/" target="_blank" rel="noopener" style="--dur:9s">
+                <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">Da Livia</span></div>
+                <div class="work-shot">
+                    <img src="images/work-trattoria.webp" srcset="images/work-trattoria-480.webp 480w, images/work-trattoria.webp 720w" sizes="(max-width: 1024px) 92vw, 360px" width="720" height="3000" loading="lazy" decoding="async" alt="Diseño de ejemplo: trattoria Da Livia" data-i18n-alt="w3_alt">
+                    <span class="work-tag" data-i18n="tag_demo">Diseño de ejemplo</span>
+                </div>
+            </a>
+            <div class="work-info">
+                <div>
+                    <h3>Da Livia <span class="work-niche" data-i18n="w3_niche">Trattoria italiana</span></h3>
+                    <p class="work-plan" data-i18n="w_plan_p">Plan Premium · 700 €</p>
+                </div>
+                <a class="btn btn-sm btn-outline-auto" href="ejemplos/trattoria/" target="_blank" rel="noopener"><span data-i18n="w_cta_demo">Ver demo</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
+            </div>
+        </article>
+    </div>
+
+    <!-- Mini-demos de lo que puede hacer una web -->
+    <div class="caps" id="demos">
+        <h3 class="caps-title reveal" data-i18n="demos_title">Lo que tu web puede hacer</h3>
+        <div class="caps-row">
+            <article class="demo-card reveal">
+                <div class="demo-stage" aria-hidden="true">
+                    <div class="demo-lang">
+                        <div class="demo-lang-word" id="demo-lang-word">¡Hola!</div>
+                        <div class="demo-lang-flags">
+                            <span class="demo-flag" data-di="0">ES</span>
+                            <span class="demo-flag" data-di="1">EN</span>
+                            <span class="demo-flag" data-di="2">FR</span>
+                            <span class="demo-flag" data-di="3">DE</span>
+                            <span class="demo-flag" data-di="4">IT</span>
                         </div>
-                        <div class="dd-btn"></div>
                     </div>
                 </div>
-            </div>
-            <h3 data-i18n="demo2_t">Se adapta a cualquier pantalla</h3>
-            <p data-i18n="demo2_d">Ordenador, tablet o móvil: la web se reorganiza sola y siempre se ve perfecta.</p>
-        </article>
+                <h4 data-i18n="demo1_t">Tu web habla idiomas</h4>
+                <p data-i18n="demo1_d">El visitante elige su idioma y toda la página cambia al instante. Más idiomas = más clientes.</p>
+            </article>
 
-        <!-- Demo 3: Velocidad -->
-        <article class="demo-card reveal">
-            <div class="demo-stage" aria-hidden="true">
-                <div class="demo-speed">
-                    <div class="ds-row">
-                        <span class="ds-label" data-i18n="demo3_slow">Web típica</span>
-                        <div class="ds-track"><div class="ds-bar ds-slow" id="ds-slow"></div></div>
-                        <span class="ds-time ds-time-slow" id="ds-slow-t">6,2 s</span>
-                    </div>
-                    <div class="ds-row">
-                        <span class="ds-label ds-label-mine" data-i18n="demo3_fast">Mi web</span>
-                        <div class="ds-track"><div class="ds-bar ds-fast" id="ds-fast"></div></div>
-                        <span class="ds-time ds-time-fast" id="ds-fast-t">0,8 s</span>
-                    </div>
-                </div>
-            </div>
-            <h3 data-i18n="demo3_t">Carga en un parpadeo</h3>
-            <p data-i18n="demo3_d">Cada segundo de espera son clientes que se van. Código ligero, sin plantillas pesadas.</p>
-            <p class="demo-note" data-i18n="demo3_extra">¿Ya tienes web? También la aceleramos, sin rehacerla.</p>
-        </article>
-
-        <!-- Demo 4: Detalles que enamoran (interactivo) -->
-        <article class="demo-card reveal">
-            <div class="demo-stage" aria-hidden="true">
-                <div class="demo-tilt" id="demo-tilt">
-                    <div class="demo-tilt-inner">
-                        <span class="dt-shine"></span>
-                        <span class="dt-emoji">✨</span>
-                        <span class="dt-text" data-i18n="demo4_try">Pasa el ratón / toca</span>
+            <article class="demo-card reveal">
+                <div class="demo-stage" aria-hidden="true">
+                    <div class="demo-device" id="demo-device">
+                        <div class="demo-device-bar"><span></span><span></span><span></span></div>
+                        <div class="demo-device-body">
+                            <div class="dd-hero"></div>
+                            <div class="dd-cols">
+                                <div class="dd-block"></div>
+                                <div class="dd-block"></div>
+                                <div class="dd-block"></div>
+                            </div>
+                            <div class="dd-btn"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <h3 data-i18n="demo4_t">Detalles que enamoran</h3>
-            <p data-i18n="demo4_d">Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.</p>
-        </article>
+                <h4 data-i18n="demo2_t">Se adapta a cualquier pantalla</h4>
+                <p data-i18n="demo2_d">Ordenador, tablet o móvil: la web se reorganiza sola y siempre se ve perfecta.</p>
+            </article>
 
+            <article class="demo-card reveal">
+                <div class="demo-stage" aria-hidden="true">
+                    <div class="demo-speed">
+                        <div class="ds-row">
+                            <span class="ds-label" data-i18n="demo3_slow">Web típica</span>
+                            <div class="ds-track"><div class="ds-bar ds-slow" id="ds-slow"></div></div>
+                            <span class="ds-time ds-time-slow" id="ds-slow-t">6,2 s</span>
+                        </div>
+                        <div class="ds-row">
+                            <span class="ds-label ds-label-mine" data-i18n="demo3_fast">Mi web</span>
+                            <div class="ds-track"><div class="ds-bar ds-fast" id="ds-fast"></div></div>
+                            <span class="ds-time ds-time-fast" id="ds-fast-t">0,8 s</span>
+                        </div>
+                    </div>
+                </div>
+                <h4 data-i18n="demo3_t">Carga en un parpadeo</h4>
+                <p data-i18n="demo3_d">Cada segundo de espera son clientes que se van. Código ligero, sin plantillas pesadas.</p>
+            </article>
+
+            <article class="demo-card reveal">
+                <div class="demo-stage" aria-hidden="true">
+                    <div class="demo-tilt" id="demo-tilt">
+                        <div class="demo-tilt-inner">
+                            <span class="dt-shine"></span>
+                            <span class="dt-emoji">✨</span>
+                            <span class="dt-text" data-i18n="demo4_try">Pasa el ratón / toca</span>
+                        </div>
+                    </div>
+                </div>
+                <h4 data-i18n="demo4_t">Detalles que enamoran</h4>
+                <p data-i18n="demo4_d">Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.</p>
+            </article>
+        </div>
     </div>
 </section>
 
-<!-- ===================== PRECIOS ===================== -->
+<!-- ===================== 5. OPINIONES (oculta hasta tener los textos) =====================
+     Para mostrarla: quitar «hidden» de la sección y poner los textos en script.js
+     (claves op1_text, op1_name, op1_role, op2_… en es/ca/en/ru). No inventar opiniones. -->
+<section id="opiniones" class="section reviews" hidden>
+    <div class="section-head">
+        <span class="kicker" data-i18n="op_kicker">Opiniones</span>
+        <h2 data-i18n="op_title">Lo que dicen los clientes</h2>
+    </div>
+    <div class="reviews-grid">
+        <figure class="testi-card reveal">
+            <blockquote class="testi-quote" data-i18n="op1_text">[TEXTO]</blockquote>
+            <figcaption class="testi-author">
+                <span class="testi-meta"><strong class="testi-name" data-i18n="op1_name">[NOMBRE]</strong><span class="testi-role" data-i18n="op1_role">[NEGOCIO]</span></span>
+            </figcaption>
+        </figure>
+        <figure class="testi-card reveal">
+            <blockquote class="testi-quote" data-i18n="op2_text">[TEXTO]</blockquote>
+            <figcaption class="testi-author">
+                <span class="testi-meta"><strong class="testi-name" data-i18n="op2_name">[NOMBRE]</strong><span class="testi-role" data-i18n="op2_role">[NEGOCIO]</span></span>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+
+<!-- ===================== 6. CÓMO TRABAJO ===================== -->
+<section id="como" class="section how">
+    <div class="section-head">
+        <span class="kicker" data-i18n="how_kicker">Cómo trabajo</span>
+        <h2 data-i18n="how_title">Cuatro pasos, sin complicaciones</h2>
+    </div>
+    <ol class="steps">
+        <li class="step reveal">
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><use href="#i-wa"/></svg></span>
+            <span class="step-n" aria-hidden="true">1</span>
+            <h3 data-i18n="st1_t">Me escribes por WhatsApp</h3>
+            <p data-i18n="st1_d">Me cuentas qué necesitas, sin compromiso.</p>
+        </li>
+        <li class="step reveal">
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 14 2 2 4-4"/></svg></span>
+            <span class="step-n" aria-hidden="true">2</span>
+            <h3 data-i18n="st2_t">Presupuesto cerrado</h3>
+            <p data-i18n="st2_d">El precio final por escrito antes de empezar.</p>
+        </li>
+        <li class="step reveal">
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="m9 11 2 2 4-4"/></svg></span>
+            <span class="step-n" aria-hidden="true">3</span>
+            <h3 data-i18n="st3_t">Borrador para aprobar</h3>
+            <p data-i18n="st3_d">Lo revisas y lo ajustamos juntos.</p>
+        </li>
+        <li class="step reveal">
+            <span class="step-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+            <span class="step-n" aria-hidden="true">4</span>
+            <h3 data-i18n="st4_t">Web publicada</h3>
+            <p data-i18n="st4_d">En 3–7 días, lista para recibir clientes.</p>
+        </li>
+    </ol>
+</section>
+
+<!-- ===================== 7. PRECIOS (todo en un sitio) ===================== -->
 <section id="precios" class="section pricing">
     <div class="section-head">
         <span class="kicker" data-i18n="pricing_kicker">Precios</span>
@@ -394,111 +444,115 @@
     </div>
 
     <div class="plans-main">
-            <!-- Básica -->
-            <article class="plan reveal">
-                <h3 class="plan-name" data-i18n="p1_name">Básica</h3>
-                <div class="plan-price"><span class="amount">300</span><span class="cur">€</span></div>
-                <p class="plan-for" data-i18n="p1_for">Una página, lista para publicar.</p>
-                <ul class="plan-feats">
-                    <li data-i18n="p1_f1">Diseño 100% a medida</li>
-                    <li data-i18n="p1_f2">Adaptada a móvil</li>
-                    <li data-i18n="p1_f3">Formulario de contacto</li>
-                    <li data-i18n="p1_f4">Botón directo de WhatsApp</li>
-                </ul>
-                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20B%C3%A1sico%20(300%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta">Lo quiero</a>
-            </article>
+        <!-- Básica -->
+        <article class="plan reveal">
+            <h3 class="plan-name" data-i18n="p1_name">Básica</h3>
+            <div class="plan-price"><span class="amount">300</span><span class="cur">€</span></div>
+            <p class="plan-for" data-i18n="p1_for">Una página, lista para publicar.</p>
+            <ul class="plan-feats">
+                <li data-i18n="p1_f1">Diseño 100% a medida</li>
+                <li data-i18n="p1_f2">Adaptada a móvil</li>
+                <li data-i18n="p1_f3">Formulario de contacto</li>
+                <li data-i18n="p1_f4">Botón directo de WhatsApp</li>
+            </ul>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20B%C3%A1sico%20(300%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta">Lo quiero</a>
+        </article>
 
-            <!-- Completa (destacada) -->
-            <article class="plan plan-featured reveal">
-                <span class="plan-badge" data-i18n="p2_badge">Más popular</span>
-                <h3 class="plan-name" data-i18n="p2_name">Completa</h3>
-                <div class="plan-price"><span class="amount">450</span><span class="cur">€</span></div>
-                <p class="plan-for" data-i18n="p2_for">Todo lo de Básica, y además:</p>
-                <ul class="plan-feats">
-                    <li data-i18n="p2_f1">Multiidioma (los idiomas que quieras)</li>
-                    <li data-i18n="p2_f2">Galería o portfolio</li>
-                    <li data-i18n="p2_f3">SEO básico para Google</li>
-                    <li data-i18n="p2_f4">Mapa de Google integrado</li>
-                </ul>
-                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Completo%20(450%20%E2%82%AC)." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="plan_cta_2">Lo quiero</a>
-            </article>
+        <!-- Completa (destacada) -->
+        <article class="plan plan-featured reveal">
+            <span class="plan-badge" data-i18n="p2_badge">Más popular</span>
+            <h3 class="plan-name" data-i18n="p2_name">Completa</h3>
+            <div class="plan-price"><span class="amount">450</span><span class="cur">€</span></div>
+            <p class="plan-for" data-i18n="p2_for">Todo lo de Básica, y además:</p>
+            <ul class="plan-feats">
+                <li data-i18n="p2_f1">Multiidioma (los idiomas que quieras)</li>
+                <li data-i18n="p2_f2">Galería o portfolio</li>
+                <li data-i18n="p2_f3">SEO básico para Google</li>
+                <li data-i18n="p2_f4">Mapa de Google integrado</li>
+            </ul>
+            <p class="plan-ex"><span data-i18n="ex_pl">Ejemplos:</span> <a href="https://alsisaconstrucciones.es" target="_blank" rel="noopener">ALSISA</a> · <a href="ejemplos/nacar/" target="_blank" rel="noopener">Nácar</a></p>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Completo%20(450%20%E2%82%AC)." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="plan_cta_2">Lo quiero</a>
+        </article>
 
-            <!-- Premium -->
-            <article class="plan reveal">
-                <h3 class="plan-name" data-i18n="p3_name">Premium</h3>
-                <div class="plan-price"><span class="amount">600</span><span class="cur">€</span></div>
-                <p class="plan-for" data-i18n="p3_for">Todo lo de Completa, y además:</p>
-                <ul class="plan-feats">
-                    <li data-i18n="p3_f1">Animaciones avanzadas</li>
-                    <li data-i18n="p3_f2">Secciones a medida extra</li>
-                    <li data-i18n="p3_f3">Optimización SEO completa</li>
-                    <li data-i18n="p3_f4">Soporte prioritario</li>
-                </ul>
-                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(600%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
-            </article>
+        <!-- Premium -->
+        <article class="plan reveal">
+            <h3 class="plan-name" data-i18n="p3_name">Premium</h3>
+            <div class="plan-price"><span class="amount">700</span><span class="cur">€</span></div>
+            <p class="plan-for" data-i18n="p3_for">Todo lo de Completa, y además:</p>
+            <ul class="plan-feats">
+                <li data-i18n="p3_f1">Motion design: animaciones de cine al hacer scroll</li>
+                <li data-i18n="p3_f2">Secciones a medida extra</li>
+                <li data-i18n="p3_f3">Optimización SEO completa</li>
+                <li data-i18n="p3_f4">Soporte prioritario</li>
+            </ul>
+            <p class="plan-ex"><span data-i18n="ex_one">Ejemplo:</span> <a href="ejemplos/trattoria/" target="_blank" rel="noopener">Da Livia</a></p>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(700%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
+        </article>
     </div>
 
-    <p class="pricing-note" data-i18n="pricing_note">* Dominio y hosting aparte (unos 60–80 € al año), o incluidos si eliges un plan de mantenimiento.</p>
-</section>
-
-<!-- ===================== MANTENIMIENTO ===================== -->
-<section id="mantenimiento" class="section maintenance">
-    <div class="maint-card reveal">
-        <div class="maint-left">
-            <span class="kicker" data-i18n="maint_kicker">Después de la entrega</span>
-            <h2 data-i18n="maint_title">Tu web siempre al día, sin que te preocupes</h2>
-            <p class="section-sub" data-i18n="maint_sub">Publicar la web es solo el principio. Yo me encargo de que siga rápida, actualizada y segura. Tú no tocas nada.</p>
-            <p class="maint-from" data-i18n="maint_from">Desde 25 € al mes</p>
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Quiero%20informaci%C3%B3n%20sobre%20el%20mantenimiento%20mensual." class="btn btn-primary magnetic" target="_blank" rel="noopener" data-i18n="maint_cta">Quiero mantenimiento</a>
-            <p class="maint-note" data-i18n="maint_note">Opcional y sin permanencia. Puedes cambiar de plan o darte de baja cuando quieras.</p>
+    <!-- ¿Ya tienes web? (antes sección «Reparación») -->
+    <div class="repair-strip reveal" id="reparacion">
+        <div class="rs-text">
+            <p class="rs-title"><span data-i18n="rep_kicker">¿Ya tienes web?</span> <b data-i18n="rp_price">Reparación desde 150 €</b></p>
+            <p class="rs-desc" data-i18n="rp_d">La revisamos y la ponemos al día sin empezar de cero: móvil, velocidad, textos y WhatsApp.</p>
         </div>
-        <div class="maint-right">
-            <div class="maint-plans">
-                <div class="maint-plan">
-                    <div class="maint-plan-head">
-                        <span class="maint-plan-name" data-i18n="mp1_name">Base</span>
-                        <span class="maint-plan-price" data-i18n="mp1_price">25 € / mes</span>
-                    </div>
-                    <p class="maint-plan-for" data-i18n="mp1_for">Que todo siga funcionando.</p>
-                    <ul class="plan-feats">
-                        <li data-i18n="mp1_f1">Dominio y hosting incluidos y renovados a tiempo</li>
-                        <li data-i18n="mp1_f2">SSL y copias de seguridad</li>
-                        <li data-i18n="mp1_f3">Si algo falla, lo arreglo yo</li>
-                        <li data-i18n="mp1_f4">Cambios de datos básicos: horario, teléfono, dirección</li>
-                    </ul>
+        <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Tengo%20una%20web%20y%20quiero%20arreglarla." class="btn btn-outline btn-outline-auto" target="_blank" rel="noopener" data-i18n="pr_cta">Arreglar mi web</a>
+    </div>
+
+    <!-- Mantenimiento (antes sección propia) -->
+    <div class="maint" id="mantenimiento">
+        <div class="maint-head reveal">
+            <h3 data-i18n="mt_title">Mantenimiento después de la entrega</h3>
+            <p data-i18n="maint_note">Opcional y sin permanencia. Puedes cambiar de plan o darte de baja cuando quieras.</p>
+        </div>
+        <div class="maint-plans">
+            <div class="maint-plan reveal">
+                <div class="maint-plan-head">
+                    <span class="maint-plan-name" data-i18n="mp1_name">Base</span>
+                    <span class="maint-plan-price" data-i18n="mp1_price">25 € / mes</span>
                 </div>
-                <div class="maint-plan maint-plan-featured">
-                    <div class="maint-plan-head">
-                        <span class="maint-plan-name" data-i18n="mp2_name">Activo</span>
-                        <span class="maint-plan-price" data-i18n="mp2_price">60 € / mes</span>
-                    </div>
-                    <p class="maint-plan-for" data-i18n="mp2_for">Tu web se mantiene al día.</p>
-                    <ul class="plan-feats">
-                        <li data-i18n="mp2_f1">Todo lo del plan Base</li>
-                        <li data-i18n="mp2_f2">Cambios de textos y fotos cuando los necesites</li>
-                        <li data-i18n="mp2_f3">Gestión de tu ficha de Google</li>
-                        <li data-i18n="mp2_f4">Respuesta en menos de 24 h</li>
-                    </ul>
+                <p class="maint-plan-for" data-i18n="mp1_for">Que todo siga funcionando.</p>
+                <ul class="plan-feats">
+                    <li data-i18n="mp1_f1">Dominio y hosting incluidos y renovados a tiempo</li>
+                    <li data-i18n="mp1_f2">SSL y copias de seguridad</li>
+                    <li data-i18n="mp1_f3">Si algo falla, lo arreglo yo</li>
+                    <li data-i18n="mp1_f4">Cambios de datos básicos: horario, teléfono, dirección</li>
+                </ul>
+            </div>
+            <div class="maint-plan maint-plan-featured reveal">
+                <div class="maint-plan-head">
+                    <span class="maint-plan-name" data-i18n="mp2_name">Activo</span>
+                    <span class="maint-plan-price" data-i18n="mp2_price">60 € / mes</span>
                 </div>
-                <div class="maint-plan">
-                    <div class="maint-plan-head">
-                        <span class="maint-plan-name" data-i18n="mp3_name">Pro</span>
-                        <span class="maint-plan-price" data-i18n="mp3_price">120 € / mes</span>
-                    </div>
-                    <p class="maint-plan-for" data-i18n="mp3_for">Tu web crece contigo.</p>
-                    <ul class="plan-feats">
-                        <li data-i18n="mp3_f1">Todo lo del plan Activo</li>
-                        <li data-i18n="mp3_f2">Secciones nuevas y campañas de temporada</li>
-                        <li data-i18n="mp3_f3">Trabajo continuo de SEO</li>
-                        <li data-i18n="mp3_f4">Prioridad absoluta</li>
-                    </ul>
+                <p class="maint-plan-for" data-i18n="mp2_for">Tu web se mantiene al día.</p>
+                <ul class="plan-feats">
+                    <li data-i18n="mp2_f1">Todo lo del plan Base</li>
+                    <li data-i18n="mp2_f2">Cambios de textos y fotos cuando los necesites</li>
+                    <li data-i18n="mp2_f3">Gestión de tu ficha de Google</li>
+                    <li data-i18n="mp2_f4">Respuesta en menos de 24 h</li>
+                </ul>
+            </div>
+            <div class="maint-plan reveal">
+                <div class="maint-plan-head">
+                    <span class="maint-plan-name" data-i18n="mp3_name">Pro</span>
+                    <span class="maint-plan-price" data-i18n="mp3_price">120 € / mes</span>
                 </div>
+                <p class="maint-plan-for" data-i18n="mp3_for">Tu web crece contigo.</p>
+                <ul class="plan-feats">
+                    <li data-i18n="mp3_f1">Todo lo del plan Activo</li>
+                    <li data-i18n="mp3_f2">Secciones nuevas y campañas de temporada</li>
+                    <li data-i18n="mp3_f3">Trabajo continuo de SEO</li>
+                    <li data-i18n="mp3_f4">Prioridad absoluta</li>
+                </ul>
             </div>
         </div>
+        <p class="maint-cta reveal"><a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Quiero%20informaci%C3%B3n%20sobre%20el%20mantenimiento%20mensual." class="btn btn-ghost" target="_blank" rel="noopener" data-i18n="maint_cta">Quiero mantenimiento</a></p>
     </div>
+
+    <p class="pricing-note" data-i18n="pricing_note">* Dominio y hosting aparte (unos 60–80 € al año) o incluidos en cualquier plan de mantenimiento.</p>
 </section>
 
-<!-- ===================== FAQ ===================== -->
+<!-- ===================== 8. FAQ ===================== -->
 <section id="faq" class="section faq">
     <div class="section-head">
         <span class="kicker" data-i18n="faq_kicker">Dudas frecuentes</span>
@@ -542,7 +596,7 @@
                 <svg class="faq-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4">
-                <div><p data-i18n="faq_a4">Entre 3 y 7 días desde que tengo tus textos y fotos. El plazo depende sobre todo de la rapidez con la que me pasas el material.</p></div>
+                <div><p data-i18n="faq_a4">Entre 3 y 7 días. El plazo empieza cuando recibo el pago inicial. Si falta algún material, empieza cuando lo tengo completo.</p></div>
             </div>
         </div>
 
@@ -562,7 +616,7 @@
                 <svg class="faq-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6">
-                <div><p data-i18n="faq_a6">Entre un 30 % y un 50 % antes de empezar, y el resto el día de la entrega. El precio se cierra en el presupuesto y no cambia.</p></div>
+                <div><p data-i18n="faq_a6">Un 40 % al empezar y el resto al entregar, por Bizum o transferencia. El precio se cierra en el presupuesto y no cambia.</p></div>
             </div>
         </div>
 
@@ -582,43 +636,13 @@
                 <svg class="faq-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-a" id="faq-a8" role="region" aria-labelledby="faq-q8">
-                <div><p data-i18n="faq_a8">Trabajo con toda España. Todo el proceso se puede hacer por WhatsApp, y si estás por la zona de Girona o Tarragona nos podemos ver en persona.</p></div>
+                <div><p data-i18n="faq_a8">Trabajo en toda España a distancia: todo el proceso se hace por WhatsApp. En la zona de Girona también nos podemos ver en persona.</p></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===================== POR QUÉ RÁPIDO ===================== -->
-<section class="section why">
-    <div class="section-head">
-        <span class="kicker" data-i18n="why_kicker">Por qué tan rápido</span>
-        <h2 data-i18n="why_title">Menos espera, más resultados</h2>
-    </div>
-    <div class="why-grid">
-        <div class="why-item reveal">
-            <div class="why-value" data-i18n="why1_v">Directo</div>
-            <h3 data-i18n="why1_t">Sin intermediarios</h3>
-            <p data-i18n="why1_d">Hablas conmigo, no con una agencia. Menos reuniones, decisiones al momento.</p>
-        </div>
-        <div class="why-item reveal">
-            <div class="why-value" data-i18n="why2_v">3–7 días</div>
-            <h3 data-i18n="why2_t">Entrega ágil</h3>
-            <p data-i18n="why2_d">Me centro en lo esencial y en un flujo de trabajo probado, sin rodeos.</p>
-        </div>
-        <div class="why-item reveal">
-            <div class="why-value" data-i18n="why3_v">A medida</div>
-            <h3 data-i18n="why3_t">Código propio</h3>
-            <p data-i18n="why3_d">Nada de plantillas pesadas: código limpio, ligero y hecho para tu negocio.</p>
-        </div>
-        <div class="why-item reveal">
-            <div class="why-value" data-i18n="why4_v">Cerrado</div>
-            <h3 data-i18n="why4_t">Precio fijo</h3>
-            <p data-i18n="why4_d">Presupuesto cerrado antes de empezar. Sin sorpresas ni costes ocultos.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ===================== CONTACTO ===================== -->
+<!-- ===================== 9. CONTACTO ===================== -->
 <section id="contacto" class="section contact">
     <div class="contact-inner reveal">
         <span class="kicker" data-i18n="contact_kicker">Contacto</span>
@@ -646,12 +670,14 @@
             </label>
 
             <button type="submit" class="btn btn-primary magnetic field-full" id="submit-button">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>
                 <span data-i18n="submit_text">Enviar por WhatsApp</span>
             </button>
         </form>
     </div>
 </section>
+
+</main>
 
 <!-- ===================== FOOTER ===================== -->
 <footer id="site-footer">
@@ -664,7 +690,7 @@
             <p data-i18n="footer_tag">Diseño y desarrollo web para pequeños negocios.</p>
         </div>
         <div class="footer-contact">
-            <h4 data-i18n="footer_contact_t">Contacto</h4>
+            <h3 class="footer-h" data-i18n="footer_contact_t">Contacto</h3>
             <p><a href="https://wa.me/34628806573" target="_blank" rel="noopener">WhatsApp · +34 628 806 573</a></p>
             <p><a href="mailto:iliaoskolkov2004@gmail.com">iliaoskolkov2004@gmail.com</a></p>
             <p><a href="legal.html" data-i18n="footer_legal">Aviso legal · Privacidad · Cookies</a></p>

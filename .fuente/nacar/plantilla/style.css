@@ -899,3 +899,4 @@ html.menu-open{ overflow:hidden; }
 /* Sin content-visibility en las secciones: con alturas estimadas la página «saltaba» al volver
    hacia arriba. Solo el pie (es lo último, nada se mueve por él). */
 .ftr{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
+.oskal__plan{ font-weight:600; letter-spacing:.02em; }

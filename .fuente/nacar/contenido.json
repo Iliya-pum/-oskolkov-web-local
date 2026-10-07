@@ -14,11 +14,12 @@
     "demo": true,
     "noindex": true,
     "estudio": {
-      "_nota": "Плашка Oskal Studio внизу демо (только при demo: true). precio_desde — по smeta.py (расчёт в ПЛАН.md); кнопка — WhatsApp студии.",
+      "_nota": "Плашка Oskal Studio внизу демо (только при demo: true). tarifa и precio_desde — по smeta.py (Completa 450 €, расчёт в ПЛАН.md); кнопка — WhatsApp студии.",
       "nombre": "Oskal Studio",
       "url": "https://oskalstudio.com",
       "whatsapp": "34628806573",
-      "precio_desde": 600,
+      "tarifa": "Completa",
+      "precio_desde": 450,
       "textos": {
         "titulo": {"es": "Una web como esta", "ca": "Una web com aquesta", "en": "A website like this"},
         "desde": {"es": "desde", "ca": "des de", "en": "from"},
