@@ -901,9 +901,10 @@ html.menu-open{ overflow:hidden; }
 }
 /* Teléfono y pantallas táctiles: lo mismo, más simple — títulos y fotos solo se aclaran y suben 20 px */
 @media (prefers-reduced-motion:no-preference) and (max-width:900px), (prefers-reduced-motion:no-preference) and (pointer:coarse){
-  .rv .split{ opacity:0; translate:0 20px; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); }
+  /* el título de la portada no: tiene su propia animación y el script no lo observa (si no, se quedaba invisible) */
+  .rv .split:not(.split--hero){ opacity:0; translate:0 20px; transition:opacity .7s var(--ease-out), translate .7s var(--ease-out); }
   .rv .split.is-in{ opacity:1; translate:0 0; }
-  .rv .split .wi, .rv .split.is-in .wi{ transform:none; transition:none; }
+  .rv .split:not(.split--hero) .wi, .rv .split.is-in .wi{ transform:none; transition:none; }
   .rv .mask{ clip-path:none; opacity:0; transition:opacity .7s var(--ease-out); }
   .rv .is-in .mask, .rv .mask.is-in{ opacity:1; }
   .rv .mask > *, .rv .is-in .mask > *, .rv .mask.is-in > *{ transform:none; transition:none; }
@@ -935,3 +936,5 @@ html.menu-open{ overflow:hidden; }
    hacia arriba. Solo el pie (es lo último, nada se mueve por él). */
 .ftr{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
 .oskal__plan{ font-weight:600; letter-spacing:.02em; }
+/* Foto con recorte para el teléfono (<picture>): la imagen se coloca igual que una <img> suelta */
+.foto-pic{ display:contents; }

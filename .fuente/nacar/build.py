@@ -390,10 +390,13 @@ def f_photo(slot, cls="", loading="lazy", sizes="100vw", priority=False):
         small = ready["small"]
         srcset = f' srcset="{raiz}img/{small[0]} {small[1]}w, {raiz}img/{ready["src"]} {ready["w"]}w" sizes="{sizes}"' if small else ""
         prio = ' fetchpriority="high"' if priority else ""
-        return Safe(
-            f'<img class="foto {cls}" src="{raiz}img/{ready["src"]}"{srcset} width="{ready["w"]}" height="{ready["h"]}" '
-            f'alt="{html.escape(alt)}" loading="{loading}" decoding="async"{prio} style="{style}">'
-        )
+        img = (f'<img class="foto {cls}" src="{raiz}img/{ready["src"]}"{srcset} width="{ready["w"]}" height="{ready["h"]}" '
+               f'alt="{html.escape(alt)}" loading="{loading}" decoding="async"{prio} style="{style}">')
+        mob = ready.get("movil")
+        if mob:  # recorte vertical para el teléfono (más ligero y nítido que recortar la foto ancha)
+            img = (f'<picture class="foto-pic"><source media="(max-width: {MOVIL_MAX}px)" srcset="{raiz}img/{mob[0]}" '
+                   f'width="{mob[1]}" height="{mob[2]}">{img}</picture>')
+        return Safe(img)
     tag = html.escape(pick(SITE["textos"]["ui"]["foto_ejemplo"], "textos.ui.foto_ejemplo"))
     motif = info.get("motivo", "hoja")
     tone = info.get("tono", "rosa")
@@ -457,7 +460,26 @@ FILTERS = {"raw": f_raw, "json": f_json, "strip": f_strip, "url": f_url, "defaul
            "campos": f_fields, "palabras": f_words, "numero": f_number,
            "upper": lambda v: str(v).upper(), "lower": lambda v: str(v).lower()}
 CTX_PAGE: dict = {}
-PHOTO_READY: dict = {}  # archivo → {"src", "w", "h", "small": (имя, ширина) | None}
+PHOTO_READY: dict = {}  # archivo → {"src", "w", "h", "small": (имя, ширина) | None, "movil": (имя, w, h) | None}
+MOVIL_MAX = 700  # до этой ширины экрана — вертикальный recorte «movil» (если есть)
+
+
+def hero_preload(raiz):
+    """<link rel=preload> для фото с «precargar»: true — первая картинка грузится сразу, без очереди."""
+    out = []
+    for slot, info in SITE["fotos"].items():
+        ready = None if slot.startswith("_") or not info.get("precargar") else PHOTO_READY.get(info["archivo"])
+        if not ready:
+            continue
+        mob = ready.get("movil")
+        if mob:
+            out.append(f'<link rel="preload" as="image" href="{raiz}img/{mob[0]}" media="(max-width: {MOVIL_MAX}px)" fetchpriority="high">')
+            small = ready.get("small")
+            srcset = f' imagesrcset="{raiz}img/{small[0]} {small[1]}w, {raiz}img/{ready["src"]} {ready["w"]}w" imagesizes="100vw"' if small else ""
+            out.append(f'<link rel="preload" as="image" href="{raiz}img/{ready["src"]}"{srcset} media="(min-width: {MOVIL_MAX + 1}px)" fetchpriority="high">')
+        else:
+            out.append(f'<link rel="preload" as="image" href="{raiz}img/{ready["src"]}" fetchpriority="high">')
+    return Safe("\n".join(out))
 
 
 def prepare_photos(site, out):
@@ -478,10 +500,20 @@ def prepare_photos(site, out):
         if not found:
             continue
         (out / "img").mkdir(exist_ok=True)
-        dest, small = out / "img" / (stem + ".webp"), None
+        dest, small, mob = out / "img" / (stem + ".webp"), None, None
         if Image:
             with Image.open(found) as im:
                 im = im.convert("RGB")
+                if info.get("movil"):
+                    # «movil»: [ancho, alto] — recorte vertical para el teléfono, centrado en encuadre_movil (x %)
+                    mw, mh = info["movil"]
+                    cw = min(im.width, round(im.height * mw / mh))
+                    cx = float(str(info.get("encuadre_movil", info.get("encuadre", "50% 50%"))).split()[0].rstrip("%")) / 100
+                    left = min(max(0, round(im.width * cx - cw / 2)), im.width - cw)
+                    crop = im.crop((left, 0, left + cw, im.height)).resize((mw, mh), Image.LANCZOS)
+                    mname = stem + "-m.webp"
+                    crop.save(out / "img" / mname, "WEBP", quality=72, method=6)
+                    mob = (mname, mw, mh)
                 if im.width > 1600:
                     im = im.resize((1600, round(im.height * 1600 / im.width)), Image.LANCZOS)
                 im.save(dest, "WEBP", quality=82, method=6)
@@ -496,7 +528,7 @@ def prepare_photos(site, out):
         else:
             WARNINGS.append(f"{found.name}: нужен Pillow, чтобы сделать WebP — пока заглушка")
             continue
-        PHOTO_READY[info["archivo"]] = {"src": dest.name, "w": w, "h": h, "small": small}
+        PHOTO_READY[info["archivo"]] = {"src": dest.name, "w": w, "h": h, "small": small, "movil": mob}
 
 
 # ---------------------------------------------------------------- вычисляемое
@@ -701,6 +733,7 @@ def main():
                 datos_js=js_data(site, lang),
                 fuentes_precarga=[a["archivo"] for a in site["tema"]["fuentes"]["archivos"] if a.get("precargar")],
                 anio=date.today().year,
+                precarga_img=hero_preload(root_rel),
                 asset_v=asset_v,
             )
             for k in ("alternos", "horario_filas", "og_locales_alt", "fuentes_precarga"):
