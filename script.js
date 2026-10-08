@@ -20,10 +20,17 @@ var I18N = {
     services_kicker:"Qué hago",
     services_title:"Webs pensadas para vender",
     services_sub:"Todo lo que un pequeño negocio necesita para tener presencia online de verdad.",
-    s1_t:"Landing pages", s1_d:"Webs de una sola página, directas y orientadas a captar clientes.",
-    s2_t:"Multiidioma", s2_d:"Añadimos los idiomas que necesites para llegar a muchos más clientes.",
-    s3_t:"Diseño móvil", s3_d:"Perfectas en el móvil, donde te ve la mayoría de tus clientes.",
-    s4_t:"SEO y velocidad", s4_d:"Rápidas y optimizadas para aparecer en Google y cargar al instante.",
+    srv1_t:"Web a medida",
+    srv1_d:"Diseñamos y programamos la web de tu negocio desde cero, con textos y estructura pensados para que te escriban.",
+    srv2_t:"Landing page",
+    srv2_d:"Una sola página con un solo objetivo: una promoción, tu servicio estrella o una campaña.",
+    srv3_t:"Arreglamos tu web",
+    srv3_d:"¿Ya tienes web pero se ha quedado vieja? La revisamos y la ponemos al día sin empezar de cero.",
+    srv4_t:"Aparece en Google",
+    srv4_d:"SEO local y tu ficha de Google Business bien configurada, para que te encuentren en Maps y en las búsquedas de tu zona.",
+    srv5_t:"Mantenimiento",
+    srv5_d:"Nos ocupamos del dominio, los cambios y las copias de seguridad. Tú solo atiendes a tus clientes.",
+    srv_more:"Ver planes",
 
     demos_title:"Lo que tu web puede hacer",
 
@@ -34,8 +41,6 @@ var I18N = {
     demo4_t:"Detalles que enamoran", demo4_d:"Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.",
     demo4_try:"Pasa el ratón / toca",
 
-    s5_t:"Arreglamos tu web actual",
-    s5_d:"¿Ya tienes web pero va lenta, no se ve bien en el móvil o está anticuada? La revisamos y la arreglamos sin empezar de cero.",
 
     pr_cta:"Arreglar mi web",
     form_message_hint:"¿Ya tienes web? Puedes pegar aquí su enlace.",
@@ -161,7 +166,6 @@ var I18N = {
     st3_d:"Lo revisas y lo ajustamos juntos.",
     st4_t:"Web publicada",
     st4_d:"En 3–7 días, lista para recibir clientes.",
-    ex_pl:"Ejemplos:",
     ex_one:"Ejemplo:",
     demos_kicker:"Míralo en acción",
     demos_sub:"Sin tecnicismos: ejemplos reales en miniatura de lo que puedo montar en tu página.",
@@ -214,10 +218,17 @@ var I18N = {
     services_kicker:"Què faig",
     services_title:"Webs pensades per vendre",
     services_sub:"Tot el que un petit negoci necessita per tenir presència online de veritat.",
-    s1_t:"Landing pages", s1_d:"Webs d'una sola pàgina, directes i orientades a captar clients.",
-    s2_t:"Multiidioma", s2_d:"Afegim els idiomes que necessitis per arribar a molts més clients.",
-    s3_t:"Disseny mòbil", s3_d:"Perfectes al mòbil, on et veu la majoria dels teus clients.",
-    s4_t:"SEO i velocitat", s4_d:"Ràpides i optimitzades per aparèixer a Google i carregar a l'instant.",
+    srv1_t:"Web a mida",
+    srv1_d:"Dissenyem i programem la web del teu negoci des de zero, amb textos i estructura pensats perquè t'escriguin.",
+    srv2_t:"Landing page",
+    srv2_d:"Una sola pàgina amb un sol objectiu: una promoció, el teu servei estrella o una campanya.",
+    srv3_t:"Arreglem la teva web",
+    srv3_d:"Ja tens web però s'ha quedat antiga? La revisem i la posem al dia sense començar de zero.",
+    srv4_t:"Apareix a Google",
+    srv4_d:"SEO local i la teva fitxa de Google Business ben configurada, perquè et trobin a Maps i a les cerques de la teva zona.",
+    srv5_t:"Manteniment",
+    srv5_d:"Ens ocupem del domini, els canvis i les còpies de seguretat. Tu només atens els teus clients.",
+    srv_more:"Veure plans",
 
     demos_title:"El que la teva web pot fer",
 
@@ -228,8 +239,6 @@ var I18N = {
     demo4_t:"Detalls que enamoren", demo4_d:"Animacions i efectes suaus que fan que el teu negoci sembli molt més gran del que és.",
     demo4_try:"Passa el ratolí / toca",
 
-    s5_t:"Arreglem la teva web actual",
-    s5_d:"Ja tens web però va lenta, no es veu bé al mòbil o està antiquada? La revisem i l'arreglem sense començar de zero.",
 
     pr_cta:"Arreglar la meva web",
     form_message_hint:"Ja tens web? Pots enganxar aquí el seu enllaç.",
@@ -355,7 +364,6 @@ var I18N = {
     st3_d:"El revises i l'ajustem junts.",
     st4_t:"Web publicada",
     st4_d:"En 3–7 dies, llesta per rebre clients.",
-    ex_pl:"Exemples:",
     ex_one:"Exemple:",
     demos_kicker:"Mira-ho en acció",
     demos_sub:"Sense tecnicismes: exemples reals en miniatura del que puc muntar a la teva pàgina.",
@@ -408,10 +416,17 @@ var I18N = {
     services_kicker:"What I do",
     services_title:"Websites built to sell",
     services_sub:"Everything a small business needs to have a real online presence.",
-    s1_t:"Landing pages", s1_d:"Single-page sites, focused and built to win customers.",
-    s2_t:"Multi-language", s2_d:"We add whatever languages you need to reach many more customers.",
-    s3_t:"Mobile design", s3_d:"Perfect on mobile, where most of your customers see you.",
-    s4_t:"SEO & speed", s4_d:"Fast and optimized to rank on Google and load instantly.",
+    srv1_t:"Custom website",
+    srv1_d:"We design and build your business website from scratch, with copy and structure made to get people messaging you.",
+    srv2_t:"Landing page",
+    srv2_d:"One page, one goal: a promotion, your star service or a campaign.",
+    srv3_t:"We fix your website",
+    srv3_d:"Already have a website but it looks dated? We review it and bring it up to date without starting over.",
+    srv4_t:"Show up on Google",
+    srv4_d:"Local SEO and a properly set-up Google Business profile, so people find you on Maps and in local searches.",
+    srv5_t:"Maintenance",
+    srv5_d:"We take care of the domain, updates and backups. You just look after your customers.",
+    srv_more:"See plans",
 
     demos_title:"What your website can do",
 
@@ -422,8 +437,6 @@ var I18N = {
     demo4_t:"Details people love", demo4_d:"Smooth animations and effects that make your business look much bigger than it is.",
     demo4_try:"Hover / touch me",
 
-    s5_t:"We fix your current site",
-    s5_d:"Already have a website but it's slow, looks bad on mobile or feels outdated? We review it and fix it without starting from scratch.",
 
     pr_cta:"Fix my website",
     form_message_hint:"Already have a website? You can paste its link here.",
@@ -549,7 +562,6 @@ var I18N = {
     st3_d:"You review it and we fine-tune it together.",
     st4_t:"Website live",
     st4_d:"In 3–7 days, ready for customers.",
-    ex_pl:"Examples:",
     ex_one:"Example:",
     demos_kicker:"See it in action",
     demos_sub:"No tech talk: real miniature examples of what I can build into your page.",
@@ -602,10 +614,17 @@ var I18N = {
     services_kicker:"Что я делаю",
     services_title:"Сайты, которые продают",
     services_sub:"Всё, что нужно малому бизнесу для настоящего присутствия в интернете.",
-    s1_t:"Лендинги", s1_d:"Одностраничные сайты — прямые и нацеленные на привлечение клиентов.",
-    s2_t:"Много языков", s2_d:"Добавляем нужные языки, чтобы охватить гораздо больше клиентов.",
-    s3_t:"Мобильный дизайн", s3_d:"Идеально на телефоне, где тебя видит большинство клиентов.",
-    s4_t:"SEO и скорость", s4_d:"Быстрые и оптимизированные — чтобы попадать в Google и грузиться мгновенно.",
+    srv1_t:"Сайт на заказ",
+    srv1_d:"Проектируем и делаем сайт твоего бизнеса с нуля — тексты и структура продуманы так, чтобы тебе писали.",
+    srv2_t:"Лендинг",
+    srv2_d:"Одна страница — одна цель: акция, твоя главная услуга или рекламная кампания.",
+    srv3_t:"Чиним твой сайт",
+    srv3_d:"Сайт уже есть, но устарел? Проверим его и обновим, не начиная с нуля.",
+    srv4_t:"Тебя найдут в Google",
+    srv4_d:"Локальное SEO и правильно настроенная карточка Google Business — чтобы тебя находили в Картах и в поиске по району.",
+    srv5_t:"Обслуживание",
+    srv5_d:"Берём на себя домен, правки и резервные копии. Тебе остаётся заниматься клиентами.",
+    srv_more:"Смотреть тарифы",
 
     demos_title:"Что умеет твой сайт",
 
@@ -616,8 +635,6 @@ var I18N = {
     demo4_t:"Детали, в которые влюбляются", demo4_d:"Плавные анимации и эффекты, которые делают твой бизнес намного солиднее.",
     demo4_try:"Наведи / коснись",
 
-    s5_t:"Чиним твой текущий сайт",
-    s5_d:"Уже есть сайт, но он медленный, плохо выглядит на телефоне или устарел? Проверяем и чиним, не начиная с нуля.",
 
     pr_cta:"Починить мой сайт",
     form_message_hint:"Уже есть сайт? Можешь вставить сюда его адрес.",
@@ -743,7 +760,6 @@ var I18N = {
     st3_d:"Смотришь, и мы правим вместе.",
     st4_t:"Сайт опубликован",
     st4_d:"За 3–7 дней, готов принимать клиентов.",
-    ex_pl:"Примеры:",
     ex_one:"Пример:",
     demos_kicker:"Смотри в действии",
     demos_sub:"Без технических терминов: живые мини-примеры того, что я могу встроить в твою страницу.",
@@ -893,7 +909,7 @@ function initReveal(){
   }, { threshold:0, rootMargin:"0px 0px 15% 0px" }); // empieza un 15 % antes de llegar a la pantalla
 
   // Índice para el retardo escalonado dentro de cada contenedor
-  document.querySelectorAll(".bento, .plans-main, .why-grid, .work-layout, .demo-grid, .reviews-grid, .steps, .maint-plans").forEach(function(group){
+  document.querySelectorAll(".srv-grid, .plans-main, .why-grid, .work-layout, .demo-grid, .reviews-grid, .steps, .maint-plans").forEach(function(group){
     group.querySelectorAll(".reveal").forEach(function(el, i){
       el.style.setProperty("--ri", i);
     });

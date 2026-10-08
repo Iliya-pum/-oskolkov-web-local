@@ -116,12 +116,47 @@ def captura(p):
     CAPTURAS.mkdir(exist_ok=True)
     out = CAPTURAS / f"{p['captura']}.png"
     print(f"Скриншот {url} …")
-    subprocess.run([node, str(AQUI / "captura.mjs"), url, str(out)], check=True)
+    subprocess.run([node, str(AQUI / "captura.mjs"), url, str(out), p.get("captura_css", "")], check=True)
+
+
+def quitar_vacios(im, minimo=400, deja=160):
+    """Сжимает длинные однотонные полосы (≥ minimo px) до deja px. Для страниц, где на снимке
+    «высота экрана» растягивается и под блоком остаётся пустота (captura_vacios в proyectos.json)."""
+    from PIL import Image, ImageStat
+    g = im.convert("L").resize((240, im.height))
+    filas = [ImageStat.Stat(g.crop((0, y, 240, y + 1))) for y in range(im.height)]
+    tramos, ini, media = [], None, 0
+    for y in range(im.height + 1):
+        ok = y < im.height and filas[y].stddev[0] < 5
+        if ok and ini is not None and abs(filas[y].mean[0] - media) > 12:  # другой цвет — новая полоса
+            if y - ini >= minimo:
+                tramos.append((ini, y))
+            ini = None
+        if ok and ini is None:
+            ini, media = y, filas[y].mean[0]
+        if not ok and ini is not None:
+            if y - ini >= minimo:
+                tramos.append((ini, y))
+            ini = None
+    if not tramos:
+        return im
+    partes, pos = [], 0
+    for a, b in tramos:
+        partes.append(im.crop((0, pos, im.width, a + deja // 2)))
+        pos = b - deja // 2
+    partes.append(im.crop((0, pos, im.width, im.height)))
+    out = Image.new("RGB", (im.width, sum(x.height for x in partes)))
+    y = 0
+    for x in partes:
+        out.paste(x, (0, y)); y += x.height
+    print(f"  пустые полосы сжаты: {', '.join(f'{b - a} px' for a, b in tramos)}")
+    return out
 
 
 def imagenes(proy, opin):
     """capturas\\<c>.png (новее готовых) → images\\<c>-480.webp, <c>.webp (720), <c>-1080.webp"""
     nombres = {p["captura"] for g in ("reales", "ejemplos") for p in proy[g]}
+    vacios = {p["captura"] for g in ("reales", "ejemplos") for p in proy[g] if p.get("captura_vacios")}
     nombres |= {o["web"]["captura"] for o in opin.get("opiniones", []) if o.get("web")}
     for c in sorted(nombres):
         png = CAPTURAS / f"{c}.png"
@@ -133,6 +168,8 @@ def imagenes(proy, opin):
                 sys.exit("Нужен Pillow: запусти Python из oskal-hq\\.venv")
             with Image.open(png) as im:
                 im = im.convert("RGB")
+                if c in vacios:
+                    im = quitar_vacios(im)
                 h = min(im.height, round(im.width * 3000 / 720))  # верх страницы в пропорции 720 × 3000
                 im = im.crop((0, 0, im.width, h))
                 for w, suf, q in ((1080, "-1080", 76), (720, "", 80), (480, "-480", 80)):

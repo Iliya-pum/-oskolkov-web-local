@@ -5,7 +5,7 @@ import { writeFileSync, mkdtempSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-const [url, out] = process.argv.slice(2);
+const [url, out, css = ''] = process.argv.slice(2);  // css: estilos solo para la foto (p. ej. bloques fijados al hacer scroll)
 if (!url || !out) { console.error('uso: node captura.mjs <url> <salida.png>'); process.exit(1); }
 const W = 1440, H = 900, ALTO = 6000;
 const navegadores = [
@@ -33,6 +33,7 @@ try {
   await send('Emulation.setDeviceMetricsOverride', { width: W, height: H, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url });
   await sleep(3000);
+  if (css) await ev(`(()=>{const s=document.createElement('style');s.textContent=${JSON.stringify(css)};document.head.append(s)})()`);
   // todas las imágenes ya, bajar despacio (que aparezcan los bloques) y volver arriba
   await ev(`document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')`);
   await ev(`(async()=>{for(let y=0;y<=${ALTO + H};y+=300){scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}scrollTo(0,0);})()`);

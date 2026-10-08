@@ -419,6 +419,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     content:""; position:absolute; inset:0;
     background:radial-gradient(400px circle at 50% 0%, var(--accent-soft), transparent 70%);
     opacity:0; transition:opacity .4s;
+    pointer-events:none; /* solo decoración: los enlaces de la tarjeta («Ver planes») reciben el clic */
 }
 .card:hover{
     transform:translateY(-8px);
@@ -1190,54 +1191,30 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .btn-outline-auto{ background:transparent; border-color:var(--border-strong); color:var(--text); white-space:nowrap; flex-shrink:0; }
 .btn-outline-auto:hover{ border-color:var(--accent); color:var(--accent-2); }
 
-/* --- Servicios: «bento» — la grande a la izquierda en 2 filas + 4 en 2 × 2 --- */
-.bento{ display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr); gap:20px; }
+/* --- Servicios: 5 tarjetas sencillas — 3 arriba + 2 abajo, a todo el ancho; número grande en la esquina --- */
+.srv-grid{ display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:20px; }
+.srv-grid > .card{ grid-column:span 2; }
+.srv-grid > .card:nth-child(n+4){ grid-column:span 3; }
 .card{ display:flex; flex-direction:column; padding:var(--card-pad); background:var(--card-bg); border-color:var(--card-border); border-radius:var(--card-radius); }
 .card:hover{ transform:translateY(-4px); border-color:rgba(239,68,68,.5); box-shadow:var(--shadow); }
-.card--big{ grid-row:span 2; }
-.card-art{
-    display:flex; align-items:center; justify-content:center; height:136px; margin-bottom:22px; overflow:hidden;
-    border-radius:12px; background:rgba(11,18,32,.55); border:1px solid var(--border);
-}
-.card--big .card-art{ flex:1 1 auto; height:auto; min-height:260px; }
-.card-art .ia{ width:100%; height:100%; padding:12px; }
-.card--big .card-art .ia{ padding:18px; max-height:360px; }
-/* «antes → después»: vertical en la tarjeta alta (ordenador), horizontal cuando la tarjeta va a todo el ancho */
-.ia--h{ display:none; }
-.card-head{ display:flex; align-items:center; gap:14px; margin-bottom:10px; }
-.card-icon{ width:56px; height:56px; flex-shrink:0; margin-bottom:0; }
+.card-icon{ width:56px; height:56px; flex-shrink:0; margin-bottom:22px; border-radius:14px; }
 .card-icon svg{ width:28px; height:28px; }
-.card h3{ font-size:21px; line-height:1.25; margin:0; }
-.card--big h3{ font-size:22px; }
-.card p{ font-size:16px; line-height:1.6; }
-/* ilustraciones (SVG en línea) con los colores del sitio */
-.ia-win{ fill:#0B1220; stroke:rgba(148,163,184,.32); stroke-width:1.2; }
-.ia-win--on{ stroke:rgba(239,68,68,.55); }
-.ia-bar{ fill:#18253B; }
-.ia-dot{ fill:rgba(148,163,184,.45); }
-.ia-r{ fill:#EF4444; } .ia-y{ fill:#F59E0B; } .ia-g{ fill:#22C55E; }
-.ia-ln{ fill:rgba(148,163,184,.32); }
-.ia-ln--hi{ fill:#E2E8F0; }
-.ia-hero{ fill:#1E2E48; }
-.ia-btn{ fill:#DC2626; }
-.ia-box{ fill:#18253B; stroke:rgba(148,163,184,.22); }
-.ia-bad{ fill:rgba(239,68,68,.18); stroke:#EF4444; stroke-width:1.5; }
-.ia-good{ fill:rgba(34,197,94,.16); stroke:#22C55E; stroke-width:1.5; }
-.ia-mark, .ia-arrow{ fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
-.ia-mark{ stroke:#F8FAFC; }
-.ia-arrow{ stroke:#EF4444; }
-.ia-hola{ font-family:var(--font-head); font-weight:900; font-size:30px; fill:#E2E8F0; }
-.ia-pill{ fill:#0B1220; stroke:rgba(148,163,184,.3); }
-.ia-lang{ font-family:var(--font-head); font-weight:700; font-size:13px; fill:#94A3B8; }
-.ia-lang--on{ fill:#fff; }
-.ia-phone{ fill:#0B1220; stroke:#E2E8F0; stroke-width:2; }
-.ia-arc{ fill:none; stroke:rgba(148,163,184,.25); stroke-width:10; stroke-linecap:round; }
-.ia-arc--on{ stroke:#EF4444; }
-.ia-needle-l{ stroke:#F8FAFC; stroke-width:3; stroke-linecap:round; }
-.ia-needle{ transform-box:view-box; transform-origin:78px 96px; transition:transform .8s var(--ease); }
-@media (hover:hover) and (prefers-reduced-motion:no-preference){
-    .card:hover .ia-needle{ transform:rotate(16deg); }
+.card h3{ font-size:22px; line-height:1.25; margin:0 0 10px; padding-right:64px; }
+.card p{ font-size:16.5px; line-height:1.6; }
+.srv-n{
+    position:absolute; top:18px; right:24px; pointer-events:none;
+    font-family:var(--font-head); font-weight:900; font-size:64px; line-height:1; letter-spacing:-.04em;
+    color:rgba(148,163,184,.10); transition:color .3s;
 }
+.card:hover .srv-n{ color:rgba(239,68,68,.16); }
+.srv-link{
+    position:relative; z-index:1;
+    display:inline-flex; align-items:center; gap:6px; margin-top:auto; padding-top:14px; align-self:flex-start;
+    font-family:var(--font-head); font-weight:700; font-size:15px; color:#F87171;
+}
+.srv-link:hover{ color:var(--accent-2); }
+.srv-link svg{ transition:transform .3s var(--ease); }
+.srv-link:hover svg{ transform:translateX(3px); }
 
 /* --- Por qué tan rápido: sin franja propia — el fondo común (constelación) como el resto --- */
 .section.why{ background:none; border:0; }
@@ -1316,6 +1293,8 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .plan-featured{ border-color:var(--accent); background:linear-gradient(180deg, rgba(220,38,38,.10), var(--surface-2)); }
 .plan-for{ font-size:16px; }
 .plan-feats li{ font-size:16px; }
+/* «Ejemplo…» a la misma altura en Completa y Premium: sitio para 2 líneas, texto arriba */
+@media (min-width:1101px){ .plans-main .plan-ex{ min-height:3em; line-height:1.5; } }
 .plan-price .from{ align-self:center; font-family:var(--font-head); font-size:14px; font-weight:600; color:var(--muted); margin-right:4px; }
 .plan{ position:relative; } /* las etiquetas de arriba (Más popular, Primer paso) se colocan respecto a su tarjeta */
 .plan-badge--soft{ background:var(--surface-2); color:#CBD5E1; border:1px solid var(--border-strong); box-shadow:none; white-space:nowrap; }
@@ -1365,6 +1344,10 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 
 /* --- Responsive (portada v3) --- */
 @media (max-width:1100px){
+    /* Servicios en la tableta: 2 × 2 + la última a todo el ancho */
+    .srv-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .srv-grid > .card, .srv-grid > .card:nth-child(n+4){ grid-column:auto; }
+    .srv-grid > .card:last-child{ grid-column:1 / -1; }
     /* Precios: los tres planes uno debajo de otro → «¿O ya tienes web?» → Reparación */
     .plans-main{ grid-template-columns:1fr; gap:20px; max-width:440px; margin:0 auto; }
     .plans-or{ flex-direction:row; gap:14px; margin:6px 0; }
@@ -1378,12 +1361,6 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     .work-link{ height:56px; }
     .work-link svg{ transform:rotate(90deg); }
     .work-row--1 .work-shot{ flex:none; aspect-ratio:16 / 10; min-height:0; }
-    /* Servicios: la grande arriba a todo el ancho, las otras 2 × 2 */
-    .bento{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-    .card--big{ grid-column:1 / -1; grid-row:auto; }
-    .card--big .card-art{ flex:none; min-height:0; height:220px; }
-    .ia--v{ display:none; }
-    .ia--h{ display:block; }
     .reviews-grid--3{ grid-template-columns:1fr; max-width:620px; margin:0 auto; }
     .rc-track > .review-card{ flex-basis:calc((100% - 20px) / 2); }
 }
@@ -1395,21 +1372,14 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     :root{ --card-pad:22px; }
     .why .section-head{ padding:0 20px; }
     .why-grid{ padding:0 20px; }
-    /* Servicios en el teléfono: la grande primero; las demás debajo, en filas (dibujo a la izquierda) */
-    .bento{ grid-template-columns:1fr; gap:14px; }
+    /* Servicios en el teléfono: una debajo de otra */
+    .srv-grid{ grid-template-columns:1fr; gap:14px; }
+    .srv-grid > .card, .srv-grid > .card:nth-child(n+4), .srv-grid > .card:last-child{ grid-column:auto; }
     .card:hover{ transform:none; }
-    .card--big .card-art{ height:180px; }
-    .bento .card:not(.card--big){
-        display:grid; grid-template-columns:96px minmax(0, 1fr); grid-template-areas:"art head" "art text";
-        align-items:start; column-gap:16px; row-gap:4px; padding:18px;
-    }
-    .bento .card:not(.card--big) .card-art{ grid-area:art; height:96px; margin:0; }
-    .bento .card:not(.card--big) .card-art .ia{ padding:6px; }
-    .bento .card:not(.card--big) .card-head{ grid-area:head; margin:0; }
-    .bento .card:not(.card--big) .card-icon{ display:none; }
-    .bento .card:not(.card--big) p{ grid-area:text; font-size:15px; line-height:1.5; }
-    .bento .card:not(.card--big) h3{ font-size:19px; }
-    .card--big .card-icon{ width:48px; height:48px; }
+    .card-icon{ width:52px; height:52px; margin-bottom:16px; }
+    .card h3{ font-size:20px; }
+    .card p{ font-size:16px; }
+    .srv-n{ font-size:52px; top:16px; right:18px; }
     /* Trabajos */
     .work-group{ gap:16px; }
     .work-group-title{ font-size:18px; }

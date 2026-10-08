@@ -397,6 +397,9 @@ def f_photo(slot, cls="", loading="lazy", sizes="100vw", priority=False):
             img = (f'<picture class="foto-pic"><source media="(max-width: {MOVIL_MAX}px)" srcset="{raiz}img/{mob[0]}" '
                    f'width="{mob[1]}" height="{mob[2]}">{img}</picture>')
         return Safe(img)
+    if info.get("si_falta") == "ocultar":
+        # фото ещё нет, а заглушку показывать нельзя (демо на живом сайте): место пустое, фон блока остаётся
+        return Safe("")
     tag = html.escape(pick(SITE["textos"]["ui"]["foto_ejemplo"], "textos.ui.foto_ejemplo"))
     motif = info.get("motivo", "hoja")
     tone = info.get("tono", "rosa")
@@ -801,7 +804,9 @@ def main():
     print(f"Готово: {out}  ({len(files)} файлов, страниц: {len(pages) * len(site['idiomas'])})")
     missing = [i["archivo"] for k, i in site["fotos"].items() if not k.startswith("_") and i["archivo"] not in PHOTO_READY]
     if missing:
-        print(f"Фото пока заглушки ({len(missing)}): {', '.join(missing)} — см. FOTOS.md")
+        ocultas = {i["archivo"] for k, i in site["fotos"].items() if not k.startswith("_") and i.get("si_falta") == "ocultar"}
+        print(f"Фото пока нет ({len(missing)}): {', '.join(missing)} — см. FOTOS.md"
+              + (f"; без заглушки (скрыты): {', '.join(sorted(ocultas & set(missing)))}" if ocultas & set(missing) else ""))
 
 
 def write_seo_files(site, out):
