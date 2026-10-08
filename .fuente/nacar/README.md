@@ -4,10 +4,10 @@
 Cormorant Garamond + Jost. Языки es / ca / en. **Будущий шаблон ниши Belleza** — после утверждения Ильёй
 переезжает в `oskal-hq\plantillas\web\belleza\`.
 
-Ветка `ejemplos` репозитория сайта студии. Исходники — здесь (`.fuente/nacar/`, не публикуются),
-готовый сайт — `ejemplos/nacar/`. Предпросмотр ветки:
-**https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/nacar/**
-(пуш ветки — по команде Ильи; в `main` — только по прямой команде, это живой oskalstudio.com).
+Сайт студии (`main`, живой oskalstudio.com). Исходники — здесь (`.fuente/nacar/`, не публикуются),
+готовый сайт — `ejemplos/nacar/`. Адрес:
+**https://oskalstudio.com/ejemplos/nacar/**
+(push в `main` — только по команде Ильи: это живой сайт, каждый push = деплой).
 
 ## Что где
 
@@ -26,7 +26,7 @@ Cormorant Garamond + Jost. Языки es / ca / en. **Будущий шабло�
 2. `C:\Users\User\Desktop\oskal-hq\.venv\Scripts\python.exe build.py` — пересобирает все страницы в `ejemplos/nacar/`.
    Поменялись цвета, название или слоган — сначала `imagenes.py`.
 3. Посмотреть: локальный сервер «ejemplos» (`oskal-hq\.claude\launch.json`) → `/ejemplos/nacar/`.
-4. Коммит в ветку `ejemplos`.
+4. Коммит и push в `main` — только по команде Ильи (каждый push = деплой).
 
 ## Что умеет
 

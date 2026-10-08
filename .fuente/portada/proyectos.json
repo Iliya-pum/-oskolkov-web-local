@@ -21,7 +21,7 @@
       "url": "ejemplos/nacar/",
       "dominio": "Nácar",
       "captura": "work-nacar",
-      "captura_url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/nacar/",
+      "captura_url": "https://oskalstudio.com/ejemplos/nacar/",
       "nicho": {"es": "Salón de belleza", "ca": "Saló de bellesa", "en": "Beauty salon", "ru": "Салон красоты"},
       "plan": {"es": "Completa · 450 €", "ca": "Completa · 450 €", "en": "Complete · €450", "ru": "«Полный» · 450 €"},
       "alt": {"es": "Diseño de ejemplo: salón de belleza Nácar", "ca": "Disseny d'exemple: saló de bellesa Nácar", "en": "Sample design: Nácar beauty salon", "ru": "Пример дизайна: салон красоты Nácar"}
@@ -32,7 +32,7 @@
       "url": "ejemplos/trattoria/",
       "dominio": "Da Livia",
       "captura": "work-trattoria",
-      "captura_url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/trattoria/",
+      "captura_url": "https://oskalstudio.com/ejemplos/trattoria/",
       "captura_css": ".casa__media{display:none!important}.casa__grid{display:block!important}.casa__steps{display:grid!important;gap:64px!important}.casa__step{min-height:0!important;padding:0!important;grid-template-columns:1.05fr 1fr;column-gap:96px;align-items:center;align-content:center}.casa__step::before{display:none!important}.casa__step .casa__t{color:var(--texto)!important}.casa__k,.casa__t,.casa__p{grid-column:2}.casa__foto{display:block!important;grid-column:1;grid-row:1/span 3;aspect-ratio:4/3;overflow:hidden;border-radius:var(--radio);box-shadow:var(--sombra-1)}.casa__foto>.foto{width:100%;height:100%;object-fit:cover}",
       "captura_vacios": true,
       "_captura_css": "Только для скриншота: в «La casa» фото на компьютере прилипает и меняется по главам — на статичном снимке оно было бы только наверху. Здесь каждая глава со своим фото рядом, как видно при прокрутке. captura_vacios — под лентой блюд на снимке остаётся пустая полоса (там «высота экрана» считается от растянутого окна съёмки): скрипт её сжимает.",

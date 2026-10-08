@@ -8,7 +8,7 @@
 
   "sitio": {
     "_nota": "url — адрес сайта (canonical, hreflang, картинка в соцсетях). salida — куда собирать (относительно этой папки). en_raiz — сайт в корне домена (robots.txt, sitemap.xml, _headers); false — демо в подпапке сайта студии. demo — плашка «Diseño de ejemplo» и окно-пояснение вместо звонка и WhatsApp. noindex — не индексировать (снять только при сдаче).",
-    "url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/nacar/",
+    "url": "https://oskalstudio.com/ejemplos/nacar/",
     "salida": "../../ejemplos/nacar",
     "en_raiz": false,
     "demo": true,

@@ -5,9 +5,9 @@
 остаются итальянскими, описания переведены). **Будущий шаблон ниши Hostelería** — после утверждения Ильёй
 переезжает в `oskal-hq\plantillas\web\hosteleria\`.
 
-Ветка `ejemplos` репозитория сайта студии. Исходники — здесь (`.fuente/trattoria/`, не публикуются),
-готовый сайт — `ejemplos/trattoria/`. Предпросмотр ветки:
-**https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/trattoria/**
+Сайт студии (`main`, живой oskalstudio.com). Исходники — здесь (`.fuente/trattoria/`, не публикуются),
+готовый сайт — `ejemplos/trattoria/`. Адрес:
+**https://oskalstudio.com/ejemplos/trattoria/**
 (в `main` — только по прямой команде Ильи, это живой oskalstudio.com).
 
 ## Что где
@@ -27,7 +27,7 @@
 2. `C:\Users\User\Desktop\oskal-hq\.venv\Scripts\python.exe build.py` — пересобирает все 8 страниц.
    Поменялись цвета, название или слоган — сначала `imagenes.py`.
 3. Посмотреть: локальный сервер «ejemplos» (`oskal-hq\.claude\launch.json`) → `/ejemplos/trattoria/`.
-4. Коммит в ветку `ejemplos`.
+4. Коммит и push в `main` — только по команде Ильи (каждый push = деплой).
 
 ## Что умеет
 
