@@ -178,22 +178,15 @@
   $$("[data-tabs]").forEach(function (box) {
     var tabs = $$("[role=tab]", box);
     var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
-    var ink = $(".tabs__ink", box);
-    var cur = 0;
-    var moveInk = function () {
-      if (!ink) return;
-      ink.style.setProperty("--x", tabs[cur].offsetLeft + "px");
-      ink.style.setProperty("--w", tabs[cur].offsetWidth + "px");
-    };
+    // el subrayado va en la propia pestaña activa (CSS, [aria-selected]): sin medir posiciones,
+    // así funciona igual en Safari / WebKit del iPhone
     var select = function (i, focus) {
-      cur = i;
       tabs.forEach(function (t, j) {
         var on = i === j;
         t.setAttribute("aria-selected", on ? "true" : "false");
         t.tabIndex = on ? 0 : -1;
         panels[j].classList.toggle("is-on", on);
       });
-      moveInk();
       if (focus) tabs[i].focus();
     };
     tabs.forEach(function (t, i) {
@@ -210,9 +203,6 @@
       });
     });
     box.classList.add("is-tabs");
-    requestAnimationFrame(moveInk); // el estado inicial ya viene en el HTML
-    window.addEventListener("resize", moveInk);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInk);
     box.selectTab = function (id) {
       for (var i = 0; i < tabs.length; i++) if (tabs[i].getAttribute("data-tab") === id) select(i);
     };
@@ -348,8 +338,9 @@
       var ratio = track.clientWidth / track.scrollWidth;
       if (bar) {
         var bw = bar.parentNode.clientWidth;
-        bar.style.setProperty("--w", (ratio * 100).toFixed(2) + "%");
-        bar.style.setProperty("--x", (max > 0 ? (track.scrollLeft / max) * (bw - ratio * bw) : 0).toFixed(1) + "px");
+        // valores directos (no variables CSS): Safari / WebKit los repinta siempre
+        bar.style.width = (ratio * 100).toFixed(2) + "%";
+        bar.style.transform = "translateX(" + (max > 0 ? (track.scrollLeft / max) * (bw - ratio * bw) : 0).toFixed(1) + "px)";
       }
       if (prev) prev.disabled = track.scrollLeft < 4;
       if (next) next.disabled = track.scrollLeft > max - 4;

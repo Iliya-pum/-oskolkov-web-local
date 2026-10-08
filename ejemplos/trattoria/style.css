@@ -4,6 +4,7 @@
 @font-face{font-family:"Fraunces Fallback";src:local("Georgia"), local("Times New Roman");size-adjust:103%;ascent-override:95%;descent-override:25%;line-gap-override:0%}
 @font-face{font-family:"DM Sans Fallback";src:local("Segoe UI"), local("Arial"), local("Roboto");size-adjust:99%;ascent-override:99%;descent-override:31%;line-gap-override:0%}
 :root{
+  color-scheme:dark;
   --fondo:#F5EEE1; --fondo-rgb:245 238 225;
   --fondo-alt:#EDE2CF; --fondo-alt-rgb:237 226 207;
   --superficie:#FBF7EF; --superficie-rgb:251 247 239;
@@ -184,7 +185,7 @@ h1,h2,h3{ margin:0; font-family:var(--font-titulos); font-weight:400; line-heigh
   position:sticky; top:0; z-index:50; height:var(--hdr-h); margin-bottom:calc(-1 * var(--hdr-h));
   color:var(--sobre-oscuro); transition:background-color .4s var(--ease), color .4s var(--ease), box-shadow .4s var(--ease);
 }
-.hdr.is-solid{ background:rgb(var(--fondo-rgb) / .97); color:var(--texto); box-shadow:0 1px 0 var(--linea), 0 10px 30px -22px rgb(var(--texto-rgb) / .4); }
+.hdr.is-solid{ background:var(--fondo); color:var(--texto); /* opaco: los títulos no se transparentan por debajo */ box-shadow:0 1px 0 var(--linea), 0 10px 30px -22px rgb(var(--texto-rgb) / .4); }
 .hdr__in{ height:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; }
 .logo{ display:inline-flex; align-items:center; gap:11px; min-height:44px; text-decoration:none; color:inherit; }
 .logo__mark{ width:34px; height:34px; }
@@ -387,9 +388,9 @@ html.menu-open{ overflow:hidden; }
   position:relative; z-index:1; flex:none; min-height:46px; padding:0 20px; border:0; border-radius:999px; background:none; cursor:pointer;
   font-family:var(--font-titulos); font-style:italic; font-size:1.15rem; color:var(--texto-suave); transition:color .35s var(--ease);
 }
-.tabs__tab[aria-selected="true"]{ color:var(--sobre-oscuro); }
-.tabs__ink{ position:absolute; z-index:0; top:6px; bottom:6px; left:0; width:var(--w, 0); transform:translateX(var(--x, 0)); border-radius:999px; background:var(--oliva); transition:transform .5s var(--ease-out), width .5s var(--ease-out); }
-.tabs:not(.is-tabs) .tabs__ink{ display:none; }
+/* Pestaña activa: fondo oliva en la propia pestaña (sin calcular posiciones — fiable en Safari) */
+.tabs__tab{ transition:color .35s var(--ease), background-color .35s var(--ease); }
+.tabs.is-tabs .tabs__tab[aria-selected="true"]{ color:var(--sobre-oscuro); background:var(--oliva); }
 .tabs:not(.is-tabs) .tabs__panel + .tabs__panel{ margin-top:48px; }
 .tabs.is-tabs .tabs__panel:not(.is-on){ display:none; }
 .tabs__box{ position:relative; padding:clamp(26px, 4vw, 52px); border-radius:var(--radio); background:var(--superficie); box-shadow:var(--sombra-1); }
@@ -449,7 +450,7 @@ html.menu-open{ overflow:hidden; }
 .reserva .sec__p{ color:rgb(var(--sobre-oscuro-rgb) / .86); }
 .reserva__grupos{ display:flex; gap:12px; align-items:flex-start; max-width:46ch; margin:28px 0 0; font-size:14.5px; color:rgb(var(--sobre-oscuro-rgb) / .8); }
 .reserva__grupos .i{ margin-top:3px; color:var(--oro-claro); }
-.form{ display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:clamp(26px, 3.4vw, 40px); color:var(--texto); }
+.form{ display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:clamp(26px, 3.4vw, 40px); color:var(--texto); color-scheme:only light; } /* la ficha de reserva es clara: casillas y fecha del navegador, en claro */
 .field{ display:grid; gap:7px; grid-column:span 2; min-width:0; }
 @media (min-width:420px){ .field:not(.field--full){ grid-column:span 1; } }
 .field label{ font-size:12.5px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--texto-suave); }

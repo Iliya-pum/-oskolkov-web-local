@@ -81,6 +81,8 @@
 
   "tema": {
     "_nota": "Цвета и шрифты — только здесь (в style.css только var(--…)). Контраст ≥ 4,5:1: texto, texto_suave, oro_texto — на fondo, fondo_alt и rosa; rosa_texto — курсив в крупных заголовках; на тёмном (oscuro) — sobre_oscuro и oro_claro; oro, rosa_hondo, champan, lila — только линии, узоры и градиенты.",
+    "esquema": "only light",
+    "_esquema": "Схема для браузера (meta color-scheme и CSS): light — светлый сайт, dark — тёмный. Браузер с «тёмным режимом для сайтов» (Opera, Chrome на телефоне) тогда не перекрашивает сайт сам.",
     "colores": {
       "fondo": "#FBF6F0",
       "fondo_alt": "#F5ECE4",
@@ -438,6 +440,7 @@
     {"icono": "i-escudo", "titulo": {"es": "Higiene impecable", "ca": "Higiene impecable", "en": "Impeccable hygiene"}, "texto": {"es": "Material esterilizado y desechables en cada servicio de uñas y estética.", "ca": "Material esterilitzat i d’un sol ús en cada servei d’ungles i estètica.", "en": "Sterilised tools and single-use items in every nail and skincare service."}}
   ],
 
+  "_precios": "«desde» на карточке услуги = самая дешёвая полноценная услуга категории. Доплаты (por uña, retirada и т. п.) — \"suplemento\": true: в прайсе видны, в «desde» не считаются. \"desde\": true у строки — «desde» перед ценой в прайсе.",
   "precios": [
     {
       "id": "cabello",
@@ -460,8 +463,8 @@
         {"nombre": {"es": "Manicura semipermanente", "ca": "Manicura semipermanent", "en": "Gel polish manicure"}, "desc": {"es": "Brillo intacto hasta tres semanas.", "ca": "Brillantor intacta fins a tres setmanes.", "en": "Flawless shine for up to three weeks."}, "precio": 26, "min": 45},
         {"nombre": {"es": "Uñas de gel", "ca": "Ungles de gel", "en": "Gel extensions"}, "desc": {"es": "Esculpidas o con tips, forma a tu gusto.", "ca": "Esculpides o amb tips, forma al teu gust.", "en": "Sculpted or tips, in the shape you like."}, "precio": 45, "desde": true, "min": 75},
         {"nombre": {"es": "Pedicura spa", "ca": "Pedicura spa", "en": "Spa pedicure"}, "desc": {"es": "Baño, exfoliación, masaje y esmalte.", "ca": "Bany, exfoliació, massatge i esmalt.", "en": "Soak, scrub, massage and polish."}, "precio": 35, "min": 50},
-        {"nombre": {"es": "Nail art", "ca": "Nail art", "en": "Nail art"}, "desc": {"es": "Diseño a mano alzada, por uña.", "ca": "Disseny a mà alçada, per ungla.", "en": "Freehand design, per nail."}, "precio": 3, "desde": true},
-        {"nombre": {"es": "Retirada de semipermanente", "ca": "Retirada de semipermanent", "en": "Gel polish removal"}, "desc": {"es": "Sin limar la uña natural.", "ca": "Sense llimar l’ungla natural.", "en": "Without filing your natural nail."}, "precio": 8, "min": 15}
+        {"nombre": {"es": "Nail art", "ca": "Nail art", "en": "Nail art"}, "desc": {"es": "Diseño a mano alzada, por uña.", "ca": "Disseny a mà alçada, per ungla.", "en": "Freehand design, per nail."}, "suplemento": true, "precio": 3, "desde": true},
+        {"nombre": {"es": "Retirada de semipermanente", "ca": "Retirada de semipermanent", "en": "Gel polish removal"}, "desc": {"es": "Sin limar la uña natural.", "ca": "Sense llimar l’ungla natural.", "en": "Without filing your natural nail."}, "suplemento": true, "precio": 8, "min": 15}
       ]
     },
     {

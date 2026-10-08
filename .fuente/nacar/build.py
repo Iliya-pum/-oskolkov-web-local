@@ -541,6 +541,8 @@ def hex_rgb(h):
 def theme_css(site):
     t = site["tema"]
     lines = [":root{"]
+    # схема для браузера: «тёмный режим для сайтов» (Opera, Chrome на телефоне) не перекрашивает сайт
+    lines.append(f"  color-scheme:{t.get('esquema', 'light')};")
     for k, v in t["colores"].items():
         if k.startswith("_"):
             continue

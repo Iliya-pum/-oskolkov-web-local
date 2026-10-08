@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Oskal Studio · Diseño y desarrollo de páginas web para pequeños negocios</title>
     <meta name="description" content="Estudio de diseño y desarrollo web para pequeños negocios en España. Webs rápidas, modernas y multilingües desde 300 €. Entrega en días y trato directo.">
 
@@ -71,7 +72,7 @@
       "makesOffer": [
         { "@type": "Offer", "name": "Página web · plan Básica", "priceCurrency": "EUR", "price": "300" },
         { "@type": "Offer", "name": "Página web · plan Completa", "priceCurrency": "EUR", "price": "450" },
-        { "@type": "Offer", "name": "Página web · plan Premium con motion design", "priceCurrency": "EUR", "price": "700" },
+        { "@type": "Offer", "name": "Página web · plan Premium", "priceCurrency": "EUR", "price": "600" },
         { "@type": "Offer", "name": "Reparación de web existente", "priceCurrency": "EUR", "price": "150" },
         { "@type": "Offer", "name": "Mantenimiento web mensual", "priceCurrency": "EUR", "price": "25" }
       ],
@@ -195,16 +196,6 @@
     </div>
 </section>
 
-<!-- ===================== 2. FRANJA DE CONFIANZA ===================== -->
-<section class="trust" aria-label="Por qué trabajar con nosotros" data-i18n-label="trust_label">
-    <ul class="trust-list">
-        <li class="trust-item reveal"><b data-i18n="tr1_v">Directo</b><span data-i18n="tr1_t">Trato directo, sin agencias</span></li>
-        <li class="trust-item reveal"><b data-i18n="tr2_v">3–7 días</b><span data-i18n="tr2_t">De la idea a la web publicada</span></li>
-        <li class="trust-item reveal"><b data-i18n="tr3_v">A medida</b><span data-i18n="tr3_t">Código propio, sin plantillas</span></li>
-        <li class="trust-item reveal"><b data-i18n="tr4_v">Precio fijo</b><span data-i18n="tr4_t">Presupuesto cerrado, sin sorpresas</span></li>
-    </ul>
-</section>
-
 <!-- ===================== 3. SERVICIOS ===================== -->
 <section id="servicios" class="section services">
     <div class="section-head">
@@ -252,8 +243,38 @@
     </div>
 </section>
 
+<!-- ===================== 3b. POR QUÉ TAN RÁPIDO (como en el sitio publicado) ===================== -->
+<section class="section why">
+    <div class="section-head">
+        <span class="kicker" data-i18n="why_kicker">Por qué tan rápido</span>
+        <h2 data-i18n="why_title">Menos espera, más resultados</h2>
+    </div>
+    <div class="why-grid">
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why1_v">Directo</div>
+            <h3 data-i18n="why1_t">Sin intermediarios</h3>
+            <p data-i18n="why1_d">Hablas conmigo, no con una agencia. Menos reuniones, decisiones al momento.</p>
+        </div>
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why2_v">3–7 días</div>
+            <h3 data-i18n="why2_t">Entrega ágil</h3>
+            <p data-i18n="why2_d">Me centro en lo esencial y en un flujo de trabajo probado, sin rodeos.</p>
+        </div>
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why3_v">A medida</div>
+            <h3 data-i18n="why3_t">Código propio</h3>
+            <p data-i18n="why3_d">Nada de plantillas pesadas: código limpio, ligero y hecho para tu negocio.</p>
+        </div>
+        <div class="why-item reveal">
+            <div class="why-value" data-i18n="why4_v">Cerrado</div>
+            <h3 data-i18n="why4_t">Precio fijo</h3>
+            <p data-i18n="why4_d">Presupuesto cerrado antes de empezar. Sin sorpresas ni costes ocultos.</p>
+        </div>
+    </div>
+</section>
+
 <!-- ===================== 4. TRABAJOS ===================== -->
-<!-- Antiguos #proyecto y #demos llevan aquí (anclas invisibles más abajo) -->
+<!-- El antiguo #proyecto lleva aquí; #demos es la sección siguiente -->
 <section id="trabajos" class="section work">
     <span id="proyecto" class="anchor" aria-hidden="true"></span>
     <div class="section-head">
@@ -262,132 +283,136 @@
         <p class="section-sub" data-i18n="work_sub">Un proyecto real y dos diseños de ejemplo. Ábrelos: funcionan como una web de verdad.</p>
     </div>
 
-    <div class="work-grid">
-        <article class="work reveal">
-            <a class="work-frame" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener" style="--dur:8s">
+    <div class="work-layout">
+        <!-- Proyecto real: grande, a la izquierda. Sin tarifa ni precio -->
+        <article class="work work-main reveal">
+            <a class="work-frame" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener" style="--dur:12s">
                 <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">alsisaconstrucciones.es</span></div>
                 <div class="work-shot">
-                    <img src="images/work-alsisa.webp" srcset="images/work-alsisa-480.webp 480w, images/work-alsisa.webp 720w" sizes="(max-width: 1024px) 92vw, 360px" width="720" height="3000" loading="lazy" decoding="async" alt="Web de ALSISA Construcciones" data-i18n-alt="w1_alt">
+                    <img src="images/work-alsisa.webp" srcset="images/work-alsisa-480.webp 480w, images/work-alsisa.webp 720w, images/work-alsisa-1080.webp 1080w" sizes="(max-width: 1100px) 92vw, 540px" width="720" height="3000" loading="lazy" decoding="async" alt="Web de ALSISA Construcciones" data-i18n-alt="w1_alt">
                     <span class="work-tag work-tag-real" data-i18n="tag_real">Proyecto real</span>
                 </div>
             </a>
             <div class="work-info">
-                <div>
-                    <h3>ALSISA <span class="work-niche" data-i18n="w1_niche">Construcción y reformas · Girona</span></h3>
-                    <p class="work-plan" data-i18n="w_plan_c">Plan Completa · 450 €</p>
-                </div>
-                <a class="btn btn-sm btn-outline-auto" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener"><span data-i18n="w_cta_web">Ver web</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
+                <h3>ALSISA <span class="work-niche">· <span data-i18n="w1_niche">Construcción y reformas · Girona</span></span></h3>
+                <a class="btn btn-md btn-outline-auto" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener"><span data-i18n="w_cta_web">Ver web</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
             </div>
         </article>
 
-        <article class="work reveal">
-            <a class="work-frame" href="ejemplos/nacar/" target="_blank" rel="noopener" style="--dur:9s">
-                <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">Nácar</span></div>
-                <div class="work-shot">
-                    <img src="images/work-nacar.webp" srcset="images/work-nacar-480.webp 480w, images/work-nacar.webp 720w" sizes="(max-width: 1024px) 92vw, 360px" width="720" height="3000" loading="lazy" decoding="async" alt="Diseño de ejemplo: salón de belleza Nácar" data-i18n-alt="w2_alt">
-                    <span class="work-tag" data-i18n="tag_demo">Diseño de ejemplo</span>
-                </div>
-            </a>
-            <div class="work-info">
-                <div>
-                    <h3>Nácar <span class="work-niche" data-i18n="w2_niche">Salón de belleza</span></h3>
-                    <p class="work-plan" data-i18n="w_plan_c">Plan Completa · 450 €</p>
-                </div>
-                <a class="btn btn-sm btn-outline-auto" href="ejemplos/nacar/" target="_blank" rel="noopener"><span data-i18n="w_cta_demo">Ver demo</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
-            </div>
-        </article>
+        <!-- Diseños de ejemplo: otro grupo, en su propio marco -->
+        <div class="work-demos reveal" role="group" aria-labelledby="work-demos-t">
+            <h3 class="work-demos-title" id="work-demos-t" data-i18n="work_demos">Diseños de ejemplo</h3>
+            <div class="work-demos-row">
+                <article class="work work-demo">
+                    <a class="work-frame" href="ejemplos/nacar/" target="_blank" rel="noopener" style="--dur:10s">
+                        <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">Nácar</span></div>
+                        <div class="work-shot">
+                            <img src="images/work-nacar.webp" srcset="images/work-nacar-480.webp 480w, images/work-nacar.webp 720w" sizes="(max-width: 640px) 90vw, (max-width: 1100px) 46vw, 380px" width="720" height="3000" loading="lazy" decoding="async" alt="Diseño de ejemplo: salón de belleza Nácar" data-i18n-alt="w2_alt">
+                        </div>
+                    </a>
+                    <div class="work-info">
+                        <h3>Nácar</h3>
+                        <a class="btn btn-md btn-outline-auto" href="ejemplos/nacar/" target="_blank" rel="noopener"><span data-i18n="w_cta_demo">Ver demo</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
+                        <p class="work-meta"><span data-i18n="w2_niche">Salón de belleza</span><span class="work-sep" aria-hidden="true"> · </span><span class="work-plan" data-i18n="w_plan_c">Plan Completa · 450 €</span></p>
+                    </div>
+                </article>
 
-        <article class="work reveal">
-            <a class="work-frame" href="ejemplos/trattoria/" target="_blank" rel="noopener" style="--dur:9s">
-                <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">Da Livia</span></div>
-                <div class="work-shot">
-                    <img src="images/work-trattoria.webp" srcset="images/work-trattoria-480.webp 480w, images/work-trattoria.webp 720w" sizes="(max-width: 1024px) 92vw, 360px" width="720" height="3000" loading="lazy" decoding="async" alt="Diseño de ejemplo: trattoria Da Livia" data-i18n-alt="w3_alt">
-                    <span class="work-tag" data-i18n="tag_demo">Diseño de ejemplo</span>
-                </div>
-            </a>
-            <div class="work-info">
-                <div>
-                    <h3>Da Livia <span class="work-niche" data-i18n="w3_niche">Trattoria italiana</span></h3>
-                    <p class="work-plan" data-i18n="w_plan_p">Plan Premium · 700 €</p>
-                </div>
-                <a class="btn btn-sm btn-outline-auto" href="ejemplos/trattoria/" target="_blank" rel="noopener"><span data-i18n="w_cta_demo">Ver demo</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
+                <article class="work work-demo">
+                    <a class="work-frame" href="ejemplos/trattoria/" target="_blank" rel="noopener" style="--dur:10s">
+                        <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">Da Livia</span></div>
+                        <div class="work-shot">
+                            <img src="images/work-trattoria.webp" srcset="images/work-trattoria-480.webp 480w, images/work-trattoria.webp 720w" sizes="(max-width: 640px) 90vw, (max-width: 1100px) 46vw, 380px" width="720" height="3000" loading="lazy" decoding="async" alt="Diseño de ejemplo: trattoria Da Livia" data-i18n-alt="w3_alt">
+                        </div>
+                    </a>
+                    <div class="work-info">
+                        <h3>Da Livia</h3>
+                        <a class="btn btn-md btn-outline-auto" href="ejemplos/trattoria/" target="_blank" rel="noopener"><span data-i18n="w_cta_demo">Ver demo</span><svg width="16" height="16" aria-hidden="true"><use href="#i-out"/></svg></a>
+                        <p class="work-meta"><span data-i18n="w3_niche">Trattoria italiana</span><span class="work-sep" aria-hidden="true"> · </span><span class="work-plan" data-i18n="w_plan_p">Plan Premium · 600 € + motion design 100 €</span></p>
+                    </div>
+                </article>
             </div>
-        </article>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== 4b. LO QUE TU WEB PUEDE HACER (tamaño del sitio publicado: 2 × 2) ===================== -->
+<section id="demos" class="section demos">
+    <div class="section-head">
+        <span class="kicker" data-i18n="demos_kicker">Míralo en acción</span>
+        <h2 data-i18n="demos_title">Lo que tu web puede hacer</h2>
+        <p class="section-sub" data-i18n="demos_sub">Sin tecnicismos: ejemplos reales en miniatura de lo que puedo montar en tu página.</p>
     </div>
 
-    <!-- Mini-demos de lo que puede hacer una web -->
-    <div class="caps" id="demos">
-        <h3 class="caps-title reveal" data-i18n="demos_title">Lo que tu web puede hacer</h3>
-        <div class="caps-row">
-            <article class="demo-card reveal">
-                <div class="demo-stage" aria-hidden="true">
-                    <div class="demo-lang">
-                        <div class="demo-lang-word" id="demo-lang-word">¡Hola!</div>
-                        <div class="demo-lang-flags">
-                            <span class="demo-flag" data-di="0">ES</span>
-                            <span class="demo-flag" data-di="1">EN</span>
-                            <span class="demo-flag" data-di="2">FR</span>
-                            <span class="demo-flag" data-di="3">DE</span>
-                            <span class="demo-flag" data-di="4">IT</span>
-                        </div>
+    <div class="demo-grid">
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-lang">
+                    <div class="demo-lang-word" id="demo-lang-word">¡Hola!</div>
+                    <div class="demo-lang-flags">
+                        <span class="demo-flag" data-di="0">ES</span>
+                        <span class="demo-flag" data-di="1">EN</span>
+                        <span class="demo-flag" data-di="2">FR</span>
+                        <span class="demo-flag" data-di="3">DE</span>
+                        <span class="demo-flag" data-di="4">IT</span>
                     </div>
                 </div>
-                <h4 data-i18n="demo1_t">Tu web habla idiomas</h4>
-                <p data-i18n="demo1_d">El visitante elige su idioma y toda la página cambia al instante. Más idiomas = más clientes.</p>
-            </article>
+            </div>
+            <h3 data-i18n="demo1_t">Tu web habla idiomas</h3>
+            <p data-i18n="demo1_d">El visitante elige su idioma y toda la página cambia al instante. Más idiomas = más clientes.</p>
+        </article>
 
-            <article class="demo-card reveal">
-                <div class="demo-stage" aria-hidden="true">
-                    <div class="demo-device" id="demo-device">
-                        <div class="demo-device-bar"><span></span><span></span><span></span></div>
-                        <div class="demo-device-body">
-                            <div class="dd-hero"></div>
-                            <div class="dd-cols">
-                                <div class="dd-block"></div>
-                                <div class="dd-block"></div>
-                                <div class="dd-block"></div>
-                            </div>
-                            <div class="dd-btn"></div>
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-device" id="demo-device">
+                    <div class="demo-device-bar"><span></span><span></span><span></span></div>
+                    <div class="demo-device-body">
+                        <div class="dd-hero"></div>
+                        <div class="dd-cols">
+                            <div class="dd-block"></div>
+                            <div class="dd-block"></div>
+                            <div class="dd-block"></div>
                         </div>
+                        <div class="dd-btn"></div>
                     </div>
                 </div>
-                <h4 data-i18n="demo2_t">Se adapta a cualquier pantalla</h4>
-                <p data-i18n="demo2_d">Ordenador, tablet o móvil: la web se reorganiza sola y siempre se ve perfecta.</p>
-            </article>
+            </div>
+            <h3 data-i18n="demo2_t">Se adapta a cualquier pantalla</h3>
+            <p data-i18n="demo2_d">Ordenador, tablet o móvil: la web se reorganiza sola y siempre se ve perfecta.</p>
+        </article>
 
-            <article class="demo-card reveal">
-                <div class="demo-stage" aria-hidden="true">
-                    <div class="demo-speed">
-                        <div class="ds-row">
-                            <span class="ds-label" data-i18n="demo3_slow">Web típica</span>
-                            <div class="ds-track"><div class="ds-bar ds-slow" id="ds-slow"></div></div>
-                            <span class="ds-time ds-time-slow" id="ds-slow-t">6,2 s</span>
-                        </div>
-                        <div class="ds-row">
-                            <span class="ds-label ds-label-mine" data-i18n="demo3_fast">Mi web</span>
-                            <div class="ds-track"><div class="ds-bar ds-fast" id="ds-fast"></div></div>
-                            <span class="ds-time ds-time-fast" id="ds-fast-t">0,8 s</span>
-                        </div>
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-speed">
+                    <div class="ds-row">
+                        <span class="ds-label" data-i18n="demo3_slow">Web típica</span>
+                        <div class="ds-track"><div class="ds-bar ds-slow" id="ds-slow"></div></div>
+                        <span class="ds-time ds-time-slow" id="ds-slow-t">6,2 s</span>
+                    </div>
+                    <div class="ds-row">
+                        <span class="ds-label ds-label-mine" data-i18n="demo3_fast">Mi web</span>
+                        <div class="ds-track"><div class="ds-bar ds-fast" id="ds-fast"></div></div>
+                        <span class="ds-time ds-time-fast" id="ds-fast-t">0,8 s</span>
                     </div>
                 </div>
-                <h4 data-i18n="demo3_t">Carga en un parpadeo</h4>
-                <p data-i18n="demo3_d">Cada segundo de espera son clientes que se van. Código ligero, sin plantillas pesadas.</p>
-            </article>
+            </div>
+            <h3 data-i18n="demo3_t">Carga en un parpadeo</h3>
+            <p data-i18n="demo3_d">Cada segundo de espera son clientes que se van. Código ligero, sin plantillas pesadas.</p>
+            <p class="demo-note" data-i18n="demo3_extra">¿Ya tienes web? También la aceleramos, sin rehacerla.</p>
+        </article>
 
-            <article class="demo-card reveal">
-                <div class="demo-stage" aria-hidden="true">
-                    <div class="demo-tilt" id="demo-tilt">
-                        <div class="demo-tilt-inner">
-                            <span class="dt-shine"></span>
-                            <span class="dt-emoji">✨</span>
-                            <span class="dt-text" data-i18n="demo4_try">Pasa el ratón / toca</span>
-                        </div>
+        <article class="demo-card reveal">
+            <div class="demo-stage" aria-hidden="true">
+                <div class="demo-tilt" id="demo-tilt">
+                    <div class="demo-tilt-inner">
+                        <span class="dt-shine"></span>
+                        <span class="dt-emoji">✨</span>
+                        <span class="dt-text" data-i18n="demo4_try">Pasa el ratón / toca</span>
                     </div>
                 </div>
-                <h4 data-i18n="demo4_t">Detalles que enamoran</h4>
-                <p data-i18n="demo4_d">Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.</p>
-            </article>
-        </div>
+            </div>
+            <h3 data-i18n="demo4_t">Detalles que enamoran</h3>
+            <p data-i18n="demo4_d">Animaciones y efectos suaves que hacen que tu negocio parezca mucho más grande de lo que es.</p>
+        </article>
     </div>
 </section>
 
@@ -500,26 +525,42 @@
         <!-- Premium -->
         <article class="plan reveal">
             <h3 class="plan-name" data-i18n="p3_name">Premium</h3>
-            <div class="plan-price"><span class="amount">700</span><span class="cur">€</span></div>
+            <div class="plan-price"><span class="amount">600</span><span class="cur">€</span></div>
             <p class="plan-for" data-i18n="p3_for">Todo lo de Completa, y además:</p>
             <ul class="plan-feats">
-                <li data-i18n="p3_f1">Motion design: animaciones de cine al hacer scroll</li>
+                <li data-i18n="p3_f1">Animaciones suaves</li>
                 <li data-i18n="p3_f2">Secciones a medida extra</li>
                 <li data-i18n="p3_f3">Optimización SEO completa</li>
                 <li data-i18n="p3_f4">Soporte prioritario</li>
             </ul>
-            <p class="plan-ex"><span data-i18n="ex_one">Ejemplo:</span> <a href="ejemplos/trattoria/" target="_blank" rel="noopener">Da Livia</a></p>
-            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(700%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
+            <p class="plan-ex"><span data-i18n="ex_one">Ejemplo:</span> <a href="ejemplos/trattoria/" target="_blank" rel="noopener">Da Livia</a> <span data-i18n="ex_motion">(con motion design, +100 €)</span></p>
+            <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Me%20interesa%20el%20plan%20Premium%20(600%20%E2%82%AC)." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="plan_cta_3">Lo quiero</a>
         </article>
     </div>
 
-    <!-- ¿Ya tienes web? (antes sección «Reparación») -->
-    <div class="repair-strip reveal" id="reparacion">
-        <div class="rs-text">
-            <p class="rs-title"><span data-i18n="rep_kicker">¿Ya tienes web?</span> <b data-i18n="rp_price">Reparación desde 150 €</b></p>
-            <p class="rs-desc" data-i18n="rp_d">La revisamos y la ponemos al día sin empezar de cero: móvil, velocidad, textos y WhatsApp.</p>
-        </div>
-        <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Tengo%20una%20web%20y%20quiero%20arreglarla." class="btn btn-outline btn-outline-auto" target="_blank" rel="noopener" data-i18n="pr_cta">Arreglar mi web</a>
+    <!-- ¿O ya tienes web? — la tarjeta de Reparación del sitio publicado -->
+    <div class="repair" id="reparacion">
+        <p class="repair-or reveal"><span data-i18n="rep_or">¿O ya tienes web?</span></p>
+        <article class="plan plan-lite repair-card reveal">
+            <div class="repair-main">
+                <span class="plan-tag" data-i18n="pr_badge">Primer paso</span>
+                <h3 class="plan-name" data-i18n="pr_name">Reparación</h3>
+                <div class="plan-price"><span class="from" data-i18n="pr_from">desde</span><span class="amount">150</span><span class="cur">€</span></div>
+                <p class="plan-for" data-i18n="pr_for">Arregla la web que ya tienes.</p>
+            </div>
+
+            <ul class="plan-feats repair-feats">
+                <li data-i18n="pr_f1">Revisión completa de tu web actual</li>
+                <li data-i18n="pr_f2">Adaptación al móvil</li>
+                <li data-i18n="pr_f3">Mejora de velocidad</li>
+                <li data-i18n="pr_f4">Textos y fotos actualizados</li>
+                <li data-i18n="pr_f5">Botón de WhatsApp</li>
+            </ul>
+
+            <div class="repair-cta">
+                <a href="https://wa.me/34628806573?text=Hola%20Ilia!%20Tengo%20una%20web%20y%20quiero%20arreglarla." class="btn btn-outline" target="_blank" rel="noopener" data-i18n="pr_cta">Arreglar mi web</a>
+            </div>
+        </article>
     </div>
 
     <!-- Mantenimiento (antes sección propia) -->

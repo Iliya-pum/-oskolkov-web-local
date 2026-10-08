@@ -46,7 +46,7 @@
 <aside class="oskal" aria-label="{{ sitio.estudio.nombre }}" data-oskal>
   <div class="wrap oskal__in">
     <p class="oskal__marca"><a href="{{ sitio.estudio.url }}" rel="noopener">{{ sitio.estudio.nombre }}</a><span>{{ et.lema }}</span></p>
-    <p class="oskal__t">{{ et.titulo }} <span class="oskal__sep" aria-hidden="true">·</span> <span class="oskal__p">{% if sitio.estudio.get('tarifa') %}<span class="oskal__plan">{{ sitio.estudio.tarifa }}</span> · {% endif %}{{ et.desde }} <strong>{{ sitio.estudio.precio_desde | precio }}</strong></span></p>
+    <p class="oskal__t">{{ et.titulo }} <span class="oskal__sep" aria-hidden="true">·</span> <span class="oskal__p">{% if sitio.estudio.get('extra') %}<span class="oskal__plan">{{ sitio.estudio.tarifa }}</span> <strong>{{ sitio.estudio.precio_desde | precio }}</strong> + {{ sitio.estudio.extra.nombre }} <strong>{{ sitio.estudio.extra.precio | precio }}</strong>{% else %}{% if sitio.estudio.get('tarifa') %}<span class="oskal__plan">{{ sitio.estudio.tarifa }}</span> · {% endif %}{{ et.desde }} <strong>{{ sitio.estudio.precio_desde | precio }}</strong>{% endif %}</span></p>
     <a class="btn oskal__btn" href="https://wa.me/{{ sitio.estudio.whatsapp }}?text={{ et.msg | url }}" target="_blank" rel="noopener" data-estudio><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>{{ et.cta }}</a>
   </div>
 </aside>

@@ -304,13 +304,9 @@
   $$("[data-tabs]").forEach(function (tabsBox) {
     var tabs = $$("[role=tab]", tabsBox);
     var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute("aria-controls")); });
-    var ink = $(".tabs__ink", tabsBox);
+    // el fondo oliva lo lleva la propia pestaña activa (CSS, [aria-selected]): sin medir posiciones,
+    // así funciona igual en Safari / WebKit del iPhone
     var cur = 0;
-    var moveInk = function () {
-      if (!ink) return;
-      ink.style.setProperty("--x", tabs[cur].offsetLeft + "px");
-      ink.style.setProperty("--w", tabs[cur].offsetWidth + "px");
-    };
     var select = function (i, focus) {
       if (i === cur) { if (focus) tabs[i].focus(); return; }
       tabs.forEach(function (t, j) {
@@ -320,7 +316,6 @@
         panels[j].classList.toggle("is-on", on);
       });
       cur = i;
-      moveInk();
       if (focus) tabs[i].focus();
       // la lista de pestañas se desplaza sola en el teléfono; la página no se mueve
       var list = tabs[i].parentNode, t = tabs[i];
@@ -343,9 +338,6 @@
       });
     });
     tabsBox.classList.add("is-tabs");
-    requestAnimationFrame(moveInk);
-    window.addEventListener("resize", moveInk);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInk);
   });
 
   /* ---------- Inclinación 3D ligera (platos y opiniones), solo con ratón ---------- */

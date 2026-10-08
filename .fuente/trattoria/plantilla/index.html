@@ -216,7 +216,6 @@
         {% for s in carta %}
         <button class="tabs__tab" type="button" role="tab" id="tab-{{ s.id }}" aria-controls="panel-{{ s.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}" data-tab="{{ s.id }}" lang="it">{{ s.nombre }}</button>
         {% endfor %}
-        <span class="tabs__ink" aria-hidden="true"></span>
       </div>
       <div class="tabs__box" data-tabs-box>
         {% for s in carta %}

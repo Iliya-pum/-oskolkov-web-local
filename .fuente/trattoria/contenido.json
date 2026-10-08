@@ -14,12 +14,13 @@
     "demo": true,
     "noindex": true,
     "estudio": {
-      "_nota": "Плашка Oskal Studio внизу демо (только при demo: true). tarifa и precio_desde — по smeta.py (Premium 700 €, моушен-дизайн входит; расчёт в ПЛАН.md); кнопка — WhatsApp студии.",
+      "_nota": "Плашка Oskal Studio внизу демо (только при demo: true). tarifa и precio_desde — по smeta.py (Premium 600 €); extra — доплата сверх тарифа (моушен-дизайн 100 €): тогда плашка «Premium 600 € + motion design 100 €» без «desde»; кнопка — WhatsApp студии.",
       "nombre": "Oskal Studio",
       "url": "https://oskalstudio.com",
       "whatsapp": "34628806573",
       "tarifa": "Premium",
-      "precio_desde": 700,
+      "precio_desde": 600,
+      "extra": {"nombre": {"es": "motion design", "ca": "motion design", "en": "motion design", "it": "motion design"}, "precio": 100},
       "textos": {
         "titulo": {"es": "Una web como esta", "ca": "Una web com aquesta", "en": "A website like this", "it": "Un sito come questo"},
         "desde": {"es": "desde", "ca": "des de", "en": "from", "it": "da"},
@@ -80,6 +81,8 @@
 
   "tema": {
     "_nota": "Цвета и шрифты — только здесь (в style.css только var(--…)). Контраст ≥ 4,5:1: texto, texto_suave, terracota_texto, vino — на fondo, fondo_alt, superficie; на тёмном (oscuro, oliva) — sobre_oscuro и oro_claro; terracota, oro, oliva_claro — линии, узоры, градиенты и крупные заголовки.",
+    "esquema": "dark",
+    "_esquema": "Схема для браузера (meta color-scheme и CSS): light — светлый сайт, dark — тёмный. Браузер с «тёмным режимом для сайтов» (Opera, Chrome на телефоне) тогда не перекрашивает сайт сам.",
     "colores": {
       "fondo": "#F5EEE1",
       "fondo_alt": "#EDE2CF",
