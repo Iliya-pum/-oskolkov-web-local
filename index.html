@@ -377,28 +377,37 @@
     </div>
 </section>
 
-<!-- ===================== 5. OPINIONES (oculta hasta tener los textos) =====================
-     Para mostrarla: quitar «hidden» de la sección y poner los textos en script.js
-     (claves op1_text, op1_name, op1_role, op2_… en es/ca/en/ru). No inventar opiniones. -->
-<section id="opiniones" class="section reviews" hidden>
+<!-- ===================== 5. OPINIONES =====================
+     Reseña real de Google, copiada tal cual: la cita va en español en todos los idiomas (sin data-i18n);
+     solo se traducen el título, las estrellas (texto para lectores de pantalla) y «Ver en Google».
+     No inventar opiniones. -->
+<section id="opiniones" class="section reviews">
     <div class="section-head">
         <span class="kicker" data-i18n="op_kicker">Opiniones</span>
         <h2 data-i18n="op_title">Lo que dicen los clientes</h2>
     </div>
-    <div class="reviews-grid">
-        <figure class="testi-card reveal">
-            <blockquote class="testi-quote" data-i18n="op1_text">[TEXTO]</blockquote>
-            <figcaption class="testi-author">
-                <span class="testi-meta"><strong class="testi-name" data-i18n="op1_name">[NOMBRE]</strong><span class="testi-role" data-i18n="op1_role">[NEGOCIO]</span></span>
+    <figure class="review reveal">
+        <div class="review-body">
+            <p class="review-stars" role="img" aria-label="5 de 5 estrellas" data-i18n-label="op_stars">★★★★★</p>
+            <blockquote class="review-quote" lang="es"><p>Todo perfecto y muy profesional</p></blockquote>
+            <figcaption class="review-author">
+                <span class="review-avatar" aria-hidden="true">AS</span>
+                <span class="review-meta">
+                    <strong>Alberto Sánchez</strong>
+                    <span>ALSISA Construcciones</span>
+                </span>
             </figcaption>
-        </figure>
-        <figure class="testi-card reveal">
-            <blockquote class="testi-quote" data-i18n="op2_text">[TEXTO]</blockquote>
-            <figcaption class="testi-author">
-                <span class="testi-meta"><strong class="testi-name" data-i18n="op2_name">[NOMBRE]</strong><span class="testi-role" data-i18n="op2_role">[NEGOCIO]</span></span>
-            </figcaption>
-        </figure>
-    </div>
+            <a class="review-google" href="https://search.google.com/local/reviews?placeid=ChIJqd-1K1-h7oMRbDkICCX7nGw" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1A6.6 6.6 0 0 1 5.49 12c0-.73.13-1.43.35-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.78.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+                <span data-i18n="op_google">Ver en Google</span>
+                <svg width="14" height="14" aria-hidden="true"><use href="#i-out"/></svg>
+            </a>
+        </div>
+        <a class="review-site" href="https://alsisaconstrucciones.es" target="_blank" rel="noopener" aria-label="ALSISA Construcciones — alsisaconstrucciones.es">
+            <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">alsisaconstrucciones.es</span></div>
+            <div class="review-shot"><img src="images/work-alsisa-480.webp" width="480" height="2000" loading="lazy" decoding="async" alt=""></div>
+        </a>
+    </figure>
 </section>
 
 <!-- ===================== 6. CÓMO TRABAJO ===================== -->

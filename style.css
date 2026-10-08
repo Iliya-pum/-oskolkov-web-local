@@ -1062,8 +1062,8 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .caps .demo-tilt{ width:160px; height:96px; }
 
 /* --- Opiniones (oculta por ahora) --- */
-.reviews-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:var(--maxw); margin:0 auto; }
-.reviews .testi-card{ margin:0; padding:34px 32px; }
+
+
 
 /* --- Cómo trabajo: 4 pasos en una línea --- */
 .steps{ list-style:none; display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; position:relative; }
@@ -1179,7 +1179,7 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     .repair-strip .btn{ width:100%; }
     .maint{ margin-top:44px; }
     .maint-plan{ padding:18px; }
-    .reviews-grid{ grid-template-columns:1fr; }
+
 }
 @media (max-width:460px){
     .trust-list{ gap:14px 12px; padding:16px; }
@@ -1212,3 +1212,55 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
    notas al pie en el gris normal */
 .kicker{ color:#F87171; }
 .pricing-note, .footer-bottom{ color:var(--muted); }
+
+/* --- Opiniones: una reseña real de Google + mini-vista de la web del cliente --- */
+.review{
+    display:grid; grid-template-columns:1.15fr 1fr; gap:34px; align-items:center;
+    max-width:980px; margin:0 auto; padding:34px;
+    border:1px solid var(--border-strong); border-radius:24px;
+    background:linear-gradient(135deg, rgba(220,38,38,.10), var(--surface) 55%);
+    box-shadow:var(--shadow);
+}
+.review-body{ display:flex; flex-direction:column; align-items:flex-start; gap:18px; }
+.review-stars{ font-size:22px; letter-spacing:4px; color:#FBBF24; line-height:1; }
+.review-quote{
+    font-family:var(--font-head); font-weight:800; letter-spacing:-.02em; line-height:1.15;
+    font-size:clamp(28px, 3.6vw, 42px); color:var(--text);
+}
+.review-quote p::before{ content:"«"; color:var(--accent-2); margin-right:.08em; }
+.review-quote p::after{ content:"»"; color:var(--accent-2); margin-left:.08em; }
+.review-author{ display:flex; align-items:center; gap:12px; }
+.review-avatar{
+    width:44px; height:44px; flex-shrink:0; display:grid; place-items:center; border-radius:50%;
+    background:var(--accent-soft); border:1px solid rgba(239,68,68,.45);
+    font-family:var(--font-head); font-weight:800; font-size:15px; color:#F87171;
+}
+.review-meta{ display:flex; flex-direction:column; line-height:1.35; }
+.review-meta strong{ font-family:var(--font-head); font-size:16.5px; }
+.review-meta span{ color:var(--muted); font-size:14.5px; }
+.review-google{
+    display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border-radius:100px;
+    background:rgba(255,255,255,.05); border:1px solid var(--border-strong);
+    font-family:var(--font-head); font-weight:600; font-size:14px; color:var(--text);
+    transition:border-color .25s, background .25s;
+}
+.review-google:hover{ border-color:var(--accent); background:rgba(255,255,255,.09); }
+.review-site{
+    display:block; border-radius:14px; overflow:hidden; border:1px solid var(--border-strong);
+    background:var(--bg-2); box-shadow:0 18px 40px -22px rgba(0,0,0,.7);
+    transform:rotate(1.2deg); transition:transform .5s var(--ease), border-color .3s;
+}
+.review-site:hover{ transform:rotate(0) translateY(-4px); border-color:rgba(239,68,68,.45); }
+.review-site .browser-bar{ padding:9px 13px; }
+.review-site .browser-url{ font-size:12px; padding:3px 11px; }
+.review-shot{ position:relative; aspect-ratio:16 / 11; overflow:hidden; background:var(--surface); }
+.review-shot img{ position:absolute; top:0; left:0; width:100%; height:auto; max-width:none; transition:top .9s var(--ease), transform .9s var(--ease); }
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+    .review-site:hover .review-shot img{ top:100%; transform:translateY(-100%); transition:top 8s linear, transform 8s linear; }
+}
+@media (max-width:768px){
+    .review{ grid-template-columns:1fr; gap:24px; padding:24px 20px; border-radius:20px; }
+    .review-body{ gap:14px; }
+    .review-site{ transform:none; }
+    .review-shot{ aspect-ratio:16 / 8; }
+}
