@@ -18,6 +18,9 @@
 {% for f in fuentes_precarga %}
 <link rel="preload" href="{{ raiz }}fonts/{{ f }}" as="font" type="font/woff2" crossorigin>
 {% endfor %}
+{% if pagina == "index" %}
+{{ precarga_img }}
+{% endif %}
 <link rel="stylesheet" href="{{ raiz }}style.css?v={{ asset_v }}">
 <script>(function(d){var c=d.classList;c.add("js");if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){c.add("rv");addEventListener("load",function(){setTimeout(function(){if(!c.contains("rv-ok"))c.remove("rv")},1500)})}})(document.documentElement)</script>
 <meta property="og:type" content="website">

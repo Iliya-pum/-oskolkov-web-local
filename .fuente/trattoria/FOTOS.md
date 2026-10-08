@@ -6,16 +6,16 @@
 
 | # | Файл | Где на сайте | Формат ChatGPT | На сайте |
 |---|---|---|---|---|
-| 1 | `hero.webp` | Первый экран на всю ширину (лёгкий параллакс); слева поверх — текст. Место под ролик — video_portada | 1536×1024 | заглушка |
-| 2 | `plato-1.webp` | Лента «Platos de la casa» — Tagliatelle al ragù | 1024×1536 | заглушка |
-| 3 | `plato-2.webp` | Лента «Platos de la casa» — Pizza tartufata | 1024×1536 | заглушка |
-| 4 | `plato-3.webp` | Лента «Platos de la casa» — Burrata pugliese | 1024×1536 | заглушка |
-| 5 | `plato-4.webp` | Лента «Platos de la casa» — Cacio e pepe | 1024×1536 | заглушка |
-| 6 | `plato-5.webp` | Лента «Platos de la casa» — Pappardelle al cinghiale | 1024×1536 | заглушка |
-| 7 | `plato-6.webp` | Лента «Platos de la casa» — Tiramisù della nonna | 1024×1536 | заглушка |
-| 8 | `casa-1.webp` | «La casa» — глава 1: тетрадь рецептов нонны | 1024×1536 | заглушка |
-| 9 | `casa-2.webp` | «La casa» — глава 2: свежая паста по утрам | 1024×1536 | заглушка |
-| 10 | `casa-3.webp` | «La casa» — глава 3: дровяная печь | 1024×1536 | заглушка |
+| 1 | `hero.webp` | Первый экран на всю ширину (лёгкий параллакс); слева поверх — текст. Место под ролик — video_portada | 1536×1024 | есть |
+| 2 | `plato-1.webp` | Лента «Platos de la casa» — Tagliatelle al ragù | 1024×1536 | есть |
+| 3 | `plato-2.webp` | Лента «Platos de la casa» — Pizza tartufata | 1024×1536 | есть |
+| 4 | `plato-3.webp` | Лента «Platos de la casa» — Burrata pugliese | 1024×1536 | есть |
+| 5 | `plato-4.webp` | Лента «Platos de la casa» — Cacio e pepe | 1024×1536 | есть |
+| 6 | `plato-5.webp` | Лента «Platos de la casa» — Pappardelle al cinghiale | 1024×1536 | есть |
+| 7 | `plato-6.webp` | Лента «Platos de la casa» — Tiramisù della nonna | 1024×1536 | есть |
+| 8 | `casa-1.webp` | «La casa» — глава 1: тетрадь рецептов нонны | 1024×1536 | есть |
+| 9 | `casa-2.webp` | «La casa» — глава 2: свежая паста по утрам | 1024×1536 | есть |
+| 10 | `casa-3.webp` | «La casa» — глава 3: дровяная печь | 1024×1536 | есть |
 | 11 | `reserva.webp` | Фон блока «Reservar mesa» (тёмный, поверх — форма) | 1536×1024 | заглушка |
 
 ## Общие правила для всех запросов
