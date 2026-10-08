@@ -13,3 +13,6 @@ desktop.ini
 
 # Archivos comprimidos (fuentes de logo, etc.)
 *.zip
+
+# Скриншоты-исходники для portada.py (в репозиторий идут только готовые WebP в images/)
+.fuente/portada/capturas/

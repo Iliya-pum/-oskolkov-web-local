@@ -125,23 +125,32 @@ var I18N = {
     nav_faq:"FAQ",
     work_kicker:"Trabajos",
     work_title:"Webs reales y diseños de ejemplo",
-    work_sub:"Un proyecto real y dos diseños de ejemplo. Ábrelos: funcionan como una web de verdad.",
     tag_real:"Proyecto real",
-    w1_niche:"Construcción y reformas · Girona",
-    w2_niche:"Salón de belleza",
-    w3_niche:"Trattoria italiana",
-    w_plan_c:"Plan Completa · 450 €",
-    w_plan_p:"Plan Premium · 600 € + motion design 100 €",
+    /* <portada> — lo escribe .fuente/portada/portada.py; no editar a mano */
+    work_sub:"Un proyecto real y dos diseños de ejemplo. Ábrelos: funcionan como una web de verdad.",
+    pj_alsisa_nicho:"Construcción y reformas · Girona",
+    pj_alsisa_alt:"Web de ALSISA Construcciones",
+    pj_nacar_nicho:"Salón de belleza",
+    pj_nacar_plan:"Completa · 450 €",
+    pj_nacar_alt:"Diseño de ejemplo: salón de belleza Nácar",
+    pj_trattoria_nicho:"Trattoria italiana",
+    pj_trattoria_plan:"Premium · 600 € + motion design 100 €",
+    pj_trattoria_alt:"Diseño de ejemplo: trattoria Da Livia",
+    op_stars_5:"5 de 5 estrellas",
+    /* </portada> */
+    work_real:"Proyecto real",
+    work_reals:"Proyectos reales",
+    plans_or:"o",
+    op_all:"Ver todas en Google",
+    op_prev:"Opinión anterior",
+    op_next:"Opinión siguiente",
+    op_list:"Opiniones de clientes",
     w_cta_web:"Ver web",
     w_cta_demo:"Ver demo",
-    w1_alt:"Web de ALSISA Construcciones",
-    w2_alt:"Diseño de ejemplo: salón de belleza Nácar",
-    w3_alt:"Diseño de ejemplo: trattoria Da Livia",
     w_open:"abre en una pestaña nueva",
     op_kicker:"Opiniones",
     op_title:"Lo que dicen los clientes",
     op_google:"Ver en Google",
-    op_stars:"5 de 5 estrellas",
     how_kicker:"Cómo trabajo",
     how_title:"Cuatro pasos, sin complicaciones",
     st1_t:"Me escribes por WhatsApp",
@@ -310,23 +319,32 @@ var I18N = {
     nav_faq:"FAQ",
     work_kicker:"Treballs",
     work_title:"Webs reals i dissenys d'exemple",
-    work_sub:"Un projecte real i dos dissenys d'exemple. Obre'ls: funcionen com una web de veritat.",
     tag_real:"Projecte real",
-    w1_niche:"Construcció i reformes · Girona",
-    w2_niche:"Saló de bellesa",
-    w3_niche:"Trattoria italiana",
-    w_plan_c:"Pla Completa · 450 €",
-    w_plan_p:"Pla Premium · 600 € + motion design 100 €",
+    /* <portada> — lo escribe .fuente/portada/portada.py; no editar a mano */
+    work_sub:"Un projecte real i dos dissenys d'exemple. Obre'ls: funcionen com una web de veritat.",
+    pj_alsisa_nicho:"Construcció i reformes · Girona",
+    pj_alsisa_alt:"Web d'ALSISA Construccions",
+    pj_nacar_nicho:"Saló de bellesa",
+    pj_nacar_plan:"Completa · 450 €",
+    pj_nacar_alt:"Disseny d'exemple: saló de bellesa Nácar",
+    pj_trattoria_nicho:"Trattoria italiana",
+    pj_trattoria_plan:"Premium · 600 € + motion design 100 €",
+    pj_trattoria_alt:"Disseny d'exemple: trattoria Da Livia",
+    op_stars_5:"5 de 5 estrelles",
+    /* </portada> */
+    work_real:"Projecte real",
+    work_reals:"Projectes reals",
+    plans_or:"o",
+    op_all:"Veure-les totes a Google",
+    op_prev:"Opinió anterior",
+    op_next:"Opinió següent",
+    op_list:"Opinions de clients",
     w_cta_web:"Veure web",
     w_cta_demo:"Veure demo",
-    w1_alt:"Web d'ALSISA Construccions",
-    w2_alt:"Disseny d'exemple: saló de bellesa Nácar",
-    w3_alt:"Disseny d'exemple: trattoria Da Livia",
     w_open:"s'obre en una pestanya nova",
     op_kicker:"Opinions",
     op_title:"El que diuen els clients",
     op_google:"Veure a Google",
-    op_stars:"5 de 5 estrelles",
     how_kicker:"Com treballo",
     how_title:"Quatre passos, sense complicacions",
     st1_t:"M'escrius per WhatsApp",
@@ -495,23 +513,32 @@ var I18N = {
     nav_faq:"FAQ",
     work_kicker:"Our work",
     work_title:"Real websites and sample designs",
-    work_sub:"One real project and two sample designs. Open them — they work just like a real website.",
     tag_real:"Real project",
-    w1_niche:"Construction & renovation · Girona",
-    w2_niche:"Beauty salon",
-    w3_niche:"Italian trattoria",
-    w_plan_c:"Complete plan · €450",
-    w_plan_p:"Premium plan · €600 + motion design €100",
+    /* <portada> — lo escribe .fuente/portada/portada.py; no editar a mano */
+    work_sub:"One real project and two sample designs. Open them — they work just like a real website.",
+    pj_alsisa_nicho:"Construction & renovation · Girona",
+    pj_alsisa_alt:"ALSISA Construcciones website",
+    pj_nacar_nicho:"Beauty salon",
+    pj_nacar_plan:"Complete · €450",
+    pj_nacar_alt:"Sample design: Nácar beauty salon",
+    pj_trattoria_nicho:"Italian trattoria",
+    pj_trattoria_plan:"Premium · €600 + motion design €100",
+    pj_trattoria_alt:"Sample design: Da Livia trattoria",
+    op_stars_5:"5 out of 5 stars",
+    /* </portada> */
+    work_real:"Real project",
+    work_reals:"Real projects",
+    plans_or:"or",
+    op_all:"See all on Google",
+    op_prev:"Previous review",
+    op_next:"Next review",
+    op_list:"Client reviews",
     w_cta_web:"View website",
     w_cta_demo:"View demo",
-    w1_alt:"ALSISA Construcciones website",
-    w2_alt:"Sample design: Nácar beauty salon",
-    w3_alt:"Sample design: Da Livia trattoria",
     w_open:"opens in a new tab",
     op_kicker:"Reviews",
     op_title:"What clients say",
     op_google:"See on Google",
-    op_stars:"5 out of 5 stars",
     how_kicker:"How it works",
     how_title:"Four steps, no hassle",
     st1_t:"You message me on WhatsApp",
@@ -679,24 +706,33 @@ var I18N = {
     nav_work:"Работы",
     nav_faq:"Вопросы",
     work_kicker:"Работы",
-    work_title:"Реальный сайт и примеры дизайна",
-    work_sub:"Один реальный проект и два примера дизайна. Открой их — они работают как настоящие сайты.",
+    work_title:"Реальные сайты и примеры дизайна",
     tag_real:"Реальный проект",
-    w1_niche:"Строительство и ремонт · Жирона",
-    w2_niche:"Салон красоты",
-    w3_niche:"Итальянская траттория",
-    w_plan_c:"Тариф «Полный» · 450 €",
-    w_plan_p:"Тариф «Премиум» · 600 € + моушен‑дизайн 100 €",
+    /* <portada> — lo escribe .fuente/portada/portada.py; no editar a mano */
+    work_sub:"Один реальный проект и два примера дизайна. Открой их — они работают как настоящие сайты.",
+    pj_alsisa_nicho:"Строительство и ремонт · Жирона",
+    pj_alsisa_alt:"Сайт ALSISA Construcciones",
+    pj_nacar_nicho:"Салон красоты",
+    pj_nacar_plan:"«Полный» · 450 €",
+    pj_nacar_alt:"Пример дизайна: салон красоты Nácar",
+    pj_trattoria_nicho:"Итальянская траттория",
+    pj_trattoria_plan:"«Премиум» · 600 € + моушен-дизайн 100 €",
+    pj_trattoria_alt:"Пример дизайна: траттория Da Livia",
+    op_stars_5:"5 из 5 звёзд",
+    /* </portada> */
+    work_real:"Реальный проект",
+    work_reals:"Реальные проекты",
+    plans_or:"или",
+    op_all:"Все отзывы в Google",
+    op_prev:"Предыдущий отзыв",
+    op_next:"Следующий отзыв",
+    op_list:"Отзывы клиентов",
     w_cta_web:"Открыть сайт",
     w_cta_demo:"Открыть демо",
-    w1_alt:"Сайт ALSISA Construcciones",
-    w2_alt:"Пример дизайна: салон красоты Nácar",
-    w3_alt:"Пример дизайна: траттория Da Livia",
     w_open:"откроется в новой вкладке",
     op_kicker:"Отзывы",
     op_title:"Что говорят клиенты",
     op_google:"Смотреть в Google",
-    op_stars:"5 из 5 звёзд",
     how_kicker:"Как это работает",
     how_title:"Четыре шага, без сложностей",
     st1_t:"Пишешь мне в WhatsApp",
@@ -857,7 +893,7 @@ function initReveal(){
   }, { threshold:0, rootMargin:"0px 0px 15% 0px" }); // empieza un 15 % antes de llegar a la pantalla
 
   // Índice para el retardo escalonado dentro de cada contenedor
-  document.querySelectorAll(".cards, .plans-main, .why-grid, .work-layout, .demo-grid, .steps, .maint-plans").forEach(function(group){
+  document.querySelectorAll(".bento, .plans-main, .why-grid, .work-layout, .demo-grid, .reviews-grid, .steps, .maint-plans").forEach(function(group){
     group.querySelectorAll(".reveal").forEach(function(el, i){
       el.style.setProperty("--ri", i);
     });
@@ -1213,6 +1249,40 @@ function initForm(){
   });
 }
 
+/* ---------- Carrusel de opiniones (4 o más; lo genera .fuente/portada/portada.py) ----------
+   Desplazamiento nativo con «scroll-snap» (en el teléfono se pasa con el dedo); flechas y puntos. */
+function initCarousels(){
+  document.querySelectorAll("[data-carousel]").forEach(function(box){
+    var track = box.querySelector(".rc-track");
+    var cards = track ? track.children : [];
+    var dots = box.querySelectorAll(".rc-dot");
+    var prev = box.querySelector(".rc-prev"), next = box.querySelector(".rc-next");
+    if(!track || !cards.length) return;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var step = function(){ return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth; };
+    var go = function(i){
+      i = Math.max(0, Math.min(cards.length - 1, i));
+      track.scrollTo({ left: cards[i].offsetLeft - cards[0].offsetLeft, behavior: reduce ? "auto" : "smooth" });
+    };
+    var current = function(){ return Math.round(track.scrollLeft / Math.max(1, step())); };
+    var paint = function(){
+      var i = current(), max = track.scrollWidth - track.clientWidth;
+      // tantos puntos como posiciones reales (en el ordenador se ven 3 a la vez; en el teléfono, 1)
+      var pages = cards.length - Math.max(1, Math.round(track.clientWidth / Math.max(1, step()))) + 1;
+      dots.forEach(function(d, j){ d.hidden = j >= pages; d.classList.toggle("is-on", j === i); d.setAttribute("aria-current", j === i ? "true" : "false"); });
+      if(prev) prev.disabled = track.scrollLeft < 4;
+      if(next) next.disabled = track.scrollLeft > max - 4;
+    };
+    if(prev) prev.addEventListener("click", function(){ go(current() - 1); });
+    if(next) next.addEventListener("click", function(){ go(current() + 1); });
+    dots.forEach(function(d, j){ d.addEventListener("click", function(){ go(j); }); });
+    var raf = 0;
+    track.addEventListener("scroll", function(){ cancelAnimationFrame(raf); raf = requestAnimationFrame(paint); }, { passive:true });
+    window.addEventListener("resize", paint);
+    paint();
+  });
+}
+
 /* ---------- Inicio ---------- */
 document.addEventListener("DOMContentLoaded", function(){
   // Idioma por defecto: SIEMPRE español.
@@ -1238,4 +1308,5 @@ document.addEventListener("DOMContentLoaded", function(){
   initMobileMenu();
   initHeaderScroll();
   initForm();
+  initCarousels();
 });

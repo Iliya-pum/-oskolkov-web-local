@@ -1,0 +1,41 @@
+{
+  "_como": "Проекты на главной (блок Trabajos). reales — настоящие сайты клиентов (рамка «Proyecto real», 1 или 2 проекта; при 2 — «Proyectos reales»), ejemplos — демо (рамка «Diseños de ejemplo», 1 или 2). Добавил запись → скриншот → python portada.py. Подробно — КАК_ДОБАВИТЬ_ПРОЕКТ.md в oskal-hq. Тексты на 4 языках: es, ca, en, ru. Цену и тариф у реальных проектов не показываем (поля plan у них нет).",
+
+  "reales": [
+    {
+      "id": "alsisa",
+      "nombre": "ALSISA",
+      "url": "https://alsisaconstrucciones.es",
+      "dominio": "alsisaconstrucciones.es",
+      "captura": "work-alsisa",
+      "captura_url": "https://alsisaconstrucciones.es/",
+      "nicho": {"es": "Construcción y reformas · Girona", "ca": "Construcció i reformes · Girona", "en": "Construction & renovation · Girona", "ru": "Строительство и ремонт · Жирона"},
+      "alt": {"es": "Web de ALSISA Construcciones", "ca": "Web d'ALSISA Construccions", "en": "ALSISA Construcciones website", "ru": "Сайт ALSISA Construcciones"}
+    }
+  ],
+
+  "ejemplos": [
+    {
+      "id": "nacar",
+      "nombre": "Nácar",
+      "url": "ejemplos/nacar/",
+      "dominio": "Nácar",
+      "captura": "work-nacar",
+      "captura_url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/nacar/",
+      "nicho": {"es": "Salón de belleza", "ca": "Saló de bellesa", "en": "Beauty salon", "ru": "Салон красоты"},
+      "plan": {"es": "Completa · 450 €", "ca": "Completa · 450 €", "en": "Complete · €450", "ru": "«Полный» · 450 €"},
+      "alt": {"es": "Diseño de ejemplo: salón de belleza Nácar", "ca": "Disseny d'exemple: saló de bellesa Nácar", "en": "Sample design: Nácar beauty salon", "ru": "Пример дизайна: салон красоты Nácar"}
+    },
+    {
+      "id": "trattoria",
+      "nombre": "Da Livia",
+      "url": "ejemplos/trattoria/",
+      "dominio": "Da Livia",
+      "captura": "work-trattoria",
+      "captura_url": "https://ejemplos--luxury-twilight-e94f76.netlify.app/ejemplos/trattoria/",
+      "nicho": {"es": "Trattoria italiana", "ca": "Trattoria italiana", "en": "Italian trattoria", "ru": "Итальянская траттория"},
+      "plan": {"es": "Premium · 600 € + motion design 100 €", "ca": "Premium · 600 € + motion design 100 €", "en": "Premium · €600 + motion design €100", "ru": "«Премиум» · 600 € + моушен-дизайн 100 €"},
+      "alt": {"es": "Diseño de ejemplo: trattoria Da Livia", "ca": "Disseny d'exemple: trattoria Da Livia", "en": "Sample design: Da Livia trattoria", "ru": "Пример дизайна: траттория Da Livia"}
+    }
+  ]
+}

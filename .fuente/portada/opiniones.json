@@ -1,0 +1,16 @@
+{
+  "_como": "Отзывы на главной (блок Opiniones). Только настоящие отзывы — текст как написал клиент, без правок и перевода (idioma — на каком языке он написан). Раскладка сама: 1 отзыв — одна большая карточка (с окошком сайта клиента, если есть web), 2–3 — в ряд, 4 и больше — карусель со стрелками и точками + «Ver todas en Google». Добавил запись → python portada.py. Подробно — КАК_ДОБАВИТЬ_ПРОЕКТ.md в oskal-hq.",
+
+  "google": "https://search.google.com/local/reviews?placeid=ChIJqd-1K1-h7oMRbDkICCX7nGw",
+
+  "opiniones": [
+    {
+      "texto": "Todo perfecto y muy profesional",
+      "idioma": "es",
+      "autor": "Alberto Sánchez",
+      "empresa": "ALSISA Construcciones",
+      "estrellas": 5,
+      "web": {"url": "https://alsisaconstrucciones.es", "dominio": "alsisaconstrucciones.es", "captura": "work-alsisa"}
+    }
+  ]
+}
