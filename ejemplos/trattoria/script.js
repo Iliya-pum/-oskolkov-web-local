@@ -130,14 +130,42 @@
     animated.forEach(function (el) { el.classList.add("is-in"); });
   }
 
+  /* ---------- Portada (solo ordenador): la foto sigue al ratón (±2,6 %) y baja un poco al desplazarse.
+     Sin GSAP: funciona desde que se abre la página. El acercamiento lento y las velas son CSS. ---------- */
+  var heroPar = $("[data-hero-par]"), heroSec = $(".hero");
+  if (heroPar && heroSec && full) {
+    var mx = 0, my = 0, cx = 0, cy = 0, sy = -1, running = false;
+    var heroH = function () { return heroSec.offsetHeight || window.innerHeight; };
+    var hh = 0;
+    var frame = function () {
+      cx += (mx - cx) * 0.07;
+      cy += (my - cy) * 0.07;
+      var y = window.scrollY;
+      if (y < hh) { // solo mientras la portada está a la vista
+        heroPar.style.transform = "translate3d(" + (-cx * 2.6).toFixed(3) + "%," + (-cy * 2.6).toFixed(3) + "%,0) translateY(" + (y * 0.12).toFixed(1) + "px)";
+      }
+      var moving = Math.abs(mx - cx) > 0.0004 || Math.abs(my - cy) > 0.0004 || y !== sy;
+      sy = y;
+      if (moving) requestAnimationFrame(frame); else running = false;
+    };
+    var kick = function () { if (!running) { running = true; requestAnimationFrame(frame); } };
+    window.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse") return;
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      kick();
+    }, { passive: true });
+    window.addEventListener("scroll", kick, { passive: true });
+    window.addEventListener("resize", function () { hh = heroH(); }, { passive: true });
+    requestAnimationFrame(function () { hh = heroH(); }); // medir después del primer pintado
+  }
+
   /* ---------- Solo ordenador: parallax de adornos y fondos (GSAP, scrub) ---------- */
   onMotion(function () {
     $$("[data-par]").forEach(function (el) {
       var k = parseFloat(el.getAttribute("data-par")) * 100;
       G.fromTo(el, { yPercent: -k }, { yPercent: k, ease: "none", scrollTrigger: { trigger: el.parentNode, start: "top bottom", end: "bottom top", scrub: true } });
     });
-    var heroPar = $("[data-hero-par]");
-    if (heroPar) G.to(heroPar, { yPercent: 9, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
     var resPar = $("[data-par-bg]");
     if (resPar) G.fromTo(resPar, { yPercent: -7 }, { yPercent: 7, ease: "none", scrollTrigger: { trigger: ".reserva", start: "top bottom", end: "bottom top", scrub: true } });
   });

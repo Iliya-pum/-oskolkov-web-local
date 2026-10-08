@@ -757,3 +757,56 @@ html.menu-open{ overflow:hidden; }
 /* Foto con recorte para el teléfono (<picture>): la imagen se coloca igual que una <img> suelta */
 .foto-pic{ display:contents; }
 .hero__par .foto{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* ---------- Portada: la foto «vive» (todo en CSS: no espera a GSAP) ----------
+   .hero__par — parallax de ratón y de desplazamiento (script.js, solo ordenador)
+   .hero__kb  — acercamiento lento (Ken Burns): ordenador 1 → 1,08 en 20 s; teléfono 1 → 1,04 en 25 s
+   .hero__luces — 4 velas que parpadean (solo ordenador), colocadas sobre la foto como object-fit:cover */
+.hero__kb{ position:absolute; inset:0; container-type:size; transform-origin:68% 50%; }
+.hero__kb > .ph{ position:absolute; inset:0; }
+.hero__luces{ display:none; }
+.hero__words .w{ display:inline-block; overflow:hidden; vertical-align:top; padding:0 .08em .14em 0; margin:0 -.08em -.14em 0; }
+.hero__words .wi{ display:inline-block; }
+@media (prefers-reduced-motion:no-preference){
+    .hero__kb{ animation:kb-m 25s ease-in-out infinite alternate; }
+    /* opacity .01: el titular cuenta como pintado desde el primer momento (LCP) */
+    .hero__words .wi{ animation:word-in 1s var(--ease-out) both; animation-delay:calc(var(--i) * 110ms + 200ms); }
+    .hero__olivo{ stroke-dasharray:100; stroke-dashoffset:100; animation:draw 2.5s var(--ease) .5s forwards; }
+}
+@media (prefers-reduced-motion:no-preference) and (min-width:901px) and (hover:hover) and (pointer:fine){
+    .hero__par{ inset:-4%; will-change:transform; }      /* margen para el parallax */
+    .hero__kb{ animation:kb 20s ease-in-out infinite alternate; }
+    .hero__luces{
+        display:block; position:absolute; pointer-events:none;
+        width:max(100cqw, 150cqh); aspect-ratio:3 / 2;
+        left:calc((100cqw - max(100cqw, 150cqh)) * .68);
+        top:calc((100cqh - max(100cqw, 150cqh) / 1.5) * .5);
+    }
+    .hero__luces i{
+        position:absolute; left:calc(var(--x) * 1%); top:calc(var(--y) * 1%); width:6%; aspect-ratio:1; translate:-50% -50%;
+        border-radius:50%; mix-blend-mode:screen;
+        background:radial-gradient(circle, rgb(255 205 130 / .62) 0%, rgb(255 160 70 / .26) 32%, transparent 68%);
+        animation:vela var(--t, 2.4s) ease-in-out var(--dl, 0s) infinite;
+    }
+}
+@keyframes kb{ from{ transform:scale(1); } to{ transform:scale(1.08); } }
+@keyframes kb-m{ from{ transform:scale(1); } to{ transform:scale(1.04); } }
+@keyframes word-in{ from{ opacity:.01; transform:translateY(105%); } to{ opacity:1; transform:none; } }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+@keyframes vela{ 0%,100%{ opacity:.55; scale:1; } 18%{ opacity:.95; scale:1.07; } 37%{ opacity:.62; scale:.96; } 58%{ opacity:1; scale:1.09; } 79%{ opacity:.7; scale:1; } }
+/* Idiomas siempre visibles en la cabecera; en el teléfono, compactos junto al menú */
+.lang{ display:flex; }
+@media (max-width:599px){
+    .hdr__end{ gap:4px; }
+    .lang{ gap:0; }
+    .lang__a{ min-width:30px; font-size:12px; letter-spacing:.06em; }
+    .lang__a[aria-current]{ text-underline-offset:6px; }
+    .burger{ width:44px; }
+}
+@media (max-width:374px){
+    .logo__txt{ font-size:22px; }
+    .logo__mark{ width:30px; height:30px; }
+    .lang__a{ min-width:27px; font-size:11.5px; }
+}
+/* Franja oscura suave arriba de la portada: la cabecera transparente se lee sobre cualquier foto */
+.hero__veil::before{ content:""; position:absolute; inset:0 0 auto; height:calc(var(--hdr-h) + 80px); background:linear-gradient(rgb(var(--oscuro-rgb) / .6), transparent); }

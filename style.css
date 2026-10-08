@@ -1264,3 +1264,17 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
     .review-site{ transform:none; }
     .review-shot{ aspect-ratio:16 / 8; }
 }
+
+/* Idioma en el móvil: compacto (bandera + «ES») junto al botón del menú */
+.lang-mobile{ display:none; }
+@media (max-width:1140px){
+    .lang-mobile{ display:block; margin-left:auto; margin-right:16px; }
+    .lang-mobile .language-btn{ padding:7px 11px; gap:7px; font-size:13px; }
+    .lang-mobile .language-menu{ right:0; }
+    #main-nav .language-dropdown{ display:none; }      /* ya está en la cabecera */
+}
+@media (max-width:380px){
+    .logo-word{ font-size:22px; }
+    .logo img.logo-mark{ height:38px; }
+    .lang-mobile{ margin-right:12px; }
+}

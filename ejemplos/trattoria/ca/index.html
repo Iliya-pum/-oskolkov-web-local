@@ -19,9 +19,10 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="../img/hero-m.webp" media="(max-width: 700px)" fetchpriority="high">
 <link rel="preload" as="image" href="../img/hero.webp" imagesrcset="../img/hero-640.webp 640w, ../img/hero.webp 1536w" imagesizes="100vw" media="(min-width: 701px)" fetchpriority="high">
-<link rel="stylesheet" href="../style.css?v=f37a8b17">
+<link rel="stylesheet" href="../style.css?v=d9f35e3d">
 <script>(function(d){var c=d.classList;c.add("js");if("IntersectionObserver"in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){c.add("rv");addEventListener("load",function(){setTimeout(function(){if(!c.contains("rv-ok"))c.remove("rv")},1500)})}})(document.documentElement)</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Da Livia">
@@ -111,7 +112,7 @@
   "acceptsReservations": true
 }
 </script>
-<script src="../script.js?v=f37a8b17" defer></script>
+<script src="../script.js?v=d9f35e3d" defer></script>
 </head>
 <body data-libs="../lib/gsap-3.13.0.min.js,../lib/ScrollTrigger-3.13.0.min.js,../lib/lenis-1.3.4.min.js">
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +133,8 @@
   <symbol id="i-pausa" viewBox="0 0 24 24"><path d="M9 5v14"/><path d="M15 5v14"/></symbol>
 
   <!-- Dibujos de línea para las fotos de ejemplo (trazo: color de la variable) -->
-  <symbol id="m-olivo" viewBox="0 0 200 200"><path d="M26 178C68 134 110 94 180 28"/><path d="M52 152c-3-17 5-30 20-38 3 16-5 30-20 38Z"/><path d="M60 145c17 1 29 10 34 25-16-1-29-10-34-25Z"/><path d="M84 127c-4-17 3-31 18-40 4 16-3 31-18 40Z"/><path d="M92 120c17 0 30 8 36 23-17 0-30-8-36-23Z"/><path d="M116 97c-4-17 3-31 17-41 4 17-2 31-17 41Z"/><path d="M124 90c17-1 31 7 38 21-17 1-31-7-38-21Z"/><path d="M148 66c-3-16 2-29 15-38 4 15-1 29-15 38Z"/><path d="M155 60c15-2 28 4 35 17-15 2-28-4-35-17Z"/><ellipse cx="78" cy="160" rx="7.5" ry="10" transform="rotate(-25 78 160)"/><ellipse cx="111" cy="132" rx="7.5" ry="10" transform="rotate(-25 111 132)"/><ellipse cx="96" cy="152" rx="6.5" ry="8.5" transform="rotate(-25 96 152)"/></symbol>
+  <!-- m-olivo: pathLength="100" — la rama de la portada se «dibuja» con stroke-dashoffset -->
+  <symbol id="m-olivo" viewBox="0 0 200 200"><path pathLength="100" d="M26 178C68 134 110 94 180 28"/><path pathLength="100" d="M52 152c-3-17 5-30 20-38 3 16-5 30-20 38Z"/><path pathLength="100" d="M60 145c17 1 29 10 34 25-16-1-29-10-34-25Z"/><path pathLength="100" d="M84 127c-4-17 3-31 18-40 4 16-3 31-18 40Z"/><path pathLength="100" d="M92 120c17 0 30 8 36 23-17 0-30-8-36-23Z"/><path pathLength="100" d="M116 97c-4-17 3-31 17-41 4 17-2 31-17 41Z"/><path pathLength="100" d="M124 90c17-1 31 7 38 21-17 1-31-7-38-21Z"/><path pathLength="100" d="M148 66c-3-16 2-29 15-38 4 15-1 29-15 38Z"/><path pathLength="100" d="M155 60c15-2 28 4 35 17-15 2-28-4-35-17Z"/><ellipse pathLength="100" cx="78" cy="160" rx="7.5" ry="10" transform="rotate(-25 78 160)"/><ellipse pathLength="100" cx="111" cy="132" rx="7.5" ry="10" transform="rotate(-25 111 132)"/><ellipse pathLength="100" cx="96" cy="152" rx="6.5" ry="8.5" transform="rotate(-25 96 152)"/></symbol>
   <symbol id="m-pasta" viewBox="0 0 200 200"><path d="M100 196v-78"/><path d="M84 118c0 10 32 10 32 0"/><path d="M86 118V44"/><path d="M95 118V38"/><path d="M105 118V38"/><path d="M114 118V44"/><ellipse cx="100" cy="66" rx="40" ry="12"/><ellipse cx="100" cy="80" rx="44" ry="13"/><ellipse cx="100" cy="94" rx="38" ry="12"/><path d="M60 80c-4 12 6 22 18 26"/><path d="M140 82c4 12-6 22-18 26"/><path d="M76 106c10 6 38 6 48 0"/></symbol>
   <symbol id="m-pizza" viewBox="0 0 200 200"><circle cx="100" cy="100" r="72"/><circle cx="100" cy="100" r="60"/><path d="M100 40v120"/><path d="M48 70l104 60"/><path d="M48 130l104-60"/><circle cx="76" cy="84" r="8"/><circle cx="124" cy="80" r="7"/><circle cx="116" cy="124" r="8"/><circle cx="82" cy="122" r="6"/><path d="M98 66c6-6 14-6 18 0-6 4-12 4-18 0Z"/><path d="M60 102c4-6 12-8 18-4-4 6-12 8-18 4Z"/></symbol>
   <symbol id="m-tomate" viewBox="0 0 200 200"><path d="M100 64c-34 0-62 22-62 54s28 56 62 56 62-24 62-56-28-54-62-54Z"/><path d="M100 64l-16-12 4 16-20 2 18 8"/><path d="M100 64l16-12-4 16 20 2-18 8"/><path d="M100 64V36c0-6 6-10 12-8"/><path d="M62 108c4-14 16-24 30-28"/><path d="M134 92c10 8 14 18 14 28"/></symbol>
@@ -193,7 +195,10 @@
 <section class="hero" aria-labelledby="hero-t" data-spy>
   <div class="hero__media">
     <div class="hero__par" data-hero-par>
-      <picture class="foto-pic"><source media="(max-width: 700px)" srcset="../img/hero-m.webp" width="640" height="980"><img class="foto hero__img" src="../img/hero.webp" srcset="../img/hero-640.webp 640w, ../img/hero.webp 1536w" sizes="100vw" width="1536" height="1024" alt="Sala de Da Livia al vespre: paret de pedra, espelmes i ampolles de vi" loading="eager" decoding="async" fetchpriority="high" style="--pos:68% 50%;--pos-m:70% 50%"></picture>
+      <div class="hero__kb">
+        <picture class="foto-pic"><source media="(max-width: 700px)" srcset="../img/hero-m.webp" width="640" height="980"><img class="foto hero__img" src="../img/hero.webp" srcset="../img/hero-640.webp 640w, ../img/hero.webp 1536w" sizes="100vw" width="1536" height="1024" alt="Sala de Da Livia al vespre: paret de pedra, espelmes i ampolles de vi" loading="eager" decoding="async" fetchpriority="high" style="--pos:68% 50%;--pos-m:70% 50%"></picture>
+        <span class="hero__luces" aria-hidden="true"><i style="--x:58.5;--y:38.3;--t:2200ms;--dl:-0ms"></i><i style="--x:60.5;--y:54;--t:2650ms;--dl:-700ms"></i><i style="--x:69.2;--y:59.8;--t:3100ms;--dl:-1400ms"></i><i style="--x:84.3;--y:79.3;--t:3550ms;--dl:-2100ms"></i></span>
+      </div>
     </div>
   </div>
   <div class="hero__veil" aria-hidden="true"></div>
@@ -202,7 +207,7 @@
     <div class="hero__txt">
       <p class="hero__live hero__a" style="--d:0"><span class="status status--glass is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-txt>Tancat ara</span></span></p>
       <p class="over over--light hero__a" style="--d:1">Trattoria italiana · Girona</p>
-      <h1 class="hero__t" id="hero-t"><span class="sr">Pasta fresca, foc lent.</span><span class="letras" aria-hidden="true"><span class="wd"><span class="ch" style="--i:0">P</span><span class="ch" style="--i:1">a</span><span class="ch" style="--i:2">s</span><span class="ch" style="--i:3">t</span><span class="ch" style="--i:4">a</span></span> <span class="wd"><span class="ch" style="--i:5">f</span><span class="ch" style="--i:6">r</span><span class="ch" style="--i:7">e</span><span class="ch" style="--i:8">s</span><span class="ch" style="--i:9">c</span><span class="ch" style="--i:10">a</span><span class="ch" style="--i:11">,</span></span><br><em><span class="wd"><span class="ch" style="--i:12">f</span><span class="ch" style="--i:13">o</span><span class="ch" style="--i:14">c</span></span> <span class="wd"><span class="ch" style="--i:15">l</span><span class="ch" style="--i:16">e</span><span class="ch" style="--i:17">n</span><span class="ch" style="--i:18">t</span><span class="ch" style="--i:19">.</span></span></em></span></h1>
+      <h1 class="hero__t hero__words" id="hero-t"><span class="w"><span class="wi" style="--i:0">Pasta</span></span> <span class="w"><span class="wi" style="--i:1">fresca,</span></span><br><em><span class="w"><span class="wi" style="--i:2">foc</span></span> <span class="w"><span class="wi" style="--i:3">lent.</span></span></em></h1>
       <p class="hero__p hero__a" style="--d:7">Pasta feta a mà cada matí, pizza al forn de llenya i els vins que beuria la nonna. En ple Barri Vell.</p>
       <div class="hero__ctas hero__a" style="--d:8">
         <a class="btn btn--vino btn--lg" id="hero-cta" href="#reservar">Reserva taula</a>

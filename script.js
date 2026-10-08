@@ -704,10 +704,13 @@ function changeLanguage(lang, initial){
   // Bandera + etiqueta del selector
   var flags = { es:"images/es.png", ca:"images/cat.png", en:"images/en.png", ru:"images/ru.svg" };
   var labels = { es:"ESP", ca:"CAT", en:"ENG", ru:"RUS" };
-  var flagEl = document.getElementById("current-flag");
-  var langEl = document.getElementById("current-lang");
-  if(flagEl) flagEl.src = flags[lang];
-  if(langEl) langEl.textContent = labels[lang];
+  // (dos selectores: el de la navegación y el compacto del móvil, que muestra solo «ES», «CA»…)
+  document.querySelectorAll("[data-cur-flag]").forEach(function(el){
+    if(el.getAttribute("src") !== flags[lang]) el.src = flags[lang];
+  });
+  document.querySelectorAll("[data-cur-lang]").forEach(function(el){
+    el.textContent = el.hasAttribute("data-short") ? lang.toUpperCase() : labels[lang];
+  });
 
   // Marcar la opción activa en el menú
   document.querySelectorAll(".lang-opt").forEach(function(opt){
@@ -1049,31 +1052,33 @@ function initFaq(){
 
 /* ---------- Selector de idioma (desplegable con clic) ---------- */
 function initLangDropdown(){
-  var dd = document.getElementById("lang-dropdown");
-  var btn = document.getElementById("lang-btn");
-  if(!dd || !btn) return;
+  // Vale para los dos desplegables: el de la navegación (ordenador) y el compacto de la cabecera (móvil)
+  document.querySelectorAll(".language-dropdown").forEach(function(dd){
+    var btn = dd.querySelector(".language-btn");
+    if(!btn) return;
 
-  function close(){ dd.classList.remove("open"); btn.setAttribute("aria-expanded","false"); }
+    function close(){ dd.classList.remove("open"); btn.setAttribute("aria-expanded","false"); }
 
-  btn.addEventListener("click", function(e){
-    e.stopPropagation();
-    var open = dd.classList.toggle("open");
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  dd.querySelectorAll(".lang-opt").forEach(function(opt){
-    opt.addEventListener("click", function(){
-      changeLanguage(opt.getAttribute("data-lang"));
-      close();
+    btn.addEventListener("click", function(e){
+      e.stopPropagation();
+      var open = dd.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
     });
-  });
 
-  // Cerrar al hacer clic fuera o pulsar Escape
-  document.addEventListener("click", function(e){
-    if(!dd.contains(e.target)) close();
-  });
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape") close();
+    dd.querySelectorAll(".lang-opt").forEach(function(opt){
+      opt.addEventListener("click", function(){
+        changeLanguage(opt.getAttribute("data-lang"));
+        close();
+      });
+    });
+
+    // Cerrar al hacer clic fuera o pulsar Escape
+    document.addEventListener("click", function(e){
+      if(!dd.contains(e.target)) close();
+    });
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape") close();
+    });
   });
 }
 

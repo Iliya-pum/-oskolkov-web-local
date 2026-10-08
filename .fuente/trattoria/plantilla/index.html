@@ -57,7 +57,12 @@
 <section class="hero" aria-labelledby="hero-t" data-spy>
   <div class="hero__media">
     <div class="hero__par" data-hero-par>
-      {{ 'hero' | foto('hero__img', 'eager', '100vw', True) }}
+      <div class="hero__kb">
+        {{ 'hero' | foto('hero__img', 'eager', '100vw', True) }}
+        {% if foto_real('hero') and fotos.hero.get('luces') %}
+        <span class="hero__luces" aria-hidden="true">{% for l in fotos.hero.luces %}<i style="--x:{{ l[0] }};--y:{{ l[1] }};--t:{{ 2200 + loop.index0 * 450 }}ms;--dl:-{{ loop.index0 * 700 }}ms"></i>{% endfor %}</span>
+        {% endif %}
+      </div>
       {% if video_portada %}
       <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" data-hero-video>
         {% if video_portada.get('webm') %}
@@ -76,7 +81,7 @@
     <div class="hero__txt">
       <p class="hero__live hero__a" style="--d:0"><span class="status status--glass is-wait" data-estado-pill><span class="dot" data-estado-dot></span><span data-estado-txt>{{ textos.js.cerrado }}</span></span></p>
       <p class="over over--light hero__a" style="--d:1">{{ textos.hero.antetitulo }}</p>
-      <h1 class="hero__t" id="hero-t">{{ textos.hero.titulo | letras }}</h1>
+      <h1 class="hero__t hero__words" id="hero-t">{{ textos.hero.titulo | palabras }}</h1>
       <p class="hero__p hero__a" style="--d:7">{{ textos.hero.texto }}</p>
       <div class="hero__ctas hero__a" style="--d:8">
         <a class="btn btn--vino btn--lg" id="hero-cta" href="#reservar">{{ textos.nav.reservar }}</a>

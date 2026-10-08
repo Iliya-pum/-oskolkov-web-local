@@ -482,6 +482,7 @@ def f_number(v, dec=0):
 FILTERS = {"raw": f_raw, "json": f_json, "strip": f_strip, "url": f_url, "default": f_default,
            "wa": wa_url, "tel": tel_url, "precio": fmt_price, "duracion": fmt_minutes, "foto": f_photo,
            "campos": f_fields, "palabras": f_words, "letras": f_letters, "numero": f_number,
+           "foto_real": lambda slot: SITE["fotos"][slot]["archivo"] in PHOTO_READY,
            "upper": lambda v: str(v).upper(), "lower": lambda v: str(v).lower()}
 CTX_PAGE: dict = {}
 PHOTO_READY: dict = {}  # archivo → {"src", "w", "h", "small": (имя, ширина) | None, "movil": (имя, w, h) | None}
