@@ -941,3 +941,37 @@ html.menu-open{ overflow:hidden; }
 .oskal__plan{ font-weight:600; letter-spacing:.02em; }
 /* Foto con recorte para el teléfono (<picture>): la imagen se coloca igual que una <img> suelta */
 .foto-pic{ display:contents; }
+
+/* ---------- Animaciones sin fin: solo mientras se ven ----------
+   script.js pone .is-quieto al bloque que está fuera de la pantalla: fuera de la vista no se anima nada
+   (acercamiento de la foto, sello que gira, marquesina, pulso del divisor, brillo de la tarjeta, «abierto»). */
+.is-quieto .hero__zoom, .is-quieto .hero__scroll i, .is-quieto .sello__txt, .marq.is-quieto .marq__track,
+.ba.is-quieto .ba__knob::after, .gcard.is-quieto .gcard__shine,
+.is-quieto .dot.is-open, .is-quieto .dot.is-open::after{ animation:none !important; }
+
+/* ---------- Teléfono y pantallas táctiles: el mismo aspecto, menos trabajo para la tarjeta gráfica ----------
+   Sin grano, sombras cortas, cintas con «imán» suave (proximity), pulsos con transform (no repintan la
+   página), sin desenfoque detrás de las ventanas. En el ordenador no cambia nada. */
+@media (hover:none), (pointer:coarse){
+  :root{
+    --grano:none;
+    --sombra-1:0 1px 2px rgb(var(--texto-rgb) / .06), 0 6px 14px -8px rgb(var(--texto-rgb) / .2);
+    --sombra-2:0 2px 4px rgb(var(--texto-rgb) / .07), 0 10px 20px -10px rgb(var(--texto-rgb) / .28);
+    --sombra-3:0 3px 8px rgb(var(--texto-rgb) / .08), 0 16px 28px -14px rgb(var(--texto-rgb) / .34);
+  }
+  .hdr.is-solid{ box-shadow:0 1px 0 rgb(var(--oro-rgb) / .3); }
+  .hero__zoom{ will-change:auto; }
+  /* sombra + marco (outline) juntos hacían repintar toda la página en cada fotograma del pulso del divisor;
+     sobre el fondo oscuro la sombra casi no se ve: se queda solo el marco */
+  .ba--xl{ box-shadow:none; }
+  .ba__line::before{ box-shadow:0 0 6px rgb(0 0 0 / .35); }
+  .gcard__in{ box-shadow:0 16px 28px -16px rgb(var(--texto-rgb) / .5), inset 0 0 0 1px rgb(var(--oro-rgb) / .55); }
+  .srv, .rev__track{ scroll-snap-type:x proximity; }
+  .modal::backdrop{ -webkit-backdrop-filter:none; backdrop-filter:none; background:rgb(var(--oscuro-rgb) / .7); }
+  .dot.is-open{ position:relative; }
+  @media (prefers-reduced-motion:no-preference){
+    .dot.is-open{ animation:none; }
+    .dot.is-open::after{ content:""; position:absolute; inset:0; border-radius:50%; background:rgb(var(--exito-rgb) / .45); animation:pulse-t 2.6s ease-out infinite; }
+  }
+}
+@keyframes pulse-t{ 0%{ transform:scale(1); opacity:1; } 70%,100%{ transform:scale(3.25); opacity:0; } }

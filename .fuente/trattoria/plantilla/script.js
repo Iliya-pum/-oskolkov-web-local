@@ -53,9 +53,19 @@
   /* ---------- Cabecera: fondo al bajar ---------- */
   var hdr = $("[data-hdr]");
   if (hdr) {
-    var solid = function () { hdr.classList.toggle("is-solid", window.scrollY > 8); };
-    requestAnimationFrame(solid);
-    window.addEventListener("scroll", solid, { passive: true });
+    // Un punto invisible a 8 px del inicio: cuando sale de la pantalla, la cabecera se vuelve opaca.
+    // Sin leer scrollY en cada evento de desplazamiento (eso obligaba a recalcular la página en cada fotograma).
+    if (hasIO) {
+      var hdrMark = document.createElement("div");
+      hdrMark.setAttribute("aria-hidden", "true");
+      hdrMark.style.cssText = "position:absolute;top:8px;left:0;width:1px;height:1px;pointer-events:none";
+      document.body.prepend(hdrMark);
+      new IntersectionObserver(function (en) { hdr.classList.toggle("is-solid", !en[0].isIntersecting); }).observe(hdrMark);
+    } else {
+      var solid = function () { hdr.classList.toggle("is-solid", window.scrollY > 8); };
+      requestAnimationFrame(solid);
+      window.addEventListener("scroll", solid, { passive: true });
+    }
   }
 
   /* ---------- Menú móvil ---------- */
@@ -102,12 +112,15 @@
     var t0 = performance.now(), dur = 1500;
     var step = function (now) {
       var t = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - t, 3);
-      el.textContent = nf.format(end * e);
+      // solo si el número cambió (con textContent: cambiar el mismo nodo de texto cuenta como «salto» en CLS)
+      var txt = nf.format(end * e);
+      if (txt !== last) { el.textContent = txt; last = txt; }
       if (t < 1) requestAnimationFrame(step);
     };
     // ancho del número final (ya escrito en el HTML) reservado: al contar, nada a su lado se mueve
     el.style.minWidth = el.getBoundingClientRect().width + "px";
     el.textContent = nf.format(0);
+    var last = el.textContent;
     requestAnimationFrame(step);
   };
 
@@ -128,6 +141,16 @@
     animated.forEach(function (el) { rio.observe(el); });
   } else {
     animated.forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  /* ---------- Animaciones sin fin (foto de portada, cinta, pulso «abierto»): solo mientras se ven ----------
+     Fuera de la pantalla el bloque lleva .is-quieto y su animación se quita (style.css): el teléfono no
+     trabaja para lo que no se ve. */
+  if (hasIO && !reduce) {
+    var qio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle("is-quieto", !en.isIntersecting); });
+    }, { rootMargin: "80px 0px" });
+    $$(".hero, .cinta, [data-estado-pill]").forEach(function (el) { qio.observe(el); });
   }
 
   /* ---------- Portada (solo ordenador): la foto sigue al ratón (±2,6 %) y baja un poco al desplazarse.
@@ -188,7 +211,8 @@
       var max = vp.scrollWidth - vp.clientWidth;
       paintRibbon(max > 0 ? vp.scrollLeft / max : 0);
     };
-    vp.addEventListener("scroll", function () { requestAnimationFrame(paintNative); }, { passive: true });
+    var vpRaf = 0; // una sola medición por fotograma, por muchos eventos que lleguen
+    vp.addEventListener("scroll", function () { cancelAnimationFrame(vpRaf); vpRaf = requestAnimationFrame(paintNative); }, { passive: true });
     onMotion(function () {
       vp.scrollLeft = 0;
       var dist = function () { return Math.max(0, track.scrollWidth - vp.clientWidth); };
@@ -451,10 +475,21 @@
       js.onerror = function () { if (mapMsg) mapMsg.textContent = T.mapa_error; };
       document.head.appendChild(js);
     };
+    // se carga cerca de la pantalla y con la página quieta: el arranque del mapa y sus imágenes
+    // no caen en medio de un deslizamiento rápido (en el teléfono se notaba como un tirón)
+    var mapNear = false, mapDone = false, mapT = null;
+    var mapTry = function () {
+      clearTimeout(mapT);
+      mapT = setTimeout(function () {
+        if (mapNear && !mapDone) { mapDone = true; mio.disconnect(); window.removeEventListener("scroll", mapTry); loadMap(); }
+      }, 250);
+    };
     var mio = new IntersectionObserver(function (en) {
-      if (en[0].isIntersecting) { mio.disconnect(); loadMap(); }
+      mapNear = en[0].isIntersecting;
+      if (mapNear) mapTry();
     }, { rootMargin: "500px 0px" });
     mio.observe(mapEl);
+    window.addEventListener("scroll", mapTry, { passive: true });
   }
 
   /* ---------- WhatsApp y llamada: en la demo, ventana de ejemplo ---------- */

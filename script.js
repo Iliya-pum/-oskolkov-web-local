@@ -940,7 +940,14 @@ function initMagnetic(){
 function initBackgroundArt(){
   var canvas = document.getElementById("bg-art");
   if(!canvas || !canvas.getContext) return;
-  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  // Ordenador con ratón: 60 fotogramas por segundo y el enlace rojo con el cursor (como siempre).
+  // Pantalla táctil: menos puntos, como mucho 30 fotogramas por segundo, quieta mientras se desplaza la página.
+  // prefers-reduced-motion: dibujada una vez, quieta. Siempre: parada con la pestaña en segundo plano.
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var touch = !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var still = reduce;
+  var FRAME_MS = touch ? 1000 / 30 : 0;
 
   var ctx = canvas.getContext("2d");
   var w = 0, h = 0, dpr = 1;
@@ -966,7 +973,7 @@ function initBackgroundArt(){
   function build(){
     // Densidad adaptada a la pantalla (menos puntos en móvil)
     var count = Math.round((w * h) / 20000);
-    count = Math.max(22, Math.min(count, w < 700 ? 34 : 78));
+    count = touch ? Math.max(18, Math.min(count, 24)) : Math.max(22, Math.min(count, w < 700 ? 34 : 78));
     dots = [];
     for(var i = 0; i < count; i++){
       dots.push({
@@ -983,18 +990,19 @@ function initBackgroundArt(){
     }
   }
 
-  var t = 0;
+  var t = 0, last = 0;
 
-  function frame(){
+  // k — cuántos fotogramas «de 60» han pasado: a 30 por segundo los puntos se mueven igual de rápido
+  function draw(k){
     ctx.clearRect(0, 0, w, h);
-    t += 0.016;
+    t += 0.016 * k;
 
     var i, j, p, q, dx, dy, d2, alpha, tw;
 
     // Mover y enlazar
     for(i = 0; i < dots.length; i++){
       p = dots[i];
-      p.x += p.vx; p.y += p.vy;
+      p.x += p.vx * k; p.y += p.vy * k;
       if(p.x < -30) p.x = w + 30; else if(p.x > w + 30) p.x = -30;
       if(p.y < -30) p.y = h + 30; else if(p.y > h + 30) p.y = -30;
 
@@ -1048,16 +1056,24 @@ function initBackgroundArt(){
         : "rgba(203,213,225," + alpha.toFixed(3) + ")";
       ctx.fill();
     }
-
-    if(!still) raf = requestAnimationFrame(frame);
   }
 
-  // En pantallas táctiles la constelación se dibuja una vez y se queda quieta: el mismo dibujo,
-  // sin trabajo continuo para el teléfono.
-  var still = !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  function frame(now){
+    raf = null;
+    if(!running) return;
+    if(FRAME_MS && last && now - last < FRAME_MS - 2){ raf = requestAnimationFrame(frame); return; }
+    var k = FRAME_MS && last ? Math.min(3, (now - last) / 16.67) : 1;   // ordenador: como siempre, 1 por fotograma
+    last = now;
+    draw(k);
+    raf = requestAnimationFrame(frame);
+  }
+
+  var scrolling = false, scrollTimer = null;
   function start(){
-    if(still){ requestAnimationFrame(frame); return; }
-    if(!running){ running = true; raf = requestAnimationFrame(frame); }
+    if(still){ requestAnimationFrame(function(){ draw(1); }); return; }
+    if(running || document.hidden || scrolling) return;
+    running = true; last = 0;
+    raf = requestAnimationFrame(frame);
   }
   function stop(){ running = false; if(raf) cancelAnimationFrame(raf); raf = null; }
 
@@ -1065,13 +1081,21 @@ function initBackgroundArt(){
   var resizeTimer, lastW = window.innerWidth;
   window.addEventListener("resize", function(){
     // en el móvil la barra de direcciones cambia solo el alto: no redibujar (los puntos «saltarían»)
-    if(still && window.innerWidth === lastW) return;
+    if(touch && window.innerWidth === lastW) return;
     lastW = window.innerWidth;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function(){ resize(); if(still) start(); }, 200);
   });
-  // Recalcular cuando todo (CSS/fuentes) ha cargado (en el móvil ya está dibujada: no se toca)
-  if(!still) window.addEventListener("load", resize);
+  // Recalcular cuando todo (CSS/fuentes) ha cargado (en el teléfono ya está dibujada: no se toca)
+  if(!touch) window.addEventListener("load", resize);
+  // Teléfono: mientras se desplaza la página el fondo espera (toda la fuerza para la página); sigue a los 200 ms
+  if(touch && !still){
+    window.addEventListener("scroll", function(){
+      if(!scrolling){ scrolling = true; stop(); }
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function(){ scrolling = false; start(); }, 200);
+    }, { passive:true });
+  }
   window.addEventListener("mousemove", function(e){ mouse.x = e.clientX; mouse.y = e.clientY; }, { passive:true });
   window.addEventListener("mouseout", function(){ mouse.x = -9999; mouse.y = -9999; });
   document.addEventListener("visibilitychange", function(){
@@ -1079,65 +1103,159 @@ function initBackgroundArt(){
   });
 
   resize();
-  start();
+  if(touch && !still){
+    // teléfono: primero el dibujo quieto; el movimiento empieza cuando la página ya ha cargado y está tranquila
+    requestAnimationFrame(function(){ draw(1); });
+    var go = function(){ setTimeout(start, 1500); };
+    if(document.readyState === "complete") go(); else window.addEventListener("load", go);
+  } else {
+    start();
+  }
+}
+
+/* ---------- Animaciones sin fin solo mientras se ven ----------
+   Resplandores del hero y la unión entre trabajos: fuera de la pantalla, .is-quieto (style.css las pausa). */
+function initQuieto(){
+  if(!("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ en.target.classList.toggle("is-quieto", !en.isIntersecting); });
+  }, { rootMargin:"80px 0px" });
+  document.querySelectorAll(".hero, .work-link").forEach(function(el){ io.observe(el); });
 }
 
 /* ---------- Demos en vivo (sección "capacidades") ---------- */
 function initDemos(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Demo 1: saludo que rota de idioma */
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var hasIO = "IntersectionObserver" in window;
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".demo-grid .demo-card"));
+
+  // Fuera de la pantalla (también a un lado de la cinta en el teléfono) las demos se paran: .is-quieto
+  var visible = new Set(cards);
+  if(hasIO && !reduce){
+    var qio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        en.target.classList.toggle("is-quieto", !en.isIntersecting);
+        if(en.isIntersecting) visible.add(en.target); else visible.delete(en.target);
+      });
+    });
+    cards.forEach(function(c){ qio.observe(c); });
+  }
+
+  // Toque en el teléfono: toda la tarjeta es el botón. Es un toque si el dedo se movió menos de 10 px;
+  // si se movió más, es desplazamiento (de la página o de la cinta) y no pasa nada.
+  // Al apoyar el dedo la tarjeta se hunde un poco (.is-pressed): respuesta inmediata.
+  function onTap(card, fn){
+    var start = null;
+    card.addEventListener("pointerdown", function(e){
+      if(e.pointerType === "mouse") return;
+      start = { x:e.clientX, y:e.clientY, id:e.pointerId };
+      card.classList.add("is-pressed");
+    });
+    card.addEventListener("pointermove", function(e){
+      if(!start || e.pointerId !== start.id) return;
+      if(Math.abs(e.clientX - start.x) >= 10 || Math.abs(e.clientY - start.y) >= 10){
+        start = null; card.classList.remove("is-pressed");
+      }
+    });
+    var end = function(e){
+      card.classList.remove("is-pressed");
+      var ok = start && e.type === "pointerup" && e.pointerId === start.id;
+      start = null;
+      if(ok) fn();
+    };
+    card.addEventListener("pointerup", end);
+    card.addEventListener("pointercancel", end);
+  }
+  // volver a empezar una animación CSS desde el principio
+  function restart(el){
+    if(!el) return;
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+  }
+  function cardOf(el){ return el ? el.closest(".demo-card") : null; }
+
+  /* Demo 1: saludo que rota de idioma (toque: el siguiente idioma ya) */
   var word = document.getElementById("demo-lang-word");
   if(word && !reduce){
     var greetings = ["¡Hola!", "Hello!", "Bonjour !", "Hallo!", "Ciao!"];
     var flags = document.querySelectorAll(".demo-flag");
-    var gi = 0;
+    var gi = 0, swapping = false, timer = null;
     var mark = function(){
       flags.forEach(function(f){ f.classList.toggle("on", +f.getAttribute("data-di") === gi); });
     };
-    mark();
-    setInterval(function(){
+    var next = function(){
+      if(swapping) return;
+      swapping = true;
       word.classList.add("swap");
       setTimeout(function(){
         gi = (gi + 1) % greetings.length;
         word.textContent = greetings[gi];
         mark();
         word.classList.remove("swap");
+        swapping = false;
       }, 300);
-    }, 2200);
+    };
+    var c1 = cardOf(word);
+    mark();
+    timer = setInterval(function(){ if(!document.hidden && (!c1 || visible.has(c1))) next(); }, 2200);
+    if(c1 && !fine) onTap(c1, function(){ clearInterval(timer); next(); timer = setInterval(function(){ if(!document.hidden && visible.has(c1)) next(); }, 2200); });
   }
 
-  /* Demo 4: tarjeta 3D que sigue el cursor */
+  /* Demo 2 y 3: la pantalla que cambia y la carrera de carga (toque: empiezan de nuevo) */
+  var device = document.getElementById("demo-device");
+  if(device && !reduce && !fine && cardOf(device)) onTap(cardOf(device), function(){ restart(device); });
+  var slow = document.getElementById("ds-slow"), fast = document.getElementById("ds-fast");
+  if(slow && fast && !reduce && !fine && cardOf(slow)) onTap(cardOf(slow), function(){ restart(slow); restart(fast); });
+
+  /* Demo 4: tarjeta 3D. Con ratón sigue el cursor; en el teléfono, toque en toda la tarjeta:
+     se balancea, brilla y se queda encendida; otro toque la apaga. La primera vez que se ve entera
+     en el teléfono, el efecto se reproduce solo una vez — para que se note que existe. */
   var tilt = document.getElementById("demo-tilt");
   if(tilt && !reduce){
     var inner = tilt.querySelector(".demo-tilt-inner");
-    var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    function move(x, y){
-      var r = tilt.getBoundingClientRect();
-      var px = (x - r.left) / r.width  - 0.5;
-      var py = (y - r.top)  / r.height - 0.5;
-      inner.style.transform = "rotateX(" + (-py * 22) + "deg) rotateY(" + (px * 26) + "deg)";
-      inner.style.setProperty("--sx", ((px + 0.5) * 100) + "%");
-      inner.style.setProperty("--sy", ((py + 0.5) * 100) + "%");
-    }
-    function leave(){
-      tilt.classList.remove("live");
-      inner.style.transform = "";
-    }
 
     if(fine){
+      var move = function(x, y){
+        var r = tilt.getBoundingClientRect();
+        var px = (x - r.left) / r.width  - 0.5;
+        var py = (y - r.top)  / r.height - 0.5;
+        inner.style.transform = "rotateX(" + (-py * 22) + "deg) rotateY(" + (px * 26) + "deg)";
+        inner.style.setProperty("--sx", ((px + 0.5) * 100) + "%");
+        inner.style.setProperty("--sy", ((py + 0.5) * 100) + "%");
+      };
       tilt.addEventListener("mouseenter", function(){ tilt.classList.add("live"); });
       tilt.addEventListener("mousemove", function(e){ move(e.clientX, e.clientY); });
-      tilt.addEventListener("mouseleave", leave);
+      tilt.addEventListener("mouseleave", function(){ tilt.classList.remove("live"); inner.style.transform = ""; });
+    } else {
+      var c4 = cardOf(tilt);
+      var show = function(keep){
+        tilt.classList.remove("fx-show");
+        void tilt.offsetWidth;            // volver a empezar la animación
+        tilt.classList.add("fx-show");
+        tilt.classList.toggle("fx-on", !!keep);
+      };
+      inner.addEventListener("animationend", function(e){
+        // sin «encendido» (la vez automática): al terminar vuelve al balanceo tranquilo
+        if(e.animationName === "tiltShow" && !tilt.classList.contains("fx-on")) tilt.classList.remove("fx-show");
+      });
+      if(c4){
+        onTap(c4, function(){
+          if(tilt.classList.contains("fx-on")) tilt.classList.remove("fx-on", "fx-show");
+          else show(true);
+        });
+        if(hasIO){
+          var aio = new IntersectionObserver(function(en){
+            if(!en[0].isIntersecting) return;
+            aio.disconnect();
+            setTimeout(function(){ if(!tilt.classList.contains("fx-on")) show(false); }, 350);
+          }, { threshold:0.75 });
+          aio.observe(c4);
+        }
+      }
     }
-    // Táctil: seguir el dedo
-    tilt.addEventListener("touchstart", function(){ tilt.classList.add("live"); }, { passive:true });
-    tilt.addEventListener("touchmove", function(e){
-      var t = e.touches[0];
-      if(t) move(t.clientX, t.clientY);
-    }, { passive:true });
-    tilt.addEventListener("touchend", leave);
   }
 }
 
@@ -1204,16 +1322,39 @@ function initMobileMenu(){
   var nav = document.getElementById("main-nav");
   if(!toggle || !nav) return;
 
-  toggle.addEventListener("click", function(){
-    var open = nav.classList.toggle("open");
+  // Velo oscuro detrás del menú: un toque fuera lo cierra. Mientras está abierto la página no se desplaza
+  // (overflow:hidden en html, y en el iPhone además se frena el arrastre fuera del menú).
+  var veil = document.createElement("div");
+  veil.className = "nav-veil";
+  veil.setAttribute("aria-hidden", "true");
+  document.body.appendChild(veil);
+  var root = document.documentElement;
+  var isOpen = function(){ return nav.classList.contains("open"); };
+  var noDrag = function(e){
+    // dentro del menú solo si de verdad se puede desplazar (pantalla muy baja); fuera, nunca
+    if(nav.contains(e.target) && nav.scrollHeight > nav.clientHeight) return;
+    e.preventDefault();
+  };
+  function setOpen(open){
+    if(open === isOpen()) return;
+    nav.classList.toggle("open", open);
+    root.classList.toggle("menu-open", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
+    if(open) document.addEventListener("touchmove", noDrag, { passive:false });
+    else document.removeEventListener("touchmove", noDrag, { passive:false });
+  }
+
+  toggle.addEventListener("click", function(){ setOpen(!isOpen()); });
+  veil.addEventListener("click", function(){ setOpen(false); });
   nav.querySelectorAll("a").forEach(function(link){
-    link.addEventListener("click", function(){
-      nav.classList.remove("open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", function(){ setOpen(false); });
   });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && isOpen()){ setOpen(false); toggle.focus(); }
+  });
+  // al pasar a pantalla ancha (menú normal) no puede quedarse abierto
+  var wide = window.matchMedia("(min-width: 1141px)");
+  if(wide.addEventListener) wide.addEventListener("change", function(m){ if(m.matches) setOpen(false); });
 }
 
 /* ---------- Header con blur al hacer scroll ---------- */
@@ -1319,6 +1460,7 @@ document.addEventListener("DOMContentLoaded", function(){
   initReveal();
   initMagnetic();
   initDemos();
+  initQuieto();
   initFaq();
   initLangDropdown();
   initMobileMenu();

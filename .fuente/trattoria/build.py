@@ -374,6 +374,27 @@ def fmt_minutes(v):
     return f"{m} min"
 
 
+def srcset_list(raiz, ready):
+    """«a-640.webp 640w, a-800.webp 800w, a.webp 1600w» — variantes pequeñas + original."""
+    return ", ".join([f"{raiz}img/{n} {w}w" for n, w in ready["small"]] + [f'{raiz}img/{ready["src"]} {ready["w"]}w'])
+
+
+def phone_sizes(sizes, ready):
+    """En el teléfono (≤ 700 px) con pantalla de 2,5–3x, una foto vertical o cuadrada a todo el ancho no necesita
+    más de ~800 px: se declara una ranura de 266 px y el navegador elige la variante de 800 (el tamaño en pantalla
+    lo pone el CSS). No se toca: las fotos pequeñas (ranura de menos de 70vw: galería, Instagram, equipo) y las
+    horizontales — en el teléfono se recortan a lo alto (antes/después) y necesitan más píxeles."""
+    if ready["h"] < ready["w"] * 0.9:
+        return sizes
+    last = sizes.split(",")[-1].strip()
+    m = re.fullmatch(r"(\d+)vw", last)
+    if not m or int(m.group(1)) < 70:
+        return sizes
+    cap = "266px"
+    return (f"(max-width: {MOVIL_MAX}px) and (-webkit-min-device-pixel-ratio: 2.5) {cap}, "
+            f"(max-width: {MOVIL_MAX}px) and (min-resolution: 2.5dppx) {cap}, {sizes}")
+
+
 def f_photo(slot, cls="", loading="lazy", sizes="100vw", priority=False):
     """Фото из fotos/ или заглушка в цветах сайта (если файла ещё нет)."""
     info = SITE["fotos"].get(slot)
@@ -388,7 +409,7 @@ def f_photo(slot, cls="", loading="lazy", sizes="100vw", priority=False):
     ready = PHOTO_READY.get(name)
     if ready:
         small = ready["small"]
-        srcset = f' srcset="{raiz}img/{small[0]} {small[1]}w, {raiz}img/{ready["src"]} {ready["w"]}w" sizes="{sizes}"' if small else ""
+        srcset = f' srcset="{srcset_list(raiz, ready)}" sizes="{phone_sizes(sizes, ready)}"' if small else ""
         prio = ' fetchpriority="high"' if priority else ""
         img = (f'<img class="foto {cls}" src="{raiz}img/{ready["src"]}"{srcset} width="{ready["w"]}" height="{ready["h"]}" '
                f'alt="{html.escape(alt)}" loading="{loading}" decoding="async"{prio} style="{style}">')
@@ -503,7 +524,7 @@ def hero_preload(raiz):
         if mob:
             out.append(f'<link rel="preload" as="image" href="{raiz}img/{mob[0]}" media="(max-width: {MOVIL_MAX}px)" fetchpriority="high">')
             small = ready.get("small")
-            srcset = f' imagesrcset="{raiz}img/{small[0]} {small[1]}w, {raiz}img/{ready["src"]} {ready["w"]}w" imagesizes="100vw"' if small else ""
+            srcset = f' imagesrcset="{srcset_list(raiz, ready)}" imagesizes="100vw"' if small else ""
             out.append(f'<link rel="preload" as="image" href="{raiz}img/{ready["src"]}"{srcset} media="(min-width: {MOVIL_MAX + 1}px)" fetchpriority="high">')
         else:
             out.append(f'<link rel="preload" as="image" href="{raiz}img/{ready["src"]}" fetchpriority="high">')
@@ -549,7 +570,12 @@ def prepare_photos(site, out):
                 if w > 900:
                     name = stem + "-640.webp"
                     im.resize((640, round(h * 640 / w)), Image.LANCZOS).save(out / "img" / name, "WEBP", quality=80, method=6)
-                    small = (name, 640)
+                    small = [(name, 640)]
+                    # 800 px: lo que se baja un teléfono de 2,5–3x (sizes con tope, f_photo) — más ligero que el original
+                    if w > 1000:
+                        name8 = stem + "-800.webp"
+                        im.resize((800, round(h * 800 / w)), Image.LANCZOS).save(out / "img" / name8, "WEBP", quality=78, method=6)
+                        small.append((name8, 800))
         elif found.suffix == ".webp":
             shutil.copy2(found, dest)
             w, h = info["ancho"], info["alto"]

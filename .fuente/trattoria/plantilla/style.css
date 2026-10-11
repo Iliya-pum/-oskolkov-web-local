@@ -773,3 +773,32 @@ html.menu-open{ overflow:hidden; }
 }
 /* Franja oscura suave arriba de la portada: la cabecera transparente se lee sobre cualquier foto */
 .hero__veil::before{ content:""; position:absolute; inset:0 0 auto; height:calc(var(--hdr-h) + 80px); background:linear-gradient(rgb(var(--oscuro-rgb) / .6), transparent); }
+
+/* ---------- Animaciones sin fin: solo mientras se ven ----------
+   script.js pone .is-quieto al bloque que está fuera de la pantalla: fuera de la vista no se anima nada
+   (ni el acercamiento de la foto, ni la cinta, ni el pulso de «abierto»); al volver empiezan de nuevo. */
+.is-quieto .hero__kb, .is-quieto .hero__scroll i, .is-quieto .hero__luces i, .cinta.is-quieto .cinta__track,
+.is-quieto .dot.is-open, .is-quieto .dot.is-open::after{ animation:none !important; }
+
+/* ---------- Teléfono y pantallas táctiles: el mismo aspecto, menos trabajo para la tarjeta gráfica ----------
+   Sin grano, sombras cortas, sin 3D (la inclinación es solo con ratón), cinta de platos con «imán» suave,
+   pulso de «abierto» con transform (no repinta la página), sin desenfoques. En el ordenador no cambia nada. */
+@media (hover:none), (pointer:coarse){
+  :root{
+    --grano:none;
+    --sombra-1:0 1px 2px rgb(var(--texto-rgb) / .07), 0 6px 14px -8px rgb(var(--texto-rgb) / .24);
+    --sombra-2:0 2px 4px rgb(var(--texto-rgb) / .08), 0 10px 20px -10px rgb(var(--texto-rgb) / .32);
+    --sombra-3:0 3px 8px rgb(var(--texto-rgb) / .1), 0 16px 28px -14px rgb(var(--texto-rgb) / .4);
+  }
+  .hdr.is-solid{ box-shadow:0 1px 0 var(--linea); }
+  .bookbar .btn{ box-shadow:0 6px 16px -8px rgb(var(--texto-rgb) / .5); }
+  .dish, .rev{ perspective:none; }
+  .dish__card, .rev__card{ transform-style:flat; }
+  .platos__vp{ scroll-snap-type:x proximity; }
+  .dot.is-open{ position:relative; }
+  @media (prefers-reduced-motion:no-preference){
+    .dot.is-open{ animation:none; }
+    .dot.is-open::after{ content:""; position:absolute; inset:0; border-radius:50%; background:rgb(var(--exito-rgb) / .5); animation:pulse-t 2.6s ease-out infinite; }
+  }
+}
+@keyframes pulse-t{ 0%{ transform:scale(1); opacity:1; } 70%,100%{ transform:scale(3.25); opacity:0; } }

@@ -71,9 +71,7 @@ body{
     pointer-events:none;
     opacity:1;
 }
-@media (prefers-reduced-motion: reduce){
-    #bg-art{ display:none; }
-}
+/* con prefers-reduced-motion la constelación se dibuja una vez y se queda quieta (script.js) */
 
 /* Fondo global: rejilla técnica + resplandores suaves de marca */
 body::before{
@@ -296,20 +294,29 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 .lang-opt.active{ color:var(--text); background:var(--accent-soft); }
 .lang-opt.active .check{ opacity:1; }
 
-/* Botón hamburguesa */
+/* Botón hamburguesa: tres líneas colocadas en el mismo centro y separadas solo con transform.
+   Al abrir, la de arriba y la de abajo giran hasta formar la cruz y la del medio desaparece del todo
+   (opacity 0 + scaleX 0): no queda ningún punto. Solo transform y opacity, 250 ms, igual al abrir y al cerrar. */
 .menu-toggle{
     display:none;
-    flex-direction:column; gap:5px;
+    position:relative;
+    width:40px; height:32px;
     background:none; border:none; cursor:pointer;
-    padding:8px; margin:-8px;
+    padding:0; margin:-4px -8px;
+    -webkit-tap-highlight-color:transparent;
 }
 .menu-toggle span{
-    width:24px; height:2px; background:var(--text); border-radius:2px;
-    transition:transform .3s var(--ease), opacity .2s;
+    position:absolute; left:8px; top:50%;
+    width:24px; height:2px; margin-top:-1px;
+    background:var(--text); border-radius:2px;
+    transform-origin:50% 50%;
+    transition:transform .25s var(--ease), opacity .25s var(--ease);
 }
-.menu-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-.menu-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-.menu-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+.menu-toggle span:nth-child(1){ transform:translateY(-7px); }
+.menu-toggle span:nth-child(3){ transform:translateY(7px); }
+.menu-toggle[aria-expanded="true"] span:nth-child(1){ transform:rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; transform:scaleX(0); }
+.menu-toggle[aria-expanded="true"] span:nth-child(3){ transform:rotate(-45deg); }
 
 /* ===== HERO ===== */
 .hero{
@@ -891,8 +898,10 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
         opacity:0;
         visibility:hidden;
         pointer-events:none;
-        transition:opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+        overscroll-behavior:contain;
+        transition:opacity .25s var(--ease), transform .25s var(--ease), visibility 0s linear .25s;
     }
+    #main-nav.open{ transition:opacity .25s var(--ease), transform .25s var(--ease), visibility 0s; }
     #main-nav.open{ opacity:1; visibility:visible; transform:none; pointer-events:auto; }
     #main-nav > a{
         padding:15px 6px;
@@ -1402,4 +1411,73 @@ h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.1; font-weight:800; let
 }
 @media (max-width:460px){
     .why-grid{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   TELÉFONO (fix-movil, 10.2026)
+   ============================================================ */
+/* Menú del teléfono: fondo oscuro detrás (toque fuera = cerrar), la página de debajo no se mueve */
+.nav-veil{
+    position:fixed; inset:0; z-index:999;
+    background:rgba(5,10,20,.55);
+    opacity:0; visibility:hidden;
+    transition:opacity .25s var(--ease), visibility 0s linear .25s;
+    -webkit-tap-highlight-color:transparent;
+}
+html.menu-open .nav-veil{ opacity:1; visibility:visible; transition:opacity .25s var(--ease), visibility 0s; }
+html.menu-open, html.menu-open body{ overflow:hidden; }
+html.menu-open #site-header{ background:var(--bg); border-bottom-color:var(--border); }
+@media (min-width:1141px){ .nav-veil{ display:none; } }
+
+/* Animaciones sin fin solo mientras se ven (script.js pone .is-quieto fuera de la pantalla):
+   mini-demos, resplandores del hero, la unión entre trabajos */
+.is-quieto, .is-quieto *, .is-quieto::before, .is-quieto::after{ animation-play-state:paused !important; }
+/* cada mini-demo se calcula y se pinta dentro de su escenario: lo que se mueve dentro no recalcula la página */
+.demo-stage{ contain:layout paint; }
+
+/* Mini-demo «Detalles que enamoran» en pantallas táctiles (script.js): toque = balanceo + brillo,
+   se queda encendida; otro toque la apaga. La primera vez que se ve, el efecto se reproduce solo. */
+.demo-grid .demo-card.is-pressed{ transform:scale(.985); border-color:var(--border-strong); transition:transform .08s ease-out, border-color .08s; }
+.demo-tilt.fx-show .demo-tilt-inner{ animation:tiltShow 1.3s var(--ease) both; }
+.demo-tilt.fx-on .demo-tilt-inner{
+    animation:tiltShow 1.3s var(--ease) both, tiltIdle 5.5s ease-in-out 1.3s infinite;
+    border-color:rgba(239,68,68,.6);
+    box-shadow:0 0 0 1px rgba(239,68,68,.35), 0 18px 36px -16px rgba(220,38,38,.55);
+}
+/* el brillo pasa como una franja diagonal (más ancha que la tarjeta: sin bordes al moverse) */
+.demo-tilt.fx-show .dt-shine{
+    inset:0 -100%; opacity:1;
+    background:linear-gradient(105deg, transparent 38%, rgba(255,255,255,.16) 50%, transparent 62%);
+    animation:dtSweep 1.3s var(--ease) both;
+}
+.demo-tilt.fx-show:not(.fx-on) .dt-shine{ animation-name:dtSweepOut; }
+.demo-tilt.fx-show .dt-emoji{ animation:dtPop .9s var(--ease) .1s both; }
+@keyframes tiltShow{
+    0%  { transform:rotateX(4deg) rotateY(-6deg); }
+    22% { transform:rotateX(-12deg) rotateY(20deg) scale(1.05); }
+    50% { transform:rotateX(10deg) rotateY(-18deg) scale(1.05); }
+    76% { transform:rotateX(-5deg) rotateY(9deg) scale(1.02); }
+    100%{ transform:rotateX(4deg) rotateY(-6deg); }
+}
+@keyframes dtSweep   { 0%{ opacity:0; transform:translateX(-30%); } 25%{ opacity:1; } 70%{ transform:translateX(18%); } 100%{ opacity:1; transform:none; } }
+@keyframes dtSweepOut{ 0%{ opacity:0; transform:translateX(-30%); } 25%{ opacity:1; } 80%{ opacity:1; transform:translateX(18%); } 100%{ opacity:0; transform:translateX(30%); } }
+@keyframes dtPop{
+    0%  { transform:translateZ(24px) scale(1); }
+    35% { transform:translateZ(24px) scale(1.35) rotate(-12deg); }
+    65% { transform:translateZ(24px) scale(.94) rotate(6deg); }
+    100%{ transform:translateZ(24px) scale(1); }
+}
+
+/* Pantallas táctiles: el mismo aspecto con menos trabajo para la tarjeta gráfica —
+   sin desenfoques (filter / backdrop-filter): los resplandores del hero ya son degradados suaves,
+   cintas con «imán» suave (proximity), sombras grandes más cortas */
+@media (hover:none), (pointer:coarse){
+    .hero-glow{ filter:none; opacity:.42; }
+    .hero-glow-1{ width:700px; height:700px; top:-230px; background:radial-gradient(circle closest-side, rgba(220,38,38,.5), rgba(220,38,38,.2) 50%, transparent); }
+    .hero-glow-2{ width:640px; height:640px; bottom:-250px; right:calc(8% - 90px); background:radial-gradient(circle closest-side, rgba(59,130,246,.3), rgba(59,130,246,.12) 50%, transparent); }
+    #main-nav, .language-menu{ backdrop-filter:none; -webkit-backdrop-filter:none; }
+    .language-menu{ background:rgba(24,37,59,.98); }
+    #main-nav{ background:rgb(15,23,42); box-shadow:0 12px 24px -12px rgba(0,0,0,.6); }   /* opaco: sin desenfoque, el texto de debajo no se trasluce */
+    .demo-grid, .rc-track, .maint-plans{ scroll-snap-type:x proximity; }
+    :root{ --shadow:0 12px 26px -14px rgba(0,0,0,.6); }
 }
