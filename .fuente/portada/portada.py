@@ -105,18 +105,29 @@ def comprobar(proy, opin):
 
 # ---------------------------------------------------------------- картинки
 
+def idiomas_captura(p):
+    """captura_idiomas: {"es": url, "ca": url, …} — свой скриншот на каждом языке главной (нет языка — берётся es)."""
+    return [x for x in (p.get("captura_idiomas") or {}) if x != "es"]
+
+
+def nombre_captura(c, lang):
+    return c if lang == "es" else f"{c}-{lang}"
+
+
 def captura(p):
-    """Скриншот сайта проекта: Edge без окна, окно 1440×900, верх страницы 1440×6000 → capturas\\<captura>.png"""
-    url = p.get("captura_url") or p["url"]
-    if not url.startswith("http"):
-        sys.exit(f"{p['id']}: для скриншота нужна полная ссылка — поле captura_url")
+    """Скриншот сайта проекта: Edge без окна, окно 1440×900, верх страницы 1440×6000 → capturas\\<captura>.png
+    (с captura_idiomas — по одному на язык: <captura>.png для es, <captura>-<язык>.png для остальных)"""
+    urls = p.get("captura_idiomas") or {"es": p.get("captura_url") or p["url"]}
     node = shutil.which("node")
     if not node:
         sys.exit("Нет Node.js — скриншот не снять. Положи PNG сам в capturas\\ (см. инструкцию).")
     CAPTURAS.mkdir(exist_ok=True)
-    out = CAPTURAS / f"{p['captura']}.png"
-    print(f"Скриншот {url} …")
-    subprocess.run([node, str(AQUI / "captura.mjs"), url, str(out), p.get("captura_css", "")], check=True)
+    for lang, url in urls.items():
+        if not url.startswith("http"):
+            sys.exit(f"{p['id']}: для скриншота нужна полная ссылка — поле captura_url / captura_idiomas")
+        out = CAPTURAS / f"{nombre_captura(p['captura'], lang)}.png"
+        print(f"Скриншот {url} …")
+        subprocess.run([node, str(AQUI / "captura.mjs"), url, str(out), p.get("captura_css", "")], check=True)
 
 
 def quitar_vacios(im, minimo=400, deja=160):
@@ -158,6 +169,11 @@ def imagenes(proy, opin):
     nombres = {p["captura"] for g in ("reales", "ejemplos") for p in proy[g]}
     vacios = {p["captura"] for g in ("reales", "ejemplos") for p in proy[g] if p.get("captura_vacios")}
     nombres |= {o["web"]["captura"] for o in opin.get("opiniones", []) if o.get("web")}
+    for g in ("reales", "ejemplos"):
+        for p in proy[g]:
+            nombres |= {nombre_captura(p["captura"], x) for x in idiomas_captura(p)}
+            if p.get("captura_vacios"):
+                vacios |= {nombre_captura(p["captura"], x) for x in idiomas_captura(p)}
     for c in sorted(nombres):
         png = CAPTURAS / f"{c}.png"
         dest = IMAGES / f"{c}.webp"
@@ -190,13 +206,15 @@ def medida(nombre):
         return (720, 3000)
 
 
-def img(c, alt, k, sizes):
+def img(c, alt, k, sizes, langs=()):
     w, h = medida(f"{c}.webp")
     src = [f"images/{c}-480.webp 480w", f"images/{c}.webp 720w"]
-    if (IMAGES / f"{c}-1080.webp").exists():
+    hd = (IMAGES / f"{c}-1080.webp").exists()
+    if hd:
         src.append(f"images/{c}-1080.webp 1080w")
+    shot = (f' data-shot="{c}" data-shot-langs="{" ".join(langs)}"' + (" data-shot-hd" if hd else "")) if langs else ""
     return (f'<img src="images/{c}.webp" srcset="{", ".join(src)}" sizes="{sizes}" width="{w}" height="{h}" '
-            f'loading="lazy" decoding="async" alt="{esc(alt)}" data-i18n-alt="pj_{k}_alt">')
+            f'loading="lazy" decoding="async" alt="{esc(alt)}" data-i18n-alt="pj_{k}_alt"{shot}>')
 
 
 # ---------------------------------------------------------------- HTML: Trabajos
@@ -208,7 +226,7 @@ def tarjeta(p, demo, sizes):
     return f'''<article class="work">
     <a class="work-frame" href="{esc(p["url"])}"{EXT} style="--dur:10s">
         <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">{esc(p["dominio"])}</span></div>
-        <div class="work-shot">{img(p["captura"], p["alt"]["es"], k, sizes)}</div>
+        <div class="work-shot">{img(p["captura"], p["alt"]["es"], k, sizes, idiomas_captura(p))}</div>
     </a>
     <div class="work-info">
         <h4 class="work-name">{esc(p["nombre"])}</h4>
@@ -282,10 +300,12 @@ def html_opiniones(opin):
         if o.get("web"):
             w = o["web"]
             ww, hh = medida(f'{w["captura"]}-480.webp')
+            langs = [x for x in ("ca", "en", "ru") if (IMAGES / f'{w["captura"]}-{x}-480.webp').exists()]
+            mini = f' data-shot="{w["captura"]}" data-shot-langs="{" ".join(langs)}" data-shot-mini' if langs else ""
             web = f'''
 <a class="review-site" href="{esc(w["url"])}"{EXT} aria-label="{esc((o.get("empresa") or o["autor"]) + " — " + w["dominio"])}">
     <div class="browser-bar"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span><span class="browser-url">{esc(w["dominio"])}</span></div>
-    <div class="review-shot"><img src="images/{w["captura"]}-480.webp" width="{ww}" height="{hh}" loading="lazy" decoding="async" alt=""></div>
+    <div class="review-shot"><img src="images/{w["captura"]}-480.webp" width="{ww}" height="{hh}" loading="lazy" decoding="async" alt=""{mini}></div>
 </a>'''
         cuerpo = f'''<div class="review-body">
 {sangria(estrellas(o), 4)}

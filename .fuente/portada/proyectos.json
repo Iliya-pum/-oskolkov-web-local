@@ -9,6 +9,7 @@
       "dominio": "alsisaconstrucciones.es",
       "captura": "work-alsisa",
       "captura_url": "https://alsisaconstrucciones.es/",
+      "captura_idiomas": {"es": "https://alsisaconstrucciones.es/es/", "ca": "https://alsisaconstrucciones.es/", "en": "https://alsisaconstrucciones.es/en/"},
       "nicho": {"es": "Construcción y reformas · Girona", "ca": "Construcció i reformes · Girona", "en": "Construction & renovation · Girona", "ru": "Строительство и ремонт · Жирона"},
       "alt": {"es": "Web de ALSISA Construcciones", "ca": "Web d'ALSISA Construccions", "en": "ALSISA Construcciones website", "ru": "Сайт ALSISA Construcciones"}
     }

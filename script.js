@@ -828,6 +828,20 @@ function changeLanguage(lang, initial){
     el.textContent = el.hasAttribute("data-short") ? lang.toUpperCase() : labels[lang];
   });
 
+  // Capturas de proyectos por idioma (data-shot): la del idioma o, si no la hay, la española
+  document.querySelectorAll("img[data-shot]").forEach(function(img){
+    var base = img.getAttribute("data-shot");
+    var langs = (img.getAttribute("data-shot-langs") || "").split(" ");
+    var c = langs.indexOf(lang) > -1 ? base + "-" + lang : base;
+    if(img.hasAttribute("data-shot-mini")){
+      var s = "images/" + c + "-480.webp";
+      if(img.getAttribute("src") !== s) img.src = s;
+      return;
+    }
+    var ss = "images/" + c + "-480.webp 480w, images/" + c + ".webp 720w" + (img.hasAttribute("data-shot-hd") ? ", images/" + c + "-1080.webp 1080w" : "");
+    if(img.getAttribute("srcset") !== ss){ img.srcset = ss; img.src = "images/" + c + ".webp"; }
+  });
+
   // Marcar la opción activa en el menú
   document.querySelectorAll(".lang-opt").forEach(function(opt){
     opt.classList.toggle("active", opt.getAttribute("data-lang") === lang);
